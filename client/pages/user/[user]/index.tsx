@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
-import axios, { AxiosResponse } from "axios";
 
-import MarkdownCard from "../../../components/MarkdownCard";
+import MarkdownCard from "@src/components/MarkdownCard";
 
 const User = () => {
 	const router = useRouter();
@@ -12,8 +11,6 @@ const User = () => {
 
 	return (
 		<div>
-			{"why isnt this showing, " + name}
-			<h1>Hello</h1>
 			<MarkdownCard markdown={hardcodedMarkdownWithQueryName} />
 		</div>
 	);
