@@ -8,18 +8,7 @@ const User = () => {
 	const router = useRouter();
 	const { user } = router.query;
 
-	const [name, setName] = useState("");
-
 	const hardcodedMarkdownWithQueryName = `# Hello, ${user}\nThis is your customised page.`;
-
-	const result: Promise<AxiosResponse<{ name: string }>> = axios.get(
-		"http://localhost:3000/api/hello"
-	);
-	let something: string = "what";
-	result.then((res) => {
-		setName(res.data.name);
-		console.log(something);
-	});
 
 	return (
 		<div>
