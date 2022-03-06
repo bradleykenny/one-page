@@ -8,6 +8,7 @@ const nextApp = next({ dir: "../client/" });
 const nextHandler = nextApp.getRequestHandler();
 
 const API_PREFIX = "/api/v1";
+const PORT = 5000;
 
 nextApp.prepare().then(() => {
 	const server = express();
@@ -31,7 +32,7 @@ nextApp.prepare().then(() => {
 	});
 
 	// and finally... serve
-	server.listen(5000, () => {
-		console.log("listening...");
+	server.listen(PORT, () => {
+		console.log(`listening on port ${PORT}...`);
 	});
 });
