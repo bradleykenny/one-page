@@ -8,7 +8,9 @@ interface IProps {
 }
 
 const MarkdownCard = (props: IProps) => {
-	return <div className={style.card}>{parser(marked(props.markdown))}</div>;
+	const markdownContent = marked(props.markdown);
+	const parsedMarkdownAsHTML = parser(markdownContent);
+	return <div className={style.card}>{parsedMarkdownAsHTML}</div>;
 };
 
 export default MarkdownCard;
