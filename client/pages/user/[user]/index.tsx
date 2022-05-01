@@ -1,4 +1,5 @@
 import MarkdownCard from "@src/components/MarkdownCard";
+import NavBar from "@src/components/NavBar";
 import useApi from "hooks/useApi";
 import { useRouter } from "next/router";
 import React from "react";
@@ -13,6 +14,7 @@ const User = () => {
 
 	return (
 		<div>
+			<NavBar />
 			<MarkdownCard markdown={hardcodedMarkdownWithQueryName} />
 		</div>
 	);

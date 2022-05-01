@@ -1,5 +1,4 @@
 import { createTheme } from '@mui/material/styles';
-import { orange } from '@mui/material/colors';
 
 declare module '@mui/material/styles' {
 	interface Theme {
@@ -26,6 +25,12 @@ const theme = createTheme({
             },
         },
     },
+    palette: {
+        primary: {
+            main: '#ed6f00'
+        }
+    },
+    // shadows: [ 'none' ]
 });
 
 export default theme;
