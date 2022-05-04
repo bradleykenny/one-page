@@ -1,8 +1,10 @@
 import 'dotenv/config';
 import cors from "cors";
-import express, { Request, Response } from "express";
-import userRouter from "./routers/userRouter";
-import { connectToServer } from './db/connect';
+import express from "express";
+import MongoService from './services/MongoService';
+
+import pageRouter from './routers/page';
+import userRouter from "./routers/user";
 
 const API_PREFIX = "/api/v1";
 const PORT = 5001;
@@ -11,17 +13,18 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
-connectToServer();
+MongoService.connectToServer();
 
 // test route
-server.get("/ping", (req: Request, res: Response<string>) => {
+server.get("/ping", (_, res) => {
 	return res.send("pong");
 });
 
 // imported routers
-server.use(API_PREFIX + "/user", userRouter);
+server.use(`${API_PREFIX}/page`, pageRouter);
+server.use(`${API_PREFIX}/user`, userRouter);
 
 // and finally... serve
 server.listen(PORT, () => {
-	console.log(`listening on port ${PORT}...`);
+	console.log(`Listening on port ${PORT}...`);
 });

@@ -7,14 +7,14 @@ let dbConnection: Db;
 const dbName = 'one-page';
 
 const connectToServer = () => {
-    client.connect((err, db) => {
-        if (err || !db) {
+    client.connect((error, client) => {
+        if (error || !client) {
             console.error('Error connecting to MongoDB instance.');
-            console.error(err);
+            console.error(error);
             throw new Error('Cannot connect to the DB');
         }
 
-        dbConnection = db.db(dbName);
+        dbConnection = client.db(dbName);
         console.log('Successfully connected to MongoDB instance.');
     });
 };
@@ -23,7 +23,7 @@ const getDb = () => {
     return dbConnection;
 };
 
-export {
+export default {
     connectToServer,
     getDb
 };
