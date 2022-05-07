@@ -10,6 +10,7 @@ pageRouter.get("/test", async (req, res) => {
 
 pageRouter.post('/add', async (req: Request<Page>, res) => {
     PageService.addPage(req.body);
+    res.send('Page added.');
 });
 
 export default pageRouter;
