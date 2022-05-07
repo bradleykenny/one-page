@@ -15,7 +15,9 @@ const User = () => {
 	return (
 		<div>
 			<NavBar />
-			<MarkdownCard markdown={hardcodedMarkdownWithQueryName} />
+			<div className="pt-32">
+				<MarkdownCard markdown={hardcodedMarkdownWithQueryName} />
+			</div>
 		</div>
 	);
 };

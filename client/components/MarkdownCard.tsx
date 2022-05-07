@@ -11,7 +11,12 @@ interface IProps {
 const MarkdownCard = (props: IProps) => {
 	const markdownContent = marked(props.markdown);
 	const parsedMarkdownAsHTML = parser(markdownContent);
-	return <div className={style.card}>{parsedMarkdownAsHTML}<Button variant="contained">Press me!</Button></div>;
+	
+	return (
+		<div className="shadow-md bg-white w-6/12 mx-auto rounded-md p-5">
+			{parsedMarkdownAsHTML}
+		</div>
+	);
 };
 
 export default MarkdownCard;
