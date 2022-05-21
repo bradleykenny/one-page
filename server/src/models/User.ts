@@ -5,10 +5,11 @@ interface Profile {
 
 interface User {
     id: string;
+    email: string;
     profile: Profile;
     pages: string[];
 };
 
-export { 
+export {
     User
 };

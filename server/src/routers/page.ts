@@ -1,7 +1,6 @@
 import express, { Request } from "express";
 import { Page } from "../models/Page";
-import MongoService from "../services/MongoService";
-import PageService from "../services/PageService";
+import { PageService }from "../services";
 
 const pageRouter = express.Router();
 pageRouter.get("/test", async (req, res) => {

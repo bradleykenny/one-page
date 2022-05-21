@@ -3,8 +3,11 @@ import cors from "cors";
 import express from "express";
 import MongoService from './services/MongoService';
 
-import pageRouter from './routers/page';
-import userRouter from "./routers/user";
+import {
+	authRouter,
+	pageRouter,
+	userRouter
+} from './routers';
 
 const API_PREFIX = "/api/v1";
 const PORT = 5001;
@@ -21,6 +24,7 @@ server.get("/ping", (_, res) => {
 });
 
 // imported routers
+server.use(`${API_PREFIX}/auth`, authRouter);
 server.use(`${API_PREFIX}/page`, pageRouter);
 server.use(`${API_PREFIX}/user`, userRouter);
 
