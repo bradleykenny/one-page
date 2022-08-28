@@ -1,25 +1,28 @@
 interface Props {
-    isSelected?: boolean;
-    title: string;
+  isSelected?: boolean;
+  title: string;
 }
 
 const NavLink = (props: Props) => {
-    const { 
-        isSelected,
-        title
-    } = props;
+  const { isSelected, title } = props;
 
-    const sharedStyles = "px-4 py-2 inline-block rounded-lg mr-4 cursor-pointer"
-    
-    if (isSelected) {
-        return (
-            <p className={`${sharedStyles} bg-white bg-opacity-90 drop-shadow text-indigo-800`}>{ title }</p>
-        );
-    }
-    
+  const sharedStyles = "px-4 py-2 inline-block rounded-md mr-2 cursor-pointer";
+
+  if (isSelected) {
     return (
-        <p className={`${sharedStyles} hover:bg-white hover:bg-opacity-70 text-white text-opacity-90 hover:text-indigo-800 hover:text-opacity-100`}>{ title }</p>
+      <p className={`${sharedStyles} bg-indigo-800 bg-opacity-90 text-white`}>
+        {title}
+      </p>
     );
-}
+  }
+
+  return (
+    <a
+      className={`${sharedStyles} hover:bg-indigo-100 focus:bg-indigo-200 text-indigo-800`}
+      href="#">
+      {title}
+    </a>
+  );
+};
 
 export default NavLink;
