@@ -27,6 +27,10 @@ const Home: NextPage = () => {
 					Welcome to <a href="https://nextjs.org">Next.js!</a>
 				</h1>
 
+				<div className="bg-indigo-500 p-8">
+					<p className={'text-3xl font-bold underline'}>Hello there</p>
+				</div>
+
 				<p className={styles.description}>
 					Get started by editing{" "}
 					<code className={styles.code}>pages/index.js</code>
