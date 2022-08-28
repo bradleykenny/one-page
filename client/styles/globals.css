@@ -22,3 +22,13 @@ a {
 * {
 	box-sizing: border-box;
 }
+
+h1 {
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 2px;
+}
+
+p {
+	margin-bottom: 5px;
+}

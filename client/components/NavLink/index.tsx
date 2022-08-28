@@ -6,7 +6,7 @@ interface Props {
 const NavLink = (props: Props) => {
   const { isSelected, title } = props;
 
-  const sharedStyles = "px-4 py-2 inline-block rounded-md mr-2 cursor-pointer";
+  const sharedStyles = "px-4 py-2 inline-block rounded-xl mr-2 cursor-pointer";
 
   if (isSelected) {
     return (

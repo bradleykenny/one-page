@@ -10,8 +10,7 @@ const User = () => {
 
   const userResult = useApi("/user");
 
-  const hardcodedMarkdownWithQueryName =
-    `# Hello, ${user}\nThis is your customised page. \n`.repeat(100);
+  const hardcodedMarkdownWithQueryName = `# Hello, ${user}\nThis is your customised page.`;
 
   return (
     <div>

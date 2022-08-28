@@ -26,7 +26,7 @@ const SidebarItem = (props: SidebarItemProps) => {
     <li>
       <a
         href={url}
-        className="flex items-center p-2 mx-2 text-base font-normal text-gray-900 rounded hover:bg-indigo-100 focus:bg-indigo-200">
+        className="flex items-center p-2 mx-2 text-base font-normal text-gray-600 hover:text-gray-800 rounded-xl hover:bg-indigo-100 focus:bg-indigo-200">
         <img src={svg} style={{ height: 20, width: 20 }} />
         <span className="ml-3">{title}</span>
       </a>

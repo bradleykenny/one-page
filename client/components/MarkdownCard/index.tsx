@@ -6,7 +6,7 @@ interface MarkdownCardProps {
 }
 
 const MarkdownCard = (props: MarkdownCardProps) => {
-  const markdownContent = marked(props.markdown);
+  const markdownContent = marked.parse(props.markdown);
   const parsedMarkdownAsHTML = parser(markdownContent);
 
   return (
