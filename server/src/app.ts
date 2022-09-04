@@ -1,13 +1,9 @@
-import 'dotenv/config';
 import cors from "cors";
+import "dotenv/config";
 import express from "express";
-import MongoService from './services/MongoService';
+import MongoService from "./services/MongoService";
 
-import {
-	authRouter,
-	pageRouter,
-	userRouter
-} from './routers';
+import { authRouter, pageRouter, userRouter } from "./routers";
 
 const API_PREFIX = "/api/v1";
 const PORT = 5001;
