@@ -1,7 +1,7 @@
 import MarkdownCard from "@src/components/MarkdownCard";
-import Navbar from "@src/components/Navbar";
+import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
-import useApi from "hooks/useApi";
+import useApi from "@src/hooks/useApi";
 import { useRouter } from "next/router";
 
 const User = () => {
