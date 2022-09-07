@@ -27,14 +27,14 @@ const login = async (request: LoginRequest, res: Response) => {
 		res.status(400).send(`No user exists for: ${email}`);
 	}
 
-	const encryptedPw = await bcrypt.hash(password, 10);
-	bcrypt.compare(encryptedPw, user?.password, (err, result) => {
-		if (err) {
-			console.error(err);
-		}
+	const passwordsMatch = await bcrypt.compare(password, user?.password);
 
-		console.log(result);
-	});
+	if (passwordsMatch) {
+		const token = jwt.sign({}, "SECRET");
+		return res.status(200).send({ token });
+	} else {
+		res.status(400).send("Incorrect username/password");
+	}
 };
 
 const register = async (request: RegisterRequest, res: Response) => {
@@ -52,11 +52,14 @@ const register = async (request: RegisterRequest, res: Response) => {
 			res.status(400).send("Email is already registered");
 		}
 
+		request.password = await bcrypt.hash(password, 10);
+
 		await authCollection.insertOne(request);
 
+		// TODO: do something with this
 		const token = jwt.sign(request, "test", { expiresIn: "2h" });
 
-		res.send(200).send("User registered.");
+		res.send(200).send("User registered");
 	} catch (e) {
 		console.error(e);
 	}
