@@ -1,5 +1,6 @@
 import { useState } from "react";
-import NavLink from "../NavLink";
+import NavLink from "./NavLink";
+import NavProfile from "./NavProfile";
 
 interface Props {}
 
@@ -16,6 +17,7 @@ const NavBar = (props: Props) => {
       <NavLink title="Resources" />
       <NavLink title="Trending" />
       <NavLink title="Analytics" />
+      <NavProfile title="Brad Kenny" />
     </div>
   );
 };

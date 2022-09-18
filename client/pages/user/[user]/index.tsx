@@ -3,6 +3,7 @@ import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
 import useApi from "@src/hooks/useApi";
 import { useRouter } from "next/router";
+import { mdSample1 } from "test/markdown-content";
 
 const User = () => {
   const router = useRouter();
@@ -10,14 +11,12 @@ const User = () => {
 
   const userResult = useApi("/user");
 
-  const hardcodedMarkdownWithQueryName = `# Hello, ${user}\nThis is your customised page.`;
-
   return (
     <div>
       <Navbar />
       <Sidebar />
-      <div className="pt-32">
-        <MarkdownCard markdown={hardcodedMarkdownWithQueryName} />
+      <div className="pt-32 pb-12">
+        <MarkdownCard markdown={mdSample1(user)} />
       </div>
     </div>
   );
