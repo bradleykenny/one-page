@@ -1,9 +1,10 @@
 import { Collection, Document } from "mongodb";
+import { Collections } from "../models/Collections";
 import { QueryOptions } from "../models/Common";
 import { Page } from "../models/Page";
 import MongoService from "./MongoService";
 
-const COLLECTION_NAME = "pages";
+const COLLECTION_NAME = Collections.pages;
 
 const getCollection = (): Collection<Document> => {
 	const db = MongoService.getDb();

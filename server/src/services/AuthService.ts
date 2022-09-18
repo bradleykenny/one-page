@@ -5,17 +5,17 @@ import MongoService from "./MongoService";
 
 import jwt from "jsonwebtoken";
 import { Collection, Document } from "mongodb";
+import { Collections } from "../models/Collections";
 
-const COLLECTION_NAME = "auth";
+const COLLECTION_NAME = Collections.auth;
 
 const getCollection = (): Collection<Document> => {
 	const db = MongoService.getDb();
 	return db.collection(COLLECTION_NAME);
 };
 
-const login = async (request: LoginRequest, res: Response) => {
-	console.log(request);
-	const { email, password } = request;
+const login = async (request: Request<LoginRequest>, res: Response) => {
+	const { email, password } = request.body;
 
 	if (!email || !password) {
 		res.status(400).send("Please enter both email and password values");
@@ -41,8 +41,8 @@ const login = async (request: LoginRequest, res: Response) => {
 	}
 };
 
-const register = async (request: RegisterRequest, res: Response) => {
-	const { email, firstName, lastName, password } = request;
+const register = async (request: Request<RegisterRequest>, res: Response) => {
+	const { email, firstName, lastName, password } = request.body;
 
 	try {
 		if (!email || !firstName || !lastName || !password) {
@@ -94,8 +94,4 @@ const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 	}
 };
 
-export default {
-	login,
-	register,
-	isLoggedIn,
-};
+export default { login, register, isLoggedIn };

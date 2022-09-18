@@ -1,5 +1,4 @@
-import express, { Request } from "express";
-import { LoginRequest, RegisterRequest } from "../models/Auth";
+import express, { Request, Response } from "express";
 import AuthService from "../services/AuthService";
 
 const authRouter = express.Router();
@@ -7,22 +6,13 @@ authRouter.get("/test", async (req, res) => {
 	res.send("AUTH WORKING");
 });
 
-authRouter.post("/login", async (req: Request<LoginRequest>, res) => {
-	const { body } = req;
-
-	AuthService.login(body, res);
-});
-
-authRouter.post("/register", async (req: Request<RegisterRequest>, res) => {
-	const { body } = req;
-
-	AuthService.register(body, res);
-});
+authRouter.post("/login", AuthService.login);
+authRouter.post("/register", AuthService.register);
 
 authRouter.get(
 	"/validToken",
 	AuthService.isLoggedIn,
-	async (req: any, res: any) => {
+	async (req: Request, res: Response) => {
 		res.send("Made it.");
 	}
 );
