@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { LoginRequest, RegisterRequest } from "../models/Auth";
 import MongoService from "./MongoService";
 
@@ -14,6 +14,7 @@ const getCollection = (): Collection<Document> => {
 };
 
 const login = async (request: LoginRequest, res: Response) => {
+	console.log(request);
 	const { email, password } = request;
 
 	if (!email || !password) {
@@ -30,8 +31,11 @@ const login = async (request: LoginRequest, res: Response) => {
 	const passwordsMatch = await bcrypt.compare(password, user?.password);
 
 	if (passwordsMatch) {
-		const token = jwt.sign({}, "SECRET");
-		return res.status(200).send({ token });
+		const token = jwt.sign(
+			{ username: user?.email },
+			process.env.SECRET as string
+		);
+		res.json({ token });
 	} else {
 		res.status(400).send("Incorrect username/password");
 	}
@@ -52,20 +56,46 @@ const register = async (request: RegisterRequest, res: Response) => {
 			res.status(400).send("Email is already registered");
 		}
 
-		request.password = await bcrypt.hash(password, 10);
+		const encryptedPassword = await bcrypt.hash(password, 10);
+		const newUser = { ...request, password: encryptedPassword };
 
-		await authCollection.insertOne(request);
+		await authCollection.insertOne(newUser);
 
-		// TODO: do something with this
-		const token = jwt.sign(request, "test", { expiresIn: "2h" });
-
-		res.send(200).send("User registered");
+		res.status(200).send("User registered");
 	} catch (e) {
 		console.error(e);
+	}
+};
+
+const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
+	try {
+		if (req.headers.authorization) {
+			const token = req.headers.authorization.split(" ")[1];
+			if (token) {
+				const secret = process.env.SECRET as string;
+				const payload = jwt.verify(token, secret);
+				if (payload) {
+					req.body.user = payload;
+					console.log(req.body.user);
+					next();
+				} else {
+					res.status(400).json({
+						error: "Token verification failed",
+					});
+				}
+			} else {
+				res.status(400).json({ error: "Malformed auth header" });
+			}
+		} else {
+			res.status(400).json({ error: "No authorization header" });
+		}
+	} catch (error) {
+		res.status(400).json({ error });
 	}
 };
 
 export default {
 	login,
 	register,
+	isLoggedIn,
 };

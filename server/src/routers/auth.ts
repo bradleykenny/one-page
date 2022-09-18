@@ -19,4 +19,12 @@ authRouter.post("/register", async (req: Request<RegisterRequest>, res) => {
 	AuthService.register(body, res);
 });
 
+authRouter.get(
+	"/validToken",
+	AuthService.isLoggedIn,
+	async (req: any, res: any) => {
+		res.send("Made it.");
+	}
+);
+
 export default authRouter;

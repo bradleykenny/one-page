@@ -6,7 +6,7 @@ import MongoService from "./services/MongoService";
 import { authRouter, pageRouter, userRouter } from "./routers";
 
 const API_PREFIX = "/api/v1";
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 
 const server = express();
 server.use(cors());

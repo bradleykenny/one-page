@@ -1,6 +1,8 @@
-interface QueryOptions {
+export interface QueryOptions {
 	limit: number;
 	offset: number;
 }
 
-export { QueryOptions };
+export interface TypedRequestBody<T> extends Express.Request {
+	body: T;
+}
