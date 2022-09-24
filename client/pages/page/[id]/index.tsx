@@ -6,7 +6,7 @@ import usePage from "@src/hooks/usePage";
 import { useRouter } from "next/router";
 import { mdSample1 } from "test/markdown-content";
 
-const User = () => {
+const Page = () => {
   const router = useRouter();
   const { id } = router.query;
 
@@ -25,4 +25,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default Page;
