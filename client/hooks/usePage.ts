@@ -11,10 +11,9 @@ const usePage = (id: string) => {
       }
 
       const response = await useApi(`/page/${id}`, "GET");
-      console.log(response);
-
       if (response.data) {
-        setResult(response.data.content);
+        const { content } = response.data;
+        setResult(content);
       }
     };
     fetchData();

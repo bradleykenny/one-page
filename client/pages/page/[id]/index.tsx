@@ -11,14 +11,14 @@ const User = () => {
   const { id } = router.query;
 
   const { result } = usePage(id as string);
-  console.log("r", result);
+  const parsedText = result.replace("\\n", "\n");
 
   return (
     <div>
       <Navbar />
       <Sidebar />
       <div className="pt-32 pb-12">
-        <MarkdownCard markdown={result || mdSample1("Test")} />
+        <MarkdownCard markdown={parsedText || mdSample1("Soph")} />
       </div>
       <SidebarInfo />
     </div>
