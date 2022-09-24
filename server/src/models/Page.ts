@@ -12,3 +12,5 @@ export interface AddPageRequest extends AuthenticatedRequest {
 	title: string;
 	content: string;
 }
+
+export interface GetUserPagesRequest extends AuthenticatedRequest {}
