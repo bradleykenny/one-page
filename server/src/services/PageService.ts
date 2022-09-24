@@ -43,10 +43,12 @@ const addPage = async (
 	}
 };
 
-const getPage = async (id: string) => {
+const getPage = async (req: Request, res: Response) => {
+	const { id } = req.params;
 	const coll = getCollection();
 
-	await coll.findOne({ id });
+	const data = await coll.findOne({ id });
+	res.status(200).send({ data });
 };
 
 const getUserPages = async (req: Request, res: Response) => {

@@ -13,5 +13,6 @@ pageRouter.get(
 	AuthService.isLoggedIn,
 	PageService.getUserPages
 );
+pageRouter.get("/:id", PageService.getPage); // TODO: add authentication
 
 export default pageRouter;
