@@ -5,7 +5,7 @@ import MongoService from "./services/MongoService";
 
 import { authRouter, pageRouter, profileRouter, userRouter } from "./routers";
 
-const API_PREFIX = "/api/v1";
+const API_PREFIX = process.env.API_PREFIX;
 const PORT = process.env.PORT || 5001;
 
 const server = express();
@@ -16,6 +16,10 @@ MongoService.connectToServer();
 
 // test route
 server.get("/ping", (_, res) => {
+	return res.send("pong");
+});
+
+server.get(`${API_PREFIX}/ping`, (_, res) => {
 	return res.send("pong");
 });
 

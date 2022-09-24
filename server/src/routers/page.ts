@@ -8,5 +8,10 @@ pageRouter.get("/test", async (req, res: Response) => {
 });
 
 pageRouter.post("/", AuthService.isLoggedIn, PageService.addPage);
+pageRouter.get(
+	"/user/:userId",
+	AuthService.isLoggedIn,
+	PageService.getUserPages
+);
 
 export default pageRouter;
