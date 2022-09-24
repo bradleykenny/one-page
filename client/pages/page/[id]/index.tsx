@@ -8,7 +8,8 @@ import { mdSample1 } from "test/markdown-content";
 
 const User = () => {
   const router = useRouter();
-  const { user } = router.query;
+  const { id } = router.query;
+  console.log(router.query);
 
   const userResult = useApi("/user");
 
@@ -17,7 +18,7 @@ const User = () => {
       <Navbar />
       <Sidebar />
       <div className="pt-32 pb-12">
-        <MarkdownCard markdown={mdSample1(user)} />
+        <MarkdownCard markdown={mdSample1(id)} />
       </div>
       <SidebarInfo />
     </div>
