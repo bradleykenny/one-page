@@ -3,7 +3,7 @@ import "dotenv/config";
 import express from "express";
 import MongoService from "./services/MongoService";
 
-import { authRouter, pageRouter, userRouter } from "./routers";
+import { authRouter, pageRouter, profileRouter, userRouter } from "./routers";
 
 const API_PREFIX = "/api/v1";
 const PORT = process.env.PORT || 5001;
@@ -22,6 +22,7 @@ server.get("/ping", (_, res) => {
 // imported routers
 server.use(`${API_PREFIX}/auth`, authRouter);
 server.use(`${API_PREFIX}/page`, pageRouter);
+server.use(`${API_PREFIX}/profile`, profileRouter);
 server.use(`${API_PREFIX}/user`, userRouter);
 
 // and finally... serve

@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import AuthService from "../services/AuthService";
 
 const authRouter = express.Router();
-authRouter.get("/test", async (req, res) => {
+authRouter.get("/test", async (_, res) => {
 	res.send("AUTH WORKING");
 });
 

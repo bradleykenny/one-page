@@ -1,5 +1,4 @@
-import express, { Request, Response } from "express";
-import { Page } from "../models/Page";
+import express, { Response } from "express";
 import AuthService from "../services/AuthService";
 import PageService from "../services/PageService";
 
@@ -8,13 +7,6 @@ pageRouter.get("/test", async (req, res: Response) => {
 	res.send("PAGES TEST");
 });
 
-pageRouter.post(
-	"/add",
-	AuthService.isLoggedIn,
-	async (req: Request<Page>, res: Response) => {
-		PageService.addPage(req.body);
-		res.send("Page added.");
-	}
-);
+pageRouter.post("/", AuthService.isLoggedIn, PageService.addPage);
 
 export default pageRouter;

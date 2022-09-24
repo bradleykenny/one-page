@@ -1,9 +1,13 @@
-interface Page {
+import { AuthenticatedRequest } from "./Auth";
+
+export interface Page {
 	id: string;
-	name: string;
 	title: string;
 	content: string;
 	userId: string;
 }
 
-export { Page };
+export interface AddPageRequest extends AuthenticatedRequest {
+	title: string;
+	content: string;
+}

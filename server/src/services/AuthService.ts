@@ -7,6 +7,9 @@ import jwt from "jsonwebtoken";
 import { Collection, Document } from "mongodb";
 import { Collections } from "../models/Collections";
 
+import { v4 as uuidv4 } from "uuid";
+import { TypedRequestBody } from "../models/Common";
+
 const COLLECTION_NAME = Collections.auth;
 
 const getCollection = (): Collection<Document> => {
@@ -14,7 +17,10 @@ const getCollection = (): Collection<Document> => {
 	return db.collection(COLLECTION_NAME);
 };
 
-const login = async (request: Request<LoginRequest>, res: Response) => {
+const login = async (
+	request: TypedRequestBody<LoginRequest>,
+	res: Response
+) => {
 	const { email, password } = request.body;
 
 	if (!email || !password) {
@@ -41,7 +47,10 @@ const login = async (request: Request<LoginRequest>, res: Response) => {
 	}
 };
 
-const register = async (request: Request<RegisterRequest>, res: Response) => {
+const register = async (
+	request: TypedRequestBody<RegisterRequest>,
+	res: Response
+) => {
 	const { email, firstName, lastName, password } = request.body;
 
 	try {
@@ -57,8 +66,14 @@ const register = async (request: Request<RegisterRequest>, res: Response) => {
 		}
 
 		const encryptedPassword = await bcrypt.hash(password, 10);
-		const newUser = { ...request, password: encryptedPassword };
+		const id = uuidv4();
+		const newUser = {
+			...request.body,
+			id,
+			password: encryptedPassword,
+		};
 
+		console.log(newUser);
 		await authCollection.insertOne(newUser);
 
 		res.status(200).send("User registered");
@@ -73,10 +88,9 @@ const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 			const token = req.headers.authorization.split(" ")[1];
 			if (token) {
 				const secret = process.env.SECRET as string;
-				const payload = jwt.verify(token, secret);
+				const payload: any = jwt.verify(token, secret);
 				if (payload) {
-					req.body.user = payload;
-					console.log(req.body.user);
+					req.body.userId = payload.username;
 					next();
 				} else {
 					res.status(400).json({
