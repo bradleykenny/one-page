@@ -1,6 +1,7 @@
 import { AuthenticatedRequest } from "./Auth";
+import { TimedFields } from "./Common";
 
-export interface Page {
+export interface Page extends TimedFields {
 	id: string;
 	title: string;
 	content: string;

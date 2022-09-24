@@ -8,3 +8,8 @@ export interface QueryOptions {
 export interface TypedRequestBody<T> extends Request {
 	body: T;
 }
+
+export interface TimedFields {
+	createdAt: number;
+	updatedAt: number;
+}

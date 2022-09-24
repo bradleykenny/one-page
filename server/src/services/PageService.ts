@@ -6,6 +6,7 @@ import { AddPageRequest, Page } from "../models/Page";
 import MongoService from "./MongoService";
 
 import shortid from "shortid";
+import Time from "../util/Time";
 
 const COLLECTION_NAME = Collections.pages;
 
@@ -23,12 +24,14 @@ const addPage = async (
 	const id = shortid.generate();
 	const { title, content, user } = req.body;
 	const userId = user.username;
+	const timeFields = Time.initialiseTimeFields();
 
 	const page: Page = {
 		title,
 		content,
 		id,
 		userId,
+		...timeFields,
 	};
 
 	await coll.insertOne(page);
@@ -39,7 +42,7 @@ const addPage = async (
 const getPage = async (id: string) => {
 	const coll = getCollection();
 
-	return await coll.findOne({ id });
+	await coll.findOne({ id });
 };
 
 const getUserPages = async (userId: string, options: QueryOptions) => {

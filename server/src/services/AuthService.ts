@@ -88,9 +88,9 @@ const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 			const token = req.headers.authorization.split(" ")[1];
 			if (token) {
 				const secret = process.env.SECRET as string;
-				const payload: any = jwt.verify(token, secret);
+				const payload = jwt.verify(token, secret);
 				if (payload) {
-					req.body.userId = payload.username;
+					req.body.user = payload;
 					next();
 				} else {
 					res.status(400).json({
