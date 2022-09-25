@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { createEditor } from "slate";
 import { Editable, Slate, withReact } from "slate-react";
+import EditorHeader from "./EditorHeader";
 
 // TODO: we can optimise this better
 function useResetKey(value: string) {
@@ -44,9 +45,17 @@ const Editor = (props: IProps) => {
   const renderElement = useCallback((props) => <Element {...props} />, []);
 
   return (
-    <Slate editor={editor} value={initialValue} key={key}>
-      <Editable renderElement={renderElement} />
-    </Slate>
+    <div className="w-6/12 mx-auto">
+      <EditorHeader />
+      <div className="shadow-md bg-white rounded-lg px-8 py-6">
+        <Slate editor={editor} value={initialValue} key={key}>
+          <Editable
+            renderElement={renderElement}
+            placeholder="What do you want to share?"
+          />
+        </Slate>
+      </div>
+    </div>
   );
 };
 

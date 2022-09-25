@@ -1,5 +1,4 @@
 import Editor from "@src/components/Editor";
-import MagicButton from "@src/components/MagicButton";
 import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
@@ -17,13 +16,8 @@ const EditPage = () => {
     <div>
       <Navbar />
       <Sidebar />
-      <div className="pt-32 pb-12">
-        <div className="shadow-md bg-white w-6/12 mx-auto rounded-lg px-8 py-6">
-          <div className="mb-4">
-            <MagicButton title="Save" />
-          </div>
-          <Editor value={parsedText} />
-        </div>
+      <div className="pt-20 pb-12">
+        <Editor value={parsedText} />
       </div>
       <SidebarInfo />
     </div>
