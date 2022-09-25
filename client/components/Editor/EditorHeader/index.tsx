@@ -9,7 +9,9 @@ const EditorItem = ({ title, style }) => {
   );
 };
 
-const EditorHeader = () => {
+interface Props {}
+
+const EditorHeader = (props: Props) => {
   return (
     <div className="bg-indigo-100 flex mt-2 mb-4 p-4 rounded-lg items-center shadow-md">
       <div className="w-full">
