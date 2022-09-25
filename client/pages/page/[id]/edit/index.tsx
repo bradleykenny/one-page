@@ -1,3 +1,4 @@
+import Editor from "@src/components/Editor";
 import MagicButton from "@src/components/MagicButton";
 import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
@@ -5,25 +6,12 @@ import SidebarInfo from "@src/components/SidebarInfo";
 import usePage from "@src/hooks/usePage";
 import { useRouter } from "next/router";
 
-import { useState } from "react";
-import { createEditor } from "slate";
-import { Editable, Slate, withReact } from "slate-react";
-
 const EditPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
   const { result } = usePage(id as string);
   const parsedText = result.replace("\\n", "\n");
-
-  const initialValue = [
-    {
-      type: "paragraph",
-      children: [{ text: parsedText }], // TODO: fix this
-    },
-  ];
-
-  const [editor] = useState(() => withReact(createEditor()));
 
   return (
     <div>
@@ -34,9 +22,7 @@ const EditPage = () => {
           <div className="mb-4">
             <MagicButton title="Save" />
           </div>
-          <Slate editor={editor} value={initialValue}>
-            <Editable />
-          </Slate>
+          <Editor value={parsedText} />
         </div>
       </div>
       <SidebarInfo />
