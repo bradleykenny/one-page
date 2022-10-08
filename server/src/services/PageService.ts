@@ -71,8 +71,29 @@ const getUserPages = async (req: Request, res: Response) => {
 	}
 };
 
+const getAllPages = async (req: Request, res: Response) => {
+	console.log("GET ALL");
+	const limit = Number.parseInt(req.query?.limit as string);
+	const offset = Number.parseInt(req.query?.offset as string);
+
+	try {
+		const coll = getCollection();
+
+		const pages = await coll
+			.find({})
+			.limit(limit || 10)
+			.skip(offset || 0)
+			.toArray();
+
+		res.status(200).json(pages);
+	} catch (error) {
+		res.status(400).json({ error });
+	}
+};
+
 export default {
 	addPage,
 	getPage,
 	getUserPages,
+	getAllPages,
 };
