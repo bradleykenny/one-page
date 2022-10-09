@@ -14,6 +14,8 @@ pageRouter.get(
 	PageService.getUserPages
 );
 pageRouter.get("/all", PageService.getAllPages); // TODO: add authentication
+
+// NOTE: this needs to stay last
 pageRouter.get("/:id", PageService.getPage); // TODO: add authentication
 
 export default pageRouter;

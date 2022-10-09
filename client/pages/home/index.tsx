@@ -7,16 +7,26 @@ import { mdSample1 } from "test/markdown-content";
 
 const Page = () => {
     const { result } = useAllPages();
-    console.log("res", result);
-    const parsedText = result.replace("\\n", "\n");
+
+    const markdownCards = result?.map((item) => {
+        const { content, id, title } = item;
+        const parsedText = content?.replace("\\n", "\n");
+        return (
+            <div className="mb-8">
+                <MarkdownCard
+                    title={title}
+                    link={id}
+                    markdown={parsedText || mdSample1("Soph")}
+                />
+            </div>
+        );
+    });
 
     return (
         <div>
             <Navbar />
             <Sidebar />
-            <div className="pt-32 pb-12">
-                <MarkdownCard markdown={parsedText || mdSample1("Soph")} />
-            </div>
+            <div className="pt-32 pb-12">{markdownCards}</div>
             <SidebarInfo />
         </div>
     );
