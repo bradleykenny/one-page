@@ -7,22 +7,28 @@ import { useRouter } from "next/router";
 import { mdSample1 } from "test/markdown-content";
 
 const Page = () => {
-  const router = useRouter();
-  const { id } = router.query;
+    const router = useRouter();
+    const queryId = router.query?.id;
 
-  const { result } = usePage(id as string);
-  const parsedText = result.replace("\\n", "\n");
+    const { result } = usePage(queryId as string);
 
-  return (
-    <div>
-      <Navbar />
-      <Sidebar />
-      <div className="pt-32 pb-12">
-        <MarkdownCard markdown={parsedText || mdSample1("Soph")} />
-      </div>
-      <SidebarInfo />
-    </div>
-  );
+    const { content, id, title } = result;
+    const parsedText = content?.replace("\\n", "\n");
+
+    return (
+        <div>
+            <Navbar />
+            <Sidebar />
+            <div className="pt-32 pb-12">
+                <MarkdownCard
+                    title={title}
+                    id={id}
+                    markdown={parsedText || mdSample1("Soph")}
+                />
+            </div>
+            <SidebarInfo />
+        </div>
+    );
 };
 
 export default Page;
