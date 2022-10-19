@@ -14,8 +14,8 @@ const Page = () => {
         return (
             <div className="mb-8">
                 <MarkdownCard
+                    id={id}
                     title={title}
-                    link={id}
                     markdown={parsedText || mdSample1("Soph")}
                 />
             </div>
@@ -24,7 +24,7 @@ const Page = () => {
 
     return (
         <div>
-            <Navbar />
+            <Navbar activeTab="home" />
             <Sidebar />
             <div className="pt-32 pb-12">{markdownCards}</div>
             <SidebarInfo />

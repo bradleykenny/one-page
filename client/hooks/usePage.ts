@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useApi from "./useApi";
 
 const usePage = (id: string) => {
-    const [result, setResult] = useState("");
+    const [result, setResult] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -12,8 +12,7 @@ const usePage = (id: string) => {
 
             const response = await useApi(`/page/${id}`, "GET");
             if (response.data) {
-                const { content } = response.data;
-                setResult(content);
+                setResult(response.data);
             }
         };
         fetchData();
