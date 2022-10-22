@@ -8,7 +8,7 @@ const NavLink = (props: Props) => {
     const { isSelected, link, title } = props;
 
     const sharedStyles =
-        "px-2 py-1 inline-block rounded-xl mr-2 cursor-pointer mb-0 border-2";
+        "px-2 py-1 inline-block rounded-lg mr-2 cursor-pointer mb-0 border transition ease-in-out shadow";
 
     if (isSelected) {
         return (

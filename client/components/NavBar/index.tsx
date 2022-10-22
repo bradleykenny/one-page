@@ -1,3 +1,4 @@
+import { navigationItems } from "config/NavBar";
 import NavLink from "./NavLink";
 import NavProfile from "./NavProfile";
 
@@ -13,15 +14,17 @@ const NavBar = (props: Props) => {
     };
 
     return (
-        <div className="w-full bg-white px-10 py-4 drop-shadow fixed z-10">
+        <div className="w-full bg-white px-10 py-4 fixed z-10 border-b border-gray-100 mx-10 mt-5 rounded-lg shadow box-border">
             <p className="text-orange-400 text-xl font-black inline-block pr-8">
                 one:page
             </p>
-            <NavLink title="Home" isSelected={isActive("home")} link="/home" />
-            <NavLink title="Projects" isSelected={isActive("projects")} />
-            <NavLink title="Resources" />
-            <NavLink title="Trending" />
-            <NavLink title="Analytics" />
+            {navigationItems.map((navItem) => (
+                <NavLink
+                    title={navItem.title}
+                    link={navItem.link}
+                    isSelected={isActive(navItem.title)}
+                />
+            ))}
             <NavProfile title="Brad Kenny" />
         </div>
     );

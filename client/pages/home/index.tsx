@@ -23,11 +23,13 @@ const Page = () => {
     });
 
     return (
-        <div>
-            <Navbar activeTab="home" />
-            <Sidebar />
-            <div className="pt-32 pb-12">{markdownCards}</div>
-            <SidebarInfo />
+        <div className="bg-gray-100">
+            <Navbar activeTab="Home" />
+            <div className="pt-32">
+                <Sidebar />
+                <div className="pb-12">{markdownCards}</div>
+                <SidebarInfo />
+            </div>
         </div>
     );
 };

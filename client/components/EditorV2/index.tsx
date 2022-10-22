@@ -4,13 +4,10 @@ import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
-import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
+import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
+import theme from "./theme";
 
 interface Props {}
-
-const theme = {
-    // Theme styling goes here
-};
 
 const Editor = (props: Props) => {
     const onChange = (editorState) => {
@@ -33,14 +30,20 @@ const Editor = (props: Props) => {
     };
 
     return (
-        <LexicalComposer initialConfig={initialConfig}>
-            <PlainTextPlugin
-                contentEditable={<ContentEditable />}
-                placeholder={<div>Enter some text...</div>}
-            />
-            <OnChangePlugin onChange={onChange} />
-            <HistoryPlugin />
-        </LexicalComposer>
+        <div className="w-6/12 mx-auto h-screen">
+            <LexicalComposer initialConfig={initialConfig}>
+                <div className="shadow bg-white rounded-lg">
+                    <RichTextPlugin
+                        contentEditable={
+                            <ContentEditable className="outline-0 bg-white px-10 py-5" />
+                        }
+                        placeholder={<div>Enter some text...</div>}
+                    />
+                </div>
+                <OnChangePlugin onChange={onChange} />
+                <HistoryPlugin />
+            </LexicalComposer>
+        </div>
     );
 };
 

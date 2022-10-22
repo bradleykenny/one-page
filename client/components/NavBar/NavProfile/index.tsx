@@ -7,7 +7,7 @@ const NavProfile = (props: Props) => {
     const { isSelected, title } = props;
 
     const sharedStyles =
-        "px-3 py-1 inline-block rounded-xl mr-2 cursor-pointer float-right border-2";
+        "px-3 py-1 inline-block rounded-lg mr-2 cursor-pointer mb-0 border transition ease-in-out shadow float-right";
 
     if (isSelected) {
         return (
