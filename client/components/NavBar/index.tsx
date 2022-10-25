@@ -14,7 +14,7 @@ const NavBar = (props: Props) => {
     };
 
     return (
-        <div className="w-full bg-white px-10 py-4 fixed z-10 border-b border-gray-100 mx-10 mt-5 rounded-lg shadow box-border">
+        <div className="bg-white px-10 py-4 fixed top-4 left-10 right-10 z-10 border-b border-gray-100 rounded-lg shadow box-border">
             <p className="text-orange-400 text-xl font-black inline-block pr-8">
                 one:page
             </p>

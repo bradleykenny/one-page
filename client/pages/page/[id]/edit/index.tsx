@@ -18,7 +18,7 @@ const EditPage = () => {
     return (
         <div className="bg-gray-100">
             <Navbar activeTab="Projects" />
-            <div className="pt-32">
+            <div className="pt-28">
                 <Sidebar />
                 <DynamicRenderedEditor />
                 <SidebarInfo />

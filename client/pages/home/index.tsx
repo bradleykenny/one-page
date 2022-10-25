@@ -23,9 +23,9 @@ const Page = () => {
     });
 
     return (
-        <div className="bg-gray-100">
+        <div className="bg-gray-200">
             <Navbar activeTab="Home" />
-            <div className="pt-32">
+            <div className="pt-28">
                 <Sidebar />
                 <div className="pb-12">{markdownCards}</div>
                 <SidebarInfo />

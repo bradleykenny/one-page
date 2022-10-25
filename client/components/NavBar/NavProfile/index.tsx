@@ -7,7 +7,7 @@ const NavProfile = (props: Props) => {
     const { isSelected, title } = props;
 
     const sharedStyles =
-        "px-3 py-1 inline-block rounded-lg mr-2 cursor-pointer mb-0 border transition ease-in-out shadow float-right";
+        "px-3 py-1 inline-block rounded-lg cursor-pointer mb-0 border transition ease-in-out shadow float-right";
 
     if (isSelected) {
         return (
@@ -22,11 +22,13 @@ const NavProfile = (props: Props) => {
         <a
             className={`${sharedStyles} hover:bg-indigo-100 hover:border-indigo-200 focus:bg-indigo-200 text-indigo-800 flex items-center`}
             href="#">
-            <img
-                src={"/svg/user-solid.svg"}
-                style={{ height: 18, width: 18 }}
-                className="inline-block mr-2 self-center justify-self-center"
-            />
+            <div className="rounded-md bg-indigo-200 p-1 -m-2 flex mr-2">
+                <img
+                    src={"/svg/user-solid.svg"}
+                    style={{ height: 18, width: 18 }}
+                    className="inline-block self-center justify-self-center"
+                />
+            </div>
             <p className="inline-block mb-0">{title}</p>
         </a>
     );

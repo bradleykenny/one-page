@@ -16,8 +16,8 @@ const Page = () => {
     const parsedText = content?.replace("\\n", "\n");
 
     return (
-        <div>
-            <Navbar />
+        <div className="bg-gray-200">
+            <Navbar activeTab="Projects" />
             <Sidebar />
             <div className="pt-32 pb-12">
                 <MarkdownCard

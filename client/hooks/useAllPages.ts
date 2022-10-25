@@ -7,7 +7,7 @@ const useAllPages = () => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await useApi(`/page/all`, "GET");
-            if (response.data) {
+            if (response?.data) {
                 setResult(response.data);
             }
         };

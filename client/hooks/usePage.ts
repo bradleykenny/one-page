@@ -11,7 +11,7 @@ const usePage = (id: string) => {
             }
 
             const response = await useApi(`/page/${id}`, "GET");
-            if (response.data) {
+            if (response?.data) {
                 setResult(response.data);
             }
         };
