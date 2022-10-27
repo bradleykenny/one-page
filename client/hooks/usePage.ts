@@ -1,8 +1,9 @@
+import { PageResponse } from "models/Page";
 import { useEffect, useState } from "react";
 import useApi from "./useApi";
 
 const usePage = (id: string) => {
-    const [result, setResult] = useState({});
+    const [result, setResult] = useState<PageResponse>(undefined);
 
     useEffect(() => {
         const fetchData = async () => {

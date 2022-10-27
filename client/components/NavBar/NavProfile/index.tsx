@@ -1,3 +1,6 @@
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 interface Props {
     isSelected?: boolean;
     title: string;
@@ -23,10 +26,9 @@ const NavProfile = (props: Props) => {
             className={`${sharedStyles} hover:bg-indigo-100 hover:border-indigo-200 focus:bg-indigo-200 text-indigo-800 flex items-center`}
             href="#">
             <div className="rounded-md bg-indigo-200 p-1 -m-2 flex mr-2">
-                <img
-                    src={"/svg/user-solid.svg"}
-                    style={{ height: 18, width: 18 }}
-                    className="inline-block self-center justify-self-center"
+                <FontAwesomeIcon
+                    icon={faUser}
+                    className="inline-block self-center justify-self-center h-[18px] w-[18px]"
                 />
             </div>
             <p className="inline-block mb-0">{title}</p>

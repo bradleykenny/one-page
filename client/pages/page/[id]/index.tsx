@@ -12,8 +12,7 @@ const Page = () => {
 
     const { result } = usePage(queryId as string);
 
-    const { content, id, title } = result;
-    const parsedText = content?.replace("\\n", "\n");
+    const parsedText = result?.content?.replace("\\n", "\n");
 
     return (
         <div className="bg-gray-200 min-h-screen">
@@ -21,8 +20,8 @@ const Page = () => {
             <Sidebar />
             <div className="pt-28 pb-12">
                 <MarkdownCard
-                    title={title}
-                    id={id}
+                    title={result?.title}
+                    id={result?.id}
                     markdown={parsedText || mdSample1("Soph")}
                 />
             </div>
