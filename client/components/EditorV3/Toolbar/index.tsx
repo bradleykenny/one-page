@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MagicButton from "@src/components/MagicButton";
+import useApi from "@src/hooks/useApi";
 import useEditorToolbar from "@src/hooks/useEditorToolbar";
 import { Editor } from "@tiptap/react";
 
@@ -28,6 +29,20 @@ const EditorToolbar = (props: Props) => {
     } = useEditorToolbar(editor);
 
     const isBold = editor?.isActive("bold");
+
+    const handleSaveClick = async () => {
+        try {
+            console.log("here");
+            await useApi("/page/update", "POST", {
+                id: "V6T5ff$rS",
+                title: "Test",
+                content: editor.getJSON(),
+            });
+            console.log("after");
+        } catch (e) {
+            console.error(e);
+        }
+    };
 
     return (
         <div className="bg-white shadow rounded-md overflow-hidden flex">
@@ -71,7 +86,7 @@ const EditorToolbar = (props: Props) => {
                 <FontAwesomeIcon icon={faHeading} />3
             </button>
             <div className="self-center justify-end text-right ml-auto mr-4">
-                <MagicButton title="Save" />
+                <MagicButton title="Save" onClick={handleSaveClick} />
             </div>
         </div>
     );

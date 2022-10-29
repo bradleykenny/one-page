@@ -15,6 +15,8 @@ pageRouter.get(
 );
 pageRouter.get("/all", PageService.getAllPages); // TODO: add authentication
 
+pageRouter.post("/update", PageService.updatePage); // TODO: add authentication
+
 // NOTE: this needs to stay last
 pageRouter.get("/:id", PageService.getPage); // TODO: add authentication
 

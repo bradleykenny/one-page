@@ -1,6 +1,6 @@
-import authRouter from "./auth";
-import pageRouter from "./page";
-import profileRouter from "./profile";
-import userRouter from "./user";
+import AuthRouter from "./auth";
+import PageRouter from "./page";
+import ProfileRouter from "./profile";
+import UserRouter from "./user";
 
-export { authRouter, pageRouter, profileRouter, userRouter };
+export { AuthRouter, PageRouter, ProfileRouter, UserRouter };

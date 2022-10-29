@@ -11,13 +11,12 @@ const Page = () => {
 
     const markdownCards = result?.map((item) => {
         const { content, id, title } = item;
-        const parsedText = content?.replace("\\n", "\n");
         return (
             <div className="mb-8">
                 <MarkdownCard
                     id={id}
                     title={title}
-                    markdown={parsedText || mdSample1("Soph")}
+                    markdown={content || mdSample1("Soph")}
                 />
             </div>
         );

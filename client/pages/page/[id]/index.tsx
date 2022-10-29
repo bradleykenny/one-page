@@ -24,6 +24,13 @@ const Page = () => {
                     id={result?.id}
                     markdown={parsedText || mdSample1("Soph")}
                 />
+                <div className="w-6/12 mx-auto p-8 pt-4">
+                    <a
+                        href={queryId && `/page/${queryId}/edit`}
+                        className="bg-indigo-500 text-white rounded-md py-2 px-4 shadow">
+                        Edit
+                    </a>
+                </div>
             </div>
             <SidebarInfo />
         </div>

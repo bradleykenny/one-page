@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { Collection, Document } from "mongodb";
 import { Collections } from "../models/Collections";
 import { TypedRequestBody } from "../models/Common";
-import { AddPageRequest, Page } from "../models/Page";
+import { AddPageRequest, Page, SavePageRequest } from "../models/Page";
 import MongoService from "./MongoService";
 
 import Id from "../util/Id";
@@ -90,9 +90,36 @@ const getAllPages = async (req: Request, res: Response) => {
 	}
 };
 
+const updatePage = async (
+	req: TypedRequestBody<SavePageRequest>,
+	res: Response
+) => {
+	try {
+		const coll = getCollection();
+
+		const { id, title, content } = req.body;
+		const timeFields = Time.initialiseTimeFields();
+
+		const page: Partial<Page> = {
+			title,
+			content,
+			id,
+			...timeFields,
+		};
+
+		await coll.updateOne({ id }, { $set: page });
+
+		res.status(200).send(`Page updated: ${id}`);
+	} catch (error) {
+		console.error(error);
+		res.status(400).send({ error });
+	}
+};
+
 export default {
 	addPage,
 	getPage,
 	getUserPages,
 	getAllPages,
+	updatePage,
 };

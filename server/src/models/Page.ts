@@ -13,4 +13,10 @@ export interface AddPageRequest extends AuthenticatedRequest {
 	content: string;
 }
 
+export interface SavePageRequest extends AuthenticatedRequest {
+	id: string;
+	title: string;
+	content: string;
+}
+
 export interface GetUserPagesRequest extends AuthenticatedRequest {}

@@ -8,7 +8,7 @@ interface MarkdownCardProps {
 }
 
 const MarkdownCard = (props: MarkdownCardProps) => {
-    const markdownContent = marked.parse(props.markdown);
+    const markdownContent = marked.parse(props.markdown.toString());
     const parsedMarkdownAsHTML = parser(markdownContent);
 
     const imageUrl = undefined;
