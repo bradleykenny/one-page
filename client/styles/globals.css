@@ -41,3 +41,13 @@ h2 {
 p {
     margin-bottom: 5px;
 }
+
+.editor-toolbar {
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.editor-toolbar p {
+    display: inline-block;
+}

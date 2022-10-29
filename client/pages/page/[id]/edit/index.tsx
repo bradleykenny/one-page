@@ -1,8 +1,8 @@
+import EditorV3 from "@src/components/EditorV3";
 import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import usePage from "@src/hooks/usePage";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 const EditPage = () => {
     const router = useRouter();
@@ -10,17 +10,12 @@ const EditPage = () => {
 
     const { result } = usePage(id as string);
 
-    const DynamicRenderedEditor = dynamic(
-        () => import("@src/components/EditorV2"),
-        { ssr: false }
-    );
-
     return (
         <div className="bg-gray-100">
             <Navbar activeTab="Projects" />
             <div className="pt-28">
                 <Sidebar />
-                <DynamicRenderedEditor />
+                <EditorV3 />
                 <SidebarInfo />
             </div>
         </div>

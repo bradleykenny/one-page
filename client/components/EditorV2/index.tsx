@@ -5,6 +5,7 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
+import ToolbarPlugin from "@src/components/EditorV2/plugins/ToolbarPlugin";
 import theme from "./theme";
 
 interface Props {}
@@ -32,10 +33,11 @@ const Editor = (props: Props) => {
     return (
         <div className="w-6/12 mx-auto h-screen">
             <LexicalComposer initialConfig={initialConfig}>
-                <div className="shadow bg-white rounded-lg">
+                <ToolbarPlugin />
+                <div className="shadow bg-white rounded-lg p-2">
                     <RichTextPlugin
                         contentEditable={
-                            <ContentEditable className="outline-0 bg-white px-10 py-5" />
+                            <ContentEditable className="outline-0 bg-white px-4 py-2" />
                         }
                         placeholder={<div>Enter some text...</div>}
                     />

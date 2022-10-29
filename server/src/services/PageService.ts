@@ -72,7 +72,6 @@ const getUserPages = async (req: Request, res: Response) => {
 };
 
 const getAllPages = async (req: Request, res: Response) => {
-	console.log("GET ALL");
 	const limit = Number.parseInt(req.query?.limit as string);
 	const offset = Number.parseInt(req.query?.offset as string);
 
