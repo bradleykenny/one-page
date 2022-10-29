@@ -11,7 +11,7 @@ const EditPage = () => {
     const { result } = usePage(id as string);
 
     return (
-        <div className="bg-gray-100">
+        <div className="bg-gray-200">
             <Navbar activeTab="Projects" />
             <div className="pt-28">
                 <Sidebar />
