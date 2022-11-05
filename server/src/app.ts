@@ -3,7 +3,10 @@ import "dotenv/config";
 import express from "express";
 import MongoService from "./services/MongoService";
 
-import { AuthRouter, PageRouter, ProfileRouter, UserRouter } from "./routers/";
+import AuthRouter from "./routers/auth";
+import PageRouter from "./routers/page";
+import ProfileRouter from "./routers/profile";
+import UserRouter from "./routers/user";
 
 const API_PREFIX = process.env.API_PREFIX;
 const PORT = process.env.PORT || 5001;

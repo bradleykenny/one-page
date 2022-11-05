@@ -1,5 +1,6 @@
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRouter } from "next/router";
 
 interface Props {
     isSelected?: boolean;
@@ -8,6 +9,8 @@ interface Props {
 
 const NavProfile = (props: Props) => {
     const { isSelected, title } = props;
+
+    const router = useRouter();
 
     const sharedStyles =
         "px-3 py-1 inline-block rounded-lg cursor-pointer mb-0 border transition ease-in-out shadow float-right";
@@ -21,10 +24,16 @@ const NavProfile = (props: Props) => {
         );
     }
 
+    const handleClick = () => {
+        localStorage.removeItem("token");
+        router.push("/login");
+    };
+
     return (
         <a
             className={`${sharedStyles} hover:bg-indigo-100 hover:border-indigo-200 focus:bg-indigo-200 text-indigo-800 flex items-center`}
-            href="#">
+            href="#"
+            onClick={handleClick}>
             <div className="rounded-md bg-indigo-200 p-1 -m-2 flex mr-2">
                 <FontAwesomeIcon
                     icon={faUser}

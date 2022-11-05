@@ -1,30 +1,41 @@
+import useApi from "@src/hooks/useApi";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const Login = () => {
     const router = useRouter();
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-
-    useEffect(() => {
-        const isLoggedIn = false;
+    if (typeof window !== "undefined") {
+        const isLoggedIn = localStorage.getItem("token");
         if (isLoggedIn) {
             router.push("/home");
         }
-    }, []);
+    }
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(e.target.value);
     };
 
-    const handlePasswordChange = () => {
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
     };
 
-    const handleSubmit = (e: React.SyntheticEvent) => {
+    const handleLoginSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
+
+        const response = await useApi("auth/login", "POST", {
+            email: username,
+            password,
+        });
+
+        if (response) {
+            localStorage.setItem("token", response?.data?.token);
+            router.push("/home");
+        }
     };
 
     return (
@@ -53,8 +64,8 @@ const Login = () => {
                     <div className="h-full w-full absolute bg-login-bg grayscale opacity-5 bg-cover"></div>
 
                     <form
-                        className="w-1/2 self-center mx-auto flex flex-col z-0"
-                        onSubmit={handleSubmit}>
+                        className="w-1/2 self-center mx-auto -mt-10 flex flex-col z-0"
+                        onSubmit={handleLoginSubmit}>
                         <h1 className="text-center font-cursive text-6xl mb-5 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-orange-500">
                             Welcome back!
                         </h1>
