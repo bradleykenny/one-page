@@ -50,13 +50,13 @@ const Login = () => {
             </Head>
             <div className="grid grid-cols-2 h-screen bg-gray-200">
                 <div className="bg-gradient-to-br from-indigo-500 to-orange-500 drop-shadow-md z-10 flex justify-center m-20 mr-10 rounded-lg flex-col">
-                    <h1 className="text-center text-4xl text-white self-center justify-center opacity-40 my-5">
+                    <h1 className="text-center text-3xl text-white self-center justify-center opacity-40 my-5">
                         Editing.
                     </h1>
-                    <h1 className="text-center text-5xl text-white self-center justify-center opacity-70 my-5">
+                    <h1 className="text-center text-4xl text-white self-center justify-center opacity-70 my-5">
                         Different.
                     </h1>
-                    <h1 className="text-center text-6xl text-white self-center justify-center my-5">
+                    <h1 className="text-center text-5xl text-white self-center justify-center my-5">
                         Start today.
                     </h1>
                 </div>
