@@ -1,10 +1,9 @@
-import MarkdownCard from "@src/components/MarkdownCard";
+import ContentCard from "@src/components/ContentCard";
 import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import useAllPages from "@src/hooks/useAllPages";
 import Head from "next/head";
-import { mdSample1 } from "test/markdown-content";
 
 const Page = () => {
     const { result } = useAllPages();
@@ -13,11 +12,12 @@ const Page = () => {
         const { content, id, title } = item;
         return (
             <div className="mb-8">
-                <MarkdownCard
+                {/* <MarkdownCard
                     id={id}
                     title={title}
                     markdown={content || mdSample1("Soph")}
-                />
+                /> */}
+                <ContentCard page={item} />
             </div>
         );
     });

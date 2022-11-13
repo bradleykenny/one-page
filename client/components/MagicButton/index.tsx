@@ -19,7 +19,7 @@ const MagicButton = (props: Props) => {
         <button
             type="button"
             onClick={handleOnClick}
-            className="text-white bg-gradient-to-br from-indigo-500 to-orange-500 focus:ring-2 focus:outline-none focus:ring-indigo-300 font-medium rounded-md text-sm px-4 py-2 text-center transition-all ease-in-out transition-500 shadow hover:bg-right bg-200%">
+            className="text-white bg-gradient-to-br from-indigo-500 to-orange-500 focus:ring-2 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg px-3 py-1 text-center transition-all ease-in-out transition-500 shadow hover:bg-right bg-200% text-md border-indigo-200 border">
             {!isLoading ? (
                 title
             ) : (

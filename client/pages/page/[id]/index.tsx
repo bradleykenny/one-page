@@ -1,10 +1,9 @@
-import MarkdownCard from "@src/components/MarkdownCard";
+import ContentCard from "@src/components/ContentCard";
 import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import usePage from "@src/hooks/usePage";
 import { useRouter } from "next/router";
-import { mdSample1 } from "test/markdown-content";
 
 const Page = () => {
     const router = useRouter();
@@ -17,11 +16,7 @@ const Page = () => {
             <Navbar activeTab="Projects" />
             <Sidebar />
             <div className="pt-28 pb-12">
-                <MarkdownCard
-                    title={result?.title}
-                    id={result?.id}
-                    markdown={result?.content || mdSample1("Soph")}
-                />
+                <ContentCard page={result} />
                 <div className="w-6/12 mx-auto p-8 pt-4">
                     <a
                         href={queryId && `/page/${queryId}/edit`}

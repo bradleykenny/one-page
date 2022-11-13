@@ -1,9 +1,8 @@
-import useApi from "@src/hooks/useApi";
+import MagicButton from "@src/components/MagicButton";
+import NavLink from "@src/components/NavBar/NavLink";
+import NavProfile from "@src/components/NavBar/NavProfile";
 import { navigationItems } from "config/NavBar";
 import { useRouter } from "next/router";
-import MagicButton from "../MagicButton";
-import NavLink from "./NavLink";
-import NavProfile from "./NavProfile";
 
 interface Props {
     activeTab: string;
@@ -19,12 +18,7 @@ const NavBar = (props: Props) => {
     };
 
     const handleMagicButtonClick = async () => {
-        const response = await useApi("/page/", "POST", {
-            title: "",
-            content: "",
-        });
-        const { id } = response.data;
-        router.push(`/page/${id}/edit`);
+        router.push("/page/new");
     };
 
     return (

@@ -1,5 +1,5 @@
 import useApi from "@src/hooks/useApi";
-import { EditorContent, useEditor } from "@tiptap/react";
+import { EditorContent, JSONContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { PageResponse } from "models/Page";
 import { ChangeEvent, useEffect, useState } from "react";
@@ -7,11 +7,11 @@ import EditorToolbar from "./Toolbar";
 
 interface Props {
     page: PageResponse;
-    saveAction?: (title: string, content: string) => Promise<void>;
+    saveAction?: (title: string, content: JSONContent) => Promise<void>;
 }
 
 const Editor = (props: Props) => {
-    const { page } = props;
+    const { page, saveAction } = props;
 
     const title = page?.title;
     const content = page?.content;
@@ -42,11 +42,15 @@ const Editor = (props: Props) => {
     };
 
     const handleToolbarSave = async () => {
-        await useApi("/page/update", "POST", {
-            id: page?.id,
-            title: inputTitle,
-            content: editor.getJSON(),
-        });
+        if (saveAction) {
+            await saveAction(inputTitle, editor.getJSON());
+        } else {
+            await useApi("/page/update", "POST", {
+                id: page?.id,
+                title: inputTitle,
+                content: editor.getJSON(),
+            });
+        }
     };
 
     return (
