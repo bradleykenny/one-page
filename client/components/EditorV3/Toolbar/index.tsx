@@ -7,16 +7,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MagicButton from "@src/components/MagicButton";
-import useApi from "@src/hooks/useApi";
 import useEditorToolbar from "@src/hooks/useEditorToolbar";
 import { Editor } from "@tiptap/react";
+import { memo, useState } from "react";
 
 interface Props {
     editor: Editor;
+    onSave: () => Promise<void>;
 }
 
 const EditorToolbar = (props: Props) => {
-    const { editor } = props;
+    const { editor, onSave } = props;
+
+    const [isSaving, setIsSaving] = useState(false);
 
     const {
         handleBoldClick,
@@ -32,20 +35,16 @@ const EditorToolbar = (props: Props) => {
 
     const handleSaveClick = async () => {
         try {
-            console.log("here");
-            await useApi("/page/update", "POST", {
-                id: "V6T5ff$rS",
-                title: "Test",
-                content: editor.getJSON(),
-            });
-            console.log("after");
+            setIsSaving(true);
+            await onSave?.();
+            setTimeout(() => setIsSaving(false), 500);
         } catch (e) {
             console.error(e);
         }
     };
 
     return (
-        <div className="bg-white shadow rounded-md overflow-hidden flex">
+        <div className="bg-white shadow rounded-md overflow-hidden flex z-0">
             <button
                 onClick={handleBoldClick}
                 className={`${
@@ -86,10 +85,14 @@ const EditorToolbar = (props: Props) => {
                 <FontAwesomeIcon icon={faHeading} />3
             </button>
             <div className="self-center justify-end text-right ml-auto mr-4">
-                <MagicButton title="Save" onClick={handleSaveClick} />
+                <MagicButton
+                    title="Save"
+                    onClick={handleSaveClick}
+                    isLoading={isSaving}
+                />
             </div>
         </div>
     );
 };
 
-export default EditorToolbar;
+export default memo(EditorToolbar);

@@ -37,9 +37,9 @@ const addPage = async (
 
 		await coll.insertOne(page);
 
-		res.status(200).send(`Page created: ${id}`);
+		res.status(200).json({ id });
 	} catch (error) {
-		res.status(400).send({ error });
+		res.status(400).json({ error });
 	}
 };
 

@@ -12,8 +12,6 @@ const Page = () => {
 
     const { result } = usePage(queryId as string);
 
-    const parsedText = result?.content?.replace("\\n", "\n");
-
     return (
         <div className="bg-gray-200 min-h-screen">
             <Navbar activeTab="Projects" />
@@ -22,7 +20,7 @@ const Page = () => {
                 <MarkdownCard
                     title={result?.title}
                     id={result?.id}
-                    markdown={parsedText || mdSample1("Soph")}
+                    markdown={result?.content || mdSample1("Soph")}
                 />
                 <div className="w-6/12 mx-auto p-8 pt-4">
                     <a

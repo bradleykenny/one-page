@@ -4,6 +4,7 @@ import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import useApi from "@src/hooks/useApi";
 import usePage from "@src/hooks/usePage";
+import { PageResponse } from "models/Page";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 const EditPage = () => {
@@ -12,14 +13,16 @@ const EditPage = () => {
 
     const { result } = usePage(id as string);
 
-    const [content, setContent] = useState("");
+    const [receivedContent, setReceivedContent] = useState(false);
+    const [data, setData] = useState<PageResponse>(undefined);
 
     useEffect(() => {
         const getData = async () => {
             if (id) {
                 const result = await useApi(`/page/${id}`, "GET");
-                const { content } = result.data;
-                setContent(content);
+                const { data } = result;
+                setData(data);
+                setReceivedContent(true);
             }
         };
 
@@ -35,7 +38,9 @@ const EditPage = () => {
             <Navbar activeTab="Projects" />
             <div className="pt-28">
                 <Sidebar />
-                <EditorV3 initialContent={content} saveAction={saveContent} />
+                {receivedContent && (
+                    <EditorV3 page={data} saveAction={saveContent} />
+                )}
                 <SidebarInfo />
             </div>
         </div>

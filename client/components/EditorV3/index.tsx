@@ -1,39 +1,71 @@
+import useApi from "@src/hooks/useApi";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { useEffect } from "react";
+import { PageResponse } from "models/Page";
+import { ChangeEvent, useEffect, useState } from "react";
 import EditorToolbar from "./Toolbar";
 
 interface Props {
-    initialContent?: string;
+    page: PageResponse;
     saveAction?: (title: string, content: string) => Promise<void>;
 }
 
 const Editor = (props: Props) => {
-    const { initialContent } = props;
-    console.log("ic", initialContent);
+    const { page } = props;
+
+    const title = page?.title;
+    const content = page?.content;
+
+    const [inputTitle, setInputTitle] = useState(title);
 
     const editor = useEditor({
         extensions: [StarterKit],
-        content: initialContent,
+        content: content,
         editorProps: {
             attributes: {
-                class: "prose prose-stone p-6 focus:outline-none",
+                class: "prose prose-stone focus:outline-none bg-gray-100 m-4 py-2 px-3 rounded-md max-w-full",
             },
         },
     });
 
     useEffect(() => {
         // TODO: stop this from re-rendering so much
-        editor?.commands.setContent(initialContent);
-    }, [initialContent]);
+        try {
+            editor?.commands.setContent(content);
+        } catch (e) {
+            console.error(e);
+        }
+    }, [content]);
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setInputTitle(e.currentTarget.value);
+    };
+
+    const handleToolbarSave = async () => {
+        await useApi("/page/update", "POST", {
+            id: page?.id,
+            title: inputTitle,
+            content: editor.getJSON(),
+        });
+    };
 
     return (
         <div className="w-6/12 mx-auto h-screen">
             <div className="mb-4">
                 {/* TODO make sticky */}
-                <EditorToolbar editor={editor} />
+                <EditorToolbar editor={editor} onSave={handleToolbarSave} />
             </div>
-            <div className="bg-white shadow rounded-md">
+            <div className="bg-white shadow rounded-md pt-1 pb-1">
+                <div className="w-full">
+                    <div className="m-4 mb-0">
+                        <input
+                            type="text"
+                            value={inputTitle}
+                            onChange={handleInputChange}
+                            className="bg-gray-100 py-2 px-3 rounded-md focus:outline-none text-2xl text-gray-900 font-bold w-full"
+                        />
+                    </div>
+                </div>
                 <EditorContent editor={editor} />
             </div>
         </div>

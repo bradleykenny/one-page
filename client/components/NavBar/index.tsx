@@ -1,4 +1,7 @@
+import useApi from "@src/hooks/useApi";
 import { navigationItems } from "config/NavBar";
+import { useRouter } from "next/router";
+import MagicButton from "../MagicButton";
 import NavLink from "./NavLink";
 import NavProfile from "./NavProfile";
 
@@ -9,8 +12,19 @@ interface Props {
 const NavBar = (props: Props) => {
     const { activeTab } = props;
 
+    const router = useRouter();
+
     const isActive = (name: string) => {
         return activeTab === name;
+    };
+
+    const handleMagicButtonClick = async () => {
+        const response = await useApi("/page/", "POST", {
+            title: "",
+            content: "",
+        });
+        const { id } = response.data;
+        router.push(`/page/${id}/edit`);
     };
 
     return (
@@ -26,6 +40,7 @@ const NavBar = (props: Props) => {
                         isSelected={isActive(navItem.title)}
                     />
                 ))}
+                <MagicButton title="Create" onClick={handleMagicButtonClick} />
                 <NavProfile title="Brad Kenny" />
             </div>
         </div>

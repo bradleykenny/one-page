@@ -6,7 +6,7 @@ const useAllPages = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await useApi(`/page/all`, "GET");
+            const response = await useApi(`/page/all?limit=50`, "GET");
             if (response?.data) {
                 setResult(response.data);
             }
