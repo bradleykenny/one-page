@@ -15,9 +15,9 @@ const Page = () => {
         <div className="bg-gray-200 min-h-screen">
             <Navbar activeTab="Projects" />
             <Sidebar />
-            <div className="pt-28 pb-12">
+            <div className="pt-24 pb-12 mx-80">
                 <ContentCard page={result} />
-                <div className="w-6/12 mx-auto p-8 pt-4">
+                <div className="mx-auto p-8 pt-4">
                     <a
                         href={queryId && `/page/${queryId}/edit`}
                         className="bg-indigo-500 text-white rounded-md py-2 px-4 shadow">

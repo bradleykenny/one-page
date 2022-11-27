@@ -76,7 +76,11 @@ const register = async (
 		console.log(newUser);
 		await authCollection.insertOne(newUser);
 
-		res.status(200).send("User registered");
+		const token = jwt.sign(
+			{ username: newUser?.email },
+			process.env.SECRET as string
+		);
+		res.json({ token });
 	} catch (e) {
 		console.error(e);
 	}

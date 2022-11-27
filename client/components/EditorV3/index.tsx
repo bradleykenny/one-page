@@ -54,7 +54,7 @@ const Editor = (props: Props) => {
     };
 
     return (
-        <div className="w-6/12 mx-auto h-screen">
+        <div className="mx-auto h-screen">
             <div className="mb-4">
                 {/* TODO make sticky */}
                 <EditorToolbar editor={editor} onSave={handleToolbarSave} />

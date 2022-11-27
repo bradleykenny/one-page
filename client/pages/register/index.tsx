@@ -14,21 +14,33 @@ const Login = () => {
     }
 
     const [username, setUsername] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [password, setPassword] = useState("");
 
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(e.target.value);
     };
 
+    const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFirstName(e.target.value);
+    };
+
+    const handleLastNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setLastName(e.target.value);
+    };
+
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
     };
 
-    const handleLoginSubmit = async (e: React.SyntheticEvent) => {
+    const handleRegisterSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
 
-        const response = await useApi("auth/login", "POST", {
+        const response = await useApi("auth/register", "POST", {
             email: username,
+            firstName,
+            lastName,
             password,
         });
 
@@ -65,14 +77,26 @@ const Login = () => {
 
                     <form
                         className="w-1/2 self-center mx-auto -mt-10 flex flex-col z-0"
-                        onSubmit={handleLoginSubmit}>
+                        onSubmit={handleRegisterSubmit}>
                         <h1 className="text-center font-cursive text-6xl mb-5 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-orange-500">
-                            Welcome back!
+                            Get started!
                         </h1>
                         <input
                             type="text"
                             placeholder="Username"
                             onChange={handleUsernameChange}
+                            className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
+                        />
+                        <input
+                            type="text"
+                            placeholder="First name"
+                            onChange={handleFirstNameChange}
+                            className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
+                        />
+                        <input
+                            type="text"
+                            placeholder="Last name"
+                            onChange={handleLastNameChange}
                             className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
                         />
                         <input
@@ -82,12 +106,12 @@ const Login = () => {
                             className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
                         />
                         <button className="p-2 m-2 bg-orange-500 rounded-md text-white hover:shadow hover:bg-orange-600">
-                            Login
+                            Register
                         </button>
                         <a
-                            href="/register"
+                            href="/login"
                             className="text-center mt-4 text-indigo-800 hover:bg-indigo-50 rounded-lg p-2 px-4 m-auto">
-                            Not a user? Register here
+                            Already a user? Login
                         </a>
                     </form>
                 </div>

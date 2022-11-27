@@ -3,15 +3,13 @@ import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import useApi from "@src/hooks/useApi";
-import usePage from "@src/hooks/usePage";
 import { PageResponse } from "models/Page";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
 const EditPage = () => {
     const router = useRouter();
     const { id } = router.query;
-
-    const { result } = usePage(id as string);
 
     const [receivedContent, setReceivedContent] = useState(false);
     const [data, setData] = useState<PageResponse>(undefined);
@@ -29,18 +27,20 @@ const EditPage = () => {
         getData();
     }, [id]);
 
-    const saveContent = async (title: string, content: string) => {
+    const saveContent = async (title: string, content: any) => {
         await useApi("/pages/save", "POST", { title, content });
     };
 
     return (
         <div className="bg-gray-200">
             <Navbar activeTab="Projects" />
-            <div className="pt-28">
+            <div className="pt-24">
                 <Sidebar />
-                {receivedContent && (
-                    <EditorV3 page={data} saveAction={saveContent} />
-                )}
+                <div className="mx-80">
+                    {receivedContent && (
+                        <EditorV3 page={data} saveAction={saveContent} />
+                    )}
+                </div>
                 <SidebarInfo />
             </div>
         </div>

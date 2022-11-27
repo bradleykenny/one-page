@@ -18,7 +18,7 @@ const NavProfile = (props: Props) => {
         const token = localStorage.getItem("token");
         const decoded = jwt.decode(token);
 
-        setTitle(decoded["username"]);
+        setTitle(decoded?.["username"]);
     }, []);
 
     const router = useRouter();

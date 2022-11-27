@@ -11,7 +11,7 @@ const Page = () => {
     const markdownCards = result?.map((item) => {
         const { content, id, title } = item;
         return (
-            <div className="mb-8">
+            <div className="mb-4">
                 {/* <MarkdownCard
                     id={id}
                     title={title}
@@ -33,9 +33,9 @@ const Page = () => {
             </Head>
             <div className="bg-gray-200 min-h-screen">
                 <Navbar activeTab="Home" />
-                <div className="pt-28">
+                <div className="pt-24">
                     <Sidebar />
-                    <div className="pb-6">{markdownCards}</div>
+                    <div className="pb-6 mx-80">{markdownCards}</div>
                     <SidebarInfo />
                 </div>
             </div>

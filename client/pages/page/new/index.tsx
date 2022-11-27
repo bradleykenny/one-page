@@ -23,9 +23,11 @@ const EditPage = () => {
     return (
         <div className="bg-gray-200">
             <Navbar activeTab="Projects" />
-            <div className="pt-28">
+            <div className="pt-24">
                 <Sidebar />
-                <EditorV3 page={undefined} saveAction={saveContent} />
+                <div className="mx-80">
+                    <EditorV3 page={undefined} saveAction={saveContent} />
+                </div>
                 <SidebarInfo />
             </div>
         </div>
