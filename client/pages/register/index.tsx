@@ -110,7 +110,7 @@ const Login = () => {
                         </button>
                         <a
                             href="/login"
-                            className="text-center mt-4 text-indigo-800 hover:bg-indigo-50 rounded-lg p-2 px-4 m-auto">
+                            className="text-center mt-2 text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto">
                             Already a user? Login
                         </a>
                     </form>

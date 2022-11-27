@@ -86,7 +86,7 @@ const Login = () => {
                         </button>
                         <a
                             href="/register"
-                            className="text-center mt-4 text-indigo-800 hover:bg-indigo-50 rounded-lg p-2 px-4 m-auto">
+                            className="text-center mt-2 text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto">
                             Not a user? Register here
                         </a>
                     </form>

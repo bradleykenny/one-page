@@ -9,7 +9,6 @@ const Page = () => {
     const { result } = useAllPages();
 
     const markdownCards = result?.map((item) => {
-        const { content, id, title } = item;
         return (
             <div className="mb-4">
                 {/* <MarkdownCard
