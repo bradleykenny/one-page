@@ -66,7 +66,8 @@ const Editor = (props: Props) => {
                             type="text"
                             value={inputTitle}
                             onChange={handleInputChange}
-                            className="bg-gray-100 py-2 px-3 rounded-md focus:outline-none text-2xl text-gray-900 font-bold w-full"
+                            placeholder="Enter title here"
+                            className="bg-white hover:bg-gray-100 focus:bg-gray-100 py-2 px-3 rounded-md focus:outline-none text-4xl text-gray-800 font-bold w-full"
                         />
                     </div>
                 </div>
