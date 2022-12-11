@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
-const Login = () => {
+const Register = () => {
     const router = useRouter();
 
     if (typeof window !== "undefined") {
@@ -120,4 +120,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

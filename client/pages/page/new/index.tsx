@@ -5,11 +5,11 @@ import SidebarInfo from "@src/components/SidebarInfo";
 import useApi from "@src/hooks/useApi";
 import { JSONContent } from "@tiptap/react";
 import { useRouter } from "next/router";
-const EditPage = () => {
+
+const NewPage = () => {
     const router = useRouter();
 
     const saveContent = async (title: string, content: JSONContent) => {
-        console.log("saveContent", title, content);
         if (title && content) {
             const response = await useApi("/page/", "POST", {
                 title,
@@ -34,4 +34,4 @@ const EditPage = () => {
     );
 };
 
-export default EditPage;
+export default NewPage;

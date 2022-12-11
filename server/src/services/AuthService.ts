@@ -73,7 +73,6 @@ const register = async (
 			password: encryptedPassword,
 		};
 
-		console.log(newUser);
 		await authCollection.insertOne(newUser);
 
 		const token = jwt.sign(

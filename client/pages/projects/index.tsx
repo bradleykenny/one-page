@@ -5,17 +5,12 @@ import SidebarInfo from "@src/components/SidebarInfo";
 import useAllPages from "@src/hooks/useAllPages";
 import Head from "next/head";
 
-const Home = () => {
+const Projects = () => {
     const { result } = useAllPages();
 
     const markdownCards = result?.map((item) => {
         return (
             <div className="mb-4">
-                {/* <MarkdownCard
-                    id={id}
-                    title={title}
-                    markdown={content || mdSample1("Soph")}
-                /> */}
                 <ContentCard page={item} />
             </div>
         );
@@ -31,7 +26,7 @@ const Home = () => {
                 />
             </Head>
             <div className="bg-gray-200 min-h-screen">
-                <Navbar activeTab="Home" />
+                <Navbar activeTab="Projects" />
                 <div className="pt-24">
                     <Sidebar />
                     <div className="pb-6 mx-80">{markdownCards}</div>
@@ -42,4 +37,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Projects;

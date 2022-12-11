@@ -13,8 +13,6 @@ const MagicButton = (props: Props) => {
         await onClick?.();
     };
 
-    console.log(isLoading);
-
     return (
         <button
             type="button"
