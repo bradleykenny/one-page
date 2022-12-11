@@ -15,6 +15,9 @@ module.exports = {
             backgroundSize: {
                 "200%": "200% auto",
             },
+            fontSize: {
+                "massive": "30rem"
+            }
         },
     },
     plugins: [require("@tailwindcss/typography")],

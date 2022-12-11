@@ -5,18 +5,18 @@ export const navigationItems = [
     },
     {
         title: "Projects",
-        link: "/",
+        link: "/projects",
     },
     {
         title: "Resources",
-        link: "/",
+        link: "/resources",
     },
     {
         title: "Trending",
-        link: "/",
+        link: "/trending",
     },
     {
         title: "Analytics",
-        link: "/",
+        link: "/analytics",
     },
 ];

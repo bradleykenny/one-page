@@ -27,10 +27,6 @@ const EditPage = () => {
         getData();
     }, [id]);
 
-    const saveContent = async (title: string, content: any) => {
-        await useApi("/pages/save", "POST", { title, content });
-    };
-
     return (
         <div className="bg-gray-200">
             <Navbar activeTab="Projects" />
@@ -38,7 +34,7 @@ const EditPage = () => {
                 <Sidebar />
                 <div className="mx-80">
                     {receivedContent && (
-                        <EditorV3 page={data} saveAction={saveContent} />
+                        <EditorV3 page={data} />
                     )}
                 </div>
                 <SidebarInfo />

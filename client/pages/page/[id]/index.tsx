@@ -16,14 +16,15 @@ const Page = () => {
             <Navbar activeTab="Projects" />
             <Sidebar />
             <div className="pt-24 pb-12 mx-80">
-                <ContentCard page={result} />
-                <div className="mx-auto p-8 pt-4">
-                    <a
-                        href={queryId && `/page/${queryId}/edit`}
-                        className="bg-indigo-500 text-white rounded-md py-2 px-4 shadow">
-                        Edit
-                    </a>
-                </div>
+                <ContentCard page={result}>
+                    <div className="mx-auto pt-4">
+                        <a
+                            href={queryId && `/page/${queryId}/edit`}
+                            className="bg-indigo-500 hover:bg-indigo-600 text-white rounded-md py-2 px-4 shadow">
+                            Edit
+                        </a>
+                    </div>
+                </ContentCard>
             </div>
             <SidebarInfo />
         </div>

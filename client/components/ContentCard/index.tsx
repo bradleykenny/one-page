@@ -6,10 +6,14 @@ import { useEffect } from "react";
 
 interface Props {
     page: PageResponse;
+    children?: JSX.Element;
 }
 
 const ContentCard = (props: Props) => {
-    const { page } = props;
+    const { 
+        children, 
+        page 
+    } = props;
 
     const editor = useEditor({
         extensions: [StarterKit],
@@ -43,6 +47,7 @@ const ContentCard = (props: Props) => {
                 </p>
             </div>
             <EditorContent editor={editor} />
+            {children}
         </Card>
     );
 };
