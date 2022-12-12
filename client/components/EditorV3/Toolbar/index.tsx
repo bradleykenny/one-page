@@ -3,9 +3,16 @@ import {
     fa2,
     fa3,
     faBold,
+    faCode,
     faHeading,
+    faHighlighter,
     faItalic,
+    faListCheck,
+    faListOl,
+    faListUl,
     faParagraph,
+    faQuoteLeft,
+    faStrikethrough,
     faUnderline,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -59,6 +66,12 @@ const EditorToolbar = (props: Props) => {
             <ToolbarButton icon={faUnderline} 
                            isSelected={false} 
                            onClick={handleUnderlineClick} />
+            <ToolbarButton icon={faStrikethrough}
+                           isSelected={false}
+                           onClick={undefined} />
+            <ToolbarButton icon={faHighlighter}
+                           isSelected={false}
+                           onClick={undefined} />
             <ToolbarButton icon={faParagraph} 
                            isSelected={false} 
                            onClick={handleParagraphClick} />
@@ -71,7 +84,22 @@ const EditorToolbar = (props: Props) => {
             <ToolbarButton icon={fa3} 
                            isSelected={false} 
                            onClick={handleHeading3Click} />
-            <div className="self-center justify-end text-right ml-auto mr-4">
+            <ToolbarButton icon={faListOl} 
+                           isSelected={false} 
+                           onClick={undefined} />
+            <ToolbarButton icon={faListUl} 
+                           isSelected={false} 
+                           onClick={undefined} />
+            <ToolbarButton icon={faListCheck} 
+                           isSelected={false} 
+                           onClick={undefined} />
+            <ToolbarButton icon={faQuoteLeft} 
+                           isSelected={false} 
+                           onClick={undefined} />
+            <ToolbarButton icon={faCode} 
+                           isSelected={false} 
+                           onClick={undefined} />
+            <div className="float-right self-center justify-end text-right ml-auto mr-2">
                 <MagicButton
                     title="Save"
                     onClick={handleSaveClick}

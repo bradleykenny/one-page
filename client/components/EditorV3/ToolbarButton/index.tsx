@@ -16,10 +16,10 @@ const ToolbarButton = (props: Props) => {
 
     return (
         <button onClick={onClick}
-                className={`bg-white mr-1 px-4 h-12 self-center rounded ${
+                className={`bg-white mr-1 px-3 h-10 self-center rounded ${
                     isSelected
-                        ? "bg-indigo-100 hover:bg-indigo-200"
-                        : "bg-white hover:bg-indigo-100"
+                        ? "bg-slate-100 hover:bg-slate-200"
+                        : "bg-white hover:bg-slate-100"
                 }`}>
             <FontAwesomeIcon icon={icon} />
         </button>
