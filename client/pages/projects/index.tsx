@@ -9,6 +9,7 @@ import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import useAllPages from "@src/hooks/useAllPages";
 import Head from "next/head";
+import { useState } from "react";
 
 const fakePagesData = [
     {
@@ -33,6 +34,12 @@ const fakePagesData = [
 
 const Projects = () => {
     const result = fakePagesData;
+
+    const [showModal, setShowModal] = useState(false);
+
+    const handleShowModal = () => {
+        setShowModal(!showModal);
+    };
 
     const pageCards = result?.map((item) => {
         return (
@@ -59,18 +66,31 @@ const Projects = () => {
                 <div className="pt-24">
                     <Sidebar />
                     <div className="pb-6 mx-80">
-                        <div className="mb-4 py-8 text-white bg-gradient-to-br from-indigo-500 to-orange-500 rounded-lg text-center flex items-center justify-center shadow-sm hover:shadow-md">
+                        <div
+                            className="mb-4 py-8 text-white bg-gradient-to-br from-indigo-500 to-orange-500 rounded-lg text-center flex items-center justify-center shadow-sm hover:shadow-md cursor-pointer"
+                            onClick={handleShowModal}>
                             <h1 className="text-white mb-0 inline mr-4">
                                 Create new project
                             </h1>
                             <FontAwesomeIcon icon={faArrowRight} size={"xl"} />
                         </div>
-                        <Modal visible>
+                        <Modal visible={showModal}>
                             <div className="flex flex-col">
+                                <p onClick={handleShowModal}>X</p>
                                 <h1>Hello</h1>
-                                <input type="text" className="border mb-4" placeholder="Name" />
-                                <input type="text" className="border mb-4" placeholder="Description" />
-                                <button className="bg-gray-200 mb-4">Submit</button>
+                                <input
+                                    type="text"
+                                    className="border mb-4"
+                                    placeholder="Name"
+                                />
+                                <input
+                                    type="text"
+                                    className="border mb-4"
+                                    placeholder="Description"
+                                />
+                                <button className="bg-gray-200 mb-4">
+                                    Submit
+                                </button>
                             </div>
                         </Modal>
                         <div className="grid grid-cols-2 gap-4">
