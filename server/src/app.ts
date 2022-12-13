@@ -6,6 +6,7 @@ import MongoService from "./services/MongoService";
 import AuthRouter from "./routers/auth";
 import PageRouter from "./routers/page";
 import ProfileRouter from "./routers/profile";
+import ProjectRouter from "./routers/projects";
 import UserRouter from "./routers/user";
 
 const API_PREFIX = process.env.API_PREFIX;
@@ -30,6 +31,7 @@ server.get(`${API_PREFIX}/ping`, (_, res) => {
 server.use(`${API_PREFIX}/auth`, AuthRouter);
 server.use(`${API_PREFIX}/page`, PageRouter);
 server.use(`${API_PREFIX}/profile`, ProfileRouter);
+server.use(`${API_PREFIX}/project`, ProjectRouter);
 server.use(`${API_PREFIX}/user`, UserRouter);
 
 // and finally... serve

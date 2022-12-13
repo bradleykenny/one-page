@@ -1,0 +1,7 @@
+@lexical/react
+html-react-parser
+lexical
+marked
+slate
+slate-react
+@types/marked

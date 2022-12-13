@@ -8,19 +8,6 @@ import Head from "next/head";
 const Home = () => {
     const { result } = useAllPages();
 
-    const markdownCards = result?.map((item) => {
-        return (
-            <div className="mb-4">
-                {/* <MarkdownCard
-                    id={id}
-                    title={title}
-                    markdown={content || mdSample1("Soph")}
-                /> */}
-                <ContentCard page={item} />
-            </div>
-        );
-    });
-
     return (
         <div>
             <Head>
@@ -34,7 +21,13 @@ const Home = () => {
                 <Navbar activeTab="Home" />
                 <div className="pt-24">
                     <Sidebar />
-                    <div className="pb-6 mx-80">{markdownCards}</div>
+                    <div className="pb-6 mx-80">
+                        {result?.map((item) => (
+                            <div className="mb-4">
+                                <ContentCard page={item} />
+                            </div>
+                        ))}
+                    </div>
                     <SidebarInfo />
                 </div>
             </div>
