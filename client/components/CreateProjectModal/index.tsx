@@ -69,6 +69,12 @@ const CreateProjectModal = (props: Props) => {
                     className="py-3 px-4 my-2 border rounded-md focus:outline-2 focus:outline-orange-500"
                     placeholder="Description"
                 />
+                <div className="border rounded-md focus:outline-2 focus:outline-orange-500 pr-3 my-2 overflow-hidden">
+                <select className="py-3 px-3 h-full w-full outline-none">
+                    <option>Private</option>
+                    <option>Public</option>
+                </select>
+                </div>
                 <button
                     className="p-3 mt-2 bg-orange-500 rounded-md text-white hover:shadow hover:bg-orange-600"
                     onClick={handleSubmit}>

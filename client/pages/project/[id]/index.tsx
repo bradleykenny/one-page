@@ -55,27 +55,6 @@ const Projects = () => {
         router.push(`/project/${id}`);
     };
 
-    const projectCards = projects?.map((item) => {
-        return (
-            <div
-                onClick={() => handleProjectClick(item.id)}
-                className="cursor-pointer">
-                <Card>
-                    <div className="-mt-6 -mx-8 mb-4 overflow-hidden h-36">
-                        <img
-                            src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2096&q=80"
-                            className="bg-cover w-full"
-                        />
-                    </div>
-                    <div className="-mx-2">
-                        <h1>{item.name}</h1>
-                        <p className="m-0 text-gray-500">{item.description}</p>
-                    </div>
-                </Card>
-            </div>
-        );
-    });
-
     return (
         <div>
             <Head>
@@ -90,21 +69,28 @@ const Projects = () => {
                 <div className="pt-24">
                     <Sidebar />
                     <div className="pb-6 mx-80">
-                        <div
-                            className="mb-4 py-8 text-white bg-gradient-to-br from-indigo-500 to-orange-500 rounded-lg text-center flex items-center justify-center shadow-sm hover:shadow-md cursor-pointer"
-                            onClick={handleShowModal}>
-                            <h1 className="text-white mb-0 inline mr-4">
-                                Start new project
-                            </h1>
-                            <FontAwesomeIcon icon={faArrowRight} size={"xl"} />
-                        </div>
-                        <CreateProjectModal
-                            showModal={showModal}
-                            handleShowModal={handleShowModal}
-                        />
-                        <div className="grid grid-cols-2 gap-4">
-                            {projectCards}
-                        </div>
+                        {projects.length > 1 && (
+                            <div
+                                onClick={() =>
+                                    handleProjectClick(projects[0].id)
+                                }
+                                className="cursor-pointer">
+                                <Card>
+                                    <div className="-mt-6 -mx-8 mb-4 overflow-hidden h-36">
+                                        <img
+                                            src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2096&q=80"
+                                            className="bg-cover w-full"
+                                        />
+                                    </div>
+                                    <div className="-mx-2">
+                                        <h1>{projects[0].name}</h1>
+                                        <p className="m-0 text-gray-500">
+                                            {projects[0].description}
+                                        </p>
+                                    </div>
+                                </Card>
+                            </div>
+                        )}
                     </div>
                     <SidebarInfo />
                 </div>
