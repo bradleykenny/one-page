@@ -13,7 +13,7 @@ const Page = () => {
 
     return (
         <div className="bg-gray-200 min-h-screen">
-            <Navbar activeTab="Projects" />
+            <Navbar activeTab="Pages" />
             <Sidebar />
             <div className="pt-24 pb-12 mx-80">
                 <ContentCard page={result}>

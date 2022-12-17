@@ -6,7 +6,7 @@ import MongoService from "./services/MongoService";
 import AuthRouter from "./routers/auth";
 import PageRouter from "./routers/page";
 import ProfileRouter from "./routers/profile";
-import ProjectRouter from "./routers/projects";
+import ProjectRouter from "./routers/project";
 import UserRouter from "./routers/user";
 
 const API_PREFIX = process.env.API_PREFIX;

@@ -29,7 +29,7 @@ const EditPage = () => {
 
     return (
         <div className="bg-gray-200">
-            <Navbar activeTab="Projects" />
+            <Navbar activeTab="Pages" />
             <div className="pt-24">
                 <Sidebar />
                 <div className="mx-80">
