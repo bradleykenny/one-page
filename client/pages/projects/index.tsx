@@ -11,27 +11,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const fakePagesData = [
-    {
-        id: "1",
-        name: "Christmas",
-        creator: "brad@mail.com",
-        lastUpdated: Date.now(),
-    },
-    {
-        id: "2",
-        name: "Easter",
-        creator: "brad@mail.com",
-        lastUpdated: Date.now(),
-    },
-    {
-        id: "3",
-        name: "Boxing Day",
-        creator: "brad@mail.com",
-        lastUpdated: Date.now(),
-    },
-];
-
 const Projects = () => {
     const router = useRouter();
 
