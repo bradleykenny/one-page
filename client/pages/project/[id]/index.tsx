@@ -5,12 +5,9 @@ import SidebarInfo from "@src/components/SidebarInfo";
 import useApi from "@src/hooks/useApi";
 import { ProjectResponse } from "models/Project";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const Projects = () => {
-    const router = useRouter();
-
     const [projects, setProjects] = useState<ProjectResponse[]>([]);
 
     useEffect(() => {
@@ -21,10 +18,6 @@ const Projects = () => {
 
         getProjects();
     }, []);
-
-    const handleProjectClick = (id: string) => {
-        router.push(`/project/${id}`);
-    };
 
     return (
         <div>
@@ -41,49 +34,37 @@ const Projects = () => {
                     <Sidebar />
                     <div className="pb-6 mx-80">
                         {projects.length > 1 && (
-                            <div
-                                onClick={() =>
-                                    handleProjectClick(projects[0].id)
-                                }
-                                className="cursor-pointer">
-                                <Card>
-                                    <div className="-mt-6 -mx-8 mb-4 overflow-hidden h-48">
-                                        <img
-                                            src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2096&q=80"
-                                            className="bg-cover w-full"
-                                        />
-                                    </div>
-                                    <div className="-mx-2">
-                                        <h1>{projects[0].name}</h1>
-                                        <p className="m-0 text-gray-500">
-                                            {projects[0].description}
-                                        </p>
-                                    </div>
-                                </Card>
-                            </div>
+                            <Card>
+                                <div className="-mt-6 -mx-8 mb-4 overflow-hidden h-48">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2096&q=80"
+                                        className="bg-cover w-full"
+                                    />
+                                </div>
+                                <div className="-mx-2">
+                                    <h1>{projects[0].name}</h1>
+                                    <p className="m-0 text-gray-500">
+                                        {projects[0].description}
+                                    </p>
+                                </div>
+                            </Card>
                         )}
                         <h1 className="pt-6 pl-6 pb-2">Pages</h1>
                         {projects.length > 1 && (
-                            <div
-                                onClick={() =>
-                                    handleProjectClick(projects[0].id)
-                                }
-                                className="cursor-pointer">
-                                <Card>
-                                    <div className="-mt-6 -mx-8 mb-4 overflow-hidden h-48">
-                                        <img
-                                            src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2096&q=80"
-                                            className="bg-cover w-full"
-                                        />
-                                    </div>
-                                    <div className="-mx-2">
-                                        <h1>{projects[0].name}</h1>
-                                        <p className="m-0 text-gray-500">
-                                            {projects[0].description}
-                                        </p>
-                                    </div>
-                                </Card>
-                            </div>
+                            <Card>
+                                <div className="-mt-6 -mx-8 mb-4 overflow-hidden h-48">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2096&q=80"
+                                        className="bg-cover w-full"
+                                    />
+                                </div>
+                                <div className="-mx-2">
+                                    <h1>{projects[0].name}</h1>
+                                    <p className="m-0 text-gray-500">
+                                        {projects[0].description}
+                                    </p>
+                                </div>
+                            </Card>
                         )}
                     </div>
                     <SidebarInfo />
