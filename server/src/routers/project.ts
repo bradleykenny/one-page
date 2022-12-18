@@ -10,4 +10,7 @@ projectRouter.get("/test", async (req, res: Response) => {
 projectRouter.post("/", AuthService.isLoggedIn, ProjectService.addProject);
 projectRouter.get("/all", ProjectService.getAllProjects); // TODO: add authentication
 
+// NOTE: this needs to stay last
+projectRouter.get("/:id", ProjectService.getProject); // TODO: add authentication
+
 export default projectRouter;

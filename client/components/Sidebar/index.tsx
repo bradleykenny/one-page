@@ -1,4 +1,4 @@
-import SidebarItem, { SidebarIcon } from "@src/components/SidebarItem";
+import SidebarItem from "@src/components/SidebarItem";
 
 import dummyData from "../../test/sidebar";
 
@@ -15,7 +15,6 @@ const Sidebar = () => {
                     <SidebarItem
                         title={data.name}
                         url="#"
-                        icon={SidebarIcon.hashtag}
                     />
                 ))}
             </ul>

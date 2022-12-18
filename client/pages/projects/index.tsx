@@ -1,19 +1,16 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Card from "@src/components/Card";
 import CreateProjectModal from "@src/components/CreateProjectModal";
 import Navbar from "@src/components/NavBar";
+import ProjectCard from "@src/components/ProjectCard";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import useApi from "@src/hooks/useApi";
 import { ProjectResponse } from "models/Project";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const Projects = () => {
-    const router = useRouter();
-
     const [projects, setProjects] = useState<ProjectResponse[]>([]);
     const [showModal, setShowModal] = useState(false);
 
@@ -29,31 +26,6 @@ const Projects = () => {
 
         getProjects();
     }, []);
-
-    const handleProjectClick = (id: string) => {
-        router.push(`/project/${id}`);
-    };
-
-    const projectCards = projects?.map((item) => {
-        return (
-            <div
-                onClick={() => handleProjectClick(item.id)}
-                className="cursor-pointer">
-                <Card>
-                    <div className="-mt-6 -mx-8 mb-4 overflow-hidden h-36">
-                        <img
-                            src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2096&q=80"
-                            className="bg-cover w-full"
-                        />
-                    </div>
-                    <div className="-mx-2">
-                        <h1>{item.name}</h1>
-                        <p className="m-0 text-gray-500">{item.description}</p>
-                    </div>
-                </Card>
-            </div>
-        );
-    });
 
     return (
         <div>
@@ -81,8 +53,10 @@ const Projects = () => {
                             showModal={showModal}
                             handleShowModal={handleShowModal}
                         />
-                        <div className="grid grid-cols-2 gap-4">
-                            {projectCards}
+                        <div className="grid grid-cols-2 gap-4 items-start">
+                            {projects?.map((item) => (
+                                <ProjectCard project={item} />
+                            ))}
                         </div>
                     </div>
                     <SidebarInfo />

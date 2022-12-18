@@ -6,4 +6,6 @@ export interface ProjectResponse {
     userId: string;
     updatedAt: number;
     createdAt: number;
+    imageUrl: string;
+    access: "PRIVATE" | "PUBLIC";
 }

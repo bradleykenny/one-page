@@ -62,7 +62,16 @@ const getAllProjects = async (req: Request, res: Response) => {
 	}
 };
 
+const getProject = async (req: Request, res: Response) => {
+	const { id } = req.params;
+	const coll = getCollection();
+
+	const data = await coll.findOne({ id });
+	res.status(200).send(data);
+};
+
 export default {
 	addProject,
-	getAllProjects
+	getAllProjects,
+	getProject
 };
