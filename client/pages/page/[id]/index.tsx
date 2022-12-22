@@ -20,7 +20,8 @@ const Page = () => {
                     <div className="mx-auto pt-4">
                         <a
                             href={queryId && `/page/${queryId}/edit`}
-                            className="bg-indigo-500 hover:bg-indigo-600 text-white rounded-md py-2 px-4 shadow">
+                            className="bg-indigo-500 hover:bg-indigo-600 text-white rounded-md py-2 px-4 shadow"
+                        >
                             Edit
                         </a>
                     </div>

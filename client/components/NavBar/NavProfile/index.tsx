@@ -35,7 +35,8 @@ const NavProfile = (props: Props) => {
         <a
             className={`${sharedStyles} hover:bg-indigo-50 hover:border-indigo-200 focus:bg-indigo-100 text-indigo-800 flex items-center`}
             href="#"
-            onClick={handleClick}>
+            onClick={handleClick}
+        >
             <div className="rounded-md bg-indigo-200 p-1 -m-2 flex mr-2">
                 <FontAwesomeIcon
                     icon={faUser}

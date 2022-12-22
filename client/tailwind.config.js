@@ -16,8 +16,8 @@ module.exports = {
                 "200%": "200% auto",
             },
             fontSize: {
-                "massive": "30rem"
-            }
+                massive: "30rem",
+            },
         },
     },
     plugins: [require("@tailwindcss/typography")],

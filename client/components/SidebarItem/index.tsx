@@ -13,7 +13,8 @@ const SidebarItem = (props: SidebarItemProps) => {
         <li>
             <a
                 href={url}
-                className="flex items-center p-2 text-base font-normal text-gray-600 hover:text-gray-800 rounded-lg hover:bg-indigo-50 focus:bg-indigo-100 hover:border-indigo-200 focus:border-indigo-200 border-transparent border transition ease-in-out hover:shadow">
+                className="flex items-center p-2 text-base font-normal text-gray-600 hover:text-gray-800 rounded-lg hover:bg-indigo-50 focus:bg-indigo-100 hover:border-indigo-200 focus:border-indigo-200 border-transparent border transition ease-in-out hover:shadow"
+            >
                 <FontAwesomeIcon
                     icon={faHashtag}
                     className="h-[20px] w-[20px] text-indigo-500"

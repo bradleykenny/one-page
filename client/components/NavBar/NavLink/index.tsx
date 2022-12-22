@@ -14,7 +14,8 @@ const NavLink = (props: Props) => {
         return (
             <a
                 className={`${sharedStyles} bg-indigo-800 border-indigo-800 bg-opacity-90 text-white hover:text-indigo-100 hover:bg-indigo-900 hover:border-indigo-900`}
-                href={link || "#"}>
+                href={link || "#"}
+            >
                 {title}
             </a>
         );
@@ -23,7 +24,8 @@ const NavLink = (props: Props) => {
     return (
         <a
             className={`${sharedStyles} hover:bg-indigo-50 hover:border-indigo-200 focus:bg-indigo-100 text-indigo-800`}
-            href={link || "#"}>
+            href={link || "#"}
+        >
             {title}
         </a>
     );

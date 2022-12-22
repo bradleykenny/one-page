@@ -42,8 +42,9 @@ const Projects = () => {
                     <Sidebar />
                     <div className="pb-6 mx-80">
                         <div
-                            className="mb-4 py-8 text-white bg-gradient-to-br from-indigo-500 to-orange-500 rounded-lg text-center flex items-center justify-center shadow-sm hover:shadow-md cursor-pointer"
-                            onClick={handleShowModal}>
+                            className="mb-4 py-8 text-white bg-gradient-to-br from-indigo-500 to-orange-500 rounded-lg text-center flex items-center justify-center shadow hover:shadow-md cursor-pointer"
+                            onClick={handleShowModal}
+                        >
                             <h1 className="text-white mb-0 inline mr-4">
                                 Start new project
                             </h1>
@@ -53,7 +54,7 @@ const Projects = () => {
                             showModal={showModal}
                             handleShowModal={handleShowModal}
                         />
-                        <div className="grid grid-cols-2 gap-4 items-start">
+                        <div className="grid grid-cols-2 gap-4">
                             {projects?.map((item) => (
                                 <ProjectCard project={item} />
                             ))}

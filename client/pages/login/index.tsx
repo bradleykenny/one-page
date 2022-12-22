@@ -65,7 +65,8 @@ const Login = () => {
 
                     <form
                         className="w-1/2 self-center mx-auto -mt-10 flex flex-col z-0"
-                        onSubmit={handleLoginSubmit}>
+                        onSubmit={handleLoginSubmit}
+                    >
                         <h1 className="text-center font-cursive text-6xl mb-5 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-orange-500">
                             Welcome back!
                         </h1>
@@ -86,7 +87,8 @@ const Login = () => {
                         </button>
                         <a
                             href="/register"
-                            className="text-center mt-2 text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto">
+                            className="text-center mt-2 text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto"
+                        >
                             Not a user? Register here
                         </a>
                     </form>

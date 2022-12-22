@@ -48,7 +48,8 @@ const CreateProjectModal = (props: Props) => {
                     <h2 className="my-0">Create a new project</h2>
                     <div
                         className="flex top-4 bg-gray-200 hover:bg-indigo-200 focus:bg-gray-300 cursor-pointer w-6 h-6 rounded-lg text-gray-500 hover:text-indigo-500 items-center justify-center"
-                        onClick={handleShowModal}>
+                        onClick={handleShowModal}
+                    >
                         <FontAwesomeIcon icon={faClose} />
                     </div>
                 </div>
@@ -70,14 +71,15 @@ const CreateProjectModal = (props: Props) => {
                     placeholder="Description"
                 />
                 <div className="border rounded-md focus:outline-2 focus:outline-orange-500 pr-3 my-2 overflow-hidden">
-                <select className="py-3 px-3 h-full w-full outline-none">
-                    <option>Private</option>
-                    <option>Public</option>
-                </select>
+                    <select className="py-3 px-3 h-full w-full outline-none">
+                        <option>Private</option>
+                        <option>Public</option>
+                    </select>
                 </div>
                 <button
                     className="p-3 mt-2 bg-orange-500 rounded-md text-white hover:shadow hover:bg-orange-600"
-                    onClick={handleSubmit}>
+                    onClick={handleSubmit}
+                >
                     Get started
                 </button>
             </div>

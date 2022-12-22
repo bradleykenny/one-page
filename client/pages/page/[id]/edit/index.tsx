@@ -33,9 +33,7 @@ const EditPage = () => {
             <div className="pt-24">
                 <Sidebar />
                 <div className="mx-80">
-                    {receivedContent && (
-                        <EditorV3 page={data} />
-                    )}
+                    {receivedContent && <EditorV3 page={data} />}
                 </div>
                 <SidebarInfo />
             </div>

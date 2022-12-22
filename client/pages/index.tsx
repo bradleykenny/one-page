@@ -44,7 +44,8 @@ const Home: NextPage = () => {
 
                     <a
                         href="https://github.com/vercel/next.js/tree/master/examples"
-                        className={styles.card}>
+                        className={styles.card}
+                    >
                         <h2>Examples &rarr;</h2>
                         <p>
                             Discover and deploy boilerplate example Next.js
@@ -54,7 +55,8 @@ const Home: NextPage = () => {
 
                     <a
                         href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                        className={styles.card}>
+                        className={styles.card}
+                    >
                         <h2>Deploy &rarr;</h2>
                         <p>
                             Instantly deploy your Next.js site to a public URL
@@ -68,7 +70,8 @@ const Home: NextPage = () => {
                 <a
                     href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                >
                     Powered by{" "}
                     <span className={styles.logo}>
                         <Image

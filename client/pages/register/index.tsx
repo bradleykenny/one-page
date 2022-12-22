@@ -77,7 +77,8 @@ const Register = () => {
 
                     <form
                         className="w-1/2 self-center mx-auto -mt-10 flex flex-col z-0"
-                        onSubmit={handleRegisterSubmit}>
+                        onSubmit={handleRegisterSubmit}
+                    >
                         <h1 className="text-center font-cursive text-6xl mb-5 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-orange-500">
                             Get started!
                         </h1>
@@ -110,7 +111,8 @@ const Register = () => {
                         </button>
                         <a
                             href="/login"
-                            className="text-center mt-2 text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto">
+                            className="text-center mt-2 text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto"
+                        >
                             Already a user? Login
                         </a>
                     </form>

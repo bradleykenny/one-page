@@ -19,12 +19,14 @@ const ToolbarPlugin = () => {
         <div className="editor-toolbar">
             <p
                 className={"border rounded-md shadow p-4 inline-block"}
-                onClick={handleBoldClick}>
+                onClick={handleBoldClick}
+            >
                 <FontAwesomeIcon icon={faBold} />
             </p>
             <p
                 className={"border rounded-md shadow p-4 inline-block"}
-                onClick={handleBoldClick}>
+                onClick={handleBoldClick}
+            >
                 <FontAwesomeIcon icon={faItalic} />
             </p>
         </div>

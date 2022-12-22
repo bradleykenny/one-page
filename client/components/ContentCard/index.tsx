@@ -10,10 +10,7 @@ interface Props {
 }
 
 const ContentCard = (props: Props) => {
-    const { 
-        children, 
-        page 
-    } = props;
+    const { children, page } = props;
 
     const editor = useEditor({
         extensions: [StarterKit],
@@ -38,7 +35,8 @@ const ContentCard = (props: Props) => {
         <Card>
             <a
                 href={page?.id && `/page/${page?.id}`}
-                className="text-indigo-700 hover:text-orange-400 text-2xl font-black inline-block cursor-pointer mb-1 transition ease-in-out border-b pb-1 border-indigo-300 hover:border-orange-200">
+                className="text-indigo-700 hover:text-orange-400 text-2xl font-black inline-block cursor-pointer mb-1 transition ease-in-out border-b pb-1 border-indigo-300 hover:border-orange-200"
+            >
                 {page?.title}
             </a>
             <div className="mb-2">

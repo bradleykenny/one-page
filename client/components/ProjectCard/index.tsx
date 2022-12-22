@@ -18,7 +18,8 @@ const ProjectCard = (props: Props) => {
     return (
         <div
             onClick={() => handleProjectClick(project.id)}
-            className="cursor-pointer">
+            className="cursor-pointer"
+        >
             <Card>
                 <div className="-mt-6 -mx-8 mb-4 overflow-hidden h-36">
                     {project.imageUrl ? (
