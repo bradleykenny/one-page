@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Collection, Document } from "mongodb";
 import { Collections } from "../models/Collections";
 import { TypedRequestBody } from "../models/Common";
+import { getById, getAll } from "./CommonService";
 import MongoService from "./MongoService";
 
 import Id from "../util/Id";
@@ -44,34 +45,17 @@ const addProject = async (
 };
 
 const getAllProjects = async (req: Request, res: Response) => {
-	const limit = Number.parseInt(req.query?.limit as string);
-	const offset = Number.parseInt(req.query?.offset as string);
-
-	try {
-		const coll = getCollection();
-
-		const projects = await coll
-			.find({})
-			.limit(limit || 10)
-			.skip(offset || 0)
-			.toArray();
-
-		res.status(200).json(projects);
-	} catch (error) {
-		res.status(400).json({ error });
-	}
+	const coll = getCollection();
+	return getAll(coll, req, res);
 };
 
 const getProject = async (req: Request, res: Response) => {
-	const { id } = req.params;
 	const coll = getCollection();
-
-	const data = await coll.findOne({ id });
-	res.status(200).send(data);
+	return getById(coll, req, res);
 };
 
 export default {
 	addProject,
 	getAllProjects,
-	getProject
+	getProject,
 };

@@ -4,6 +4,7 @@ import { Collections } from "../models/Collections";
 import { TypedRequestBody } from "../models/Common";
 import { AddPageRequest, Page, SavePageRequest } from "../models/Page";
 import MongoService from "./MongoService";
+import { getById, getAll } from "./CommonService";
 
 import Id from "../util/Id";
 import Time from "../util/Time";
@@ -44,11 +45,8 @@ const addPage = async (
 };
 
 const getPage = async (req: Request, res: Response) => {
-	const { id } = req.params;
 	const coll = getCollection();
-
-	const data = await coll.findOne({ id });
-	res.status(200).send(data);
+	return getById(coll, req, res);
 };
 
 const getUserPages = async (req: Request, res: Response) => {
@@ -72,22 +70,8 @@ const getUserPages = async (req: Request, res: Response) => {
 };
 
 const getAllPages = async (req: Request, res: Response) => {
-	const limit = Number.parseInt(req.query?.limit as string);
-	const offset = Number.parseInt(req.query?.offset as string);
-
-	try {
-		const coll = getCollection();
-
-		const pages = await coll
-			.find({})
-			.limit(limit || 10)
-			.skip(offset || 0)
-			.toArray();
-
-		res.status(200).json(pages);
-	} catch (error) {
-		res.status(400).json({ error });
-	}
+	const coll = getCollection();
+	return getAll(coll, req, res);
 };
 
 const updatePage = async (
