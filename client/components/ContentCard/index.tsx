@@ -34,7 +34,7 @@ const ContentCard = (props: Props) => {
     return (
         <Card>
             <a
-                href={page?.id && `/page/${page?.id}`}
+                href={page?.id && `/pages/${page?.id}`}
                 className="text-indigo-700 hover:text-orange-400 text-2xl font-black inline-block cursor-pointer mb-1 transition ease-in-out border-b pb-1 border-indigo-300 hover:border-orange-200"
             >
                 {page?.title}

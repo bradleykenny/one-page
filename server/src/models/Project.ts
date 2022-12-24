@@ -6,6 +6,7 @@ export interface Project extends TimedFields {
 	name: string;
     description?: string;
 	userId: string;
+	colour?: string;
 }
 
 export interface AddProjectRequest extends AuthenticatedRequest {

@@ -36,7 +36,7 @@ const CreateProjectModal = (props: Props) => {
 
         const { id } = response.data;
         if (response && id) {
-            router.push(`/project/${id}`);
+            router.push(`/projects/${id}`);
             // router.push(`/projects`);
         }
     };

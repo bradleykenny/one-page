@@ -27,12 +27,14 @@ const addProject = async (
 		const { name, description, user } = req.body;
 		const userId = user.username;
 		const timeFields = Time.initialiseTimeFields();
+		const colour = `#${Math.floor(Math.random()*16777215).toString(16)}`;
 
 		const project: Project = {
 			name,
 			description,
 			id,
 			userId,
+			colour,
 			...timeFields,
 		};
 

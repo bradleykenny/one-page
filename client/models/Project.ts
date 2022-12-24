@@ -8,4 +8,5 @@ export interface ProjectResponse {
     createdAt: number;
     imageUrl: string;
     access: "PRIVATE" | "PUBLIC";
+    colour?: string;
 }

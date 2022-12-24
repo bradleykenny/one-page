@@ -28,8 +28,8 @@ const Login = () => {
         e.preventDefault();
 
         const response = await useApi("auth/login", "POST", {
-            email: username,
-            password,
+            email: username.trim(),
+            password: password.trim(),
         });
 
         if (response) {
@@ -65,20 +65,21 @@ const Login = () => {
 
                     <form
                         className="w-1/2 self-center mx-auto -mt-10 flex flex-col z-0"
-                        onSubmit={handleLoginSubmit}
-                    >
+                        onSubmit={handleLoginSubmit}>
                         <h1 className="text-center font-cursive text-6xl mb-5 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-orange-500">
                             Welcome back!
                         </h1>
                         <input
                             type="text"
                             placeholder="Username"
+                            required
                             onChange={handleUsernameChange}
                             className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
                         />
                         <input
                             type="password"
                             placeholder="Password"
+                            required
                             onChange={handlePasswordChange}
                             className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
                         />
@@ -87,8 +88,7 @@ const Login = () => {
                         </button>
                         <a
                             href="/register"
-                            className="text-center mt-2 text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto"
-                        >
+                            className="text-center mt-2 text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto">
                             Not a user? Register here
                         </a>
                     </form>

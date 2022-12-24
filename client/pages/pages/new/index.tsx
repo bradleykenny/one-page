@@ -16,7 +16,7 @@ const NewPage = () => {
                 content,
             });
             const { id } = response.data;
-            router.push(`/page/${id}/edit`);
+            router.push(`/pages/${id}/edit`);
         }
     };
 

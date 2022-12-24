@@ -13,13 +13,12 @@ const ProjectCard = (props: Props) => {
     const router = useRouter();
 
     const handleProjectClick = (id: string) => {
-        router.push(`/project/${id}`);
+        router.push(`/projects/${id}`);
     };
     return (
         <div
             onClick={() => handleProjectClick(project.id)}
-            className="cursor-pointer"
-        >
+            className="cursor-pointer">
             <Card>
                 <div className="-mt-6 -mx-8 mb-4 overflow-hidden h-36">
                     {project.imageUrl ? (
@@ -35,14 +34,20 @@ const ProjectCard = (props: Props) => {
                 </div>
                 <div className="-mx-2">
                     <h2>
+                        {project.colour && (
+                            <div
+                                style={{ backgroundColor: project.colour }}
+                                className="w-4 h-4 inline-block rounded mr-2"
+                            />
+                        )}
+                        {project.name}
                         {project.access === "PRIVATE" && (
                             <FontAwesomeIcon
                                 icon={faLock}
                                 size="xs"
-                                className="mr-2"
+                                className="ml-2"
                             />
                         )}
-                        {project.name}
                     </h2>
                     <p className="m-0 text-gray-500 truncate">
                         {project.description}

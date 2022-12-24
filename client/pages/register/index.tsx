@@ -85,24 +85,28 @@ const Register = () => {
                         <input
                             type="text"
                             placeholder="Username"
+                            required
                             onChange={handleUsernameChange}
                             className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
                         />
                         <input
                             type="text"
                             placeholder="First name"
+                            required
                             onChange={handleFirstNameChange}
                             className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
                         />
                         <input
                             type="text"
                             placeholder="Last name"
+                            required
                             onChange={handleLastNameChange}
                             className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
                         />
                         <input
                             type="password"
                             placeholder="Password"
+                            required
                             onChange={handlePasswordChange}
                             className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
                         />

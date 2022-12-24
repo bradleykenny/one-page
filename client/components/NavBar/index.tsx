@@ -18,7 +18,7 @@ const NavBar = (props: Props) => {
     };
 
     const handleMagicButtonClick = async () => {
-        router.push("/page/new");
+        router.push("/pages/new");
     };
 
     return (

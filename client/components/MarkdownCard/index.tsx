@@ -23,7 +23,7 @@ const MarkdownCard = (props: MarkdownCardProps) => {
                 />
             )}
             <a
-                href={props.id && `/page/${props.id}`}
+                href={props.id && `/pages/${props.id}`}
                 className="text-indigo-700 hover:text-orange-400 text-2xl font-black inline-block pr-8 cursor-pointer mb-2 transition ease-in-out"
             >
                 {props.title}
