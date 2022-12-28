@@ -2,11 +2,29 @@ import ContentCard from "@src/components/ContentCard";
 import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
-import useAllPages from "@src/hooks/useAllPages";
+import useApi from "@src/hooks/useApi";
 import Head from "next/head";
+import { useEffect, useState } from "react";
+import jwt from "jsonwebtoken";
 
 const Pages = () => {
-    const { result } = useAllPages();
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const getData = async () => {
+            const token = localStorage.getItem("token");
+            const decoded = jwt.decode(token);
+
+            const userId = decoded?.['username'];
+            const response = await useApi(`page/user/${userId}`, "GET");
+
+            if (response && response.data) {
+                setData(response.data);
+            }
+        };
+
+        getData();
+    }, []);
 
     return (
         <div>
@@ -22,13 +40,13 @@ const Pages = () => {
                 <div className="pt-24">
                     <Sidebar />
                     <div className="pb-6 mx-80">
-                        <h1 className="p-4 pl-8">Your Pages</h1>
+                        <h1 className="p-4 pl-8">My Pages</h1>
                         <div className="lg:columns-2">
-                        {result?.map((item) => (
-                            <div className="mb-4">
-                                <ContentCard page={item} />
-                            </div>
-                        ))}
+                            {data?.map((item) => (
+                                <div className="mb-4">
+                                    <ContentCard page={item} />
+                                </div>
+                            ))}
                         </div>
                     </div>
                     <SidebarInfo />

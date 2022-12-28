@@ -1,4 +1,4 @@
-import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { faIcons, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Card from "@src/components/Card";
 import Navbar from "@src/components/NavBar";
@@ -64,10 +64,19 @@ const Projects = () => {
                         {project && (
                             <Card>
                                 <div className="-mt-6 -mx-8 mb-4 overflow-hidden h-48">
-                                    <img
-                                        src={project.imageUrl}
-                                        className="bg-cover w-full"
-                                    />
+                                    {project.imageUrl ? (
+                                        <img
+                                            src={project.imageUrl}
+                                            className="bg-cover w-full"
+                                        />
+                                    ) : (
+                                        <div className="bg-orange-100 w-full h-full flex items-center justify-center text-orange-300">
+                                            <FontAwesomeIcon
+                                                icon={faIcons}
+                                                size={"3x"}
+                                            />
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="-mx-2">
                                     <h1>
