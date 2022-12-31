@@ -15,8 +15,8 @@ const ToolbarButton = (props: Props) => {
             onClick={onClick}
             className={`bg-white mr-1 px-3 h-10 self-center rounded ${
                 isSelected
-                    ? "bg-slate-100 hover:bg-slate-200"
-                    : "bg-white hover:bg-slate-100"
+                    ? "bg-orange-200 hover:bg-orange-300"
+                    : "bg-white hover:bg-orange-100"
             }`}
         >
             <FontAwesomeIcon icon={icon} />

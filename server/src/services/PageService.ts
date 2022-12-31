@@ -36,7 +36,7 @@ const addPage = async (
 			...timeFields,
 		};
 
-		await coll.insertOne(page);
+		coll.insertOne(page);
 
 		res.status(200).json({ id });
 	} catch (error) {

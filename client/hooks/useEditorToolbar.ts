@@ -8,8 +8,17 @@ const useEditorToolbar = (editor: Editor) => {
     const handleItalicClick = () => {
         editor.chain().focus().toggleItalic().run();
     };
+
     const handleUnderlineClick = () => {
-        // TODO: install extension
+        editor.chain().focus().toggleUnderline().run();
+    };
+
+    const handleStrikeClick = () => {
+        editor.chain().focus().toggleStrike().run();
+    };
+
+    const handleHighlightClick = () => {
+        editor.chain().focus().toggleHighlight().run();
     };
 
     const handleParagraphClick = () => {
@@ -28,14 +37,26 @@ const useEditorToolbar = (editor: Editor) => {
         editor.chain().focus().toggleHeading({ level: 3 }).run();
     };
 
+    const handleBulletListClick = () => {
+        editor.chain().focus().toggleBulletList().run();
+    }
+
+    const handleOrderedListClick = () => {
+        editor.chain().focus().toggleOrderedList().run();
+    }
+
     return {
         handleBoldClick,
         handleItalicClick,
         handleUnderlineClick,
+        handleStrikeClick,
+        handleHighlightClick,
         handleParagraphClick,
         handleHeading1Click,
         handleHeading2Click,
         handleHeading3Click,
+        handleBulletListClick,
+        handleOrderedListClick
     };
 };
 

@@ -1,4 +1,10 @@
 import useApi from "@src/hooks/useApi";
+import BulletList from "@tiptap/extension-bullet-list";
+import Highlight from "@tiptap/extension-highlight";
+import ListItem from "@tiptap/extension-list-item";
+import OrderedList from "@tiptap/extension-ordered-list";
+import Strike from "@tiptap/extension-strike";
+import Underline from "@tiptap/extension-underline";
 import { EditorContent, JSONContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { PageResponse } from "models/Page";
@@ -19,7 +25,7 @@ const Editor = (props: Props) => {
     const [inputTitle, setInputTitle] = useState(title);
 
     const editor = useEditor({
-        extensions: [StarterKit],
+        extensions: [StarterKit, Highlight, Underline, BulletList, OrderedList, ListItem],
         content: content,
         editorProps: {
             attributes: {
@@ -67,7 +73,7 @@ const Editor = (props: Props) => {
                             value={inputTitle}
                             onChange={handleInputChange}
                             placeholder="Enter title here"
-                            className="bg-white hover:bg-gray-100 focus:bg-gray-100 py-2 px-3 rounded-md focus:outline-none text-4xl text-gray-800 font-bold w-full"
+                            className="bg-white hover:bg-gray-100 focus:bg-gray-100 py-2 px-3 rounded-md focus:outline-none text-4xl w-full text-indigo-700 font-black mb-1"
                         />
                     </div>
                 </div>

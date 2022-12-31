@@ -24,7 +24,7 @@ const NavProfile = (props: Props) => {
     const router = useRouter();
 
     const sharedStyles =
-        "px-3 py-1 inline-block rounded-lg cursor-pointer mb-0 border transition ease-in-out shadow float-right";
+        "px-3 py-1 inline-block rounded-lg cursor-pointer mb-0 border transition ease-in-out shadow ml-auto";
 
     const handleClick = () => {
         localStorage.removeItem("token");

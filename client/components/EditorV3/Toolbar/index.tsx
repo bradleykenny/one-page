@@ -35,14 +35,24 @@ const EditorToolbar = (props: Props) => {
         handleBoldClick,
         handleItalicClick,
         handleUnderlineClick,
+        handleStrikeClick,
+        handleHighlightClick,
         handleParagraphClick,
         handleHeading1Click,
         handleHeading2Click,
         handleHeading3Click,
+        handleBulletListClick,
+        handleOrderedListClick
     } = useEditorToolbar(editor);
 
     const isBold = editor?.isActive("bold");
     const isItalic = editor?.isActive("italic");
+    const isUnderline = editor?.isActive("underline");
+    const isStrike = editor?.isActive("strike");
+    const isHighlight = editor?.isActive("highlight");
+    
+    const isOrderedList = editor?.isActive('orderedList');
+    const isBulletList = editor?.isActive('bulletList');
 
     const handleSaveClick = async () => {
         try {
@@ -68,18 +78,18 @@ const EditorToolbar = (props: Props) => {
             />
             <ToolbarButton
                 icon={faUnderline}
-                isSelected={false}
+                isSelected={isUnderline}
                 onClick={handleUnderlineClick}
             />
             <ToolbarButton
                 icon={faStrikethrough}
-                isSelected={false}
-                onClick={undefined}
+                isSelected={isStrike}
+                onClick={handleStrikeClick}
             />
             <ToolbarButton
                 icon={faHighlighter}
-                isSelected={false}
-                onClick={undefined}
+                isSelected={isHighlight}
+                onClick={handleHighlightClick}
             />
             <span className="border border-gray-300 m-2" />
             <ToolbarButton
@@ -105,13 +115,13 @@ const EditorToolbar = (props: Props) => {
             <span className="border border-gray-300 m-2" />
             <ToolbarButton
                 icon={faListOl}
-                isSelected={false}
-                onClick={undefined}
+                isSelected={isOrderedList}
+                onClick={handleOrderedListClick}
             />
             <ToolbarButton
                 icon={faListUl}
-                isSelected={false}
-                onClick={undefined}
+                isSelected={isBulletList}
+                onClick={handleBulletListClick}
             />
             <ToolbarButton
                 icon={faListCheck}

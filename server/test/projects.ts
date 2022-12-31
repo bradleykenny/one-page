@@ -1,0 +1,102 @@
+import { ObjectId } from "mongodb";
+import { Project } from "../src/models/Project";
+
+export default [
+	{
+		_id: new ObjectId("639d1d73d8de05d533d73b78"),
+		name: "First project",
+		description: "This is a test for the first project created using the modal",
+		id: "DnmNon9PP",
+		userId: "brad@mail.com",
+		updatedAt: 1671241075462,
+		createdAt: 1671241075462,
+		imageUrl:
+			"https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+		colour: "#a9ec6c",
+	},
+	{
+		_id: new ObjectId("639d20a0d8de05d533d73b79"),
+		name: "Second project",
+		description: "Another project to fill out the page a bit more",
+		id: "J5AImhto!",
+		userId: "brad@mail.com",
+		updatedAt: 1671241888221,
+		createdAt: 1671241888221,
+		imageUrl:
+			"https://images.unsplash.com/photo-1449496967047-2a322e78ec26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80",
+		access: "PRIVATE",
+		colour: "#792b47",
+	},
+	{
+		_id: new ObjectId("639d2112d8de05d533d73b7a"),
+		name: "Third project",
+		description: "And one more...",
+		id: "bYJtxY5a5",
+		userId: "brad@mail.com",
+		updatedAt: 1671242002320,
+		createdAt: 1671242002320,
+		imageUrl:
+			"https://images.unsplash.com/photo-1498036882173-b41c28a8ba34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
+		colour: "#e70e42",
+	},
+	{
+		_id: new ObjectId("639d2124d8de05d533d73b7b"),
+		name: "Fourth project",
+		description: "And another!",
+		id: "nuU4ulmgf",
+		userId: "brad@mail.com",
+		updatedAt: 1671242020233,
+		createdAt: 1671242020233,
+		imageUrl:
+			"https://images.unsplash.com/photo-1548371836-9f0b75a62d8a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+	},
+	{
+		_id: new ObjectId("639d2877d8de05d533d73b7c"),
+		name: "Test for navigation",
+		description: "Will it work...?",
+		id: "iUtmQvvm5",
+		userId: "brad@mail.com",
+		updatedAt: 1671243895296,
+		createdAt: 1671243895296,
+		imageUrl:
+			"https://images.unsplash.com/photo-1547628641-ec2098bb5812?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+	},
+	{
+		_id: new ObjectId("639e7ba7d8de05d533d73b7d"),
+		name: "No picture",
+		description: "This project doesn't have an imageUrl property",
+		id: "BRYs6EzW5",
+		userId: "brad@mail.com",
+		updatedAt: 1671330727760,
+		createdAt: 1671330727760,
+	},
+	{
+		_id: new ObjectId("639e7f74d8de05d533d73b7e"),
+		name: "Test routing",
+		description: "Will this navigate properly?",
+		id: "BWx99tH9!",
+		userId: "brad@mail.com",
+		updatedAt: 1671331700443,
+		createdAt: 1671331700443,
+	},
+	{
+		_id: new ObjectId("63a64b6736fe4246dc09f4d2"),
+		name: "Colour Run",
+		description: "A project with the colour field set",
+		id: "qLrboJn6y",
+		userId: "brad@mail.com",
+		colour: "#6f9000",
+		updatedAt: 1671842663565,
+		createdAt: 1671842663565,
+	},
+	{
+		_id: new ObjectId("63a64d034acc677b16dc236b"),
+		name: "Second colour run",
+		description: "Another project with colours set",
+		id: "AUMexKPB!",
+		userId: "brad@mail.com",
+		colour: "#7d91ad",
+		updatedAt: 1671843075575,
+		createdAt: 1671843075575,
+	},
+] as Project[];

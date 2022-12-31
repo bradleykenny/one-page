@@ -22,8 +22,8 @@ const NavBar = (props: Props) => {
     };
 
     return (
-        <div className="fixed top-0 pt-4 left-4 right-4 z-10 bg-gray-200">
-            <div className="bg-white px-10 py-4 rounded-lg shadow box-border">
+        <nav className="fixed top-0 pt-4 left-4 right-4 z-10 bg-gray-200">
+            <div className="bg-white px-10 py-4 rounded-lg shadow box-border flex">
                 <a
                     href="/home"
                     className="text-orange-400 hover:text-orange-500 text-xl font-black inline-block mr-8 cursor-pointer decoration-solid"
@@ -40,7 +40,7 @@ const NavBar = (props: Props) => {
                 <MagicButton title="Create" onClick={handleMagicButtonClick} />
                 <NavProfile title="Brad Kenny" />
             </div>
-        </div>
+        </nav>
     );
 };
 

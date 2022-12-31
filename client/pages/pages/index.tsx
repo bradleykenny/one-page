@@ -15,7 +15,7 @@ const Pages = () => {
             const token = localStorage.getItem("token");
             const decoded = jwt.decode(token);
 
-            const userId = decoded?.['username'];
+            const userId = decoded?.["username"];
             const response = await useApi(`page/user/${userId}`, "GET");
 
             if (response && response.data) {
@@ -44,7 +44,7 @@ const Pages = () => {
                         <div className="lg:columns-2">
                             {data?.map((item) => (
                                 <div className="mb-4">
-                                    <ContentCard page={item} />
+                                    <ContentCard page={item} key={item.id} />
                                 </div>
                             ))}
                         </div>

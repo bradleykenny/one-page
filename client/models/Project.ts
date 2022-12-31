@@ -1,3 +1,7 @@
+import { PageResponse } from "./Page";
+
+export type ProjectAccess = "PRIVATE" | "PUBLIC";
+
 export interface ProjectResponse {
     _id: string;
     name: string;
@@ -7,6 +11,7 @@ export interface ProjectResponse {
     updatedAt: number;
     createdAt: number;
     imageUrl: string;
-    access: "PRIVATE" | "PUBLIC";
+    access: ProjectAccess;
     colour?: string;
+    pages?: PageResponse[];
 }

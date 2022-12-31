@@ -1,5 +1,8 @@
 import Card from "@src/components/Card";
 import { EditorContent, useEditor } from "@tiptap/react";
+import Highlight from "@tiptap/extension-highlight";
+import Strike from "@tiptap/extension-strike";
+import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
 import { PageResponse } from "models/Page";
 import { useEffect } from "react";
@@ -13,7 +16,7 @@ const ContentCard = (props: Props) => {
     const { children, page } = props;
 
     const editor = useEditor({
-        extensions: [StarterKit],
+        extensions: [StarterKit, Highlight, Underline],
         content: page?.content,
         editable: false,
         editorProps: {
