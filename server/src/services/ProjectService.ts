@@ -8,6 +8,7 @@ import MongoService from "./MongoService";
 import Id from "../util/Id";
 import Time from "../util/Time";
 import { AddProjectRequest, Project } from "../models/Project";
+import PageService from "./PageService";
 
 const COLLECTION_NAME = Collections.projects;
 
@@ -27,7 +28,7 @@ const addProject = async (
 		const { name, description, user } = req.body;
 		const userId = user.username;
 		const timeFields = Time.initialiseTimeFields();
-		const colour = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+		const colour = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 
 		const project: Project = {
 			name,
@@ -54,6 +55,12 @@ const getAllProjects = async (req: Request, res: Response) => {
 const getProject = async (req: Request, res: Response) => {
 	const coll = getCollection();
 	return getById(coll, req, res);
+};
+
+const addPageToProject = async (req: Request, res: Response) => {
+	const coll = getCollection();
+
+	const pageService = PageService.addProjectToPage("", "");
 };
 
 export default {

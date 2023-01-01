@@ -19,7 +19,7 @@ const SidebarInfo = (props: IProps) => {
                 </li>
                 <li>
                     <h3>Project</h3>
-                    <p className="rounded-lg bg-green-700 mt-1 px-2 py-1 inline-block text-sm text-white cursor-pointer">
+                    <p className="rounded-full bg-green-700 mt-1 px-3 py-1 inline-block text-sm text-white cursor-pointer">
                         {"Example".toUpperCase()}
                     </p>
                 </li>
