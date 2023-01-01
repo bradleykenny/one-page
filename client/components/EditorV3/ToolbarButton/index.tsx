@@ -17,8 +17,7 @@ const ToolbarButton = (props: Props) => {
                 isSelected
                     ? "bg-orange-200 hover:bg-orange-300"
                     : "bg-white hover:bg-orange-100"
-            }`}
-        >
+            }`}>
             <FontAwesomeIcon icon={icon} />
         </button>
     );

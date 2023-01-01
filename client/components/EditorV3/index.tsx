@@ -1,14 +1,16 @@
+import { ChangeEvent, useEffect, useState } from "react";
 import useApi from "@src/hooks/useApi";
+import { EditorContent, JSONContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import Blockquote from "@tiptap/extension-blockquote";
 import BulletList from "@tiptap/extension-bullet-list";
 import Highlight from "@tiptap/extension-highlight";
 import ListItem from "@tiptap/extension-list-item";
 import OrderedList from "@tiptap/extension-ordered-list";
-import Strike from "@tiptap/extension-strike";
 import Underline from "@tiptap/extension-underline";
-import { EditorContent, JSONContent, useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import { lowlight } from "lowlight";
 import { PageResponse } from "models/Page";
-import { ChangeEvent, useEffect, useState } from "react";
 import EditorToolbar from "./Toolbar";
 
 interface Props {
@@ -25,11 +27,22 @@ const Editor = (props: Props) => {
     const [inputTitle, setInputTitle] = useState(title);
 
     const editor = useEditor({
-        extensions: [StarterKit, Highlight, Underline, BulletList, OrderedList, ListItem],
+        extensions: [
+            StarterKit,
+            Highlight,
+            Underline,
+            BulletList,
+            OrderedList,
+            ListItem,
+            Blockquote,
+            CodeBlockLowlight.configure({
+                lowlight,
+            }),
+        ],
         content: content,
         editorProps: {
             attributes: {
-                class: "prose prose-stone focus:outline-none bg-gray-100 m-4 py-2 px-3 rounded-md max-w-full",
+                class: "prose prose-stone prose-p:my-2 focus:outline-none bg-gray-100 m-4 py-2 px-3 rounded-md max-w-full",
             },
         },
     });

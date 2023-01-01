@@ -21,7 +21,7 @@ const Home = () => {
                 <Navbar activeTab="Home" />
                 <div className="pt-24">
                     <Sidebar />
-                    <div className="pb-6 mx-80">
+                    <div className="pb-6 md:mx-80 mx-4">
                         {result?.map((item) => (
                             <div className="mb-4">
                                 <ContentCard page={item} />

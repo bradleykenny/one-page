@@ -26,7 +26,7 @@ const Page = () => {
                     </div>
                 </ContentCard>
             </div>
-            <SidebarInfo />
+            <SidebarInfo page={result} />
         </div>
     );
 };

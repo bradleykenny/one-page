@@ -45,6 +45,14 @@ const useEditorToolbar = (editor: Editor) => {
         editor.chain().focus().toggleOrderedList().run();
     }
 
+    const handleQuoteClick = () => {
+        editor.chain().focus().toggleBlockquote().run();
+    }
+
+    const handleCodeClick = () => {
+        editor.chain().focus().toggleCodeBlock().run();
+    }
+
     return {
         handleBoldClick,
         handleItalicClick,
@@ -56,7 +64,9 @@ const useEditorToolbar = (editor: Editor) => {
         handleHeading2Click,
         handleHeading3Click,
         handleBulletListClick,
-        handleOrderedListClick
+        handleOrderedListClick,
+        handleQuoteClick,
+        handleCodeClick
     };
 };
 

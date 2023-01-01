@@ -42,17 +42,24 @@ const EditorToolbar = (props: Props) => {
         handleHeading2Click,
         handleHeading3Click,
         handleBulletListClick,
-        handleOrderedListClick
+        handleOrderedListClick,
+        handleQuoteClick,
+        handleCodeClick
     } = useEditorToolbar(editor);
 
-    const isBold = editor?.isActive("bold");
-    const isItalic = editor?.isActive("italic");
-    const isUnderline = editor?.isActive("underline");
-    const isStrike = editor?.isActive("strike");
-    const isHighlight = editor?.isActive("highlight");
-    
-    const isOrderedList = editor?.isActive('orderedList');
-    const isBulletList = editor?.isActive('bulletList');
+    const editorIsFocus = editor?.isFocused;
+    const isItemActive = (name: string) => {
+        return editorIsFocus && editor?.isActive(name);
+    };
+
+    const isBold = isItemActive("bold");
+    const isItalic = isItemActive("italic");
+    const isUnderline = isItemActive("underline");
+    const isStrike = isItemActive("strike");
+    const isHighlight = isItemActive("highlight");
+
+    const isOrderedList = isItemActive("orderedList");
+    const isBulletList = isItemActive("bulletList");
 
     const handleSaveClick = async () => {
         try {
@@ -65,7 +72,9 @@ const EditorToolbar = (props: Props) => {
     };
 
     return (
-        <div className="bg-white shadow rounded-md overflow-hidden flex z-0 self-center p-1">
+        // ${!editorIsFocus && "opacity-75 pointer-events-none"}`}>
+        <div
+            className={`bg-white shadow rounded-md overflow-hidden flex z-0 self-center p-1`}>
             <ToolbarButton
                 icon={faBold}
                 isSelected={isBold}
@@ -132,14 +141,14 @@ const EditorToolbar = (props: Props) => {
             <ToolbarButton
                 icon={faQuoteLeft}
                 isSelected={false}
-                onClick={undefined}
+                onClick={handleQuoteClick}
             />
             <ToolbarButton
                 icon={faCode}
                 isSelected={false}
-                onClick={undefined}
+                onClick={handleCodeClick}
             />
-            <div className="float-right self-center justify-end text-right ml-auto mr-2">
+            <div className="self-center justify-end text-right ml-auto mr-2 h-full inline-block">
                 <MagicButton
                     title="Save"
                     onClick={handleSaveClick}
