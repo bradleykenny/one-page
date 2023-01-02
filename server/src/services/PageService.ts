@@ -59,7 +59,7 @@ const getUserPages = async (
 
 const getAllPages = async (limit: number, offset: number) => {
 	const coll = getCollection();
-	const pages = getAll(coll, limit, offset);
+	const pages = await getAll(coll, limit, offset);
 	return pages;
 };
 

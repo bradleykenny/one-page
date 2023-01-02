@@ -44,12 +44,12 @@ pageRouter.get(
 pageRouter.get(
 	"/all",
 	AuthService.isLoggedIn,
-	(req: Request, res: Response) => {
+	async (req: Request, res: Response) => {
 		try {
 			const limit = Number.parseInt(req.query?.limit as string);
 			const offset = Number.parseInt(req.query?.offset as string);
 
-			const pages = PageService.getAllPages(limit, offset);
+			const pages = await PageService.getAllPages(limit, offset);
 
 			res.status(200).json(pages);
 		} catch (error) {
