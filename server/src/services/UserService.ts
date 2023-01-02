@@ -1,6 +1,8 @@
 import { Collection, Document } from "mongodb";
-import { Collections } from "../models/Collections";
+
 import MongoService from "./MongoService";
+
+import { Collections } from "../models/Collections";
 
 const COLLECTION_NAME = Collections.users;
 

@@ -17,7 +17,7 @@ const getCollection = (): Collection<Document> => {
 };
 
 const addPage = async (request: AddPageRequest) => {
-	const coll = getCollection();
+	const collection = getCollection();
 
 	const id = Id.generateShortId();
 	const { title, content, user } = request;
@@ -32,14 +32,14 @@ const addPage = async (request: AddPageRequest) => {
 		...timeFields,
 	};
 
-	coll.insertOne(page);
+	collection.insertOne(page);
 
 	return id;
 };
 
 const getPage = async (id: string) => {
-	const coll = getCollection();
-	return getById(coll, id);
+	const collection = getCollection();
+	return getById(collection, id);
 };
 
 const getUserPages = async (
@@ -47,8 +47,8 @@ const getUserPages = async (
 	limit?: number,
 	offset?: number
 ) => {
-	const coll = getCollection();
-	const pages = await coll
+	const collection = getCollection();
+	const pages = await collection
 		.find({ userId })
 		.limit(limit || 10)
 		.skip(offset || 0)
@@ -58,13 +58,13 @@ const getUserPages = async (
 };
 
 const getAllPages = async (limit: number, offset: number) => {
-	const coll = getCollection();
-	const pages = await getAll(coll, limit, offset);
+	const collection = getCollection();
+	const pages = await getAll(collection, limit, offset);
 	return pages;
 };
 
 const updatePage = async (request: SavePageRequest) => {
-	const coll = getCollection();
+	const collection = getCollection();
 	const { id, title, content } = request;
 
 	const page: Partial<Page> = {
@@ -74,22 +74,19 @@ const updatePage = async (request: SavePageRequest) => {
 		updatedAt: Date.now(),
 	};
 
-	await coll.updateOne({ id }, { $set: page });
+	await collection.updateOne({ id }, { $set: page });
 };
 
-const addProjectToPage = async (projectId: string, pageId: string) => {
-	try {
-		const coll = getCollection();
-	} catch (error) {
-		console.error(error);
-	}
+const linkProject = async (pageId: string, projectId: string) => {
+	const collection = getCollection();
+	await collection.updateOne({ id: pageId }, { $set: { projectId } });
 };
 
 export default {
 	addPage,
-	addProjectToPage,
 	getPage,
 	getUserPages,
 	getAllPages,
+	linkProject,
 	updatePage,
 };

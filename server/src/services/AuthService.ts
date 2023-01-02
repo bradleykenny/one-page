@@ -1,13 +1,13 @@
 import bcrypt from "bcrypt";
 import { NextFunction, Request, Response } from "express";
-import { LoginRequest, RegisterRequest } from "../models/Auth";
-import MongoService from "./MongoService";
-
 import jwt from "jsonwebtoken";
 import { Collection, Document } from "mongodb";
-import { Collections } from "../models/Collections";
-
 import { v4 as uuidv4 } from "uuid";
+
+import MongoService from "./MongoService";
+
+import { LoginRequest, RegisterRequest } from "../models/Auth";
+import { Collections } from "../models/Collections";
 import { TypedRequestBody } from "../models/Common";
 
 const COLLECTION_NAME = Collections.auth;

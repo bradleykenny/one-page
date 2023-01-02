@@ -1,9 +1,13 @@
 import { PageResponse } from "models/Page";
+import { ProjectResponse } from "models/Project";
 import { useEffect, useState } from "react";
 import useApi from "./useApi";
 
 const usePage = (id: string) => {
-    const [result, setResult] = useState<PageResponse>(undefined);
+    const [page, setPage] = useState<PageResponse>(undefined);
+    const [project, setProject] = useState<ProjectResponse>(undefined);
+
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -11,15 +15,31 @@ const usePage = (id: string) => {
                 return;
             }
 
-            const response = await useApi(`/page/${id}`, "GET");
-            if (response?.data) {
-                setResult(response.data);
+            setLoading(true);
+            const pageResponse = await useApi(`/page/${id}`, "GET");
+            
+            if (pageResponse.data) {
+                setPage(pageResponse.data);
+
+                const { projectId } = pageResponse.data;
+                if (projectId) {
+                    const projectResponse = await useApi(
+                        `/project/${projectId}`,
+                        "GET"
+                    );
+
+                    if (projectResponse?.data) {
+                        setProject(projectResponse.data);
+                    }
+                }
             }
+
+            setLoading(false);
         };
         fetchData();
     }, [id]);
 
-    return { result };
+    return { loading, page, project };
 };
 
 export default usePage;

@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 import { Collection, Document } from "mongodb";
 
 const getById = async (collection: Collection<Document>, id: string) => {

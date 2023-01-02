@@ -8,6 +8,7 @@ export interface Page extends TimedFields {
 	title: string;
 	content: Object;
 	userId: string;
+	projectId?: string;
 }
 
 export interface AddPageRequest extends AuthenticatedRequest {
@@ -19,6 +20,11 @@ export interface SavePageRequest extends AuthenticatedRequest {
 	id: string;
 	title: string;
 	content: string;
+}
+
+export interface LinkProjectRequest extends AuthenticatedRequest {
+	projectId: string;
+	pageId: string;
 }
 
 export interface GetUserPagesRequest extends AuthenticatedRequest {}

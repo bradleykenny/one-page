@@ -9,14 +9,14 @@ const Page = () => {
     const router = useRouter();
     const queryId = router.query?.id;
 
-    const { result } = usePage(queryId as string);
+    const { page, project } = usePage(queryId as string);
 
     return (
         <div className="bg-gray-200 min-h-screen">
             <Navbar activeTab="Pages" />
             <Sidebar />
             <div className="pt-24 pb-12 mx-80">
-                <ContentCard page={result}>
+                <ContentCard page={page}>
                     <div className="mx-auto pt-4">
                         <a
                             href={queryId && `/pages/${queryId}/edit`}
@@ -26,7 +26,7 @@ const Page = () => {
                     </div>
                 </ContentCard>
             </div>
-            <SidebarInfo page={result} />
+            <SidebarInfo page={page} project={project} />
         </div>
     );
 };

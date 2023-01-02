@@ -1,11 +1,17 @@
 import { PageResponse } from "models/Page";
+import { ProjectResponse } from "models/Project";
+
+import ColourUtil from "../../utils/colour";
 
 interface IProps {
     page?: PageResponse;
+    project?: ProjectResponse;
 }
 
 const SidebarInfo = (props: IProps) => {
-    const { page } = props;
+    const { page, project } = props;
+
+    const shouldTextBeDark = ColourUtil.shouldTextBeDark(project?.colour);
 
     return (
         <aside
@@ -19,8 +25,13 @@ const SidebarInfo = (props: IProps) => {
                 </li>
                 <li>
                     <h3>Project</h3>
-                    <p className="rounded-full bg-green-700 mt-1 px-3 py-1 inline-block text-sm text-white cursor-pointer">
-                        {"Example".toUpperCase()}
+                    <p
+                        className="rounded-lg mt-1 px-3 py-1 inline-block text-sm cursor-pointer"
+                        style={{
+                            backgroundColor: project?.colour,
+                            color: shouldTextBeDark ? "black" : "white",
+                        }}>
+                        {project?.name}
                     </p>
                 </li>
                 <li>

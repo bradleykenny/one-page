@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
+import { Collection, Document } from "mongodb";
+
 import MongoService from "./MongoService";
 
-import { Collection, Document } from "mongodb";
 import { Collections } from "../models/Collections";
 
 const COLLECTION_NAME = Collections.profile;
