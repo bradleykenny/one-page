@@ -42,7 +42,7 @@ const Editor = (props: Props) => {
         content: content,
         editorProps: {
             attributes: {
-                class: "prose prose-stone prose-p:my-2 focus:outline-none bg-gray-100 m-4 py-2 px-3 rounded-md max-w-full",
+                class: "prose prose-stone prose-p:my-2 focus:outline-none bg-gray-100 m-4 py-1 px-4 rounded-md max-w-full",
             },
         },
     });

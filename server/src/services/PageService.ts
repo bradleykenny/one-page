@@ -1,9 +1,10 @@
-import { Request, Response } from "express";
 import { Collection, Document } from "mongodb";
+
+import { getById, getAll } from "./CommonService";
+import MongoService from "./MongoService";
+
 import { Collections } from "../models/Collections";
 import { AddPageRequest, Page, SavePageRequest } from "../models/Page";
-import MongoService from "./MongoService";
-import { getById, getAll } from "./CommonService";
 
 import Id from "../util/Id";
 import Time from "../util/Time";
@@ -32,11 +33,13 @@ const addPage = async (request: AddPageRequest) => {
 	};
 
 	coll.insertOne(page);
+
+	return id;
 };
 
-const getPage = async (req: Request, res: Response) => {
+const getPage = async (id: string) => {
 	const coll = getCollection();
-	return getById(coll, req, res);
+	return getById(coll, id);
 };
 
 const getUserPages = async (
@@ -54,9 +57,10 @@ const getUserPages = async (
 	return pages;
 };
 
-const getAllPages = async (req: Request, res: Response) => {
+const getAllPages = async (limit: number, offset: number) => {
 	const coll = getCollection();
-	return getAll(coll, req, res);
+	const pages = getAll(coll, limit, offset);
+	return pages;
 };
 
 const updatePage = async (request: SavePageRequest) => {

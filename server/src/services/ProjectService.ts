@@ -17,44 +17,38 @@ const getCollection = (): Collection<Document> => {
 	return db.collection(COLLECTION_NAME);
 };
 
-const addProject = async (
-	req: TypedRequestBody<AddProjectRequest>,
-	res: Response
-) => {
-	try {
-		const coll = getCollection();
+const addProject = async (request: AddProjectRequest) => {
+	const coll = getCollection();
 
-		const id = Id.generateShortId();
-		const { name, description, user } = req.body;
-		const userId = user.username;
-		const timeFields = Time.initialiseTimeFields();
-		const colour = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+	const id = Id.generateShortId();
+	const { name, description, user } = request;
+	const userId = user.username;
+	const timeFields = Time.initialiseTimeFields();
+	const colour = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 
-		const project: Project = {
-			name,
-			description,
-			id,
-			userId,
-			colour,
-			...timeFields,
-		};
 
-		await coll.insertOne(project);
+	const project: Project = {
+		name,
+		description,
+		id,
+		userId,
+		colour,
+		...timeFields,
+	};
 
-		res.status(200).json({ id });
-	} catch (error) {
-		res.status(400).json({ error });
-	}
+	await coll.insertOne(project);
+	return id;
 };
 
-const getAllProjects = async (req: Request, res: Response) => {
+const getAllProjects = async (limit: number, offset: number) => {
 	const coll = getCollection();
-	return getAll(coll, req, res);
+	const projects = getAll(coll, limit, offset);
+	return projects;
 };
 
-const getProject = async (req: Request, res: Response) => {
+const getProject = async (id: string) => {
 	const coll = getCollection();
-	return getById(coll, req, res);
+	return getById(coll, id);
 };
 
 const addPageToProject = async (req: Request, res: Response) => {
