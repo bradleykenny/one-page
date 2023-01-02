@@ -34,7 +34,7 @@ projectRouter.get(
 
 			res.status(200).send(pages);
 		} catch (error) {
-			res.status(400).json({ error });
+			res.status(500).json({ error });
 		}
 	}
 );
@@ -50,7 +50,7 @@ projectRouter.get(
 
 			res.status(200).json(page);
 		} catch (error) {
-			res.status(400).json({ error });
+			res.status(500).json({ error });
 		}
 	}
 );

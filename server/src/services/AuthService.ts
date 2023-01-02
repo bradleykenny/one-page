@@ -24,14 +24,14 @@ const login = async (
 	const { email, password } = request.body;
 
 	if (!email || !password) {
-		res.status(400).send("Please enter both email and password values");
+		res.status(500).send("Please enter both email and password values");
 	}
 
 	const authCollection = getCollection();
 	const user = await authCollection.findOne({ email });
 
 	if (!user) {
-		res.status(400).send(`No user exists for: ${email}`);
+		res.status(500).send(`No user exists for: ${email}`);
 	}
 
 	const passwordsMatch = await bcrypt.compare(password, user?.password);
@@ -43,7 +43,7 @@ const login = async (
 		);
 		res.json({ token });
 	} else {
-		res.status(400).send("Incorrect username/password");
+		res.status(500).send("Incorrect username/password");
 	}
 };
 
@@ -55,14 +55,14 @@ const register = async (
 
 	try {
 		if (!email || !firstName || !lastName || !password) {
-			res.status(400).send("All fields must be entered.");
+			res.status(500).send("All fields must be entered.");
 		}
 
 		const authCollection = getCollection();
 
 		const existingUser = await authCollection.findOne({ email });
 		if (existingUser) {
-			res.status(400).send("Email is already registered");
+			res.status(500).send("Email is already registered");
 		}
 
 		const encryptedPassword = await bcrypt.hash(password, 10);
@@ -96,18 +96,18 @@ const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 					req.body.user = payload;
 					next();
 				} else {
-					res.status(400).json({
+					res.status(500).json({
 						error: "Token verification failed",
 					});
 				}
 			} else {
-				res.status(400).json({ error: "Malformed auth header" });
+				res.status(500).json({ error: "Malformed auth header" });
 			}
 		} else {
-			res.status(400).json({ error: "No authorization header" });
+			res.status(500).json({ error: "No authorization header" });
 		}
 	} catch (error) {
-		res.status(400).json({ error });
+		res.status(500).json({ error });
 	}
 };
 

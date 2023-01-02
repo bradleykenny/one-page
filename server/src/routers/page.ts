@@ -19,7 +19,7 @@ pageRouter.post(
 			const id = await PageService.addPage(req.body);
 			res.status(200).json({ id })
 		} catch (error) {
-			res.status(400).json({ error });
+			res.status(500).json({ error });
 		}
 	}
 );
@@ -36,7 +36,7 @@ pageRouter.get(
 			const pages = await PageService.getUserPages(userId, limit, offset);
 			res.status(200).json(pages);
 		} catch (error) {
-			res.status(400).json({ error });
+			res.status(500).json({ error });
 		}
 	}
 );
@@ -53,7 +53,7 @@ pageRouter.get(
 
 			res.status(200).json(pages);
 		} catch (error) {
-			res.send(400).json({ error });
+			res.send(500).json({ error });
 		}
 	}
 );
@@ -67,7 +67,7 @@ pageRouter.post(
 			res.status(200).send(`Page updated: ${req.body.id}`);
 		} catch (error) {
 			console.error(error);
-			res.status(400).send({ error });
+			res.status(500).send({ error });
 		}
 	}
 );
@@ -83,7 +83,7 @@ pageRouter.get(
 
 			res.status(200).json(page);
 		} catch (error) {
-			res.send(400).json({ error });
+			res.send(500).json({ error });
 		}
 	}
 );
