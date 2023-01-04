@@ -48,7 +48,6 @@ const Editor = (props: Props) => {
     });
 
     useEffect(() => {
-        // TODO: stop this from re-rendering so much
         try {
             editor?.commands.setContent(content);
         } catch (e) {
@@ -74,11 +73,11 @@ const Editor = (props: Props) => {
 
     return (
         <div className="mx-auto h-screen">
-            <div className="mb-4">
+            <div className="mb-4 fixed top-20 pt-4 z-10 bg-gray-200 rounded-b-lg">
                 {/* TODO make sticky */}
                 <EditorToolbar editor={editor} onSave={handleToolbarSave} />
             </div>
-            <div className="bg-white shadow rounded-md pt-1 pb-1">
+            <div className="bg-white shadow rounded-md pt-1 pb-1 mt-16">
                 <div className="w-full">
                     <div className="m-4 mb-0">
                         <input

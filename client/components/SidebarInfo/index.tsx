@@ -2,6 +2,8 @@ import { PageResponse } from "models/Page";
 import { ProjectResponse } from "models/Project";
 
 import ColourUtil from "../../utils/colour";
+import Selector from "@src/components/Selector";
+import { useState } from "react";
 
 interface IProps {
     page?: PageResponse;
@@ -10,6 +12,8 @@ interface IProps {
 
 const SidebarInfo = (props: IProps) => {
     const { page, project } = props;
+
+    const [showProjectSelector, setShowProjectSelector] = useState(false);
 
     const shouldTextBeDark = ColourUtil.shouldTextBeDark(project?.colour);
 
@@ -25,14 +29,38 @@ const SidebarInfo = (props: IProps) => {
                 </li>
                 <li>
                     <h3>Project</h3>
-                    <p
-                        className="rounded-lg mt-1 px-3 py-1 inline-block text-sm cursor-pointer"
-                        style={{
-                            backgroundColor: project?.colour,
-                            color: shouldTextBeDark ? "black" : "white",
-                        }}>
-                        {project?.name}
-                    </p>
+                    <div className="flex flex-col">
+                        <p
+                            className="rounded-lg mt-1 px-3 py-1 inline-block text-sm cursor-pointer self-start"
+                            onClick={() => {
+                                setShowProjectSelector(true);
+                            }}
+                            style={{
+                                backgroundColor: project?.colour,
+                                color: shouldTextBeDark ? "black" : "white",
+                            }}>
+                            {project?.name}
+                        </p>
+                        {showProjectSelector && (
+                            <span className="fixed mt-10 justify-start mr-6">
+                                <Selector
+                                    items={[
+                                        "one",
+                                        "two",
+                                        "three",
+                                        "four",
+                                        "five",
+                                        "six",
+                                        "seven",
+                                        "eight",
+                                    ]}
+                                    onClose={() => {
+                                        setShowProjectSelector(false);
+                                    }}
+                                />
+                            </span>
+                        )}
+                    </div>
                 </li>
                 <li>
                     <h3>Last Updated</h3>

@@ -1,7 +1,6 @@
 import Card from "@src/components/Card";
 import { EditorContent, useEditor } from "@tiptap/react";
 import Highlight from "@tiptap/extension-highlight";
-import Strike from "@tiptap/extension-strike";
 import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
 import { PageResponse } from "models/Page";

@@ -22,7 +22,7 @@ const NavBar = (props: Props) => {
     };
 
     return (
-        <nav className="fixed top-0 pt-4 left-4 right-4 z-10 bg-gray-200">
+        <nav className="fixed top-0 pt-4 left-4 right-4 z-20 bg-gray-200">
             <div className="bg-white px-10 py-4 rounded-lg shadow box-border flex">
                 <a
                     href="/home"
