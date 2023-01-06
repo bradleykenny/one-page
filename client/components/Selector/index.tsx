@@ -35,7 +35,7 @@ const Selector = (props: IProps) => {
                     placeholder="Search"
                     onChange={handleChange}
                 />
-                <div className="h-full items-center flex absolute right-2">
+                <div className="h-full items-center flex absolute right-2 cursor-pointer">
                     <FontAwesomeIcon
                         icon={faClose}
                         className="p-2 mr-2 text-gray-500 hover:text-gray-900"

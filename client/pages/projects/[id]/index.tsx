@@ -67,7 +67,7 @@ const Projects = () => {
                                     {project.imageUrl ? (
                                         <img
                                             src={project.imageUrl}
-                                            className="bg-cover w-full"
+                                            className="-mt-24 bg-cover w-full"
                                         />
                                     ) : (
                                         <div className="bg-orange-100 w-full h-full flex items-center justify-center text-orange-300">
