@@ -1,3 +1,4 @@
+import Input from "@src/components/Input";
 import useApi from "@src/hooks/useApi";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -77,48 +78,44 @@ const Register = () => {
 
                     <form
                         className="w-1/2 self-center mx-auto -mt-10 flex flex-col z-0"
-                        onSubmit={handleRegisterSubmit}
-                    >
+                        onSubmit={handleRegisterSubmit}>
                         <h1 className="text-center font-cursive text-6xl mb-5 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-orange-500">
                             Get started!
                         </h1>
-                        <input
-                            type="text"
-                            placeholder="Username"
-                            required
-                            onChange={handleUsernameChange}
-                            className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
-                        />
-                        <input
-                            type="text"
-                            placeholder="First name"
-                            required
-                            onChange={handleFirstNameChange}
-                            className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
-                        />
-                        <input
-                            type="text"
-                            placeholder="Last name"
-                            required
-                            onChange={handleLastNameChange}
-                            className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            required
-                            onChange={handlePasswordChange}
-                            className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
-                        />
-                        <button className="p-2 m-2 bg-orange-500 rounded-md text-white hover:shadow hover:bg-orange-600">
-                            Register
-                        </button>
-                        <a
-                            href="/login"
-                            className="text-center mt-2 text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto"
-                        >
-                            Already a user? Login
-                        </a>
+                        <div className="flex flex-col gap-4 mt-4">
+                            <Input
+                                type="text"
+                                placeholder="Username"
+                                required
+                                onChange={handleUsernameChange}
+                            />
+                            <Input
+                                type="text"
+                                placeholder="First name"
+                                required
+                                onChange={handleFirstNameChange}
+                            />
+                            <Input
+                                type="text"
+                                placeholder="Last name"
+                                required
+                                onChange={handleLastNameChange}
+                            />
+                            <Input
+                                type="password"
+                                placeholder="Password"
+                                required
+                                onChange={handlePasswordChange}
+                            />
+                            <button className="p-2 bg-orange-500 rounded-md text-white hover:shadow hover:bg-orange-600">
+                                Register
+                            </button>
+                            <a
+                                href="/login"
+                                className="text-center text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto">
+                                Already a user? Login
+                            </a>
+                        </div>
                     </form>
                 </div>
             </div>

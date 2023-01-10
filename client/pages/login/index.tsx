@@ -1,3 +1,4 @@
+import Input from "@src/components/Input";
 import useApi from "@src/hooks/useApi";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -69,28 +70,28 @@ const Login = () => {
                         <h1 className="text-center font-cursive text-6xl mb-5 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-orange-500">
                             Welcome back!
                         </h1>
-                        <input
-                            type="text"
-                            placeholder="Username"
-                            required
-                            onChange={handleUsernameChange}
-                            className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            required
-                            onChange={handlePasswordChange}
-                            className="p-2 m-2 border rounded-md focus:outline-2 focus:outline-orange-500"
-                        />
-                        <button className="p-2 m-2 bg-orange-500 rounded-md text-white hover:shadow hover:bg-orange-600">
-                            Login
-                        </button>
-                        <a
-                            href="/register"
-                            className="text-center mt-2 text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto">
-                            Not a user? Register here
-                        </a>
+                        <div className="flex flex-col gap-4 mt-4">
+                            <Input
+                                type="text"
+                                placeholder="Username"
+                                required
+                                onChange={handleUsernameChange}
+                            />
+                            <Input
+                                type="password"
+                                placeholder="Password"
+                                required
+                                onChange={handlePasswordChange}
+                            />
+                            <button className="p-2 bg-orange-500 rounded-md text-white hover:shadow hover:bg-orange-600">
+                                Login
+                            </button>
+                            <a
+                                href="/register"
+                                className="text-center text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto">
+                                Not a user? Register here
+                            </a>
+                        </div>
                     </form>
                 </div>
             </div>
