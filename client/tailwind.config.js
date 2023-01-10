@@ -1,3 +1,5 @@
+const colors = require("tailwindcss/colors");
+
 module.exports = {
     content: [
         "./pages/**/*.{js,ts,jsx,tsx}",
@@ -5,6 +7,10 @@ module.exports = {
     ],
     theme: {
         extend: {
+            colors: {
+                primary: colors.indigo,
+                secondary: colors.orange
+            },
             fontFamily: {
                 cursive: ['"Gloria Hallelujah"'],
             },
@@ -20,5 +26,8 @@ module.exports = {
             },
         },
     },
-    plugins: [require("@tailwindcss/typography")],
+    plugins: [
+        require("@tailwindcss/typography"),
+        require("@tailwindcss/forms"),
+    ],
 };

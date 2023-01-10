@@ -21,7 +21,7 @@ const Projects = () => {
     useEffect(() => {
         const getProjects = async () => {
             const projectsResponse = await useApi("project/all", "GET");
-            setProjects(projectsResponse.data);
+            setProjects(projectsResponse?.data);
         };
 
         getProjects();
