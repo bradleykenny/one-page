@@ -1,17 +1,9 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import useApi from "@src/hooks/useApi";
-import { EditorContent, JSONContent, useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
-import Blockquote from "@tiptap/extension-blockquote";
-import BulletList from "@tiptap/extension-bullet-list";
-import Highlight from "@tiptap/extension-highlight";
-import ListItem from "@tiptap/extension-list-item";
-import OrderedList from "@tiptap/extension-ordered-list";
-import Underline from "@tiptap/extension-underline";
-import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
-import { lowlight } from "lowlight";
+import { EditorContent, JSONContent } from "@tiptap/react";
 import { PageResponse } from "models/Page";
 import EditorToolbar from "./Toolbar";
+import useEditor from "@src/hooks/useEditor";
 
 interface Props {
     page: PageResponse;
@@ -26,26 +18,7 @@ const Editor = (props: Props) => {
 
     const [inputTitle, setInputTitle] = useState(title);
 
-    const editor = useEditor({
-        extensions: [
-            StarterKit,
-            Highlight,
-            Underline,
-            BulletList,
-            OrderedList,
-            ListItem,
-            Blockquote,
-            CodeBlockLowlight.configure({
-                lowlight,
-            }),
-        ],
-        content: content,
-        editorProps: {
-            attributes: {
-                class: "prose prose-stone prose-p:my-2 focus:outline-none bg-gray-100 m-4 py-1 px-4 rounded-md max-w-full",
-            },
-        },
-    });
+    const editor = useEditor(content, false);
 
     useEffect(() => {
         try {

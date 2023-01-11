@@ -1,5 +1,6 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from "@src/components/Button";
 import Input from "@src/components/Input";
 import Modal from "@src/components/Modal";
 import Select from "@src/components/Select";
@@ -57,28 +58,29 @@ const CreateProjectModal = (props: Props) => {
                 <p className="mb-2">
                     To get started, we just need a few pieces of information.
                 </p>
-                <div className="flex flex-col gap-4 mt-2">
-                    <Input
-                        type="text"
-                        value={name}
-                        onChange={handleNameChange}
-                        placeholder="What do you want to call it?"
-                        label="Name"
-                    />
-                    <Input
-                        type="text"
-                        value={description}
-                        onChange={handleDescriptionChange}
-                        placeholder="What's it about?"
-                        label="Description"
-                    />
-                    <Select options={["Public", "Private"]} label="Access" />
-                    <button
-                        className="p-3 mt-2 bg-orange-500 rounded-md text-white hover:shadow hover:bg-orange-600"
-                        onClick={handleSubmit}>
-                        Get started
-                    </button>
-                </div>
+                <form onSubmit={handleSubmit}>
+                    <div className="flex flex-col gap-4 mt-2">
+                        <Input
+                            type="text"
+                            value={name}
+                            onChange={handleNameChange}
+                            placeholder="What do you want to call it?"
+                            label="Name"
+                        />
+                        <Input
+                            type="text"
+                            value={description}
+                            onChange={handleDescriptionChange}
+                            placeholder="What's it about?"
+                            label="Description"
+                        />
+                        <Select
+                            options={["Public", "Private"]}
+                            label="Access"
+                        />
+                        <Button label="Get started" variant="solid" />
+                    </div>
+                </form>
             </div>
         </Modal>
     );

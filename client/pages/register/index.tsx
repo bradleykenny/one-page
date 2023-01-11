@@ -1,3 +1,4 @@
+import Button from "@src/components/Button";
 import Input from "@src/components/Input";
 import useApi from "@src/hooks/useApi";
 import Head from "next/head";
@@ -73,9 +74,8 @@ const Register = () => {
                         Start today.
                     </h1>
                 </div>
-                <div className="z-0 bg-white drop-shadow-md flex justify-center m-20 ml-10 rounded-lg flex-col">
+                <div className="z-0 bg-white drop-shadow-md flex justify-center m-20 ml-10 rounded-lg flex-col overflow-y-scroll">
                     <div className="h-full w-full absolute bg-login-bg grayscale opacity-5 bg-cover"></div>
-
                     <form
                         className="w-1/2 self-center mx-auto -mt-10 flex flex-col z-0"
                         onSubmit={handleRegisterSubmit}>
@@ -85,31 +85,33 @@ const Register = () => {
                         <div className="flex flex-col gap-4 mt-4">
                             <Input
                                 type="text"
-                                placeholder="Username"
+                                label="Username"
+                                placeholder="example@mail.com"
                                 required
                                 onChange={handleUsernameChange}
                             />
                             <Input
                                 type="text"
-                                placeholder="First name"
+                                label="First name"
+                                placeholder="John"
                                 required
                                 onChange={handleFirstNameChange}
                             />
                             <Input
                                 type="text"
-                                placeholder="Last name"
+                                label="Last name"
+                                placeholder="Smith"
                                 required
                                 onChange={handleLastNameChange}
                             />
                             <Input
                                 type="password"
-                                placeholder="Password"
+                                label="Password"
+                                placeholder="secret123"
                                 required
                                 onChange={handlePasswordChange}
                             />
-                            <button className="p-2 bg-orange-500 rounded-md text-white hover:shadow hover:bg-orange-600">
-                                Register
-                            </button>
+                            <Button label="Register" />
                             <a
                                 href="/login"
                                 className="text-center text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto">

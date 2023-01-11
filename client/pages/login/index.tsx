@@ -1,3 +1,4 @@
+import Button from "@src/components/Button";
 import Input from "@src/components/Input";
 import useApi from "@src/hooks/useApi";
 import Head from "next/head";
@@ -73,19 +74,19 @@ const Login = () => {
                         <div className="flex flex-col gap-4 mt-4">
                             <Input
                                 type="text"
-                                placeholder="Username"
+                                label="Username"
+                                placeholder="example@mail.com"
                                 required
                                 onChange={handleUsernameChange}
                             />
                             <Input
                                 type="password"
-                                placeholder="Password"
+                                label="Password"
+                                placeholder="secret123"
                                 required
                                 onChange={handlePasswordChange}
                             />
-                            <button className="p-2 bg-orange-500 rounded-md text-white hover:shadow hover:bg-orange-600">
-                                Login
-                            </button>
+                            <Button label="Login" />
                             <a
                                 href="/register"
                                 className="text-center text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto">

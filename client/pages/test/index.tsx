@@ -1,5 +1,6 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from "@src/components/Button";
 import Input from "@src/components/Input";
 import CreateProjectModal from "@src/components/Modal/CreateProject";
 import Navbar from "@src/components/NavBar";
@@ -38,6 +39,12 @@ const Test = () => {
                                 className="text-sm font-medium text-gray-700">
                                 Default
                             </label>
+                        </div>
+                        <div className="flex flex-row gap-4 mt-4">
+                        <Button label="Solid" variant="solid" />
+                        <Button label="Soft" variant="soft" />
+                        <Button label="Ghost" variant="ghost" />
+                        <Button label="Plain" variant="plain" />
                         </div>
                     </div>
                     <SidebarInfo />
