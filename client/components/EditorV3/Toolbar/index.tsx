@@ -73,7 +73,7 @@ const EditorToolbar = (props: Props) => {
 
     return (
         // ${!editorIsFocus && "opacity-75 pointer-events-none"}`}>
-        <div className="bg-white shadow rounded-md overflow-hidden flex z-0 self-center p-1">
+        <div className="bg-white shadow rounded-t-md overflow-hidden flex z-0 self-center p-1 w-full overflow-x-scroll">
             <ToolbarButton
                 icon={faBold}
                 isSelected={isBold}
