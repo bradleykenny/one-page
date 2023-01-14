@@ -7,8 +7,13 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import jwt from "jsonwebtoken";
 
+import { Pacifico } from "@next/font/google";
+
 const Pages = () => {
     const [data, setData] = useState([]);
+
+    // TODO: cant use til next 13
+    // const pacifico = Pacifico({ weight: "400" });
 
     useEffect(() => {
         const getData = async () => {
@@ -39,7 +44,7 @@ const Pages = () => {
                 <Navbar activeTab="Pages" />
                 <div className="pt-24">
                     <Sidebar />
-                    <div className="pb-6 mx-80">
+                    <div className="pb-4 mx-80">
                         <h1 className="p-4 pl-8">My Pages</h1>
                         <div className="lg:columns-2">
                             {data?.map((item) => (

@@ -21,12 +21,19 @@ const Home = () => {
                 <Navbar activeTab="Home" />
                 <div className="pt-24">
                     <Sidebar />
-                    <div className="pb-6 md:mx-80 mx-4">
+                    <div className="md:mx-80 mx-4">
                         {result?.map((item) => (
                             <div className="mb-4">
                                 <ContentCard page={item} />
                             </div>
                         ))}
+                        <h2 className="text-center pt-4 pb-16 text-gray-500 drop-shadow">
+                            {"that's all folks 👋".split("").map((l) => (
+                                <span className="hover:text-indigo-500">
+                                    {l}
+                                </span>
+                            ))}
+                        </h2>
                     </div>
                     <SidebarInfo />
                 </div>

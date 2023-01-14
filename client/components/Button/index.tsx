@@ -22,19 +22,19 @@ const Button = (props: Props) => {
 const getButtonStyle = (variant: ButtonVariant, color?: string) => {
     const btnColor = color || "orange"; // TODO: need to implement: https://tailwindcss.com/docs/content-configuration#dynamic-class-names
 
-    const sharedStyles = "px-4 py-2.5 rounded-md";
+    const sharedStyles = "px-5 py-2.5 rounded-lg font-medium transition-all text-center border text-sm";
 
     switch (variant) {
         case "solid":
-            return `${sharedStyles} bg-orange-500 text-white hover:bg-orange-600 text-sm font-medium transition-all`;
+            return `${sharedStyles} border-transparent bg-orange-500 text-white hover:bg-orange-600`;
         case "soft":
-            return `${sharedStyles} border border-orange-100 bg-orange-100 text-center text-sm font-medium text-orange-600 transition-all hover:border-orange-200 hover:bg-orange-200`;
+            return `${sharedStyles} border-orange-100 bg-orange-100 text-orange-600 hover:border-orange-200 hover:bg-orange-200`;
         case "ghost":
-            return `${sharedStyles} border border-transparent bg-transparent text-center text-sm font-medium text-orange-600 shadow-none transition-all hover:bg-orange-100`;
+            return `${sharedStyles} border-transparent bg-transparent text-orange-600 shadow-none hover:bg-orange-100`;
         case "plain":
-            return `${sharedStyles} border border-gray-300 bg-white text-center text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-100`;
+            return `${sharedStyles} border-gray-300 bg-white text-gray-700 shadow-sm hover:bg-gray-100`;
         default:
-            return `${sharedStyles} bg-orange-500 text-white hover:shadow hover:bg-orange-600 text-sm font-medium shadow-sm transition-all`;
+            return `${sharedStyles} bg-orange-500 text-white hover:shadow hover:bg-orange-600 shadow-sm`;
     }
 };
 

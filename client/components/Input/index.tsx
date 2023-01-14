@@ -20,7 +20,7 @@ const Input = (props: Props) => {
             <input
                 type="text"
                 id="input"
-                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500"
+                className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500"
                 value={value}
                 onChange={onChange}
                 {...props}

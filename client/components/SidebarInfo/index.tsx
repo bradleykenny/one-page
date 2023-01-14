@@ -25,7 +25,7 @@ const SidebarInfo = (props: IProps) => {
             <ul className="space-y-2 px-4">
                 <li>
                     <h3>User</h3>
-                    <p>{page?.userId}</p>
+                    <p>{page?.userId || "TBD"}</p>
                 </li>
                 <li>
                     <h3>Project</h3>
@@ -36,23 +36,23 @@ const SidebarInfo = (props: IProps) => {
                                 setShowProjectSelector(true);
                             }}
                             style={{
-                                backgroundColor: project?.colour,
+                                backgroundColor: project?.colour || 'gray',
                                 color: shouldTextBeDark ? "black" : "white",
                             }}>
-                            {project?.name}
+                            {project?.name || 'TBD'}
                         </p>
                         {showProjectSelector && (
                             <span className="fixed mt-10 justify-start mr-6">
                                 <Selector
                                     items={[
-                                        "one",
-                                        "two",
-                                        "three",
-                                        "four",
-                                        "five",
-                                        "six",
-                                        "seven",
-                                        "eight",
+                                        { label: "one", value: undefined },
+                                        { label: "two", value: undefined },
+                                        { label: "three", value: undefined },
+                                        { label: "four", value: undefined },
+                                        { label: "five", value: undefined },
+                                        { label: "six", value: undefined },
+                                        { label: "seven", value: undefined },
+                                        { label: "eight", value: undefined },
                                     ]}
                                     onClose={() => {
                                         setShowProjectSelector(false);
