@@ -20,7 +20,7 @@ const Projects = () => {
 
     useEffect(() => {
         const getProjects = async () => {
-            const projectsResponse = await useApi("project/all", "GET");
+            const projectsResponse = await useApi("project/all?limit=100", "GET");
             setProjects(projectsResponse?.data);
         };
 

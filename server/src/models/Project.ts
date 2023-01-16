@@ -9,9 +9,11 @@ export interface Project extends TimedFields {
     description?: string;
 	userId: string;
 	colour?: string;
+	imageUrl?: string;
 }
 
 export interface AddProjectRequest extends AuthenticatedRequest {
 	name: string;
 	description: string;
+	imageUrl: string;
 }

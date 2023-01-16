@@ -51,12 +51,12 @@ const CreateProjectModal = (props: Props) => {
         const response = await useApi("project", "POST", {
             name,
             description,
+            imageUrl
         });
 
         const { id } = response.data;
         if (response && id) {
             router.push(`/projects/${id}`);
-            // router.push(`/projects`);
         }
     };
 

@@ -20,17 +20,19 @@ const addProject = async (request: AddProjectRequest) => {
 	const coll = getCollection();
 
 	const id = Id.generateShortId();
-	const { name, description, user } = request;
+	const { name, description, imageUrl, user } = request;
 	const userId = user.username;
 	const timeFields = Time.initialiseTimeFields();
 	const colour = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 
+	
 	const project: Project = {
 		name,
 		description,
 		id,
 		userId,
 		colour,
+		imageUrl,
 		...timeFields,
 	};
 

@@ -11,9 +11,10 @@ unsplashRouter.get("/test", async (req, res) => {
 unsplashRouter.get(
 	"/get",
 	// AuthService.isLoggedIn,
-	async (req: Request<User>, res: any) => {
+	async (req: Request, res: any) => {
 		try {
-			const photos = await UnsplashService.getPhotos();
+			const page = Number.parseInt(req.query?.page as string);
+            const photos = await UnsplashService.getPhotos(page);
 			res.json(photos?.data);
 		} catch (error) {
 			res.json({ error });
