@@ -8,6 +8,7 @@ import PageRouter from "./routers/page";
 import ProfileRouter from "./routers/profile";
 import ProjectRouter from "./routers/project";
 import TestRouter from "./routers/test";
+import UnsplashRouter from "./routers/unsplash";
 import UserRouter from "./routers/user";
 
 const API_PREFIX = process.env.API_PREFIX;
@@ -33,6 +34,7 @@ server.use(`${API_PREFIX}/auth`, AuthRouter);
 server.use(`${API_PREFIX}/page`, PageRouter);
 server.use(`${API_PREFIX}/profile`, ProfileRouter);
 server.use(`${API_PREFIX}/project`, ProjectRouter);
+server.use(`${API_PREFIX}/unsplash`, UnsplashRouter);
 server.use(`${API_PREFIX}/user`, UserRouter);
 
 // test router

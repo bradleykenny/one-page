@@ -1,0 +1,24 @@
+import express, { Request } from "express";
+import { User } from "../models/User";
+import AuthService from "../services/AuthService";
+import UnsplashService from "../services/UnsplashService";
+
+const unsplashRouter = express.Router();
+unsplashRouter.get("/test", async (req, res) => {
+	res.send("UNSPLASH WORKING");
+});
+
+unsplashRouter.get(
+	"/get",
+	// AuthService.isLoggedIn,
+	async (req: Request<User>, res: any) => {
+		try {
+			const photos = await UnsplashService.getPhotos();
+			res.json(photos?.data);
+		} catch (error) {
+			res.json({ error });
+		}
+	}
+);
+
+export default unsplashRouter;

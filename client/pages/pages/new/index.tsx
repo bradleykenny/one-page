@@ -25,7 +25,7 @@ const NewPage = () => {
             <Navbar activeTab="Pages" />
             <div className="pt-24">
                 <Sidebar />
-                <div className="mx-80">
+                <div className="md:mx-80 mx-4">
                     <EditorV3 page={undefined} saveAction={saveContent} />
                 </div>
                 <SidebarInfo />

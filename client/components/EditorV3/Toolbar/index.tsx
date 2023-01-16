@@ -15,6 +15,7 @@ import {
     faStrikethrough,
     faUnderline,
 } from "@fortawesome/free-solid-svg-icons";
+import Button from "@src/components/Button";
 import MagicButton from "@src/components/MagicButton";
 import useEditorToolbar from "@src/hooks/useEditorToolbar";
 import { Editor } from "@tiptap/react";
@@ -73,81 +74,84 @@ const EditorToolbar = (props: Props) => {
 
     return (
         // ${!editorIsFocus && "opacity-75 pointer-events-none"}`}>
-        <div className="bg-white shadow rounded-t-md overflow-hidden flex z-0 self-center p-1 w-full overflow-x-scroll">
-            <ToolbarButton
-                icon={faBold}
-                isSelected={isBold}
-                onClick={handleBoldClick}
-            />
-            <ToolbarButton
-                icon={faItalic}
-                isSelected={isItalic}
-                onClick={handleItalicClick}
-            />
-            <ToolbarButton
-                icon={faUnderline}
-                isSelected={isUnderline}
-                onClick={handleUnderlineClick}
-            />
-            <ToolbarButton
-                icon={faStrikethrough}
-                isSelected={isStrike}
-                onClick={handleStrikeClick}
-            />
-            <ToolbarButton
-                icon={faHighlighter}
-                isSelected={isHighlight}
-                onClick={handleHighlightClick}
-            />
-            <span className="border border-gray-300 m-2" />
-            <ToolbarButton
-                icon={faParagraph}
-                isSelected={false}
-                onClick={handleParagraphClick}
-            />
-            <ToolbarButton
-                icon={fa1}
-                isSelected={false}
-                onClick={handleHeading1Click}
-            />
-            <ToolbarButton
-                icon={fa2}
-                isSelected={false}
-                onClick={handleHeading2Click}
-            />
-            <ToolbarButton
-                icon={fa3}
-                isSelected={false}
-                onClick={handleHeading3Click}
-            />
-            <span className="border border-gray-300 m-2" />
-            <ToolbarButton
-                icon={faListOl}
-                isSelected={isOrderedList}
-                onClick={handleOrderedListClick}
-            />
-            <ToolbarButton
-                icon={faListUl}
-                isSelected={isBulletList}
-                onClick={handleBulletListClick}
-            />
-            <ToolbarButton
-                icon={faListCheck}
-                isSelected={false}
-                onClick={undefined}
-            />
-            <span className="border border-gray-300 m-2" />
-            <ToolbarButton
-                icon={faQuoteLeft}
-                isSelected={false}
-                onClick={handleQuoteClick}
-            />
-            <ToolbarButton
-                icon={faCode}
-                isSelected={false}
-                onClick={handleCodeClick}
-            />
-            <div className="self-center justify-end text-right ml-auto mr-2 h-full inline-block">
+        <div className="bg-white shadow rounded-t-md overflow-hidden flex z-0 self-center p-1 w-full ">
+            <div className="flex overflow-x-scroll overflow-hidden">
+                <ToolbarButton
+                    icon={faBold}
+                    isSelected={isBold}
+                    onClick={handleBoldClick}
+                />
+                <ToolbarButton
+                    icon={faItalic}
+                    isSelected={isItalic}
+                    onClick={handleItalicClick}
+                />
+                <ToolbarButton
+                    icon={faUnderline}
+                    isSelected={isUnderline}
+                    onClick={handleUnderlineClick}
+                />
+                <ToolbarButton
+                    icon={faStrikethrough}
+                    isSelected={isStrike}
+                    onClick={handleStrikeClick}
+                />
+                <ToolbarButton
+                    icon={faHighlighter}
+                    isSelected={isHighlight}
+                    onClick={handleHighlightClick}
+                />
+                <span className="border border-gray-300 m-2" />
+                <ToolbarButton
+                    icon={faParagraph}
+                    isSelected={false}
+                    onClick={handleParagraphClick}
+                />
+                <ToolbarButton
+                    icon={fa1}
+                    isSelected={false}
+                    onClick={handleHeading1Click}
+                />
+                <ToolbarButton
+                    icon={fa2}
+                    isSelected={false}
+                    onClick={handleHeading2Click}
+                />
+                <ToolbarButton
+                    icon={fa3}
+                    isSelected={false}
+                    onClick={handleHeading3Click}
+                />
+                <span className="border border-gray-300 m-2" />
+                <ToolbarButton
+                    icon={faListOl}
+                    isSelected={isOrderedList}
+                    onClick={handleOrderedListClick}
+                />
+                <ToolbarButton
+                    icon={faListUl}
+                    isSelected={isBulletList}
+                    onClick={handleBulletListClick}
+                />
+                <ToolbarButton
+                    icon={faListCheck}
+                    isSelected={false}
+                    onClick={undefined}
+                />
+                <span className="border border-gray-300 m-2" />
+                <ToolbarButton
+                    icon={faQuoteLeft}
+                    isSelected={false}
+                    onClick={handleQuoteClick}
+                />
+                <ToolbarButton
+                    icon={faCode}
+                    isSelected={false}
+                    onClick={handleCodeClick}
+                />
+            </div>
+            <div className="self-center justify-end text-right ml-auto mr-2 h-full flex flex-row gap-2">
+                {/* <Button variant="soft" label="View" /> */}
                 <MagicButton
                     title="Save"
                     onClick={handleSaveClick}
