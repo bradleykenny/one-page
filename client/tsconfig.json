@@ -25,6 +25,9 @@
       "@src/hooks/*": [
         "hooks/*"
       ],
+      "@src/models/*": [
+        "models/*"
+      ],
       "@src/pages/*": [
         "pages/*"
       ]

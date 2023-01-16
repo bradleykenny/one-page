@@ -1,27 +1,37 @@
-import { useEffect, useState } from "react";
-import useApi from "@src/hooks/useApi";
-import { UnsplashGetPhotosResponse } from "dto/Unsplash";
+import { MouseEventHandler, useEffect, useState } from "react";
 
-const UnsplashSelector = () => {
+import useApi from "@src/hooks/useApi";
+
+import { UnsplashGetPhotosResponse } from "@src/models/dto/Unsplash";
+
+interface Props {
+    onImageClick: MouseEventHandler<HTMLImageElement>;
+}
+
+const UnsplashSelector = (props: Props) => {
+    const { onImageClick } = props;
+
     const [result, setResult] = useState<UnsplashGetPhotosResponse[]>([]);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchImages = async () => {
             const response = await useApi(`/unsplash/get`, "GET");
             if (response?.data) {
                 setResult(response.data.results);
             }
         };
-        fetchData();
+
+        fetchImages();
     }, []);
 
     return (
-        <div className="grid grid-cols-2 gap-4 h-96 overflow-y-scroll">
+        <div className="grid grid-cols-2 gap-2 h-96 overflow-y-scroll">
             {result.map((str) => (
-                <div className="h-40 bg-black rounded-lg cursor-pointer">
+                <div className="h-40 bg-black rounded-lg cursor-pointer m-1 hover:ring hover:ring-indigo-500">
                     <img
                         src={str?.urls.regular}
-                        className="bg-cover rounded-lg h-full w-full object-cover transition-all hover:opacity-75"
+                        onClick={onImageClick}
+                        className="bg-cover rounded-lg h-full w-full object-cover transition-all hover:opacity-90"
                     />
                 </div>
             ))}

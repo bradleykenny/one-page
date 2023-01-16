@@ -1,9 +1,8 @@
-import { MouseEventHandler, useState } from "react";
+import { ChangeEvent, MouseEvent, MouseEventHandler, useState } from "react";
 import { useRouter } from "next/router";
 
 import {
     faClose,
-    faImage,
     faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,6 +14,7 @@ import Select from "@src/components/Select";
 import UnsplashSelector from "@src/components/UnsplashSelector";
 
 import useApi from "@src/hooks/useApi";
+import ImageSelector from "@src/components/ImageSelector";
 
 interface Props {
     showModal: boolean;
@@ -28,10 +28,11 @@ const CreateProjectModal = (props: Props) => {
 
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
 
     const [showImageChooser, setShowImageChooser] = useState(false);
 
-    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
     };
 
@@ -39,6 +40,11 @@ const CreateProjectModal = (props: Props) => {
         e: React.ChangeEvent<HTMLInputElement>
     ) => {
         setDescription(e.target.value);
+    };
+
+    const handleImageSelect = (e: MouseEvent<HTMLImageElement>) => {
+        setImageUrl(e.currentTarget.src);
+        setShowImageChooser(false);
     };
 
     const handleSubmit = async () => {
@@ -90,19 +96,14 @@ const CreateProjectModal = (props: Props) => {
                                 placeholder="What's it about?"
                                 label="Description"
                             />
+                            <ImageSelector
+                                value={imageUrl}
+                                onClick={handleImageChooseClick}
+                            />
                             <Select
                                 options={["Public", "Private"]}
                                 label="Access"
                             />
-                            <div
-                                className="flex flex-col items-center py-8 border shadow border-gray-300 rounded-lg cursor-pointer"
-                                onClick={handleImageChooseClick}>
-                                <FontAwesomeIcon
-                                    icon={faImage}
-                                    className="h-10 mb-2 text-gray-400"
-                                />
-                                <p className="m-0 ml-2">Choose image</p>
-                            </div>
                             <Button label="Get started" variant="solid" />
                         </div>
                     </form>
@@ -118,7 +119,7 @@ const CreateProjectModal = (props: Props) => {
                         </div>
                         <h2 className="m-0 ml-4">Select image</h2>
                     </div>
-                    <UnsplashSelector />
+                    <UnsplashSelector onImageClick={handleImageSelect} />
                 </div>
             )}
         </Modal>
