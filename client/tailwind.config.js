@@ -24,6 +24,9 @@ module.exports = {
             fontSize: {
                 massive: "30rem",
             },
+            height: {
+                128: "36rem"
+            }
         },
     },
     plugins: [

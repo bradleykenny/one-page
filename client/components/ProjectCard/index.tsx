@@ -27,7 +27,9 @@ const ProjectCard = (props: Props) => {
                             className="bg-cover w-full"
                         />
                     ) : (
-                        <div className="bg-orange-100 w-full h-full flex items-center justify-center text-orange-300">
+                        <div
+                            className="bg-opacity-50 w-full h-full flex items-center justify-center text-white text-opacity-75"
+                            style={{ backgroundColor: project.colour }}>
                             <FontAwesomeIcon icon={faIcons} size={"3x"} />
                         </div>
                     )}

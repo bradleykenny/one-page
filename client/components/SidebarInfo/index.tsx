@@ -36,10 +36,10 @@ const SidebarInfo = (props: IProps) => {
                                 setShowProjectSelector(true);
                             }}
                             style={{
-                                backgroundColor: project?.colour || 'gray',
+                                backgroundColor: project?.colour || "gray",
                                 color: shouldTextBeDark ? "black" : "white",
                             }}>
-                            {project?.name || 'TBD'}
+                            {project?.name || "TBD"}
                         </p>
                         {showProjectSelector && (
                             <span className="fixed mt-10 justify-start mr-6">

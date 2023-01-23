@@ -7,7 +7,7 @@ interface Props {
 
 const Checkbox = (props: Props) => {
     const { checked, onClick } = props;
-    
+
     return (
         <div className="flex items-center space-x-2">
             <input

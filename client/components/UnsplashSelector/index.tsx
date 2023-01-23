@@ -1,10 +1,11 @@
-import { MouseEventHandler, UIEvent, useEffect, useState } from "react";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { MouseEventHandler, UIEvent, useEffect, useState } from "react";
 
 import useApi from "@src/hooks/useApi";
 
 import { UnsplashGetPhotosResponse } from "@src/models/dto/Unsplash";
+import Input from "../Input";
 
 interface Props {
     onImageClick: MouseEventHandler<HTMLImageElement>;
@@ -19,13 +20,15 @@ const UnsplashSelector = (props: Props) => {
     const fetchImages = async (page: number) => {
         setLoading(true);
 
-        const response = await useApi(`/unsplash/get?page=${page}`, "GET");
-        if (response?.data) {
-            const newResult = result.concat(...response.data.results);
-            setResult(newResult);
-        }
+        setTimeout(async () => {
+            const response = await useApi(`/unsplash/get?page=${page}`, "GET");
+            if (response?.data) {
+                const newResult = result.concat(...response.data.results);
+                setResult(newResult);
+            }
 
-        setLoading(false);
+            setLoading(false);
+        }, 500);
     };
 
     useEffect(() => {
@@ -34,7 +37,6 @@ const UnsplashSelector = (props: Props) => {
 
     const getMoreImages = async () => {
         const currentPage = result.length / 10 + 1;
-        console.log(result.length, currentPage);
         fetchImages(currentPage + 1);
     };
 
@@ -50,19 +52,26 @@ const UnsplashSelector = (props: Props) => {
 
     return (
         <div
-            className="grid grid-cols-2 gap-2 h-96 overflow-y-scroll"
+            className="grid grid-cols-2 gap-2 h-128 overflow-y-scroll -mx-8 px-8"
             onScroll={handleScroll}>
+            <div className="col-span-2 mx-1 mb-2">
+                <Input
+                    label="Search"
+                    type="text"
+                    placeholder="Background, abstract, people..."
+                />
+            </div>
             {result.map((str) => (
-                <div className="h-40 bg-black rounded-lg cursor-pointer m-1 hover:ring hover:ring-indigo-500">
+                <div className="h-40 bg-gray-500 rounded-lg cursor-pointer m-1 hover:ring hover:ring-orange-500">
                     <img
                         src={str?.urls.regular}
                         onClick={onImageClick}
-                        className="bg-cover rounded-lg h-full w-full object-cover transition-all hover:opacity-90"
+                        className="bg-cover rounded-lg h-full w-full object-cover transition-all hover:opacity-70"
                     />
                 </div>
             ))}
             {loading && (
-                <div className="col-span-2 flex w-full justify-center items-center my-4 text-gray-500">
+                <div className="col-span-2 flex w-full justify-center items-center my-4 mb-8 text-gray-500">
                     <FontAwesomeIcon
                         icon={faCircleNotch}
                         className="animate-spin h-4"

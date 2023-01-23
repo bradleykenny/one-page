@@ -20,6 +20,7 @@ const Projects = () => {
 
     useEffect(() => {
         const getProjects = async () => {
+            // TODO: temporary until i add pagination
             const projectsResponse = await useApi("project/all?limit=100", "GET");
             setProjects(projectsResponse?.data);
         };

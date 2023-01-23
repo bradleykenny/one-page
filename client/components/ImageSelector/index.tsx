@@ -18,13 +18,13 @@ const ImageSelector = (props: Props) => {
             </label>
 
             <div
-                className="flex flex-col items-center py-6 border shadow-sm text-sm border-gray-300 rounded-lg cursor-pointer"
+                className="flex flex-col items-center py-6 border shadow-sm text-sm border-gray-300 rounded-lg cursor-pointer text-gray-400 font-medium"
                 onClick={onClick}>
                 {!value ? (
                     <>
                         <FontAwesomeIcon
                             icon={faImage}
-                            className="h-10 mb-2 text-gray-400"
+                            className="h-10 mb-2"
                         />
                         <p className="m-0 ml-2">Select image</p>{" "}
                     </>
@@ -32,9 +32,9 @@ const ImageSelector = (props: Props) => {
                     <div className="flex self-start items-center">
                         <img
                             src={value}
-                            className="h-28 self-start -my-6 rounded-l-md"
+                            className="h-28 self-start -my-4 ml-2 rounded-md shadow-md"
                         />
-                        <p className="ml-4">Click here to change image</p>
+                        <p className="ml-4 italic">Click here to change image</p>
                     </div>
                 )}
             </div>
