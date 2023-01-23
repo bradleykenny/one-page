@@ -37,9 +37,9 @@ const Editor = (props: Props) => {
     const renderElement = useCallback((props) => <Element {...props} />, []);
 
     return (
-        <div className="w-6/12 mx-auto">
+        <div className="mx-auto w-6/12">
             <EditorHeader />
-            <div className="shadow-md bg-white rounded-lg px-8 py-6">
+            <div className="rounded-lg bg-white px-8 py-6 shadow-md">
                 <Slate editor={editor} value={initialValue} key={key}>
                     <Editable
                         renderElement={renderElement}

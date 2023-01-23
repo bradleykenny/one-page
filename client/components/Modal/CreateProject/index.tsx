@@ -65,11 +65,12 @@ const CreateProjectModal = (props: Props) => {
         <Modal visible={showModal}>
             {!showImageChooser ? (
                 <div className="flex flex-col">
-                    <div className="flex flex-row justify-between items-center border-b pb-4 mb-4">
+                    <div className="mb-4 flex flex-row items-center justify-between border-b pb-4">
                         <h2 className="my-0">Create a new project</h2>
                         <div
-                            className="flex top-4 bg-gray-200 hover:bg-indigo-200 focus:bg-gray-300 cursor-pointer w-6 h-6 rounded-lg text-gray-500 hover:text-indigo-500 items-center justify-center"
-                            onClick={handleShowModal}>
+                            className="top-4 flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg bg-gray-200 text-gray-500 hover:bg-indigo-200 hover:text-indigo-500 focus:bg-gray-300"
+                            onClick={handleShowModal}
+                        >
                             <FontAwesomeIcon icon={faClose} />
                         </div>
                     </div>
@@ -78,7 +79,7 @@ const CreateProjectModal = (props: Props) => {
                         information.
                     </p>
                     <form onSubmit={handleSubmit}>
-                        <div className="flex flex-col gap-4 mt-2">
+                        <div className="mt-2 flex flex-col gap-4">
                             <Input
                                 type="text"
                                 value={name}
@@ -106,11 +107,12 @@ const CreateProjectModal = (props: Props) => {
                     </form>
                 </div>
             ) : (
-                <div className="flex flex-col -mb-8">
-                    <div className="self-start flex items-center border-b pb-4 mb-4 w-full">
+                <div className="-mb-8 flex flex-col">
+                    <div className="mb-4 flex w-full items-center self-start border-b pb-4">
                         <div
-                            className="flex top-4 bg-gray-200 hover:bg-indigo-200 focus:bg-gray-300 cursor-pointer w-6 h-6 rounded-lg text-gray-500 hover:text-indigo-500 items-center justify-center"
-                            onClick={handleImageChooseClick}>
+                            className="top-4 flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg bg-gray-200 text-gray-500 hover:bg-indigo-200 hover:text-indigo-500 focus:bg-gray-300"
+                            onClick={handleImageChooseClick}
+                        >
                             <FontAwesomeIcon icon={faArrowLeft} />
                         </div>
                         <h2 className="m-0 ml-4">Select image</h2>

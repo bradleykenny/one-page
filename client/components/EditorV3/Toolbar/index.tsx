@@ -74,8 +74,8 @@ const EditorToolbar = (props: Props) => {
 
     return (
         // ${!editorIsFocus && "opacity-75 pointer-events-none"}`}>
-        <div className="bg-white shadow rounded-t-md overflow-hidden flex z-0 self-center p-1 w-full ">
-            <div className="flex overflow-x-scroll overflow-hidden">
+        <div className="z-0 flex w-full self-center overflow-hidden rounded-t-md bg-white p-1 shadow ">
+            <div className="flex overflow-hidden overflow-x-scroll">
                 <ToolbarButton
                     icon={faBold}
                     isSelected={isBold}
@@ -101,7 +101,7 @@ const EditorToolbar = (props: Props) => {
                     isSelected={isHighlight}
                     onClick={handleHighlightClick}
                 />
-                <span className="border border-gray-300 m-2" />
+                <span className="m-2 border border-gray-300" />
                 <ToolbarButton
                     icon={faParagraph}
                     isSelected={false}
@@ -122,7 +122,7 @@ const EditorToolbar = (props: Props) => {
                     isSelected={false}
                     onClick={handleHeading3Click}
                 />
-                <span className="border border-gray-300 m-2" />
+                <span className="m-2 border border-gray-300" />
                 <ToolbarButton
                     icon={faListOl}
                     isSelected={isOrderedList}
@@ -138,7 +138,7 @@ const EditorToolbar = (props: Props) => {
                     isSelected={false}
                     onClick={undefined}
                 />
-                <span className="border border-gray-300 m-2" />
+                <span className="m-2 border border-gray-300" />
                 <ToolbarButton
                     icon={faQuoteLeft}
                     isSelected={false}
@@ -150,7 +150,7 @@ const EditorToolbar = (props: Props) => {
                     onClick={handleCodeClick}
                 />
             </div>
-            <div className="self-center justify-end text-right ml-auto mr-2 h-full flex flex-row gap-2">
+            <div className="ml-auto mr-2 flex h-full flex-row justify-end gap-2 self-center text-right">
                 {/* <Button variant="soft" label="View" /> */}
                 <MagicButton
                     title="Save"

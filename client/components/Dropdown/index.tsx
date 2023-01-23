@@ -4,7 +4,7 @@ interface IProps {
 
 const Dropdown = (props: IProps) => {
     const { children } = props;
-    
+
     return <div>{children}</div>;
 };
 

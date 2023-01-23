@@ -18,13 +18,13 @@ const ToolbarPlugin = () => {
     return (
         <div className="editor-toolbar">
             <p
-                className={"border rounded-md shadow p-4 inline-block"}
+                className={"inline-block rounded-md border p-4 shadow"}
                 onClick={handleBoldClick}
             >
                 <FontAwesomeIcon icon={faBold} />
             </p>
             <p
-                className={"border rounded-md shadow p-4 inline-block"}
+                className={"inline-block rounded-md border p-4 shadow"}
                 onClick={handleBoldClick}
             >
                 <FontAwesomeIcon icon={faItalic} />

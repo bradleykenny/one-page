@@ -6,7 +6,7 @@ const Card = (props: Props) => {
     const { children } = props;
 
     return (
-        <div className="shadow bg-white mx-auto rounded-lg px-8 py-6 hover:shadow-md transition ease-in-out duration-400 overflow-hidden">
+        <div className="duration-400 mx-auto overflow-hidden rounded-lg bg-white px-8 py-6 shadow transition ease-in-out hover:shadow-md">
             {children}
         </div>
     );

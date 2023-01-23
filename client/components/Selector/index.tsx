@@ -33,17 +33,17 @@ const Selector = (props: IProps) => {
         : items;
 
     return (
-        <div className="bg-white border border-gray-300 rounded-lg py-2 pt-0 pb-0 overflow-hidden shadow-md">
-            <div className="border-b border-gray-300 flex bg-gray-100 items-center p-2">
+        <div className="overflow-hidden rounded-lg border border-gray-300 bg-white py-2 pt-0 pb-0 shadow-md">
+            <div className="flex items-center border-b border-gray-300 bg-gray-100 p-2">
                 <Input
                     type="text"
                     placeholder="Search"
                     onChange={handleChange}
                 />
-                <div className="items-center flex absolute right-2 cursor-pointer">
+                <div className="absolute right-2 flex cursor-pointer items-center">
                     <FontAwesomeIcon
                         icon={faClose}
-                        className="p-2 mr-2 text-gray-500 hover:text-gray-900"
+                        className="mr-2 p-2 text-gray-500 hover:text-gray-900"
                         onClick={onClose}
                     />
                 </div>
@@ -51,9 +51,10 @@ const Selector = (props: IProps) => {
             <div className="max-h-56 overflow-scroll">
                 {filteredItems.map((item) => (
                     <div
-                        className="border-b py-3 px-4 hover:bg-gray-100 cursor-pointer flex items-center"
-                        onClick={() => handleItemClick(item)}>
-                        <div className="w-4 h-4 inline-block rounded mr-2 bg-green-400" />
+                        className="flex cursor-pointer items-center border-b py-3 px-4 hover:bg-gray-100"
+                        onClick={() => handleItemClick(item)}
+                    >
+                        <div className="mr-2 inline-block h-4 w-4 rounded bg-green-400" />
                         <p className="mb-0">{item.label}</p>
                     </div>
                 ))}

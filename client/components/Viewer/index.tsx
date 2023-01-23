@@ -25,10 +25,10 @@ const Viewer = (props: Props) => {
 
     return (
         <div className="mx-auto h-screen">
-            <div className="bg-white shadow rounded-md pt-1 pb-1 mt-16">
+            <div className="mt-16 rounded-md bg-white pt-1 pb-1 shadow">
                 <div className="w-full">
                     <div className="m-4 mb-0">
-                        <h2 className="bg-white py-2 px-3 rounded-md text-4xl w-full text-indigo-700 font-black mb-1 border-none">
+                        <h2 className="mb-1 w-full rounded-md border-none bg-white py-2 px-3 text-4xl font-black text-indigo-700">
                             {title}
                         </h2>
                     </div>

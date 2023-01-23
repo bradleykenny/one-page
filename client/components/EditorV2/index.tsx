@@ -31,13 +31,13 @@ const Editor = (props: Props) => {
     };
 
     return (
-        <div className="w-6/12 mx-auto h-screen">
+        <div className="mx-auto h-screen w-6/12">
             <LexicalComposer initialConfig={initialConfig}>
                 <ToolbarPlugin />
-                <div className="shadow bg-white rounded-lg p-2">
+                <div className="rounded-lg bg-white p-2 shadow">
                     <RichTextPlugin
                         contentEditable={
-                            <ContentEditable className="outline-0 bg-white px-4 py-2" />
+                            <ContentEditable className="bg-white px-4 py-2 outline-0" />
                         }
                         placeholder={<div>Enter some text...</div>}
                     />

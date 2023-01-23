@@ -39,19 +39,19 @@ const useEditorToolbar = (editor: Editor) => {
 
     const handleBulletListClick = () => {
         editor.chain().focus().toggleBulletList().run();
-    }
+    };
 
     const handleOrderedListClick = () => {
         editor.chain().focus().toggleOrderedList().run();
-    }
+    };
 
     const handleQuoteClick = () => {
         editor.chain().focus().toggleBlockquote().run();
-    }
+    };
 
     const handleCodeClick = () => {
         editor.chain().focus().toggleCodeBlock().run();
-    }
+    };
 
     return {
         handleBoldClick,
@@ -66,7 +66,7 @@ const useEditorToolbar = (editor: Editor) => {
         handleBulletListClick,
         handleOrderedListClick,
         handleQuoteClick,
-        handleCodeClick
+        handleCodeClick,
     };
 };
 

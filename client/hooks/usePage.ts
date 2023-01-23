@@ -17,7 +17,7 @@ const usePage = (id: string) => {
 
             setLoading(true);
             const pageResponse = await useApi(`/page/${id}`, "GET");
-            
+
             if (pageResponse.data) {
                 setPage(pageResponse.data);
 

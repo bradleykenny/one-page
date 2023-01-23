@@ -62,27 +62,28 @@ const Register = () => {
                     rel="stylesheet"
                 />
             </Head>
-            <div className="grid grid-cols-2 h-screen bg-gray-200">
-                <div className="bg-gradient-to-br from-indigo-500 to-orange-500 drop-shadow-md z-10 flex justify-center m-20 mr-10 rounded-lg flex-col">
-                    <h1 className="text-center text-3xl text-white self-center justify-center opacity-40 my-5">
+            <div className="grid h-screen grid-cols-2 bg-gray-200">
+                <div className="z-10 m-20 mr-10 flex flex-col justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-orange-500 drop-shadow-md">
+                    <h1 className="my-5 justify-center self-center text-center text-3xl text-white opacity-40">
                         Editing.
                     </h1>
-                    <h1 className="text-center text-4xl text-white self-center justify-center opacity-70 my-5">
+                    <h1 className="my-5 justify-center self-center text-center text-4xl text-white opacity-70">
                         Different.
                     </h1>
-                    <h1 className="text-center text-5xl text-white self-center justify-center my-5">
+                    <h1 className="my-5 justify-center self-center text-center text-5xl text-white">
                         Start today.
                     </h1>
                 </div>
-                <div className="z-0 bg-white drop-shadow-md flex justify-center m-20 ml-10 rounded-lg flex-col overflow-y-scroll">
-                    <div className="h-full w-full absolute bg-login-bg grayscale opacity-5 bg-cover"></div>
+                <div className="z-0 m-20 ml-10 flex flex-col justify-center overflow-y-scroll rounded-lg bg-white drop-shadow-md">
+                    <div className="absolute h-full w-full bg-login-bg bg-cover opacity-5 grayscale"></div>
                     <form
-                        className="w-1/2 self-center mx-auto -mt-10 flex flex-col z-0"
-                        onSubmit={handleRegisterSubmit}>
-                        <h1 className="text-center font-cursive text-6xl mb-5 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-orange-500">
+                        className="z-0 mx-auto -mt-10 flex w-1/2 flex-col self-center"
+                        onSubmit={handleRegisterSubmit}
+                    >
+                        <h1 className="mb-5 bg-gradient-to-r from-indigo-500 to-orange-500 bg-clip-text text-center font-cursive text-6xl text-transparent">
                             Get started!
                         </h1>
-                        <div className="flex flex-col gap-4 mt-4">
+                        <div className="mt-4 flex flex-col gap-4">
                             <Input
                                 type="text"
                                 label="Username"
@@ -114,7 +115,8 @@ const Register = () => {
                             <Button label="Register" />
                             <a
                                 href="/login"
-                                className="text-center text-indigo-800 hover:bg-indigo-50 rounded-lg py-1 px-2 m-auto">
+                                className="m-auto rounded-lg py-1 px-2 text-center text-indigo-800 hover:bg-indigo-50"
+                            >
                                 Already a user? Login
                             </a>
                         </div>

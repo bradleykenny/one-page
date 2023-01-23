@@ -22,7 +22,8 @@ const Button = (props: Props) => {
 const getButtonStyle = (variant: ButtonVariant, color?: string) => {
     const btnColor = color || "orange"; // TODO: need to implement: https://tailwindcss.com/docs/content-configuration#dynamic-class-names
 
-    const sharedStyles = "px-5 py-2.5 rounded-lg font-medium transition-all text-center border text-sm";
+    const sharedStyles =
+        "px-5 py-2.5 rounded-lg font-medium transition-all text-center border text-sm";
 
     switch (variant) {
         case "solid":

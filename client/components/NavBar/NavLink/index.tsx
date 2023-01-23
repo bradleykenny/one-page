@@ -13,7 +13,7 @@ const NavLink = (props: Props) => {
     if (isSelected) {
         return (
             <a
-                className={`${sharedStyles} bg-indigo-800 border-indigo-800 bg-opacity-90 text-white hover:text-indigo-100 hover:bg-indigo-900 hover:border-indigo-900`}
+                className={`${sharedStyles} border-indigo-800 bg-indigo-800 bg-opacity-90 text-white hover:border-indigo-900 hover:bg-indigo-900 hover:text-indigo-100`}
                 href={link || "#"}
             >
                 {title}
@@ -23,7 +23,7 @@ const NavLink = (props: Props) => {
 
     return (
         <a
-            className={`${sharedStyles} hover:bg-indigo-50 hover:border-indigo-200 focus:bg-indigo-100 text-indigo-800`}
+            className={`${sharedStyles} text-indigo-800 hover:border-indigo-200 hover:bg-indigo-50 focus:bg-indigo-100`}
             href={link || "#"}
         >
             {title}

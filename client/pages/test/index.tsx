@@ -25,12 +25,16 @@ const Test = () => {
                     content="initial-scale=1.0, width=device-width"
                 />
             </Head>
-            <div className="bg-gray-200 min-h-screen">
+            <div className="min-h-screen bg-gray-200">
                 <Navbar activeTab="Projects" />
                 <div className="pt-24">
                     <Sidebar />
-                    <div className="p-6 mx-80 z-0 bg-white shadow rounded-lg flex flex-col gap-4">
-                        <Input type="text" label="Name" placeholder="John Smith" />
+                    <div className="z-0 mx-80 flex flex-col gap-4 rounded-lg bg-white p-6 shadow">
+                        <Input
+                            type="text"
+                            label="Name"
+                            placeholder="John Smith"
+                        />
                         <Input
                             type="text"
                             label="Address"

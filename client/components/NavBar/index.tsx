@@ -22,11 +22,11 @@ const NavBar = (props: Props) => {
     };
 
     return (
-        <nav className="fixed top-0 pt-4 left-4 right-4 z-20 bg-gray-200">
-            <div className="bg-white px-10 py-4 rounded-lg shadow box-border flex">
+        <nav className="fixed top-0 left-4 right-4 z-20 bg-gray-200 pt-4">
+            <div className="box-border flex rounded-lg bg-white px-10 py-4 shadow">
                 <a
                     href="/home"
-                    className="text-orange-400 hover:text-orange-500 text-xl font-black inline-block mr-8 cursor-pointer decoration-solid"
+                    className="mr-8 inline-block cursor-pointer text-xl font-black text-orange-400 decoration-solid hover:text-orange-500"
                 >
                     one:page
                 </a>

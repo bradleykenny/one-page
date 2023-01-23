@@ -40,11 +40,11 @@ const Pages = () => {
                     content="initial-scale=1.0, width=device-width"
                 />
             </Head>
-            <div className="bg-gray-200 min-h-screen">
+            <div className="min-h-screen bg-gray-200">
                 <Navbar activeTab="Pages" />
                 <div className="pt-24">
                     <Sidebar />
-                    <div className="pb-4 mx-80">
+                    <div className="mx-80 pb-4">
                         <h1 className="p-4 pl-8">My Pages</h1>
                         <div className="lg:columns-2">
                             {data?.map((item) => (

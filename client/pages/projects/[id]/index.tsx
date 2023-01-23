@@ -56,21 +56,21 @@ const Projects = () => {
                     content="initial-scale=1.0, width=device-width"
                 />
             </Head>
-            <div className="bg-gray-200 min-h-screen">
+            <div className="min-h-screen bg-gray-200">
                 <Navbar activeTab="Projects" />
                 <div className="pt-24">
                     <Sidebar />
-                    <div className="pb-6 mx-80">
+                    <div className="mx-80 pb-6">
                         {project && (
                             <Card>
-                                <div className="-mt-6 -mx-8 mb-4 overflow-hidden h-48">
+                                <div className="-mx-8 -mt-6 mb-4 h-48 overflow-hidden">
                                     {project.imageUrl ? (
                                         <img
                                             src={project.imageUrl}
-                                            className="-mt-24 bg-cover w-full"
+                                            className="-mt-24 w-full bg-cover"
                                         />
                                     ) : (
-                                        <div className="bg-orange-100 w-full h-full flex items-center justify-center text-orange-300">
+                                        <div className="flex h-full w-full items-center justify-center bg-orange-100 text-orange-300">
                                             <FontAwesomeIcon
                                                 icon={faIcons}
                                                 size={"3x"}

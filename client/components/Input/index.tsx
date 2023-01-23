@@ -13,7 +13,8 @@ const Input = (props: Props) => {
             {label && (
                 <label
                     htmlFor="input"
-                    className="mb-1 block text-sm font-medium text-gray-700">
+                    className="mb-1 block text-sm font-medium text-gray-700"
+                >
                     {label}
                 </label>
             )}

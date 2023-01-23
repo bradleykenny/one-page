@@ -11,8 +11,8 @@ const Modal = (props: Props) => {
     }
 
     return (
-        <div className="bg-black/50 fixed m-auto z-50 w-full p-4 overflow-x-hidden overflow-y-auto inset-0 h-full">
-            <div className="relative bg-white rounded-xl shadow md:w-2/3 md:max-w-xl w-full h-auto mx-auto p-8 mt-24">
+        <div className="fixed inset-0 z-50 m-auto h-full w-full overflow-y-auto overflow-x-hidden bg-black/50 p-4">
+            <div className="relative mx-auto mt-24 h-auto w-full rounded-xl bg-white p-8 shadow md:w-2/3 md:max-w-xl">
                 {children}
             </div>
         </div>

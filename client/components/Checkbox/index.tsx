@@ -19,7 +19,8 @@ const Checkbox = (props: Props) => {
             />
             <label
                 htmlFor="example1"
-                className="text-sm font-medium text-gray-700">
+                className="text-sm font-medium text-gray-700"
+            >
                 I Accept
             </label>
         </div>

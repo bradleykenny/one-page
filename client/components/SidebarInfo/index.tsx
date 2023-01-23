@@ -19,9 +19,10 @@ const SidebarInfo = (props: IProps) => {
 
     return (
         <aside
-            className="hidden md:block w-72 fixed top-24 right-4 overflow-y-scroll px-1 pb-4 z-0 bg-white shadow rounded-lg hover:shadow-md"
-            aria-label="Sidebar">
-            <h2 className="text-lg font-bold mb-2 ml-4 py-2">Information</h2>
+            className="fixed top-24 right-4 z-0 hidden w-72 overflow-y-scroll rounded-lg bg-white px-1 pb-4 shadow hover:shadow-md md:block"
+            aria-label="Sidebar"
+        >
+            <h2 className="mb-2 ml-4 py-2 text-lg font-bold">Information</h2>
             <ul className="space-y-2 px-4">
                 <li>
                     <h3>User</h3>
@@ -31,18 +32,19 @@ const SidebarInfo = (props: IProps) => {
                     <h3>Project</h3>
                     <div className="flex flex-col">
                         <p
-                            className="rounded-lg mt-1 px-3 py-1 inline-block text-sm cursor-pointer self-start"
+                            className="mt-1 inline-block cursor-pointer self-start rounded-lg px-3 py-1 text-sm"
                             onClick={() => {
                                 setShowProjectSelector(true);
                             }}
                             style={{
                                 backgroundColor: project?.colour || "gray",
                                 color: shouldTextBeDark ? "black" : "white",
-                            }}>
+                            }}
+                        >
                             {project?.name || "TBD"}
                         </p>
                         {showProjectSelector && (
-                            <span className="fixed mt-10 justify-start mr-6">
+                            <span className="fixed mt-10 mr-6 justify-start">
                                 <Selector
                                     items={[
                                         { label: "one", value: undefined },

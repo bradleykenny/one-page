@@ -5,8 +5,9 @@ import { sideBarItems } from "config/Sidebar";
 const Sidebar = () => {
     return (
         <aside
-            className="hidden md:block w-72 fixed top-24 bottom-4 overflow-y-scroll mx-4 pb-2 z-0 bg-white shadow rounded-lg px-2 pt-4 hover:shadow-md"
-            aria-label="Sidebar">
+            className="fixed top-24 bottom-4 z-0 mx-4 hidden w-72 overflow-y-scroll rounded-lg bg-white px-2 pb-2 pt-4 shadow hover:shadow-md md:block"
+            aria-label="Sidebar"
+        >
             <ul className="space-y-2">
                 {sideBarItems.map((item) => (
                     <SidebarItem

@@ -12,15 +12,16 @@ const Page = () => {
     const { page, project } = usePage(queryId as string);
 
     return (
-        <div className="bg-gray-200 min-h-screen">
+        <div className="min-h-screen bg-gray-200">
             <Navbar activeTab="Pages" />
             <Sidebar />
-            <div className="pt-24 pb-12 mx-80">
+            <div className="mx-80 pt-24 pb-12">
                 <ContentCard page={page}>
                     <div className="mx-auto pt-4">
                         <a
                             href={queryId && `/pages/${queryId}/edit`}
-                            className="bg-indigo-500 hover:bg-indigo-600 text-white rounded-md py-2 px-4 shadow">
+                            className="rounded-md bg-indigo-500 py-2 px-4 text-white shadow hover:bg-indigo-600"
+                        >
                             Edit
                         </a>
                     </div>

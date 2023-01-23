@@ -18,18 +18,20 @@ const ProjectCard = (props: Props) => {
     return (
         <div
             onClick={() => handleProjectClick(project.id)}
-            className="cursor-pointer">
+            className="cursor-pointer"
+        >
             <Card>
-                <div className="-mt-6 -mx-8 mb-4 overflow-hidden h-36">
+                <div className="-mx-8 -mt-6 mb-4 h-36 overflow-hidden">
                     {project.imageUrl ? (
                         <img
                             src={project.imageUrl}
-                            className="bg-cover w-full"
+                            className="w-full bg-cover"
                         />
                     ) : (
                         <div
-                            className="bg-opacity-50 w-full h-full flex items-center justify-center text-white text-opacity-75"
-                            style={{ backgroundColor: project.colour }}>
+                            className="flex h-full w-full items-center justify-center bg-opacity-50 text-white text-opacity-75"
+                            style={{ backgroundColor: project.colour }}
+                        >
                             <FontAwesomeIcon icon={faIcons} size={"3x"} />
                         </div>
                     )}
@@ -39,7 +41,7 @@ const ProjectCard = (props: Props) => {
                         {project.colour && (
                             <div
                                 style={{ backgroundColor: project.colour }}
-                                className="w-4 h-4 inline-block rounded mr-2"
+                                className="mr-2 inline-block h-4 w-4 rounded"
                             />
                         )}
                         {project.name}
@@ -51,7 +53,7 @@ const ProjectCard = (props: Props) => {
                             />
                         )}
                     </h2>
-                    <p className="m-0 text-gray-500 truncate">
+                    <p className="m-0 truncate text-gray-500">
                         {project.description}
                     </p>
                 </div>

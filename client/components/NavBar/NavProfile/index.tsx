@@ -33,17 +33,17 @@ const NavProfile = (props: Props) => {
 
     return (
         <a
-            className={`${sharedStyles} hover:bg-indigo-50 hover:border-indigo-200 focus:bg-indigo-100 text-indigo-800 flex items-center`}
+            className={`${sharedStyles} flex items-center text-indigo-800 hover:border-indigo-200 hover:bg-indigo-50 focus:bg-indigo-100`}
             href="#"
             onClick={handleClick}
         >
-            <div className="rounded-md bg-indigo-200 p-1 -m-2 flex mr-2">
+            <div className="-m-2 mr-2 flex rounded-md bg-indigo-200 p-1">
                 <FontAwesomeIcon
                     icon={faUser}
-                    className="inline-block self-center justify-self-center h-[18px] w-[18px]"
+                    className="inline-block h-[18px] w-[18px] self-center justify-self-center"
                 />
             </div>
-            <p className="inline-block mb-0">{title}</p>
+            <p className="mb-0 inline-block">{title}</p>
         </a>
     );
 };

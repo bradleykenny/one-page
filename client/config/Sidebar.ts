@@ -1,4 +1,11 @@
-import { faChartLine, faDatabase, faDiagramProject, faFile, faHome, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import {
+    faChartLine,
+    faDatabase,
+    faDiagramProject,
+    faFile,
+    faHome,
+    IconDefinition,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface SideBarItem {
     title: string;
@@ -15,21 +22,21 @@ export const sideBarItems: SideBarItem[] = [
     {
         title: "Pages",
         link: "/pages",
-        icon: faFile
+        icon: faFile,
     },
     {
         title: "Projects",
         link: "/projects",
-        icon: faDiagramProject
+        icon: faDiagramProject,
     },
     {
         title: "Resources",
         link: "/resources",
-        icon: faDatabase
+        icon: faDatabase,
     },
     {
         title: "Analytics",
         link: "/analytics",
-        icon: faChartLine
-    }
+        icon: faChartLine,
+    },
 ];

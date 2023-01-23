@@ -14,7 +14,8 @@ const SidebarItem = (props: SidebarItemProps) => {
         <li>
             <a
                 href={url}
-                className="flex items-center rounded-lg border border-transparent p-2 text-base font-normal text-gray-600 transition ease-in-out hover:border-indigo-200 hover:bg-indigo-50 hover:text-gray-800 hover:shadow focus:border-indigo-200 focus:bg-indigo-100">
+                className="flex items-center rounded-lg border border-transparent p-2 text-base font-normal text-gray-600 transition ease-in-out hover:border-indigo-200 hover:bg-indigo-50 hover:text-gray-800 hover:shadow focus:border-indigo-200 focus:bg-indigo-100"
+            >
                 <FontAwesomeIcon
                     icon={icon}
                     className="h-[20px] w-[20px] text-slate-400"

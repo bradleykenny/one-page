@@ -52,8 +52,9 @@ const UnsplashSelector = (props: Props) => {
 
     return (
         <div
-            className="grid grid-cols-2 gap-2 h-128 overflow-y-scroll -mx-8 px-8"
-            onScroll={handleScroll}>
+            className="-mx-8 grid h-128 grid-cols-2 gap-2 overflow-y-scroll px-8"
+            onScroll={handleScroll}
+        >
             <div className="col-span-2 mx-1 mb-2">
                 <Input
                     label="Search"
@@ -62,19 +63,19 @@ const UnsplashSelector = (props: Props) => {
                 />
             </div>
             {result.map((str) => (
-                <div className="h-40 bg-gray-500 rounded-lg cursor-pointer m-1 hover:ring hover:ring-orange-500">
+                <div className="m-1 h-40 cursor-pointer rounded-lg bg-gray-500 hover:ring hover:ring-orange-500">
                     <img
                         src={str?.urls.regular}
                         onClick={onImageClick}
-                        className="bg-cover rounded-lg h-full w-full object-cover transition-all hover:opacity-70"
+                        className="h-full w-full rounded-lg bg-cover object-cover transition-all hover:opacity-70"
                     />
                 </div>
             ))}
             {loading && (
-                <div className="col-span-2 flex w-full justify-center items-center my-4 mb-8 text-gray-500">
+                <div className="col-span-2 my-4 mb-8 flex w-full items-center justify-center text-gray-500">
                     <FontAwesomeIcon
                         icon={faCircleNotch}
-                        className="animate-spin h-4"
+                        className="h-4 animate-spin"
                     />
                     <p className="m-0 ml-2">Loading</p>
                 </div>

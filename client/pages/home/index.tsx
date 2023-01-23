@@ -17,17 +17,17 @@ const Home = () => {
                     content="initial-scale=1.0, width=device-width"
                 />
             </Head>
-            <div className="bg-gray-200 min-h-screen">
+            <div className="min-h-screen bg-gray-200">
                 <Navbar activeTab="Home" />
                 <div className="pt-24">
                     <Sidebar />
-                    <div className="md:mx-80 mx-4">
+                    <div className="mx-4 md:mx-80">
                         {result?.map((item) => (
                             <div className="mb-4">
                                 <ContentCard page={item} />
                             </div>
                         ))}
-                        <h2 className="text-center pt-4 pb-16 text-gray-500 drop-shadow">
+                        <h2 className="pt-4 pb-16 text-center text-gray-500 drop-shadow">
                             {"that's all folks 👋".split("").map((l) => (
                                 <span className="hover:text-indigo-500">
                                     {l}

@@ -9,7 +9,7 @@ module.exports = {
         extend: {
             colors: {
                 primary: colors.indigo,
-                secondary: colors.orange
+                secondary: colors.orange,
             },
             fontFamily: {
                 cursive: ['"Gloria Hallelujah"'],
@@ -25,8 +25,8 @@ module.exports = {
                 massive: "30rem",
             },
             height: {
-                128: "36rem"
-            }
+                128: "36rem",
+            },
         },
     },
     plugins: [

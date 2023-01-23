@@ -2,8 +2,9 @@ const shouldTextBeDark = (bgColour: string) => {
     if (!bgColour || bgColour.length < 6) {
         return;
     }
-    
-    const colour = bgColour.charAt(0) === "#" ? bgColour.substring(1, 7) : bgColour;
+
+    const colour =
+        bgColour.charAt(0) === "#" ? bgColour.substring(1, 7) : bgColour;
 
     const r = parseInt(colour.substring(0, 2), 16); // hexToR
     const g = parseInt(colour.substring(2, 4), 16); // hexToG
