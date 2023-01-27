@@ -1,14 +1,15 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ProjectResponse } from "models/Project";
+import Head from "next/head";
+import { useEffect, useState } from "react";
+
 import CreateProjectModal from "@src/components/Modal/CreateProject";
 import Navbar from "@src/components/NavBar";
 import ProjectCard from "@src/components/ProjectCard";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import useApi from "@src/hooks/useApi";
-import { ProjectResponse } from "models/Project";
-import Head from "next/head";
-import { useEffect, useState } from "react";
 
 const Projects = () => {
     const [projects, setProjects] = useState<ProjectResponse[]>([]);
@@ -47,8 +48,7 @@ const Projects = () => {
                     <div className="mx-80 pb-6">
                         <div
                             className="group mb-4 flex cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-orange-500 py-8 text-center text-white shadow hover:shadow-md"
-                            onClick={handleShowModal}
-                        >
+                            onClick={handleShowModal}>
                             <h1 className="mb-0 mr-2 inline text-white">
                                 Start new project
                             </h1>

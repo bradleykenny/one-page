@@ -15,11 +15,11 @@ const ProjectCard = (props: Props) => {
     const handleProjectClick = (id: string) => {
         router.push(`/projects/${id}`);
     };
+
     return (
         <div
             onClick={() => handleProjectClick(project.id)}
-            className="cursor-pointer"
-        >
+            className="cursor-pointer">
             <Card>
                 <div className="-mx-8 -mt-6 mb-4 h-36 overflow-hidden">
                     {project.imageUrl ? (
@@ -30,8 +30,7 @@ const ProjectCard = (props: Props) => {
                     ) : (
                         <div
                             className="flex h-full w-full items-center justify-center bg-opacity-50 text-white text-opacity-75"
-                            style={{ backgroundColor: project.colour }}
-                        >
+                            style={{ backgroundColor: project.colour }}>
                             <FontAwesomeIcon icon={faIcons} size={"3x"} />
                         </div>
                     )}

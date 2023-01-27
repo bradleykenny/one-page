@@ -1,9 +1,14 @@
 import {
     faChartLine,
+    faCog,
+    faComment,
     faDatabase,
-    faDiagramProject,
     faFile,
+    faFolder,
+    faFolderClosed,
     faHome,
+    faPaperPlane,
+    faWandMagicSparkles,
     IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,14 +25,19 @@ export const sideBarItems: SideBarItem[] = [
         icon: faHome,
     },
     {
+        title: "Projects",
+        link: "/projects",
+        icon: faFolder,
+    },
+    {
         title: "Pages",
         link: "/pages",
         icon: faFile,
     },
     {
-        title: "Projects",
-        link: "/projects",
-        icon: faDiagramProject,
+        title: "Templates",
+        link: "/templates",
+        icon: faWandMagicSparkles,
     },
     {
         title: "Resources",
@@ -35,8 +45,23 @@ export const sideBarItems: SideBarItem[] = [
         icon: faDatabase,
     },
     {
+        title: "Responses",
+        link: "/responses",
+        icon: faComment,
+    },
+    {
+        title: "Email",
+        link: "/email",
+        icon: faPaperPlane,
+    },
+    {
         title: "Analytics",
         link: "/analytics",
         icon: faChartLine,
+    },
+    {
+        title: "Settings",
+        link: "/settings",
+        icon: faCog,
     },
 ];

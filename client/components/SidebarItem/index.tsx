@@ -1,5 +1,7 @@
-import { faHashtag, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/router";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { cn } from "utils";
 
 interface SidebarItemProps {
     title: string;
@@ -10,17 +12,25 @@ interface SidebarItemProps {
 const SidebarItem = (props: SidebarItemProps) => {
     const { icon, title, url } = props;
 
+    const router = useRouter();
+    const { pathname } = router;
+    const isSelected = pathname.startsWith(url);
+
     return (
         <li>
             <a
                 href={url}
-                className="flex items-center rounded-lg border border-transparent p-2 text-base font-normal text-gray-600 transition ease-in-out hover:border-indigo-200 hover:bg-indigo-50 hover:text-gray-800 hover:shadow focus:border-indigo-200 focus:bg-indigo-100"
-            >
+                className={cn(
+                    "flex items-center rounded-lg border border-transparent p-2 text-base font-normal transition ease-in-out hover:bg-gray-100",
+                    isSelected
+                        ? "text-indigo-500 hover:text-indigo-700 focus:bg-indigo-100"
+                        : "text-gray-600 hover:text-gray-800 focus:bg-gray-100"
+                )}>
                 <FontAwesomeIcon
                     icon={icon}
-                    className="h-[20px] w-[20px] text-slate-400"
+                    className="h-[20px] w-[20px] px-2"
                 />
-                <span className="ml-4">{title}</span>
+                <span className="ml-2">{title}</span>
             </a>
         </li>
     );

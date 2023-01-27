@@ -1,10 +1,11 @@
+import { JSONContent } from "@tiptap/react";
+import { useRouter } from "next/router";
+
 import EditorV3 from "@src/components/EditorV3";
 import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import useApi from "@src/hooks/useApi";
-import { JSONContent } from "@tiptap/react";
-import { useRouter } from "next/router";
 
 const NewPage = () => {
     const router = useRouter();

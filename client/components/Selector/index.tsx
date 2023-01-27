@@ -1,6 +1,7 @@
-import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { faCircleNotch, faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ChangeEvent, useState } from "react";
+
 import Input from "@src/components/Input";
 
 interface Item {
@@ -10,13 +11,13 @@ interface Item {
 
 interface IProps {
     items: Item[];
-    onClick?: Function;
-    onSelect?: Function;
-    onClose?: () => void;
+    isLoading?: boolean;
+    onSelect: (value: string) => void;
+    onClose: () => void;
 }
 
 const Selector = (props: IProps) => {
-    const { items, onClose } = props;
+    const { isLoading, items, onSelect, onClose } = props;
 
     const [searchTerm, setSearchTerm] = useState(undefined);
 
@@ -25,6 +26,7 @@ const Selector = (props: IProps) => {
     };
 
     const handleItemClick = (item: Item) => {
+        onSelect(item.value);
         onClose();
     };
 
@@ -49,15 +51,24 @@ const Selector = (props: IProps) => {
                 </div>
             </div>
             <div className="max-h-56 overflow-scroll">
-                {filteredItems.map((item) => (
-                    <div
-                        className="flex cursor-pointer items-center border-b py-3 px-4 hover:bg-gray-100"
-                        onClick={() => handleItemClick(item)}
-                    >
-                        <div className="mr-2 inline-block h-4 w-4 rounded bg-green-400" />
-                        <p className="mb-0">{item.label}</p>
+                {!isLoading ? (
+                    filteredItems.map((item) => (
+                        <div
+                            className="flex cursor-pointer items-center border-b py-3 px-4 hover:bg-gray-100"
+                            onClick={() => handleItemClick(item)}>
+                            <div className="mr-2 inline-block h-4 w-4 rounded bg-green-400" />
+                            <p className="mb-0">{item.label}</p>
+                        </div>
+                    ))
+                ) : (
+                    <div className="my-4 flex items-center justify-center text-gray-500">
+                        <FontAwesomeIcon
+                            icon={faCircleNotch}
+                            className="h-4 animate-spin"
+                        />
+                        <p className="m-0 ml-2">Loading</p>
                     </div>
-                ))}
+                )}
             </div>
         </div>
     );

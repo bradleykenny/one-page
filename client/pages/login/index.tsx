@@ -1,9 +1,10 @@
-import Button from "@src/components/Button";
-import Input from "@src/components/Input";
-import useApi from "@src/hooks/useApi";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+
+import Button from "@src/components/Button";
+import Input from "@src/components/Input";
+import useApi from "@src/hooks/useApi";
 
 const Login = () => {
     const router = useRouter();
@@ -52,13 +53,13 @@ const Login = () => {
             </Head>
             <div className="grid h-screen grid-cols-2 bg-gray-200">
                 <div className="z-10 m-20 mr-10 flex flex-col justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-orange-500 drop-shadow-md">
-                    <h1 className="my-5 justify-center self-center text-center text-3xl text-white opacity-40">
-                        Editing.
+                    <h1 className="my-2 justify-center self-center text-center text-3xl text-white opacity-40">
+                        Create.
                     </h1>
-                    <h1 className="my-5 justify-center self-center text-center text-4xl text-white opacity-70">
-                        Different.
+                    <h1 className="my-2 justify-center self-center text-center text-4xl text-white opacity-70">
+                        Distribute.
                     </h1>
-                    <h1 className="my-5 justify-center self-center text-center text-5xl text-white">
+                    <h1 className="my-2 justify-center self-center text-center text-5xl text-white">
                         Start today.
                     </h1>
                 </div>
@@ -67,8 +68,7 @@ const Login = () => {
 
                     <form
                         className="z-0 mx-auto -mt-10 flex w-1/2 flex-col self-center"
-                        onSubmit={handleLoginSubmit}
-                    >
+                        onSubmit={handleLoginSubmit}>
                         <h1 className="mb-5 bg-gradient-to-r from-indigo-500 to-orange-500 bg-clip-text text-center font-cursive text-6xl text-transparent">
                             Welcome back!
                         </h1>
@@ -90,8 +90,7 @@ const Login = () => {
                             <Button label="Login" />
                             <a
                                 href="/register"
-                                className="m-auto rounded-lg py-1 px-2 text-center text-indigo-800 hover:bg-indigo-50"
-                            >
+                                className="m-auto rounded-lg py-1 px-2 text-center text-indigo-800 hover:bg-indigo-50">
                                 Not a user? Register here
                             </a>
                         </div>

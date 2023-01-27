@@ -29,7 +29,7 @@ const useEditor = (content: string | JSONContent, disable?: boolean) => {
         editable: !disable,
         editorProps: {
             attributes: {
-                class: `prose prose-stone prose-p:my-2 focus:outline-none m-4 py-1 px-4 rounded-md max-w-full ${editorStyle} ${viewerStyle}`,
+                class: `bg-red-100 prose prose-stone prose-p:my-2 focus:outline-none m-4 py-1 px-4 rounded-md max-w-full ${editorStyle} ${viewerStyle}`,
             },
         },
     });

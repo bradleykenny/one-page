@@ -27,12 +27,8 @@ const Home = () => {
                                 <ContentCard page={item} />
                             </div>
                         ))}
-                        <h2 className="pt-4 pb-16 text-center text-gray-500 drop-shadow">
-                            {"that's all folks 👋".split("").map((l) => (
-                                <span className="hover:text-indigo-500">
-                                    {l}
-                                </span>
-                            ))}
+                        <h2 className="pt-4 pb-16 text-center text-gray-500">
+                            that's all folks 👋
                         </h2>
                     </div>
                     <SidebarInfo />

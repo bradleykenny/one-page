@@ -14,7 +14,7 @@ const EditPage = () => {
     const { loading, page, project } = usePage(id as string);
 
     return (
-        <div className="bg-gray-200">
+        <div className="bg-gray-200 selection:bg-orange-200">
             <Navbar activeTab="Pages" />
             <div className="pt-24">
                 <Sidebar />

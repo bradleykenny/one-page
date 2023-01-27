@@ -1,13 +1,13 @@
+import { Pacifico } from "@next/font/google";
+import jwt from "jsonwebtoken";
+import Head from "next/head";
+import { useEffect, useState } from "react";
+
 import ContentCard from "@src/components/ContentCard";
 import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import useApi from "@src/hooks/useApi";
-import Head from "next/head";
-import { useEffect, useState } from "react";
-import jwt from "jsonwebtoken";
-
-import { Pacifico } from "@next/font/google";
 
 const Pages = () => {
     const [data, setData] = useState([]);

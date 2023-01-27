@@ -1,17 +1,15 @@
-import { ChangeEvent, MouseEvent, MouseEventHandler, useState } from "react";
-import { useRouter } from "next/router";
-
 import { faClose, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRouter } from "next/router";
+import { ChangeEvent, MouseEvent, MouseEventHandler, useState } from "react";
 
 import Button from "@src/components/Button";
+import ImageSelector from "@src/components/ImageSelector";
 import Input from "@src/components/Input";
 import Modal from "@src/components/Modal";
 import Select from "@src/components/Select";
 import UnsplashSelector from "@src/components/UnsplashSelector";
-
 import useApi from "@src/hooks/useApi";
-import ImageSelector from "@src/components/ImageSelector";
 
 interface Props {
     showModal: boolean;
@@ -61,6 +59,10 @@ const CreateProjectModal = (props: Props) => {
         setShowImageChooser(!showImageChooser);
     };
 
+    const handleImageDestroyClick = () => {
+        setImageUrl("");
+    };
+
     return (
         <Modal visible={showModal}>
             {!showImageChooser ? (
@@ -69,8 +71,7 @@ const CreateProjectModal = (props: Props) => {
                         <h2 className="my-0">Create a new project</h2>
                         <div
                             className="top-4 flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg bg-gray-200 text-gray-500 hover:bg-indigo-200 hover:text-indigo-500 focus:bg-gray-300"
-                            onClick={handleShowModal}
-                        >
+                            onClick={handleShowModal}>
                             <FontAwesomeIcon icon={faClose} />
                         </div>
                     </div>
@@ -97,6 +98,7 @@ const CreateProjectModal = (props: Props) => {
                             <ImageSelector
                                 value={imageUrl}
                                 onClick={handleImageChooseClick}
+                                onDestroy={handleImageDestroyClick}
                             />
                             <Select
                                 options={["Public", "Private"]}
@@ -111,8 +113,7 @@ const CreateProjectModal = (props: Props) => {
                     <div className="mb-4 flex w-full items-center self-start border-b pb-4">
                         <div
                             className="top-4 flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg bg-gray-200 text-gray-500 hover:bg-indigo-200 hover:text-indigo-500 focus:bg-gray-300"
-                            onClick={handleImageChooseClick}
-                        >
+                            onClick={handleImageChooseClick}>
                             <FontAwesomeIcon icon={faArrowLeft} />
                         </div>
                         <h2 className="m-0 ml-4">Select image</h2>
