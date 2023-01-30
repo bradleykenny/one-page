@@ -1,8 +1,11 @@
+import { navigationItems } from "config/NavBar";
+import { useRouter } from "next/router";
+
 import MagicButton from "@src/components/MagicButton";
 import NavLink from "@src/components/NavBar/NavLink";
 import NavProfile from "@src/components/NavBar/NavProfile";
-import { navigationItems } from "config/NavBar";
-import { useRouter } from "next/router";
+
+import Input from "../Input";
 
 interface Props {
     activeTab: string;
@@ -26,17 +29,9 @@ const NavBar = (props: Props) => {
             <div className="box-border flex rounded-lg bg-white px-10 py-4 shadow">
                 <a
                     href="/home"
-                    className="mr-8 inline-block cursor-pointer text-xl font-black text-orange-400 decoration-solid hover:text-orange-500"
-                >
+                    className="mr-8 inline-block cursor-pointer text-xl font-black text-orange-400 decoration-solid hover:text-orange-500">
                     one:page
                 </a>
-                {navigationItems.map((navItem) => (
-                    <NavLink
-                        title={navItem.title}
-                        link={navItem.link}
-                        isSelected={isActive(navItem.title)}
-                    />
-                ))}
                 <MagicButton title="Create" onClick={handleMagicButtonClick} />
                 <NavProfile title="Brad Kenny" />
             </div>

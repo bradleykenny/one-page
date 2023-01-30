@@ -23,6 +23,7 @@ const SidebarInfo = (props: IProps) => {
 
     const shouldTextBeDark = ColourUtil.shouldTextBeDark(project?.colour);
 
+    // TODO: this needs to be memoised so we aren't refetching everytime
     const handleOpenProjectSelector = async () => {
         setShowProjectSelector(true);
         setIsLoadingProjects(true);
@@ -42,8 +43,6 @@ const SidebarInfo = (props: IProps) => {
             pageId: page.id,
             projectId: value,
         });
-
-        
     };
 
     const handleProjectSelectorClose = () => {

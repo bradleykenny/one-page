@@ -1,6 +1,6 @@
 {
     "jsxBracketSameLine": true,
     "tabWidth": 4,
-    "importOrder":["^@src/(.*)$", "^[./]"],
+    "importOrder":["^react$", "^@src/(.*)$", "^[./]"],
     "importOrderSeparation": true
 }

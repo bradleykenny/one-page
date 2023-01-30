@@ -13,7 +13,7 @@ interface Props {
     children?: JSX.Element;
 }
 
-const ContentCard = (props: Props) => {
+const PageCard = (props: Props) => {
     const { children, page } = props;
 
     const editor = useEditor({
@@ -42,9 +42,12 @@ const ContentCard = (props: Props) => {
                 className="mb-1 inline-block cursor-pointer pb-1 text-2xl font-black text-indigo-700 transition ease-in-out hover:border-orange-200 hover:text-orange-400">
                 {page?.title}
             </a>
-            <div className="mb-2">
-                <p className="inline cursor-pointer text-sm text-gray-400 hover:text-gray-600">
+            <div className=" flex flex-row gap-2">
+                <p className="inline cursor-pointer text-sm text-gray-400 hover:text-gray-600 m-0">
                     {page?.userId}
+                </p>
+                <p className="inline cursor-pointer text-sm text-gray-400 hover:text-gray-600 m-0">
+                    {new Date(page?.createdAt).toDateString()}
                 </p>
             </div>
             <EditorContent editor={editor} />
@@ -53,4 +56,4 @@ const ContentCard = (props: Props) => {
     );
 };
 
-export default ContentCard;
+export default PageCard;

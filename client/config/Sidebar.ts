@@ -5,7 +5,6 @@ import {
     faDatabase,
     faFile,
     faFolder,
-    faFolderClosed,
     faHome,
     faPaperPlane,
     faWandMagicSparkles,

@@ -57,6 +57,21 @@ const getUserPages = async (
 	return pages;
 };
 
+const getProjectPages = async (
+	projectId: string,
+	limit?: number,
+	offset?: number
+) => {
+	const collection = getCollection();
+	const pages = await collection
+		.find({ projectId })
+		.limit(limit || 10)
+		.skip(offset || 0)
+		.toArray();
+
+	return pages;
+};
+
 const getAllPages = async (limit: number, offset: number) => {
 	const collection = getCollection();
 	const pages = await getAll(collection, limit, offset);
@@ -86,6 +101,7 @@ export default {
 	addPage,
 	getPage,
 	getUserPages,
+	getProjectPages,
 	getAllPages,
 	linkProject,
 	updatePage,

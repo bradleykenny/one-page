@@ -1,3 +1,5 @@
+import { cn } from "utils";
+
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     type: "text" | "password";
     label?: string;
@@ -13,15 +15,17 @@ const Input = (props: Props) => {
             {label && (
                 <label
                     htmlFor="input"
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                >
+                    className="mb-1 block text-sm font-medium text-gray-700">
                     {label}
                 </label>
             )}
             <input
                 type="text"
                 id="input"
-                className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500"
+                className={cn(
+                    "block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500",
+                    props.className
+                )}
                 value={value}
                 onChange={onChange}
                 {...props}

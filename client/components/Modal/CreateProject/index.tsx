@@ -43,15 +43,17 @@ const CreateProjectModal = (props: Props) => {
     };
 
     const handleSubmit = async () => {
-        const response = await useApi("project", "POST", {
-            name,
-            description,
-            imageUrl,
-        });
+        if (!!name && !!description) {
+            const response = await useApi("project", "POST", {
+                name,
+                description,
+                imageUrl,
+            });
 
-        const { id } = response.data;
-        if (response && id) {
-            router.push(`/projects/${id}`);
+            const { id } = response.data;
+            if (response && id) {
+                router.push(`/projects/${id}`);
+            }
         }
     };
 
@@ -67,7 +69,7 @@ const CreateProjectModal = (props: Props) => {
         <Modal visible={showModal}>
             {!showImageChooser ? (
                 <div className="flex flex-col">
-                    <div className="mb-4 flex flex-row items-center justify-between border-b pb-4">
+                    <div className="flex flex-row items-center justify-between border-b pb-4">
                         <h2 className="my-0">Create a new project</h2>
                         <div
                             className="top-4 flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg bg-gray-200 text-gray-500 hover:bg-indigo-200 hover:text-indigo-500 focus:bg-gray-300"
@@ -75,38 +77,43 @@ const CreateProjectModal = (props: Props) => {
                             <FontAwesomeIcon icon={faClose} />
                         </div>
                     </div>
-                    <p className="mb-2">
-                        To get started, we just need a few pieces of
-                        information.
-                    </p>
-                    <form onSubmit={handleSubmit}>
-                        <div className="mt-2 flex flex-col gap-4">
-                            <Input
-                                type="text"
-                                value={name}
-                                onChange={handleNameChange}
-                                placeholder="What do you want to call it?"
-                                label="Name"
-                            />
-                            <Input
-                                type="text"
-                                value={description}
-                                onChange={handleDescriptionChange}
-                                placeholder="What's it about?"
-                                label="Description"
-                            />
-                            <ImageSelector
-                                value={imageUrl}
-                                onClick={handleImageChooseClick}
-                                onDestroy={handleImageDestroyClick}
-                            />
-                            <Select
-                                options={["Public", "Private"]}
-                                label="Access"
-                            />
-                            <Button label="Get started" variant="solid" />
-                        </div>
-                    </form>
+                    <div className="py-4 -mx-1 px-1 flex flex-col gap-4 max-h-96 overflow-scroll">
+                        <p className="m-0">
+                            To get started, we just need a few pieces of
+                            information.
+                        </p>
+                        <Input
+                            type="text"
+                            value={name}
+                            onChange={handleNameChange}
+                            placeholder="What do you want to call it?"
+                            label="Name"
+                        />
+                        <Input
+                            type="text"
+                            value={description}
+                            onChange={handleDescriptionChange}
+                            placeholder="What's it about?"
+                            label="Description"
+                        />
+                        <ImageSelector
+                            value={imageUrl}
+                            onClick={handleImageChooseClick}
+                            onDestroy={handleImageDestroyClick}
+                        />
+                        <Select
+                            options={["Public", "Private"]}
+                            label="Access"
+                        />
+                    </div>
+                    <div className="flex pt-4 border-t justify-end gap-2">
+                        <Button label="More info" variant="soft" />
+                        <Button
+                            label="Get started"
+                            variant="solid"
+                            onClick={handleSubmit}
+                        />
+                    </div>
                 </div>
             ) : (
                 <div className="-mb-8 flex flex-col">

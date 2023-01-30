@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import ContentCard from "@src/components/ContentCard";
 import Navbar from "@src/components/NavBar";
+import PageCard from "@src/components/PageCard";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import useApi from "@src/hooks/useApi";
@@ -46,11 +47,12 @@ const Pages = () => {
                     <Sidebar />
                     <div className="mx-80 pb-4">
                         <h1 className="p-4 pl-8">My Pages</h1>
-                        <div className="lg:columns-2">
+                        <div className="grid grid-cols-2 gap-4">
                             {data?.map((item) => (
-                                <div className="mb-4">
-                                    <ContentCard page={item} key={item.id} />
-                                </div>
+                                <PageCard page={item} key={item.id} />
+                            ))}
+                            {data?.map((item) => (
+                                <PageCard page={item} key={item.id} />
                             ))}
                         </div>
                     </div>
