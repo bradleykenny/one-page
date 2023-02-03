@@ -22,7 +22,7 @@ const ContentCard = (props: Props) => {
         editable: false,
         editorProps: {
             attributes: {
-                class: "prose prose-stone prose-p:my-2 focus:outline-none bg-white rounded-md max-w-full",
+                class: "prose prose-stone prose-p:my-2 focus:outline-none bg-transparent rounded-md max-w-full",
             },
         },
     });

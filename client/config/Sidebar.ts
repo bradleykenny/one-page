@@ -24,14 +24,14 @@ export const sideBarItems: SideBarItem[] = [
         icon: faHome,
     },
     {
-        title: "Projects",
-        link: "/projects",
-        icon: faFolder,
-    },
-    {
         title: "Pages",
         link: "/pages",
         icon: faFile,
+    },
+    {
+        title: "Projects",
+        link: "/projects",
+        icon: faFolder,
     },
     {
         title: "Templates",
