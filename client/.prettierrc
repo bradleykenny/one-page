@@ -1,0 +1,12 @@
+{
+    "jsxBracketSameLine": true,
+    "tabWidth": 4,
+    "importOrder": ["^react$", "^@src/(.*)$", "^[./]"],
+    "importOrderSeparation": true,
+    "plugins": [
+        "@trivago/prettier-plugin-sort-imports",
+        "prettier-plugin-tailwindcss"
+    ],
+    "pluginSearchDirs": false,
+    "tailwindConfig": "./tailwind.config.js"
+}

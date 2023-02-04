@@ -1,6 +1,7 @@
 import { faClose, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
+
 import { ChangeEvent, MouseEvent, MouseEventHandler, useState } from "react";
 
 import Button from "@src/components/Button";
@@ -77,7 +78,7 @@ const CreateProjectModal = (props: Props) => {
                             <FontAwesomeIcon icon={faClose} />
                         </div>
                     </div>
-                    <div className="py-4 -mx-1 px-1 flex flex-col gap-4 max-h-96 overflow-scroll">
+                    <div className="-mx-1 flex h-96 flex-col gap-4 overflow-y-scroll py-4 px-1">
                         <p className="m-0">
                             To get started, we just need a few pieces of
                             information.
@@ -88,6 +89,7 @@ const CreateProjectModal = (props: Props) => {
                             onChange={handleNameChange}
                             placeholder="What do you want to call it?"
                             label="Name"
+                            required
                         />
                         <Input
                             type="text"
@@ -106,7 +108,7 @@ const CreateProjectModal = (props: Props) => {
                             label="Access"
                         />
                     </div>
-                    <div className="flex pt-4 border-t justify-end gap-2">
+                    <div className="flex justify-end gap-2 border-t pt-4">
                         <Button label="More info" variant="soft" />
                         <Button
                             label="Get started"

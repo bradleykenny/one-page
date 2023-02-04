@@ -31,7 +31,7 @@ const Selector = (props: IProps) => {
     };
 
     const filteredItems = searchTerm
-        ? items.filter(({ label }) => label.includes(searchTerm))
+        ? items.filter(({ label }) => label.toLowerCase().includes(searchTerm))
         : items;
 
     return (

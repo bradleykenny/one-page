@@ -1,10 +1,17 @@
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { MouseEventHandler, UIEvent, useEffect, useState } from "react";
+
+import {
+    ChangeEvent,
+    MouseEventHandler,
+    UIEvent,
+    useEffect,
+    useState,
+} from "react";
 
 import useApi from "@src/hooks/useApi";
-
 import { UnsplashGetPhotosResponse } from "@src/models/dto/Unsplash";
+
 import Input from "../Input";
 
 interface Props {
@@ -16,24 +23,36 @@ const UnsplashSelector = (props: Props) => {
 
     const [result, setResult] = useState<UnsplashGetPhotosResponse[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
+    const [searchTerm, setSearchTerm] = useState<string>("");
 
     const fetchImages = async (page: number) => {
         setLoading(true);
 
         setTimeout(async () => {
-            const response = await useApi(`/unsplash/get?page=${page}`, "GET");
+            const response = searchTerm
+                ? await useApi(
+                      `/unsplash/search?keyword=${searchTerm}&page=${page}`,
+                      "GET"
+                  )
+                : await useApi(`/unsplash/get?page=${page}`, "GET");
+
             if (response?.data) {
                 const newResult = result.concat(...response.data.results);
                 setResult(newResult);
             }
 
-            setLoading(false);
+            
         }, 500);
     };
 
     useEffect(() => {
-        fetchImages(1);
-    }, []);
+        setLoading(true);
+        const getData = setTimeout(() => {
+            fetchImages(1);
+        }, 2000);
+
+        return () => clearTimeout(getData);
+    }, [searchTerm]);
 
     const getMoreImages = async () => {
         const currentPage = result.length / 10 + 1;
@@ -50,16 +69,22 @@ const UnsplashSelector = (props: Props) => {
         }
     };
 
+    const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setResult([]);
+        setSearchTerm(e.target.value);
+    };
+
     return (
         <div
             className="-mx-8 grid h-128 grid-cols-2 gap-2 overflow-y-scroll px-8"
-            onScroll={handleScroll}
-        >
+            onScroll={handleScroll}>
             <div className="col-span-2 mx-1 mb-2">
                 <Input
                     label="Search"
                     type="text"
                     placeholder="Background, abstract, people..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
                 />
             </div>
             {result.map((str) => (

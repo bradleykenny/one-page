@@ -2,6 +2,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProjectResponse } from "models/Project";
 import Head from "next/head";
+
 import { useEffect, useState } from "react";
 
 import CreateProjectModal from "@src/components/Modal/CreateProject";

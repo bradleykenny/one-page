@@ -14,7 +14,24 @@ unsplashRouter.get(
 	async (req: Request, res: any) => {
 		try {
 			const page = Number.parseInt(req.query?.page as string);
-            const photos = await UnsplashService.getPhotos(page);
+			const photos = await UnsplashService.getPhotos(page);
+			res.json(photos?.data);
+		} catch (error) {
+			res.json({ error });
+		}
+	}
+);
+
+unsplashRouter.get(
+	"/search",
+	// AuthService.isLoggedIn,
+	async (req: Request, res: any) => {
+		try {
+			const { keyword } = req.query;
+			const page = Number.parseInt(req.query?.page as string);
+
+			const photos = await UnsplashService.searchPhotos(keyword as string, page);
+			
 			res.json(photos?.data);
 		} catch (error) {
 			res.json({ error });
