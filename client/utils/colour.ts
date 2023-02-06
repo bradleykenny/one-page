@@ -1,3 +1,5 @@
+import twColors from "tailwindcss/colors";
+
 const shouldTextBeDark = (bgColour: string) => {
     if (!bgColour || bgColour.length < 6) {
         return;
@@ -13,6 +15,26 @@ const shouldTextBeDark = (bgColour: string) => {
     return r * 0.299 + g * 0.587 + b * 0.114 > 186;
 };
 
-export default {
-    shouldTextBeDark,
+const getTailwindColors = () => {
+    const filteredColours = ["inherit", "current", "transparent"];
+
+    const twColorKeys = Object.keys(twColors).filter(
+        (key) => !filteredColours.includes(key)
+    );
+
+    const values = {};
+    twColorKeys.forEach((key) => {
+        const color = twColors[key];
+        if (typeof color !== "string") {
+            values[key] = {
+                200: color?.[200],
+                500: color?.[500],
+            };
+        }
+
+    });
+
+    return values;
 };
+
+export { getTailwindColors, shouldTextBeDark };

@@ -7,7 +7,7 @@ import { useState } from "react";
 import Selector from "@src/components/Selector";
 import useApi from "@src/hooks/useApi";
 
-import ColourUtil from "../../utils/colour";
+import {shouldTextBeDark} from "../../utils/colour";
 
 interface IProps {
     page?: PageResponse;
@@ -21,7 +21,7 @@ const SidebarInfo = (props: IProps) => {
     const [projectSelectorItems, setProjectSelectorItems] = useState([]);
     const [isLoadingProjects, setIsLoadingProjects] = useState(false);
 
-    const shouldTextBeDark = ColourUtil.shouldTextBeDark(project?.colour);
+    const isTextDark = shouldTextBeDark(project?.colour);
 
     // TODO: this needs to be memoised so we aren't refetching everytime
     const handleOpenProjectSelector = async () => {
@@ -66,7 +66,7 @@ const SidebarInfo = (props: IProps) => {
                             className="group mt-1 inline-block cursor-pointer self-start rounded-lg px-3 py-1 text-sm transition-all"
                             style={{
                                 backgroundColor: project?.colour || "gray",
-                                color: shouldTextBeDark ? "black" : "white",
+                                color: isTextDark ? "black" : "white",
                             }}>
                             {project?.name || "TBD"}
                             <FontAwesomeIcon

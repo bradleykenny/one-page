@@ -48,7 +48,7 @@ const Pages = () => {
                 <div className="pt-24">
                     <Sidebar />
                     <div className="mx-80 pb-4">
-                        <div className="grid grid-cols-3 gap-4">
+                        <div className="grid grid-cols-2 gap-4">
                             <Link
                                 className="group flex h-full w-full cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-slate-400 bg-gradient-to-br from-slate-50 to-slate-200 shadow transition-all ease-in-out hover:border-0 hover:from-indigo-500 hover:to-blue-500 hover:shadow-lg"
                                 href={"/pages/new"}>

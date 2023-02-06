@@ -11,6 +11,7 @@ import Modal from "@src/components/Modal";
 import Select from "@src/components/Select";
 import UnsplashSelector from "@src/components/UnsplashSelector";
 import useApi from "@src/hooks/useApi";
+import ColorSelector from "@src/components/ColorSelector";
 
 interface Props {
     showModal: boolean;
@@ -107,6 +108,7 @@ const CreateProjectModal = (props: Props) => {
                             options={["Public", "Private"]}
                             label="Access"
                         />
+                        <ColorSelector />
                     </div>
                     <div className="flex justify-end gap-2 border-t pt-4">
                         <Button label="More info" variant="soft" />
