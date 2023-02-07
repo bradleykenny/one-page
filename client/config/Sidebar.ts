@@ -7,6 +7,7 @@ import {
     faFolder,
     faHome,
     faPaperPlane,
+    faSearch,
     faWandMagicSparkles,
     IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
@@ -22,6 +23,11 @@ export const sideBarItems: SideBarItem[] = [
         title: "Home",
         link: "/home",
         icon: faHome,
+    },
+    {
+        title: "Search",
+        link: "/search",
+        icon: faSearch,
     },
     {
         title: "Pages",

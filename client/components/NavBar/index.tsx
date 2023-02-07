@@ -1,24 +1,16 @@
-import { navigationItems } from "config/NavBar";
+import { Unbounded } from "@next/font/google";
 import { useRouter } from "next/router";
+import { cn } from "utils";
 
 import MagicButton from "@src/components/MagicButton";
-import NavLink from "@src/components/NavBar/NavLink";
 import NavProfile from "@src/components/NavBar/NavProfile";
 
-import Input from "../Input";
+const unbounded = Unbounded({ weight: "700", subsets: ["latin"] });
 
-interface Props {
-    activeTab: string;
-}
+interface Props {}
 
 const NavBar = (props: Props) => {
-    const { activeTab } = props;
-
     const router = useRouter();
-
-    const isActive = (name: string) => {
-        return activeTab === name;
-    };
 
     const handleMagicButtonClick = async () => {
         router.push("/pages/new");
@@ -29,8 +21,11 @@ const NavBar = (props: Props) => {
             <div className="box-border flex rounded-lg bg-white px-10 py-4 shadow">
                 <a
                     href="/home"
-                    className="mr-8 inline-block cursor-pointer text-xl font-black text-orange-400 decoration-solid hover:text-orange-500">
-                    one:page
+                    className={cn(
+                        "mr-8 inline-block cursor-pointer text-xl font-black text-orange-400 decoration-solid hover:text-orange-500",
+                        unbounded.className
+                    )}>
+                    one<span className="text-indigo-500">:</span>page
                 </a>
                 <MagicButton title="Create" onClick={handleMagicButtonClick} />
                 <NavProfile title="Brad Kenny" />
