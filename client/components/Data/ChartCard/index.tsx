@@ -58,6 +58,7 @@ export const data = {
             backgroundColor: "rgba(255, 99, 132, 0.2)",
             tension: 0.2,
             fill: true,
+            pointRadius: 0
         },
     ],
 };
@@ -77,7 +78,7 @@ const ChartCard = () => {
                         ▼ 42.8%
                     </p>
                 </div>
-                <div className="absolute bottom-0 inset-x-0 opacity-50 -m-4">
+                <div className="absolute top-10 bottom-0 inset-x-0 opacity-50 -m-2">
                     <Line options={options} data={data} />
                 </div>
             </div>

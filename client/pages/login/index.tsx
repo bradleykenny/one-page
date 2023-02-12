@@ -1,21 +1,13 @@
+import { getSession, signIn } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+
 import React, { useState } from "react";
 
 import Button from "@src/components/Button";
 import Input from "@src/components/Input";
-import useApi from "@src/hooks/useApi";
 
 const Login = () => {
-    const router = useRouter();
-
-    if (typeof window !== "undefined") {
-        const isLoggedIn = localStorage.getItem("token");
-        if (isLoggedIn) {
-            router.push("/home");
-        }
-    }
-
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -30,15 +22,10 @@ const Login = () => {
     const handleLoginSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
 
-        const response = await useApi("auth/login", "POST", {
-            email: username.trim(),
-            password: password.trim(),
+        signIn("credentials", {
+            email: username,
+            password,
         });
-
-        if (response) {
-            localStorage.setItem("token", response?.data?.token);
-            router.push("/home");
-        }
     };
 
     return (
@@ -78,6 +65,7 @@ const Login = () => {
                                 label="Username"
                                 placeholder="example@mail.com"
                                 required
+                                autoFocus
                                 onChange={handleUsernameChange}
                             />
                             <Input
@@ -100,5 +88,20 @@ const Login = () => {
         </div>
     );
 };
+
+export async function getServerSideProps(context) {
+    const { req } = context;
+    const session = await getSession({ req });
+    
+    if (session) {
+        return {
+            redirect: { destination: "/home" },
+        };
+    }
+
+    return {
+        props: {},
+    };
+}
 
 export default Login;

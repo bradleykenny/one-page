@@ -1,38 +1,19 @@
-import { Pacifico } from "@next/font/google";
-import jwt from "jsonwebtoken";
+import axios from "axios";
+import APIs from "config/APIs";
 import Head from "next/head";
 import Link from "next/link";
-
-import { useEffect, useState } from "react";
-
-import ContentCard from "@src/components/ContentCard";
 import Navbar from "@src/components/NavBar";
 import PageCard from "@src/components/PageCard";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
-import useApi from "@src/hooks/useApi";
+import { PageResponse } from "@src/models/Page";
 
-const Pages = () => {
-    const [data, setData] = useState([]);
+interface Props {
+    pages: PageResponse[];
+}
 
-    // TODO: cant use til next 13
-    // const pacifico = Pacifico({ weight: "400" });
-
-    useEffect(() => {
-        const getData = async () => {
-            const token = localStorage.getItem("token");
-            const decoded = jwt.decode(token);
-
-            const userId = decoded?.["username"];
-            const response = await useApi(`page/user/${userId}`, "GET");
-
-            if (response && response.data) {
-                setData(response.data);
-            }
-        };
-
-        getData();
-    }, []);
+const Pages = (props: Props) => {
+    const { pages } = props;
 
     return (
         <div>
@@ -44,7 +25,7 @@ const Pages = () => {
                 />
             </Head>
             <div className="min-h-screen bg-gray-200">
-                <Navbar activeTab="Pages" />
+                <Navbar />
                 <div className="pt-24">
                     <Sidebar />
                     <div className="mx-80 pb-4">
@@ -56,10 +37,10 @@ const Pages = () => {
                                     New page
                                 </p>
                             </Link>
-                            {data?.map((item) => (
+                            {pages?.map((item) => (
                                 <PageCard page={item} key={item.id} />
                             ))}
-                            {data?.map((item) => (
+                            {pages?.map((item) => (
                                 <PageCard page={item} key={item.id} />
                             ))}
                         </div>
@@ -70,5 +51,15 @@ const Pages = () => {
         </div>
     );
 };
+
+export async function getStaticProps() {
+    const result = await axios.get(APIs.pages.getByUser + "?");
+
+    return {
+        props: {
+            pages: result?.data,
+        },
+    };
+}
 
 export default Pages;

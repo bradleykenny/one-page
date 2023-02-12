@@ -29,6 +29,7 @@ ChartJS.register(
 
 export const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
         legend: {
             display: false,
@@ -57,7 +58,8 @@ export const data = {
             backgroundColor: "rgba(132, 99, 255, 0.2)",
             tension: 0.2,
             fill: true,
-        },
+            pointRadius: 0
+        }
     ],
 };
 
@@ -76,7 +78,7 @@ const StatCard = () => {
                         ▲ 8.2%
                     </p>
                 </div>
-                <div className="absolute bottom-0 inset-x-0 opacity-50 -m-4">
+                <div className="absolute top-10 bottom-0 inset-x-0 opacity-50 -m-2">
                     <Line options={options} data={data} />
                 </div>
             </div>

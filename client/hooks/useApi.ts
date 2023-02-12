@@ -1,5 +1,6 @@
 import axios from "axios";
 import { RequestTypes } from "models/RequestTypes";
+import { getSession } from "next-auth/react";
 
 const useApi = async (
     route: string,
@@ -7,14 +8,15 @@ const useApi = async (
     data?: any
 ) => {
     const sanitisedRoute = route.at(0) === "/" ? route.slice(1) : route;
-    const apiUrl = "http://localhost:5001/api/v1/";
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     const fullRoute = `${apiUrl}${sanitisedRoute}/`;
 
     let headers = {};
-    const authToken = localStorage.getItem("token");
-    if (authToken) {
+    const session = await getSession();
+    const { token } = session['token'];
+    if (token) {
         headers = {
-            Authorization: "Bearer " + authToken,
+            Authorization: "Bearer " + token,
         };
     }
 

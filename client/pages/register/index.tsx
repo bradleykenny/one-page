@@ -1,5 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useCookies } from "react-cookie";
+
 import React, { ChangeEvent, useState } from "react";
 
 import Button from "@src/components/Button";
@@ -8,6 +10,8 @@ import useApi from "@src/hooks/useApi";
 
 const Register = () => {
     const router = useRouter();
+
+    const [cookies, setCookie] = useCookies(["token"]);
 
     if (typeof window !== "undefined") {
         const isLoggedIn = localStorage.getItem("token");
@@ -40,6 +44,10 @@ const Register = () => {
 
         if (response) {
             localStorage.setItem("token", response?.data?.token);
+            setCookie("token", JSON.stringify(response?.data?.token), {
+                path: "/",
+            });
+
             router.push("/home");
         }
     };
