@@ -41,7 +41,7 @@ const login = async (
 			{ username: user?.email },
 			process.env.SECRET as string
 		);
-		console.log(token);
+		
 		res.json({ token });
 	} else {
 		res.status(500).send("Incorrect username/password");

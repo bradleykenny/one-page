@@ -21,8 +21,6 @@ const useFetch = (params: useFetchParams) => {
 
     const [cookie] = useCookies(["token"]);
 
-    console.log('c', cookie);
-
     const authToken = cookie.token;
     if (authToken) {
         headers["Authorization"] = "Bearer " + authToken;

@@ -1,12 +1,17 @@
 import axios from "axios";
 import APIs from "config/APIs";
+import jwt from "jsonwebtoken";
+import { getServerSession } from "next-auth";
 import Head from "next/head";
 import Link from "next/link";
+
 import Navbar from "@src/components/NavBar";
 import PageCard from "@src/components/PageCard";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import { PageResponse } from "@src/models/Page";
+
+import { authOptions } from "../api/auth/[...nextauth]";
 
 interface Props {
     pages: PageResponse[];
@@ -52,12 +57,32 @@ const Pages = (props: Props) => {
     );
 };
 
-export async function getStaticProps() {
-    const result = await axios.get(APIs.pages.getByUser + "?");
+export async function getServerSideProps(ctx) {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    const session = await getServerSession(ctx.req, ctx.res, authOptions);
+    const { token } = session["token"];
+
+    let headers = {};
+    if (token) {
+        headers = {
+            Authorization: `Bearer ${token}`,
+        };
+    }
+
+    const decodedJwt = jwt.decode(token);
+    const userId = decodedJwt?.["username"];
+
+    const pages = await axios.get(
+        apiUrl.concat(APIs.pages.getByUser, `/${userId}`),
+        {
+            headers,
+        }
+    );
 
     return {
         props: {
-            pages: result?.data,
+            pages: pages.data,
         },
     };
 }
