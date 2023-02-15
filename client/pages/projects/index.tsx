@@ -24,7 +24,7 @@ const Projects = () => {
         const getProjects = async () => {
             // TODO: temporary until i add pagination
             const projectsResponse = await useApi(
-                "project/all?limit=100",
+                "/project/all?limit=100",
                 "GET"
             );
             setProjects(projectsResponse?.data);
@@ -43,20 +43,20 @@ const Projects = () => {
                 />
             </Head>
             <div className="min-h-screen bg-gray-200">
-                <Navbar activeTab="Projects" />
+                <Navbar />
                 <div className="pt-24">
                     <Sidebar />
                     <div className="mx-80 pb-6">
                         <div
                             className="group mb-4 flex cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-orange-500 py-8 text-center text-white shadow hover:shadow-md"
                             onClick={handleShowModal}>
-                            <h1 className="mb-0 mr-2 inline text-white">
+                            <h1 className="mb-0 mr-2 inline text-lg font-semibold text-white">
                                 Start new project
                             </h1>
                             <span className="transition-all group-hover:translate-x-1">
                                 <FontAwesomeIcon
                                     icon={faArrowRight}
-                                    size={"xl"}
+                                    size={"lg"}
                                 />
                             </span>
                         </div>

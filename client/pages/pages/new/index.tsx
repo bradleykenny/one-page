@@ -23,7 +23,7 @@ const NewPage = () => {
 
     return (
         <div className="bg-gray-200">
-            <Navbar activeTab="Pages" />
+            <Navbar />
             <div className="pt-24">
                 <Sidebar />
                 <div className="mx-4 md:mx-80">

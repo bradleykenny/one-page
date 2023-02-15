@@ -1,8 +1,9 @@
 import { faIcons, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Card from "@src/components/Card";
 import { ProjectResponse } from "models/Project";
 import { useRouter } from "next/router";
+
+import Card from "@src/components/Card";
 
 interface Props {
     project: ProjectResponse;
@@ -19,13 +20,15 @@ const ProjectCard = (props: Props) => {
     return (
         <div
             onClick={() => handleProjectClick(project.id)}
-            className="cursor-pointer">
+            className="group cursor-pointer">
             <Card>
                 <div className="-mx-8 -mt-6 mb-4 h-36 overflow-hidden">
                     {project.imageUrl ? (
-                        <img
-                            src={project.imageUrl}
-                            className="w-full bg-cover"
+                        <div
+                            className="relative h-full w-full bg-cover bg-center transition-all ease-in-out group-hover:scale-105"
+                            style={{
+                                backgroundImage: `url('${project.imageUrl}')`,
+                            }}
                         />
                     ) : (
                         <div

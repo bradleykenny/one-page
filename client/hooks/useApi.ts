@@ -7,9 +7,8 @@ const useApi = async (
     requestType?: RequestTypes,
     data?: any
 ) => {
-    const sanitisedRoute = route.at(0) === "/" ? route.slice(1) : route;
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    const fullRoute = `${apiUrl}${sanitisedRoute}/`;
+    const fullRoute = `${apiUrl}${route}/`;
 
     let headers = {};
     const session = await getSession();

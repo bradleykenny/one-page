@@ -24,14 +24,14 @@ const Home: NextPage = () => {
             </a>
             <div className="mb-10 snap-x overflow-scroll whitespace-nowrap p-10 pb-0">
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
-                    <div className="mr-8 inline-block w-1/4 snap-center justify-center self-center overflow-hidden rounded-xl bg-slate-50 p-4 shadow last:mr-0">
-                        <div className="-ml-8 -mt-36 mb-4 h-96 w-96 rounded-full bg-indigo-600/30 p-12 shadow-lg">
+                    <div className="mr-8 inline-block w-[22rem] snap-center justify-center self-center overflow-hidden rounded-xl bg-slate-50 p-4 shadow last:mr-0">
+                        <div className="-ml-8 -mt-32 mb-4 h-96 w-96 rounded-full bg-indigo-600/30 p-12 shadow-lg">
                             <div className="h-72 w-72 rounded-full bg-indigo-600/30 p-12 shadow-lg">
                                 <div className="h-48 w-48 rounded-full bg-indigo-600/30 p-12 shadow-lg">
-                                    <div className="h-24 w-24 rounded-full bg-indigo-600/30 shadow-lg">
+                                    <div className="flex h-24 w-24 items-center justify-center rounded-full bg-indigo-600/30 shadow-lg">
                                         <FontAwesomeIcon
                                             icon={faAnchor}
-                                            className="ml-6 mt-6 h-10 text-indigo-800 drop-shadow-lg"
+                                            className="h-10 text-indigo-800 drop-shadow-lg"
                                         />
                                     </div>
                                 </div>

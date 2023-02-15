@@ -2,6 +2,8 @@ import {
     faChartLine,
     faCog,
     faComment,
+    faCube,
+    faCubes,
     faDatabase,
     faFile,
     faFolder,
@@ -37,7 +39,7 @@ export const sideBarItems: SideBarItem[] = [
     {
         title: "Projects",
         link: "/projects",
-        icon: faFolder,
+        icon: faCube,
     },
     {
         title: "Templates",

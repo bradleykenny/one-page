@@ -46,7 +46,7 @@ const CreateProjectModal = (props: Props) => {
 
     const handleSubmit = async () => {
         if (!!name && !!description) {
-            const response = await useApi("project", "POST", {
+            const response = await useApi("/project", "POST", {
                 name,
                 description,
                 imageUrl,

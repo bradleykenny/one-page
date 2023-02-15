@@ -1,6 +1,9 @@
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import APIs from "config/APIs";
 import jwt from "jsonwebtoken";
+import { GetServerSidePropsContext } from "next";
 import { getServerSession } from "next-auth";
 import Head from "next/head";
 import Link from "next/link";
@@ -35,12 +38,15 @@ const Pages = (props: Props) => {
                     <Sidebar />
                     <div className="mx-80 pb-4">
                         <div className="grid grid-cols-2 gap-4">
-                            <Link
-                                className="group flex h-full w-full cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-slate-400 bg-gradient-to-br from-slate-50 to-slate-200 shadow transition-all ease-in-out hover:border-0 hover:from-indigo-500 hover:to-blue-500 hover:shadow-lg"
-                                href={"/pages/new"}>
-                                <p className="text-md font-semibold text-gray-800 group-hover:text-white">
-                                    New page
-                                </p>
+                            <Link href={"/pages/new"}>
+                                <div className="group flex h-full w-full cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-slate-400 bg-gradient-to-br from-slate-50 to-slate-200 text-gray-800 shadow transition-all ease-in-out hover:border-0 hover:from-indigo-500 hover:to-orange-500 hover:text-white hover:shadow-lg">
+                                    <p className="text-md group m-0 font-semibold">
+                                        New page
+                                    </p>
+                                    <span className="ml-2 transition-all group-hover:translate-x-1">
+                                        <FontAwesomeIcon icon={faArrowRight} />
+                                    </span>
+                                </div>
                             </Link>
                             {pages?.map((item) => (
                                 <PageCard page={item} key={item.id} />
@@ -57,10 +63,10 @@ const Pages = (props: Props) => {
     );
 };
 
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-    const session = await getServerSession(ctx.req, ctx.res, authOptions);
+    const session = await getServerSession(context.req, context.res, authOptions);
     const { token } = session["token"];
 
     let headers = {};
