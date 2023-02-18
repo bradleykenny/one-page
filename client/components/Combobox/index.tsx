@@ -1,82 +1,104 @@
-import {
-    faChevronDown,
-    faChevronUp,
-    faClose,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faSort } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ChangeEvent, useState } from "react";
-import Input from "@src/components/Input";
+import { Combobox, Transition } from "@headlessui/react";
+
+import { Fragment, useState } from "react";
 
 interface Item {
-    label: string;
     value: string;
+    label: string;
 }
 
-interface IProps {
+interface Props {
+    value: Item;
     items: Item[];
-    onClick?: Function;
-    onSelect?: Function;
-    onClose?: () => void;
+    onChange: (value: Item) => void;
 }
 
-const Selector = (props: IProps) => {
-    const { items, onClose } = props;
+export default (props: Props) => {
+    const { value, items, onChange} = props;
+    
+    const [query, setQuery] = useState("");
 
-    const [isExpanded, setIsExpanded] = useState(false);
-
-    const [searchTerm, setSearchTerm] = useState(undefined);
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(e.target.value.trim());
-    };
-
-    const handleItemClick = (item: Item) => {
-        onClose();
-    };
-
-    const filteredItems = searchTerm
-        ? items.filter(({ label }) => label.includes(searchTerm))
-        : items;
+    const filteredItems =
+        query === ""
+            ? items
+            : items.filter((item) =>
+                  item.value
+                      .toLowerCase()
+                      .replace(/\s+/g, "")
+                      .includes(query.toLowerCase().replace(/\s+/g, ""))
+              );
 
     return (
-        <>
-            <div
-                className="flex items-center"
-                onBlur={() => {
-                    setIsExpanded(false);
-                }}
-                onClick={() => {
-                    setIsExpanded(true);
-                }}>
-                <input
-                    type="text"
-                    className="block w-full rounded-lg border-gray-300 pr-8 shadow-sm focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500"
-                    onChange={handleChange}
-                />
-                <div className="-ml-6 flex flex-col">
-                    <FontAwesomeIcon
-                        icon={faChevronUp}
-                        className="h-3 w-3 text-gray-500 hover:text-gray-900"
-                        onClick={onClose}
+        <Combobox value={value} onChange={onChange}>
+            <div className="relative mt-1">
+                <div className="relative w-full cursor-default overflow-hidden rounded-lg border border-gray-300 bg-white py-2 px-3 text-left shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
+                    <Combobox.Input
+                        className="w-full border-none p-0 text-gray-900 focus:ring-0"
+                        displayValue={(item) => item.label}
+                        onChange={(event) => setQuery(event.target.value)}
                     />
-                    <FontAwesomeIcon
-                        icon={faChevronDown}
-                        className="h-3 w-3 text-gray-500 hover:text-gray-900"
-                        onClick={onClose}
-                    />
+                    <Combobox.Button className="absolute inset-y-0 right-2 flex items-center pr-2">
+                        <FontAwesomeIcon
+                            icon={faSort}
+                            className="text-gray-500"
+                        />
+                    </Combobox.Button>
                 </div>
+                <Transition
+                    as={Fragment}
+                    leave="transition ease-in duration-100"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                    afterLeave={() => setQuery("")}>
+                    <Combobox.Options className="absolute mt-2 max-h-60 w-full overflow-auto rounded-lg border border-gray-300 bg-white py-1 shadow-sm  focus:outline-none sm:text-sm">
+                        {filteredItems.length === 0 && query !== "" ? (
+                            <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
+                                Nothing found.
+                            </div>
+                        ) : (
+                            filteredItems.map((item) => (
+                                <Combobox.Option
+                                    key={item.value}
+                                    className={({ active }) =>
+                                        `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                                            active
+                                                ? "bg-orange-500 text-white"
+                                                : "text-gray-900"
+                                        }`
+                                    }
+                                    value={item}>
+                                    {({ selected, active }) => (
+                                        <>
+                                            <span
+                                                className={`block truncate ${
+                                                    selected
+                                                        ? "font-medium"
+                                                        : "font-normal"
+                                                }`}>
+                                                {item.label}
+                                            </span>
+                                            {selected ? (
+                                                <span
+                                                    className={`absolute inset-y-0 left-0 flex items-center pl-4 ${
+                                                        active
+                                                            ? "text-white"
+                                                            : "text-orange-500"
+                                                    }`}>
+                                                    <FontAwesomeIcon
+                                                        icon={faCheck}
+                                                    />
+                                                </span>
+                                            ) : null}
+                                        </>
+                                    )}
+                                </Combobox.Option>
+                            ))
+                        )}
+                    </Combobox.Options>
+                </Transition>
             </div>
-            {isExpanded && (
-                <div className="absolute mt-14 overflow-hidden bg-white ring block rounded-lg border-gray-300 shadow-sm focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500">
-                    <ul>
-                        {filteredItems.map((i) => (
-                            <li className="p-2 hover:bg-gray-100 w-full">{i.label}</li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-        </>
+        </Combobox>
     );
 };
-
-export default Selector;

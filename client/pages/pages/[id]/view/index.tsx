@@ -17,7 +17,9 @@ const EditPage = () => {
 };
 
 export async function getServerSideProps(ctx) {
-    
+    return {
+        props: {}
+    }   
 }
 
 export default EditPage;

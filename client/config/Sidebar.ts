@@ -10,6 +10,7 @@ import {
     faHome,
     faPaperPlane,
     faSearch,
+    faUserGroup,
     faWandMagicSparkles,
     IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
@@ -40,6 +41,11 @@ export const sideBarItems: SideBarItem[] = [
         title: "Projects",
         link: "/projects",
         icon: faCube,
+    },
+    {
+        title: "Groups",
+        link: "/groups",
+        icon: faUserGroup,
     },
     {
         title: "Templates",

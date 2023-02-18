@@ -1,3 +1,7 @@
+import Head from "next/head";
+
+import { useState } from "react";
+
 import Button from "@src/components/Button";
 import Checkbox from "@src/components/Checkbox";
 import Combobox from "@src/components/Combobox";
@@ -5,11 +9,22 @@ import Input from "@src/components/Input";
 import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
-import Head from "next/head";
-import { useState } from "react";
 
 const Test = () => {
     const [checked, setChecked] = useState(false);
+
+    const comboboxData = [
+        { value: "1", label: "Wade Cooper" },
+        { value: "2", label: "Arlene Mccoy" },
+        { value: "3", label: "Devon Webb" },
+        { value: "4", label: "Tom Cook" },
+        { value: "5", label: "Tanya Fox" },
+        { value: "6", label: "Hellen Schmidt" },
+    ];
+    const [cbSelection, setCbSelection] = useState(undefined);
+    const handleCbChange = (item: any) => {
+        setCbSelection(item);
+    };
 
     return (
         <div>
@@ -21,25 +36,10 @@ const Test = () => {
                 />
             </Head>
             <div className="min-h-screen bg-gray-200">
-                <Navbar activeTab="Projects" />
+                <Navbar />
                 <div className="pt-24">
                     <Sidebar />
                     <div className="z-0 mx-80 flex flex-col gap-4 rounded-lg bg-white p-6 shadow">
-                        <Combobox
-                            items={[
-                                { label: "one", value: undefined },
-                                { label: "two", value: undefined },
-                                { label: "three", value: undefined },
-                                { label: "four", value: undefined },
-                                { label: "five", value: undefined },
-                                { label: "six", value: undefined },
-                                { label: "seven", value: undefined },
-                                { label: "eight", value: undefined },
-                            ]}
-                            onClose={() => {
-                                
-                            }}
-                        />
                         <Input
                             type="text"
                             label="Name"
@@ -68,6 +68,11 @@ const Test = () => {
                         <div className="flex">
                             <Button label="Submit" variant="solid" />
                         </div>
+                        <Combobox
+                            value={cbSelection}
+                            items={comboboxData}
+                            onChange={handleCbChange}
+                        />
                     </div>
                     <SidebarInfo />
                 </div>

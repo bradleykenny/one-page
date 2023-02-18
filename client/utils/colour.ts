@@ -27,8 +27,8 @@ const getTailwindColors = () => {
         const color = twColors[key];
         if (typeof color !== "string") {
             values[key] = {
-                200: color?.[200],
-                500: color?.[500],
+                200: color?.[300],
+                500: color?.[600],
             };
         }
 

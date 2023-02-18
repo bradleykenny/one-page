@@ -16,6 +16,11 @@ pageRouter.get(
 	AuthService.isLoggedIn,
 	PageController.getUserPages
 );
+pageRouter.get(
+	"/project/:projectId",
+	AuthService.isLoggedIn,
+	PageController.getProjectPages
+);
 pageRouter.get("/all", AuthService.isLoggedIn, PageController.getAllPages);
 pageRouter.post("/update", AuthService.isLoggedIn, PageController.updatePage);
 pageRouter.post(

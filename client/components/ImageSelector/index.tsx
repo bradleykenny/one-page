@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MouseEventHandler } from "react";
 
 interface Props {
-    onClick: MouseEventHandler<HTMLDivElement>;
     value: string;
+    onClick: MouseEventHandler<HTMLDivElement>;
     onDestroy: MouseEventHandler<SVGSVGElement>;
 }
 
 const ImageSelector = (props: Props) => {
     const { onClick, onDestroy, value } = props;
+    
     return (
         <div>
             <label

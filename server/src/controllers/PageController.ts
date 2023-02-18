@@ -34,6 +34,19 @@ const getAllPages = async (req: Request, res: Response) => {
 	}
 };
 
+const getProjectPages = async (req: Request, res: Response) => {
+	try {
+		const { projectId } = req.params;
+		const limit = Number.parseInt(req.query?.limit as string);
+		const offset = Number.parseInt(req.query?.offset as string);
+
+		const pages = await PageService.getProjectPages(projectId, limit, offset);
+		res.status(200).json(pages);
+	} catch (error) {
+		res.status(500).json({ error });
+	}
+};
+
 const getUserPages = async (req: Request, res: Response) => {
 	try {
 		const { userId } = req.params;
@@ -77,6 +90,7 @@ const linkProject = async (
 export default {
     addPage,
 	getAllPages,
+	getProjectPages,
 	getUserPages,
 	linkProject,
 	updatePage,

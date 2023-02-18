@@ -28,7 +28,7 @@ const SidebarInfo = (props: IProps) => {
         setShowProjectSelector(true);
         setIsLoadingProjects(true);
 
-        const allProjects = await useApi("project/all?limit=100", "GET");
+        const allProjects = await useApi("/project/all?limit=100", "GET");
         const mutatedSelectorProjects = allProjects.data?.map((project) => ({
             value: project.id,
             label: project.name,

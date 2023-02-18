@@ -5,13 +5,13 @@ import { useRouter } from "next/router";
 import { ChangeEvent, MouseEvent, MouseEventHandler, useState } from "react";
 
 import Button from "@src/components/Button";
+import ColorSelector from "@src/components/ColorSelector";
 import ImageSelector from "@src/components/ImageSelector";
 import Input from "@src/components/Input";
 import Modal from "@src/components/Modal";
 import Select from "@src/components/Select";
 import UnsplashSelector from "@src/components/UnsplashSelector";
 import useApi from "@src/hooks/useApi";
-import ColorSelector from "@src/components/ColorSelector";
 
 interface Props {
     showModal: boolean;
@@ -79,7 +79,7 @@ const CreateProjectModal = (props: Props) => {
                             <FontAwesomeIcon icon={faClose} />
                         </div>
                     </div>
-                    <div className="-mx-1 flex h-96 flex-col gap-4 overflow-y-scroll py-4 px-1">
+                    <div className="-mx-1 flex h-[50vh] flex-col gap-4 overflow-y-scroll py-4 px-1">
                         <p className="m-0">
                             To get started, we just need a few pieces of
                             information.
@@ -108,7 +108,7 @@ const CreateProjectModal = (props: Props) => {
                             options={["Public", "Private"]}
                             label="Access"
                         />
-                        <ColorSelector />
+                        <ColorSelector label="Colour" />
                     </div>
                     <div className="flex justify-end gap-2 border-t pt-4">
                         <Button label="More info" variant="soft" />

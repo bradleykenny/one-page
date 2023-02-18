@@ -1,37 +1,31 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProjectResponse } from "models/Project";
+import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
+import { getApiData } from "utils/http";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import CreateProjectModal from "@src/components/Modal/CreateProject";
 import Navbar from "@src/components/NavBar";
 import ProjectCard from "@src/components/ProjectCard";
 import Sidebar from "@src/components/Sidebar";
-import SidebarInfo from "@src/components/SidebarInfo";
-import useApi from "@src/hooks/useApi";
+import { useRouter } from "next/router";
 
-const Projects = () => {
-    const [projects, setProjects] = useState<ProjectResponse[]>([]);
+interface Props {
+    projects: ProjectResponse[];
+}
+
+function Projects(props: Props) {
+    const { projects } = props;
+    
     const [showModal, setShowModal] = useState(false);
-
     const handleShowModal = () => {
         setShowModal(!showModal);
     };
 
-    useEffect(() => {
-        const getProjects = async () => {
-            // TODO: temporary until i add pagination
-            const projectsResponse = await useApi(
-                "/project/all?limit=100",
-                "GET"
-            );
-            setProjects(projectsResponse?.data);
-        };
-
-        getProjects();
-    }, []);
+    const { isReady } = useRouter();
 
     return (
         <div>
@@ -46,7 +40,7 @@ const Projects = () => {
                 <Navbar />
                 <div className="pt-24">
                     <Sidebar />
-                    <div className="mx-80 pb-6">
+                    <div className="ml-80 mr-4 pb-6">
                         <div
                             className="group mb-4 flex cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-orange-500 py-8 text-center text-white shadow hover:shadow-md"
                             onClick={handleShowModal}>
@@ -64,17 +58,30 @@ const Projects = () => {
                             showModal={showModal}
                             handleShowModal={handleShowModal}
                         />
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                             {projects?.map((item) => (
                                 <ProjectCard project={item} />
                             ))}
                         </div>
+                        {isReady && <p>Loading...</p>}
                     </div>
-                    <SidebarInfo />
                 </div>
             </div>
         </div>
     );
-};
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const projects = await getApiData<ProjectResponse[]>(
+        context,
+        "/project/all?limit=100"
+    );
+
+    return {
+        props: {
+            projects,
+        },
+    };
+}
 
 export default Projects;

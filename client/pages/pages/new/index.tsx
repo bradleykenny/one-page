@@ -1,7 +1,7 @@
 import { JSONContent } from "@tiptap/react";
 import { useRouter } from "next/router";
 
-import EditorV3 from "@src/components/EditorV3";
+import EditorV3 from "@src/components/Editor";
 import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";

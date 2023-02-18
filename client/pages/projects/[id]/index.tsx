@@ -1,51 +1,24 @@
 import { faIcons, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ProjectResponse } from "models/Project";
+import { GetServerSidePropsContext } from "next";
+import Head from "next/head";
+import { getApiData } from "utils/http";
+
 import Card from "@src/components/Card";
 import Navbar from "@src/components/NavBar";
+import PageCard from "@src/components/PageCard";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
-import useApi from "@src/hooks/useApi";
-import { ProjectResponse } from "models/Project";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { PageResponse } from "@src/models/Page";
 
-const dummyData = [
-    {
-        id: "1",
-        title: "First document",
-        description: "This is some content that is not real.",
-    },
-    {
-        id: "2",
-        title: "Second document",
-        description: "This is also some content that is not real.",
-    },
-    {
-        id: "3",
-        title: "Third document",
-        description: "This is also also some content that is not real.",
-    },
-];
+interface Props {
+    project: ProjectResponse;
+    pages: PageResponse[];
+}
 
-const Projects = () => {
-    const router = useRouter();
-    const queryId = router.query?.id;
-    const [project, setProject] = useState<ProjectResponse>(undefined);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            if (!queryId) {
-                return;
-            }
-
-            const response = await useApi(`/project/${queryId}`, "GET");
-            if (response?.data) {
-                setProject(response.data);
-            }
-        };
-        fetchData();
-    }, [queryId]);
+function Project(props: Props) {
+    const { project, pages } = props;
 
     return (
         <div>
@@ -57,7 +30,7 @@ const Projects = () => {
                 />
             </Head>
             <div className="min-h-screen bg-gray-200">
-                <Navbar activeTab="Projects" />
+                <Navbar />
                 <div className="pt-24">
                     <Sidebar />
                     <div className="mx-80 pb-6">
@@ -65,9 +38,11 @@ const Projects = () => {
                             <Card>
                                 <div className="-mx-8 -mt-6 mb-4 h-48 overflow-hidden">
                                     {project.imageUrl ? (
-                                        <img
-                                            src={project.imageUrl}
-                                            className="-mt-24 w-full bg-cover"
+                                        <div
+                                            className="relative h-full w-full bg-cover bg-center transition-all ease-in-out hover:scale-105"
+                                            style={{
+                                                backgroundImage: `url('${project.imageUrl}')`,
+                                            }}
                                         />
                                     ) : (
                                         <div className="flex h-full w-full items-center justify-center bg-orange-100 text-orange-300">
@@ -98,17 +73,8 @@ const Projects = () => {
                         <h1 className="pt-6 pl-6 pb-2">Pages</h1>
                         {project && (
                             <div className="grid grid-cols-2 gap-4">
-                                {dummyData.map((data) => (
-                                    <div className="w-full">
-                                        <Card>
-                                            <h2 className="m-0">
-                                                {data.title}
-                                            </h2>
-                                            <p className="m-0 text-gray-500">
-                                                {data.description}
-                                            </p>
-                                        </Card>
-                                    </div>
+                                {pages?.map((page) => (
+                                    <PageCard page={page} />
                                 ))}
                             </div>
                         )}
@@ -118,6 +84,26 @@ const Projects = () => {
             </div>
         </div>
     );
-};
+}
 
-export default Projects;
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const queryId = context.query.id;
+    const project = await getApiData<ProjectResponse>(
+        context,
+        `/project/${queryId}`
+    );
+
+    const pages = await getApiData<PageResponse[]>(
+        context,
+        `/page/project/${project.id}`
+    );
+
+    return {
+        props: {
+            project,
+            pages,
+        },
+    };
+}
+
+export default Project;

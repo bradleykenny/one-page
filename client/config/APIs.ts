@@ -1,11 +1,15 @@
 const APIs = {
     pages: {
         getAll: "",
-        getByUser: "/page/user"
+        getByUser: "/page/user/${userId}",
     },
     project: {
-        getAll: ""
+        getAll: "",
     },
+};
+
+export const apiVariables = {
+    userId: "${userId}",
 };
 
 export default APIs;

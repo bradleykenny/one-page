@@ -7,6 +7,7 @@ import { GetServerSidePropsContext } from "next";
 import { getServerSession } from "next-auth";
 import Head from "next/head";
 import Link from "next/link";
+import { getApiData } from "utils/http";
 
 import Navbar from "@src/components/NavBar";
 import PageCard from "@src/components/PageCard";
@@ -36,8 +37,8 @@ const Pages = (props: Props) => {
                 <Navbar />
                 <div className="pt-24">
                     <Sidebar />
-                    <div className="mx-80 pb-4">
-                        <div className="grid grid-cols-2 gap-4">
+                    <div className="ml-4 mr-4 pb-4 md:ml-80">
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                             <Link href={"/pages/new"}>
                                 <div className="group flex h-full w-full cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-slate-400 bg-gradient-to-br from-slate-50 to-slate-200 text-gray-800 shadow transition-all ease-in-out hover:border-0 hover:from-indigo-500 hover:to-orange-500 hover:text-white hover:shadow-lg">
                                     <p className="text-md group m-0 font-semibold">
@@ -51,12 +52,8 @@ const Pages = (props: Props) => {
                             {pages?.map((item) => (
                                 <PageCard page={item} key={item.id} />
                             ))}
-                            {pages?.map((item) => (
-                                <PageCard page={item} key={item.id} />
-                            ))}
                         </div>
                     </div>
-                    <SidebarInfo />
                 </div>
             </div>
         </div>
@@ -64,31 +61,14 @@ const Pages = (props: Props) => {
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-    const session = await getServerSession(context.req, context.res, authOptions);
-    const { token } = session["token"];
-
-    let headers = {};
-    if (token) {
-        headers = {
-            Authorization: `Bearer ${token}`,
-        };
-    }
-
-    const decodedJwt = jwt.decode(token);
-    const userId = decodedJwt?.["username"];
-
-    const pages = await axios.get(
-        apiUrl.concat(APIs.pages.getByUser, `/${userId}`),
-        {
-            headers,
-        }
+    const pages = await getApiData<PageResponse[]>(
+        context,
+        APIs.pages.getByUser
     );
 
     return {
         props: {
-            pages: pages.data,
+            pages,
         },
     };
 }
