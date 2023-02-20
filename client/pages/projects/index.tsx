@@ -63,7 +63,6 @@ function Projects(props: Props) {
                                 <ProjectCard project={item} />
                             ))}
                         </div>
-                        {isReady && <p>Loading...</p>}
                     </div>
                 </div>
             </div>

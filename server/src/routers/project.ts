@@ -39,6 +39,21 @@ projectRouter.get(
 	}
 );
 
+projectRouter.get(
+	"/byIds",
+	AuthService.isLoggedIn,
+	async (req: Request, res: Response) => {
+		try {
+			const { ids } = req.query;
+			const page = await ProjectService.getProjectsByIds(ids as string[]);
+
+			res.status(200).json(page);
+		} catch (error) {
+			res.status(500).json({ error });
+		}
+	}
+);
+
 // NOTE: this needs to stay last
 projectRouter.get(
 	"/:id",

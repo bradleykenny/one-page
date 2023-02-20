@@ -3,8 +3,9 @@ const APIs = {
         getAll: "",
         getByUser: "/page/user/${userId}",
     },
-    project: {
+    projects: {
         getAll: "",
+        getByIds: "/project/byIds"
     },
 };
 

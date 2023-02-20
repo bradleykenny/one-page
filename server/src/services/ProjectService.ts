@@ -1,6 +1,6 @@
 import { Collection, Document } from "mongodb";
 
-import { getById, getAll } from "./CommonService";
+import { getById, getAll, getByAnyId } from "./CommonService";
 import MongoService from "./MongoService";
 
 import { Collections } from "../models/Collections";
@@ -51,8 +51,14 @@ const getProject = async (id: string) => {
 	return getById(coll, id);
 };
 
+const getProjectsByIds = async (ids: string[]) => {
+	const coll = getCollection();
+	return await getByAnyId(coll, ids);
+};
+
 export default {
 	addProject,
 	getAllProjects,
 	getProject,
+	getProjectsByIds
 };

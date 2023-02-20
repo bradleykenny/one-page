@@ -5,6 +5,11 @@ const getById = async (collection: Collection<Document>, id: string) => {
 	return data;
 };
 
+const getByAnyId = async (collection: Collection<Document>, ids: string[]) => {
+	const data = await collection.find({ id: { $in: ids } }).toArray();
+	return data;
+};
+
 const getAll = async (
 	collection: Collection<Document>,
 	limit: number,
@@ -19,4 +24,4 @@ const getAll = async (
 	return pages;
 };
 
-export { getById, getAll };
+export { getByAnyId, getById, getAll };

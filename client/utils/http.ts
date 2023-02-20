@@ -30,7 +30,8 @@ const get = async (ctx, path: string, config?: AxiosRequestConfig) => {
 
 async function getApiData<T>(
     context: GetServerSidePropsContext,
-    apiSlug: string
+    apiSlug: string,
+    config?: AxiosRequestConfig
 ) {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -44,6 +45,7 @@ async function getApiData<T>(
     let headers = {};
     if (token) {
         headers = {
+            ...config?.headers,
             Authorization: `Bearer ${token}`,
         };
     }
@@ -54,9 +56,8 @@ async function getApiData<T>(
 
     const apiResponse = await axios.get<T>(apiUrl.concat(apiSlug), {
         headers,
+        ...config,
     });
-
-    console.log(apiUrl.concat(apiSlug));
 
     return apiResponse.data;
 }

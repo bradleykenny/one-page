@@ -1,16 +1,18 @@
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { PageResponse } from "models/Page";
 
 import Card from "@src/components/Card";
+import { PageResponse } from "@src/models/Page";
+import { ProjectResponse } from "@src/models/Project";
 
 interface Props {
     page: PageResponse;
+    parentProject?: ProjectResponse;
     children?: JSX.Element;
 }
 
 const PageCard = (props: Props) => {
-    const { children, page } = props;
+    const { children, page, parentProject } = props;
 
     return (
         <Card>
@@ -20,9 +22,14 @@ const PageCard = (props: Props) => {
                     className="mb-1 block cursor-pointer pb-1 text-2xl font-black text-indigo-700 transition ease-in-out hover:border-orange-200 hover:text-orange-400">
                     {page?.title}
                 </a>
-                <p className="inline-block rounded-md bg-lime-600 px-2 py-1 text-xs text-white">
-                    {page.projectId}
-                </p>
+                {parentProject && (
+                    <a
+                        href={`/projects/${parentProject.id}`}
+                        className="inline-block rounded-md px-2 py-1 text-xs text-white"
+                        style={{ backgroundColor: parentProject.colour }}>
+                        {parentProject.name}
+                    </a>
+                )}
                 <div className="mt-2 flex">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-200">
                         <FontAwesomeIcon

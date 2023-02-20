@@ -18,7 +18,7 @@ const Home = () => {
                 />
             </Head>
             <div className="min-h-screen bg-gray-200">
-                <Navbar activeTab="Home" />
+                <Navbar />
                 <div className="pt-24">
                     <Sidebar />
                     <div className="mx-4 md:mx-80">

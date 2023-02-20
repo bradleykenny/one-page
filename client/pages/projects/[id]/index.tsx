@@ -74,7 +74,10 @@ function Project(props: Props) {
                         {project && (
                             <div className="grid grid-cols-2 gap-4">
                                 {pages?.map((page) => (
-                                    <PageCard page={page} />
+                                    <PageCard
+                                        page={page}
+                                        parentProject={project}
+                                    />
                                 ))}
                             </div>
                         )}
