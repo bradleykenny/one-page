@@ -3,6 +3,7 @@ import {
     faEdit,
     faEye,
     faPencil,
+    faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import APIs from "config/APIs";
@@ -13,6 +14,7 @@ import { getApiData } from "utils/http";
 
 import Button from "@src/components/Button";
 import Input from "@src/components/Input";
+import Layout from "@src/components/Layout";
 import Navbar from "@src/components/NavBar";
 import PageCard from "@src/components/PageCard";
 import Sidebar from "@src/components/Sidebar";
@@ -27,8 +29,6 @@ interface Props {
 const Pages = (props: Props) => {
     const { pages, projects } = props;
 
-    console.log(projects);
-
     return (
         <div>
             <Head>
@@ -38,71 +38,76 @@ const Pages = (props: Props) => {
                     content="initial-scale=1.0, width=device-width"
                 />
             </Head>
-            <div className="min-h-screen bg-gray-200">
-                <Navbar />
-                <div className="pt-24">
-                    <Sidebar />
-                    <div className="ml-4 mr-4 pb-4 md:ml-80">
-                        <div className="mb-4 flex gap-4">
-                            <Input type="text" placeholder="Search..." />
-                            <Button label="Search" variant="plain" />
-                        </div>
-                        <table className="w-full table-auto overflow-hidden rounded-lg bg-white shadow-md">
-                            <thead>
-                                <tr>
-                                    <th className="bg-gray-50 py-3 px-4 text-left text-gray-600">
-                                        Name
-                                    </th>
-                                    <th className="bg-gray-50 py-3 px-4 text-left text-gray-600">
-                                        User
-                                    </th>
-                                    <th className="bg-gray-50 py-3 px-4 text-left text-gray-600">
-                                        Project
-                                    </th>
-                                    <th className="bg-gray-50 py-3 px-4 text-left text-gray-600">
-                                        Last updated
-                                    </th>
-                                    {/* <th className="bg-gray-50"></th>
+            <Layout>
+                <div className="flex w-full gap-2 rounded-t-lg border-b bg-gradient-to-b from-gray-50 to-gray-100 p-2 shadow-md">
+                    <Button label="Filter" variant="plain" />
+                    <Button label="Sort" variant="plain" />
+                    <div className="ml-auto flex gap-2">
+                        <Input type="text" placeholder="Search..." />
+                        <Button label="Search" variant="plain" />
+                    </div>
+                </div>
+                <table className="w-full table-auto overflow-hidden rounded-b-lg bg-white shadow-md">
+                    <thead>
+                        <tr>
+                            <th className="bg-gray-50 py-3 px-4 text-left text-gray-600">
+                                Name
+                            </th>
+                            <th className="bg-gray-50 py-3 px-4 text-left text-gray-600">
+                                User
+                            </th>
+                            <th className="bg-gray-50 py-3 px-4 text-left text-gray-600">
+                                Project
+                            </th>
+                            <th className="bg-gray-50 py-3 px-4 text-left text-gray-600">
+                                Last updated
+                            </th>
+                            {/* <th className="bg-gray-50"></th>
                                     <th className="bg-gray-50"></th> */}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {pages.map((page) => {
-                                    const parentProject = projects?.find(
-                                        (project) =>
-                                            project.id === page.projectId
-                                    );
-                                    return (
-                                        <tr className="m-4 border border-l-0 border-r-0 border-gray-200">
-                                            <td className="py-3 px-4">
-                                                <a
-                                                    href={`/pages/${page.id}`}
-                                                    className="-ml-2 rounded-lg py-1 px-2 transition-all ease-in-out hover:text-indigo-700 hover:underline">
-                                                    {page.title}
-                                                </a>
-                                            </td>
-                                            <td className="py-3 px-4">
-                                                {page.userId}
-                                            </td>
-                                            <td className="py-3 px-4">
-                                                {parentProject && (
-                                                    <a
-                                                        href={`/projects/${parentProject.id}`}
-                                                        className="inline-block rounded-md px-2 py-1 text-xs text-white"
-                                                        style={{
-                                                            backgroundColor:
-                                                                parentProject.colour,
-                                                        }}>
-                                                        {parentProject.name}
-                                                    </a>
-                                                )}
-                                            </td>
-                                            <td className="py-3 px-4">
-                                                {new Date(
-                                                    page.createdAt
-                                                ).toDateString()}
-                                            </td>
-                                            {/* <td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {pages.map((page) => {
+                            const parentProject = projects?.find(
+                                (project) => project.id === page.projectId
+                            );
+                            return (
+                                <tr className="m-4 border border-l-0 border-r-0 border-gray-200">
+                                    <td className="py-3 px-4">
+                                        <a
+                                            href={`/pages/${page.id}`}
+                                            className="-ml-2 rounded-lg py-1 px-2 text-indigo-700 transition-all ease-in-out hover:underline">
+                                            {page.title}
+                                        </a>
+                                    </td>
+                                    <td className="flex py-3 px-4">
+                                        <div className="mr-2 flex h-6 w-6 items-center justify-center overflow-hidden rounded-full bg-blue-500">
+                                            <FontAwesomeIcon
+                                                icon={faUser}
+                                                className="mt-1 h-5 w-5 text-blue-200"
+                                            />
+                                        </div>
+                                        {page.userId}
+                                    </td>
+                                    <td className="py-3 px-4">
+                                        {parentProject && (
+                                            <a
+                                                href={`/projects/${parentProject.id}`}
+                                                className="inline-block rounded-md px-2 py-1 text-xs text-white"
+                                                style={{
+                                                    backgroundColor:
+                                                        parentProject.colour,
+                                                }}>
+                                                {parentProject.name}
+                                            </a>
+                                        )}
+                                    </td>
+                                    <td className="py-3 px-4">
+                                        {new Date(
+                                            page.createdAt
+                                        ).toDateString()}
+                                    </td>
+                                    {/* <td>
                                                 <a
                                                     href={`/pages/${page.id}/edit`}
                                                     className="cursor-pointer rounded-lg py-1 px-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-700">
@@ -120,26 +125,24 @@ const Pages = (props: Props) => {
                                                     />
                                                 </a>
                                             </td> */}
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td
-                                        className="bg-gray-50 py-3 px-4 text-left text-gray-600"
-                                        colSpan={6}>
-                                        Total:{" "}
-                                        <span className="font-bold">
-                                            {pages.length}
-                                        </span>
-                                    </td>
                                 </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                            );
+                        })}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td
+                                className="bg-gray-50 py-3 px-4 text-left text-gray-600"
+                                colSpan={6}>
+                                Total:{" "}
+                                <span className="font-bold">
+                                    {pages.length}
+                                </span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </Layout>
         </div>
     );
 };

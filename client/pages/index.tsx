@@ -1,121 +1,120 @@
 import { faAnchor, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Unbounded } from "@next/font/google";
+import { Gloria_Hallelujah, Unbounded } from "@next/font/google";
 import type { NextPage } from "next";
+import Image from "next/image";
 import { cn } from "utils";
 
+import FloatingCard from "@src/components/LandingPage/FloatingCard";
+
+import ProjectsImage from "../public/landingPage_projects.png";
+
 const unbounded = Unbounded({ weight: "700", subsets: ["latin"] });
+const gloriaHellelujah = Gloria_Hallelujah({
+    weight: "400",
+    subsets: ["latin"],
+});
 
 const Home: NextPage = () => {
     return (
-        <div className="flex w-screen flex-col bg-gradient-to-b from-slate-100 to-orange-200">
+        <div className="flex w-screen flex-col bg-gradient-to-b from-slate-100 to-slate-300">
             <h1
                 className={cn(
-                    "mx-auto my-40 mb-16 h-auto bg-gradient-to-br from-indigo-500 to-orange-500 bg-clip-text py-4 text-center text-7xl font-black text-transparent drop-shadow-lg",
+                    "mx-auto mt-24 h-auto py-4 text-center text-4xl font-black text-slate-500 drop-shadow-lg",
                     unbounded.className
                 )}>
                 one:page
             </h1>
+            <p className="mt-6 mb-16 text-center text-7xl font-black text-gray-700 drop-shadow-lg">
+                All{" "}
+                <span className="bg-gradient-to-l from-indigo-500 to-orange-500 bg-clip-text text-transparent">
+                    your pages
+                </span>
+                .
+                <br />
+                All together.
+            </p>
             <a
-                className="mx-auto mb-24 rounded-full bg-indigo-500 px-8 py-4 text-white shadow-lg shadow-indigo-200 transition-all ease-in-out"
+                className="mx-auto mb-24 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-700 px-8 py-4 text-white shadow-lg shadow-indigo-200 transition-all ease-in-out"
                 href="/login">
                 Let's go
                 <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
             </a>
-            <div className="no-scrollbar mb-0 snap-x overflow-scroll whitespace-nowrap p-10 pb-0">
+            <div className="no-scrollbar mb-0 overflow-scroll whitespace-nowrap p-10 pb-10">
                 {[1, 2, 3, 4, 5].map((n) => (
-                    <div className="mr-8 inline-block w-[22rem] snap-center justify-center self-center rounded-2xl bg-gradient-to-br from-slate-100 to-slate-300 p-1 shadow last:mr-0">
-                        <div className=" overflow-hidden rounded-xl bg-slate-50 p-6 ">
-                            <div className="-ml-10 -mt-36 mb-4 h-96 w-96 rounded-full bg-indigo-600/30 p-12 shadow-lg">
-                                <div className="h-72 w-72 rounded-full bg-indigo-600/30 p-12 shadow-lg">
-                                    <div className="h-48 w-48 rounded-full bg-indigo-600/30 p-12 shadow-lg">
-                                        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-indigo-600/30 shadow-lg">
-                                            <FontAwesomeIcon
-                                                icon={faAnchor}
-                                                className="h-10 text-indigo-800 drop-shadow-lg"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <h1 className="text-gray-700">Something</h1>
-                            <p className="mb-0 whitespace-normal text-gray-600">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Nulla dapibus, nisi eu
-                                fermentum eleifend, velit sapien aliquet neque,
-                                at ullamcorper arcu felis ac nisl.
-                            </p>
-                        </div>
-                    </div>
+                    <FloatingCard
+                        title="Something"
+                        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dapibus, nisi eu fermentum eleifend, velit sapien aliquet neque, at ullamcorper arcu felis ac nisl."
+                    />
                 ))}
             </div>
-            <div className="m-10 grid grid-cols-2 gap-10">
-                <div className="overflow-hidden rounded-xl bg-slate-50 p-10 shadow">
-                    <h1 className="mb-4 inline-block border-b border-orange-300 pr-10 pb-4 font-black">
-                        Some more information
-                    </h1>
-                    <p className="text-gray-600">
+            <div className="m-10 mt-0 grid grid-cols-2 overflow-hidden rounded-xl shadow">
+                <div className="flex flex-col justify-center bg-white p-10">
+                    <h1>Heading</h1>
+                    <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Mauris facilisis tincidunt tortor non molestie. Morbi
                         eleifend orci vitae mattis lobortis. Nunc mauris ipsum,
                         sagittis sed sapien ac, porttitor fermentum turpis.
                         Vestibulum neque nisl, hendrerit at felis eget, iaculis
-                        eleifend erat. Maecenas tortor odio, sodales elementum
-                        purus sed, semper sodales velit. Suspendisse risus sem,
-                        laoreet ut mi eu, laoreet fermentum dolor. Vivamus
-                        lobortis tellus eu odio efficitur, eu tempus lectus
-                        fermentum. Pellentesque vitae mauris pellentesque,
-                        cursus elit sed, ultrices libero. Nulla facilisi. Donec
-                        dictum convallis varius. Duis vitae ligula quis orci
-                        placerat efficitur quis id dui. Morbi vel est massa.
-                        Curabitur sed facilisis purus. Lorem ipsum dolor sit
-                        amet, consectetur adipiscing elit. In sed lorem vel
-                        nulla eleifend consequat. Vivamus pulvinar bibendum arcu
-                        eu hendrerit.
+                        eleifend erat.
                     </p>
                 </div>
-                <div className="overflow-hidden rounded-xl bg-slate-50 p-10 shadow">
-                    <h1 className="mb-4 inline-block border-b border-orange-300 pr-10 pb-4 font-black">
-                        Some more information
-                    </h1>
-                    <p className="text-gray-600">
-                        Pellentesque consequat felis et orci vestibulum,
-                        ullamcorper dapibus orci dictum. Class aptent taciti
-                        sociosqu ad litora torquent per conubia nostra, per
-                        inceptos himenaeos. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Aliquam volutpat nisl a sem
-                        semper, a congue dolor sagittis. Etiam eu quam nunc.
-                        Donec consequat, risus ut fringilla accumsan, dui tellus
-                        rhoncus ex, et consectetur odio eros a nisl. Nulla
-                        commodo tincidunt tellus, non luctus nibh efficitur ac.
-                        Donec volutpat dui ut dui consectetur, vitae dictum nibh
-                        laoreet.
-                    </p>
+                <div className="bg-indigo-400 pt-16 pl-16">
+                    <Image
+                        src={ProjectsImage}
+                        alt="Projects page screenshot"
+                        className="rounded-tl-lg shadow-lg"
+                    />
                 </div>
-                <div className="mt-0 overflow-hidden rounded-xl bg-slate-50 p-10 shadow">
-                    <h1 className="mb-4 inline-block border-b border-orange-300 pr-10 pb-4 font-black">
-                        See more here
-                    </h1>
-                    <p className="text-gray-600">
+                <div className="bg-orange-400 pt-16 pr-16">
+                    <Image
+                        src={ProjectsImage}
+                        alt="Projects page screenshot"
+                        className="rounded-tr-lg shadow-lg"
+                    />
+                </div>
+                <div className="flex flex-col justify-center bg-white p-10">
+                    <h1>Heading</h1>
+                    <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Mauris facilisis tincidunt tortor non molestie. Morbi
                         eleifend orci vitae mattis lobortis. Nunc mauris ipsum,
                         sagittis sed sapien ac, porttitor fermentum turpis.
                         Vestibulum neque nisl, hendrerit at felis eget, iaculis
-                        eleifend erat. Maecenas tortor odio, sodales elementum
-                        purus sed, semper sodales velit. Suspendisse risus sem,
-                        laoreet ut mi eu, laoreet fermentum dolor. Vivamus
-                        lobortis tellus eu odio efficitur, eu tempus lectus
-                        fermentum. Pellentesque vitae mauris pellentesque,
-                        cursus elit sed, ultrices libero. Nulla facilisi. Donec
-                        dictum convallis varius. Duis vitae ligula quis orci
-                        placerat efficitur quis id dui. Morbi vel est massa.
-                        Curabitur sed facilisis purus. Lorem ipsum dolor sit
-                        amet, consectetur adipiscing elit. In sed lorem vel
-                        nulla eleifend consequat. Vivamus pulvinar bibendum arcu
-                        eu hendrerit.
+                        eleifend erat.
                     </p>
                 </div>
+                <div className="flex flex-col justify-center bg-white p-10">
+                    <h1>Heading</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Mauris facilisis tincidunt tortor non molestie. Morbi
+                        eleifend orci vitae mattis lobortis. Nunc mauris ipsum,
+                        sagittis sed sapien ac, porttitor fermentum turpis.
+                        Vestibulum neque nisl, hendrerit at felis eget, iaculis
+                        eleifend erat.
+                    </p>
+                </div>
+                <div className="bg-indigo-400 pt-16 pl-16">
+                    <Image
+                        src={ProjectsImage}
+                        alt="Projects page screenshot"
+                        className="rounded-tl-lg shadow-lg"
+                    />
+                </div>
+            </div>
+            <div className="mt-10 mb-24">
+                <p className="text-center text-xl font-bold text-gray-700">
+                    Thanks 👋
+                </p>
+                <p
+                    className={cn(
+                        "-mt-2 -ml-4 -rotate-6 text-center text-xl font-bold text-gray-700",
+                        gloriaHellelujah.className
+                    )}>
+                    Brad
+                </p>
             </div>
         </div>
     );

@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 
 import EditorV3 from "@src/components/Editor";
+import Layout from "@src/components/Layout";
 import Navbar from "@src/components/NavBar";
 import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
-
 import usePage from "@src/hooks/usePage";
 
 const EditPage = () => {
@@ -14,16 +14,10 @@ const EditPage = () => {
     const { loading, page, project } = usePage(id as string);
 
     return (
-        <div className="bg-gray-200 selection:bg-orange-200">
-            <Navbar activeTab="Pages" />
-            <div className="pt-24">
-                <Sidebar />
-                <div className="mx-80">
-                    {!loading && <EditorV3 page={page} />}
-                </div>
-                <SidebarInfo page={page} project={project} />
-            </div>
-        </div>
+        <Layout>
+            <div className="mr-80">{!loading && <EditorV3 page={page} />}</div>
+            <SidebarInfo page={page} project={project} />
+        </Layout>
     );
 };
 

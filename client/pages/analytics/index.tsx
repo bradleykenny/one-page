@@ -7,17 +7,15 @@ import SidebarInfo from "@src/components/SidebarInfo";
 const Analytics = () => {
     return (
         <div className="min-h-screen bg-gray-200">
-            <Navbar activeTab="Projects" />
-            <div className="pt-24">
+            <div className="pt-0">
                 <Sidebar />
-                <div className="mx-80 pb-6">
+                <div className="ml-80 mr-8 pb-6 pt-4">
                     <h1 className="p-4 pl-8">My Data</h1>
                     <div className="grid grid-cols-2 gap-4">
                         <ChartCard />
                         <StatCard />
                     </div>
                 </div>
-                <SidebarInfo />
             </div>
         </div>
     );

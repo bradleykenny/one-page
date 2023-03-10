@@ -49,7 +49,7 @@ const Editor = (props: Props) => {
 
     return (
         <div className="mx-auto">
-            <div className="sticky top-20 z-10 -mx-4 -mt-4 border-b bg-gray-200 px-4 pt-4">
+            <div className="sticky top-0 z-10 -mx-4 -mt-4 border-b bg-gray-200 px-4 pt-4">
                 <EditorToolbar editor={editor} onSave={handleToolbarSave} />
             </div>
             <div className="mt-0 mb-4 rounded-b-md bg-white pt-1 pb-1 shadow">
