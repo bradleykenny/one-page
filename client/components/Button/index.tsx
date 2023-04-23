@@ -29,23 +29,23 @@ const getButtonStyle = (variant: ButtonVariant, color?: string) => {
     const btnColor = color || "orange"; // TODO: need to implement: https://tailwindcss.com/docs/content-configuration#dynamic-class-names
 
     const sharedStyles =
-        "px-4 py-2 rounded-lg font-medium transition-all text-center border text-sm focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 focus:outline-none";
+        "px-4 py-2 rounded-lg font-medium transition-all text-center border text-sm focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500 focus:outline-none";
 
     switch (variant) {
         case "solid":
             return cn(
                 sharedStyles,
-                "border-transparent bg-orange-500 text-white hover:bg-orange-600"
+                "border-transparent bg-secondary-500 text-white hover:bg-secondary-600"
             );
         case "soft":
             return cn(
                 sharedStyles,
-                "border-orange-100 bg-orange-100 text-orange-600 hover:border-orange-200 hover:bg-orange-200"
+                "border-secondary-100 bg-secondary-100 text-secondary-600 hover:border-secondary-200 hover:bg-secondary-200"
             );
         case "ghost":
             return cn(
                 sharedStyles,
-                "border-transparent bg-transparent text-orange-600 shadow-none hover:bg-orange-100"
+                "border-transparent bg-transparent text-secondary-600 shadow-none hover:bg-secondary-100"
             );
         case "plain":
             return cn(
@@ -55,7 +55,7 @@ const getButtonStyle = (variant: ButtonVariant, color?: string) => {
         default:
             return cn(
                 sharedStyles,
-                "border-transparent bg-orange-500 text-white hover:bg-orange-600"
+                "border-transparent bg-secondary-500 text-white hover:bg-secondary-600"
             );
     }
 };

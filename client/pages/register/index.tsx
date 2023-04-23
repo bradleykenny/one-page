@@ -1,12 +1,16 @@
+import { Chewy } from "@next/font/google";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
+import { cn } from "utils";
 
 import React, { ChangeEvent, useState } from "react";
 
 import Button from "@src/components/Button";
 import Input from "@src/components/Input";
 import useApi from "@src/hooks/useApi";
+
+const titleFont = Chewy({ weight: "400", subsets: ["latin"] });
 
 const Register = () => {
     const router = useRouter();
@@ -74,13 +78,16 @@ const Register = () => {
                         Start today.
                     </h1>
                 </div>
-                <div className="z-0 m-20 ml-10 flex flex-col justify-center overflow-y-scroll rounded-lg bg-white drop-shadow-md">
-                    <div className="absolute h-full w-full bg-login-bg bg-cover opacity-5 grayscale"></div>
+                <div className="z-0 m-20 ml-10 flex flex-col justify-center overflow-y-scroll rounded-lg bg-gradient-to-br from-white to-primary-50 drop-shadow-md">
                     <form
                         className="z-0 mx-auto -mt-10 flex w-1/2 flex-col self-center"
                         onSubmit={handleRegisterSubmit}>
-                        <h1 className="mb-5 bg-gradient-to-r from-indigo-500 to-orange-500 bg-clip-text text-center font-cursive text-6xl text-transparent">
-                            Get started!
+                        <h1
+                            className={cn(
+                                "bg-gradient-to-r from-indigo-500 to-orange-500 bg-clip-text pb-4 text-center text-6xl text-transparent",
+                                titleFont.className
+                            )}>
+                            Register
                         </h1>
                         <div className="mt-4 flex flex-col gap-4">
                             <Input
@@ -113,7 +120,7 @@ const Register = () => {
                             <Input
                                 type="password"
                                 label="Password"
-                                placeholder="secret123"
+                                placeholder="$ecret123"
                                 required
                                 onChange={(e) =>
                                     handleTextchange(e, setPassword)

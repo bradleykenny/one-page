@@ -28,7 +28,7 @@ const SidebarItem = (props: SidebarItemProps) => {
                 )}>
                 <FontAwesomeIcon
                     icon={icon}
-                    className="h-[20px] w-[20px] px-2"
+                    className="h-4 w-4 px-2"
                 />
                 <span className="ml-2">{title}</span>
             </a>

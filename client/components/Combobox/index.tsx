@@ -16,8 +16,8 @@ interface Props {
 }
 
 export default (props: Props) => {
-    const { value, items, onChange} = props;
-    
+    const { value, items, onChange } = props;
+
     const [query, setQuery] = useState("");
 
     const filteredItems =

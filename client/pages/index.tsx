@@ -23,11 +23,11 @@ const Home: NextPage = () => {
                     "mx-auto mt-24 h-auto py-4 text-center text-4xl font-black text-slate-500 drop-shadow-lg",
                     unbounded.className
                 )}>
-                one:page
+                ur:page
             </h1>
             <p className="mt-6 mb-16 text-center text-7xl font-black text-gray-700 drop-shadow-lg">
-                All{" "}
-                <span className="bg-gradient-to-l from-indigo-500 to-orange-500 bg-clip-text text-transparent">
+                {"All "}
+                <span className="bg-gradient-to-r from-orange-500 to-indigo-500 bg-clip-text text-transparent">
                     your pages
                 </span>
                 .
@@ -35,10 +35,10 @@ const Home: NextPage = () => {
                 All together.
             </p>
             <a
-                className="mx-auto mb-24 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-700 px-8 py-4 text-white shadow-lg shadow-indigo-200 transition-all ease-in-out"
+                className="mx-auto mb-24 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-700 px-8 py-4 text-white shadow-lg shadow-indigo-200 transition-all ease-in-out hover:to-indigo-800 hover:shadow-xl group"
                 href="/login">
                 Let's go
-                <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
+                <FontAwesomeIcon icon={faArrowRight} className="ml-2 transition-all group-hover:translate-x-1" />
             </a>
             <div className="no-scrollbar mb-0 overflow-scroll whitespace-nowrap p-10 pb-10">
                 {[1, 2, 3, 4, 5].map((n) => (

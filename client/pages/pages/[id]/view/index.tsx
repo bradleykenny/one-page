@@ -11,7 +11,7 @@ const EditPage = () => {
 
     return (
         <div className="bg-gray-200">
-            <div className="mx-80">{!loading && <Viewer page={page} />}</div>
+            <div className="sm:mx-20 md:mx-40 lg:mx-80">{!loading && <Viewer page={page} />}</div>
         </div>
     );
 };

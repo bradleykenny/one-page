@@ -1,11 +1,15 @@
+import { Chewy } from "@next/font/google";
 import { getSession, signIn } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { cn } from "utils";
 
 import React, { useState } from "react";
 
 import Button from "@src/components/Button";
 import Input from "@src/components/Input";
+
+const titleFont = Chewy({ weight: "400", subsets: ["latin"] });
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -50,14 +54,16 @@ const Login = () => {
                         Start today.
                     </h1>
                 </div>
-                <div className="z-0 m-20 ml-10 flex flex-col justify-center rounded-lg bg-white drop-shadow-md">
-                    <div className="absolute h-full w-full bg-login-bg bg-cover opacity-5 grayscale"></div>
-
+                <div className="z-0 m-20 ml-10 flex flex-col justify-center rounded-lg bg-gradient-to-br from-white to-primary-50 drop-shadow-md">
                     <form
                         className="z-0 mx-auto -mt-10 flex w-1/2 flex-col self-center"
                         onSubmit={handleLoginSubmit}>
-                        <h1 className="mb-5 bg-gradient-to-r from-indigo-500 to-orange-500 bg-clip-text text-center font-cursive text-6xl text-transparent">
-                            Welcome back!
+                        <h1
+                            className={cn(
+                                "bg-gradient-to-r from-indigo-500 to-orange-500 bg-clip-text pb-4 text-center text-6xl text-transparent",
+                                titleFont.className
+                            )}>
+                            Login
                         </h1>
                         <div className="mt-4 flex flex-col gap-4">
                             <Input
@@ -71,7 +77,7 @@ const Login = () => {
                             <Input
                                 type="password"
                                 label="Password"
-                                placeholder="secret123"
+                                placeholder="$ecret123"
                                 required
                                 onChange={handlePasswordChange}
                             />
@@ -92,7 +98,7 @@ const Login = () => {
 export async function getServerSideProps(context) {
     const { req } = context;
     const session = await getSession({ req });
-    
+
     if (session) {
         return {
             redirect: { destination: "/home" },

@@ -23,7 +23,7 @@ const Input = (props: Props) => {
                 type="text"
                 id="input"
                 className={cn(
-                    "block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500",
+                    "block w-full rounded-lg border-gray-300 shadow-sm focus:border-secondary-400 focus:ring focus:ring-secondary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500",
                     props.className
                 )}
                 value={value}
