@@ -21,9 +21,9 @@ const SidebarItem = (props: SidebarItemProps) => {
             <a
                 href={url}
                 className={cn(
-                    "flex items-center rounded-lg border border-transparent p-2 text-base font-normal transition ease-in-out",
+                    "flex items-center rounded-lg border border-transparent p-2 text-base font-normal transition ease-in-out hover:cursor-pointer",
                     isSelected
-                        ? "text-indigo-500 bg-indigo-50 hover:bg-indigo-100 hover:text-indigo-700 focus:bg-indigo-100"
+                        ? "text-indigo-500 bg-indigo-100 hover:bg-indigo-200 hover:text-indigo-700 focus:bg-indigo-100"
                         : "text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100"
                 )}>
                 <FontAwesomeIcon

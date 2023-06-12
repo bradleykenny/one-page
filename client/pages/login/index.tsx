@@ -1,7 +1,6 @@
 import { Chewy } from "@next/font/google";
 import { getSession, signIn } from "next-auth/react";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { cn } from "utils";
 
 import React, { useState } from "react";
@@ -54,7 +53,7 @@ const Login = () => {
                         Start today.
                     </h1>
                 </div>
-                <div className="z-0 m-20 ml-10 flex flex-col justify-center rounded-lg bg-gradient-to-br from-white to-primary-50 drop-shadow-md">
+                <div className="z-0 m-20 ml-10 flex flex-col justify-center rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 drop-shadow-md">
                     <form
                         className="z-0 mx-auto -mt-10 flex w-1/2 flex-col self-center"
                         onSubmit={handleLoginSubmit}>
@@ -73,6 +72,7 @@ const Login = () => {
                                 required
                                 autoFocus
                                 onChange={handleUsernameChange}
+                                autoComplete="username"
                             />
                             <Input
                                 type="password"
@@ -80,6 +80,7 @@ const Login = () => {
                                 placeholder="$ecret123"
                                 required
                                 onChange={handlePasswordChange}
+                                autoComplete="current-password"
                             />
                             <Button label="Login" />
                             <a

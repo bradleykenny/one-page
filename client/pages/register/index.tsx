@@ -58,14 +58,6 @@ const Register = () => {
 
     return (
         <div>
-            <Head>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap"
-                    rel="stylesheet"
-                />
-            </Head>
             <div className="grid h-screen grid-cols-2 bg-gray-200">
                 <div className="z-10 m-20 mr-10 flex flex-col justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-orange-500 drop-shadow-md">
                     <h1 className="my-2 justify-center self-center text-center text-3xl text-white opacity-40">
@@ -78,7 +70,7 @@ const Register = () => {
                         Start today.
                     </h1>
                 </div>
-                <div className="z-0 m-20 ml-10 flex flex-col justify-center overflow-y-scroll rounded-lg bg-gradient-to-br from-white to-primary-50 drop-shadow-md">
+                <div className="z-0 m-20 ml-10 flex flex-col justify-center overflow-y-scroll rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 drop-shadow-md">
                     <form
                         className="z-0 mx-auto -mt-10 flex w-1/2 flex-col self-center"
                         onSubmit={handleRegisterSubmit}>

@@ -35,10 +35,13 @@ const Home: NextPage = () => {
                 All together.
             </p>
             <a
-                className="mx-auto mb-24 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-700 px-8 py-4 text-white shadow-lg shadow-indigo-200 transition-all ease-in-out hover:to-indigo-800 hover:shadow-xl group"
+                className="group mx-auto mb-24 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-700 px-8 py-4 text-white shadow-lg shadow-indigo-200 transition-all ease-in-out hover:to-indigo-800"
                 href="/login">
                 Let's go
-                <FontAwesomeIcon icon={faArrowRight} className="ml-2 transition-all group-hover:translate-x-1" />
+                <FontAwesomeIcon
+                    icon={faArrowRight}
+                    className="ml-2 transition-all group-hover:translate-x-1"
+                />
             </a>
             <div className="no-scrollbar mb-0 overflow-scroll whitespace-nowrap p-10 pb-10">
                 {[1, 2, 3, 4, 5].map((n) => (
@@ -110,7 +113,7 @@ const Home: NextPage = () => {
                 </p>
                 <p
                     className={cn(
-                        "-mt-2 -ml-4 -rotate-6 text-center text-xl font-bold text-gray-700",
+                        "-mt-2 ml-4 -rotate-6 text-center text-2xl font-bold text-gray-700",
                         gloriaHellelujah.className
                     )}>
                     Brad

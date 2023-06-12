@@ -2,12 +2,14 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PageResponse } from "models/Page";
 import { ProjectResponse } from "models/Project";
+
 import { useState } from "react";
 
+import InlineEditSelector from "@src/components/InlineEditSelector";
 import Selector from "@src/components/Selector";
 import useApi from "@src/hooks/useApi";
 
-import {shouldTextBeDark} from "../../utils/colour";
+import { shouldTextBeDark } from "../../utils/colour";
 
 interface IProps {
     page?: PageResponse;
@@ -17,9 +19,10 @@ interface IProps {
 const SidebarInfo = (props: IProps) => {
     const { page, project } = props;
 
-    const [showProjectSelector, setShowProjectSelector] = useState(false);
-    const [projectSelectorItems, setProjectSelectorItems] = useState([]);
     const [isLoadingProjects, setIsLoadingProjects] = useState(false);
+    const [projectSelectorItems, setProjectSelectorItems] = useState([]);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [showProjectSelector, setShowProjectSelector] = useState(false);
 
     const isTextDark = shouldTextBeDark(project?.colour);
 
@@ -29,9 +32,11 @@ const SidebarInfo = (props: IProps) => {
         setIsLoadingProjects(true);
 
         const allProjects = await useApi("/project/all?limit=100", "GET");
+        console.log(allProjects);
         const mutatedSelectorProjects = allProjects.data?.map((project) => ({
-            value: project.id,
-            label: project.name,
+            id: project.id,
+            name: project.name,
+            colour: project.colour,
         }));
         setProjectSelectorItems(mutatedSelectorProjects);
 
@@ -77,11 +82,15 @@ const SidebarInfo = (props: IProps) => {
                         </p>
                         {showProjectSelector && (
                             <span className="fixed mt-10 mr-6 justify-start">
-                                <Selector
+                                {/* <Selector
                                     items={projectSelectorItems}
                                     isLoading={isLoadingProjects}
                                     onSelect={handleProjectSelectorItemSelect}
                                     onClose={handleProjectSelectorClose}
+                                /> */}
+                                <InlineEditSelector
+                                    items={projectSelectorItems}
+                                    onSelect={handleProjectSelectorItemSelect}
                                 />
                             </span>
                         )}

@@ -31,40 +31,42 @@ function Project(props: Props) {
                 />
             </Head>
             <Layout>
-                <div className="mr-[22rem]">
+                <div>
                     {project && (
                         <Card>
-                            <div className="-mx-8 -mt-6 mb-4 h-48 overflow-hidden">
-                                {project.imageUrl ? (
-                                    <div
-                                        className="relative h-full w-full bg-cover bg-center transition-all ease-in-out hover:scale-105"
-                                        style={{
-                                            backgroundImage: `url('${project.imageUrl}')`,
-                                        }}
-                                    />
-                                ) : (
-                                    <div className="flex h-full w-full items-center justify-center bg-orange-100 text-orange-300">
-                                        <FontAwesomeIcon
-                                            icon={faIcons}
-                                            size={"3x"}
+                            <div className="group">
+                                <div className="-mx-8 -mt-6 mb-4 h-48 overflow-hidden">
+                                    {project.imageUrl ? (
+                                        <div
+                                            className="relative h-full w-full bg-cover bg-center transition-all ease-in-out group-hover:scale-105"
+                                            style={{
+                                                backgroundImage: `url('${project.imageUrl}')`,
+                                            }}
                                         />
-                                    </div>
-                                )}
-                            </div>
-                            <div className="-mx-2">
-                                <h1>
-                                    {project.name}
-                                    {project.access === "PRIVATE" && (
-                                        <FontAwesomeIcon
-                                            icon={faLock}
-                                            size="xs"
-                                            className="ml-2 text-slate-500"
-                                        />
+                                    ) : (
+                                        <div className="flex h-full w-full items-center justify-center bg-orange-100 text-orange-300">
+                                            <FontAwesomeIcon
+                                                icon={faIcons}
+                                                size={"3x"}
+                                            />
+                                        </div>
                                     )}
-                                </h1>
-                                <p className="m-0 text-gray-500">
-                                    {project.description}
-                                </p>
+                                </div>
+                                <div className="-mx-2">
+                                    <h1>
+                                        {project.name}
+                                        {project.access === "PRIVATE" && (
+                                            <FontAwesomeIcon
+                                                icon={faLock}
+                                                size="xs"
+                                                className="ml-2 text-slate-500"
+                                            />
+                                        )}
+                                    </h1>
+                                    <p className="m-0 text-gray-500">
+                                        {project.description}
+                                    </p>
+                                </div>
                             </div>
                         </Card>
                     )}
@@ -77,7 +79,6 @@ function Project(props: Props) {
                         </div>
                     )}
                 </div>
-                <SidebarInfo />
             </Layout>
         </div>
     );

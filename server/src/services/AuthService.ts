@@ -67,10 +67,10 @@ const register = async (
 		}
 
 		const encryptedPassword = await bcrypt.hash(password, 10);
-		const id = uuidv4();
+		const userId = uuidv4();
 		const newUser = {
 			...request.body,
-			id,
+			userId,
 			password: encryptedPassword,
 		};
 
@@ -80,9 +80,11 @@ const register = async (
 			{ username: newUser?.email },
 			process.env.SECRET as string
 		);
+		
 		res.json({ token });
-	} catch (e) {
-		console.error(e);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ error });
 	}
 };
 
@@ -108,6 +110,7 @@ const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 			res.status(500).json({ error: "No authorization header" });
 		}
 	} catch (error) {
+		console.error(error);
 		res.status(500).json({ error });
 	}
 };
