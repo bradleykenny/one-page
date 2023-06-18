@@ -23,7 +23,7 @@ const addProject = async (request: AddProjectRequest) => {
 	const { name, description, imageUrl, user } = request;
 	const userId = user.username;
 	const timeFields = Time.initialiseTimeFields();
-	const colour = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+	const color = request.color ?? `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 
 	
 	const project: Project = {
@@ -31,7 +31,7 @@ const addProject = async (request: AddProjectRequest) => {
 		description,
 		id,
 		userId,
-		colour,
+		color,
 		imageUrl,
 		...timeFields,
 	};

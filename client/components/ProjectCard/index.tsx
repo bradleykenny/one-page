@@ -25,24 +25,24 @@ const ProjectCard = (props: Props) => {
                 <div className="-mx-8 -mt-6 mb-4 h-36 overflow-hidden">
                     {project.imageUrl ? (
                         <div
-                            className="relative h-full w-full bg-cover bg-center transition-all ease-in-out group-hover:scale-105"
+                            className="relative h-full w-full bg-cover bg-center transition-all duration-300 ease-in-out group-hover:scale-110"
                             style={{
                                 backgroundImage: `url('${project.imageUrl}')`,
                             }}
                         />
                     ) : (
                         <div
-                            className="flex h-full w-full items-center justify-center bg-opacity-50 text-white text-opacity-75 transition-all ease-in-out group-hover:scale-110"
-                            style={{ backgroundColor: project.colour }}>
+                            className="flex h-full w-full items-center justify-center bg-opacity-50 text-white text-opacity-75 transition-all duration-300 ease-in-out group-hover:scale-110"
+                            style={{ backgroundColor: project.color }}>
                             <FontAwesomeIcon icon={faIcons} size={"3x"} />
                         </div>
                     )}
                 </div>
                 <div className="-mx-2">
                     <div className="flex items-center">
-                        {project.colour && (
+                        {project.color && (
                             <div
-                                style={{ backgroundColor: project.colour }}
+                                style={{ backgroundColor: project.color }}
                                 className="mr-2 inline-block h-4 w-4 rounded"
                             />
                         )}

@@ -33,7 +33,7 @@ const InlineEditSelector = (props: Props) => {
                         <div className="flex py-2 px-2 items-center border border-green-500">
                             <div
                                 className="mr-2 inline-block h-4 w-4 rounded"
-                                style={{ backgroundColor: item.colour }}
+                                style={{ backgroundColor: item.color }}
                             />
                             <p className="mb-0">{item.name}</p>
                         </div>

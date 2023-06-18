@@ -10,6 +10,7 @@ import Head from "next/head";
 import { getApiData } from "utils/http";
 
 import Button from "@src/components/Button";
+import FilterButton from "@src/components/FilterButton";
 import Input from "@src/components/Input";
 import Layout from "@src/components/Layout";
 import { PageResponse } from "@src/models/Page";
@@ -37,24 +38,8 @@ const Pages = (props: Props) => {
                     <p className="m-0 mr-2 self-center text-sm font-semibold text-gray-600">
                         Filters
                     </p>
-                    <Button variant="plain" size="sm" rounded>
-                        <div className="flex items-center">
-                            <p className="m-0 mr-1">User</p>
-                            <FontAwesomeIcon
-                                icon={faChevronDown}
-                                className="text-gray-500"
-                            />
-                        </div>
-                    </Button>
-                    <Button variant="plain" size="sm" rounded>
-                        <div className="flex items-center">
-                            <p className="m-0 mr-1">Project</p>
-                            <FontAwesomeIcon
-                                icon={faChevronDown}
-                                className="text-gray-500"
-                            />
-                        </div>
-                    </Button>
+                    <FilterButton name="User" />
+                    <FilterButton name="Project" />
                     <div className="ml-auto flex gap-2">
                         <Input
                             type="text"
@@ -114,7 +99,7 @@ const Pages = (props: Props) => {
                             const parentProject = projects?.find(
                                 (project) => project.id === page.projectId
                             );
-                            
+
                             return (
                                 <tr
                                     className={
@@ -143,7 +128,7 @@ const Pages = (props: Props) => {
                                             {parentProject && (
                                                 <a
                                                     href={`/projects/${parentProject.id}`}
-                                                    className="inline-block rounded-md bg-green-200 px-2 py-1 text-xs font-medium text-green-600">
+                                                    className="inline-block rounded-md bg-blue-200 px-2 py-1 text-xs font-medium text-blue-600">
                                                     {parentProject.name}
                                                 </a>
                                             )}

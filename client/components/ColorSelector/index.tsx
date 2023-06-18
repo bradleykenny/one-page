@@ -1,13 +1,16 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { cn } from "utils";
 import { getTailwindColors } from "utils/colour";
 
 interface Props {
     label?: string;
+    onSelect?: (colour: string) => void;
+    value?: string;
 }
 
 const ColorSelector = (props: Props) => {
-    const { label } = props;
+    const { label, onSelect, value } = props;
 
     const colors = getTailwindColors();
 
@@ -21,23 +24,36 @@ const ColorSelector = (props: Props) => {
                 </label>
             )}
 
-            <div className="flex flex-row gap-2 overflow-scroll py-2 relative">
-                {Object.keys(colors).map((c) => (
-                    <div className="flex flex-col">
-                        <div
-                            className="mb-2 h-6 w-6 cursor-pointer rounded hover:ring hover:ring-gray-300"
-                            style={{
-                                backgroundColor: colors[c]?.[200],
-                            }}
-                        />
-                        <div
-                            className="h-6 w-6 cursor-pointer rounded hover:ring hover:ring-gray-300"
-                            style={{
-                                backgroundColor: colors[c]?.[500],
-                            }}
-                        />
-                    </div>
-                ))}
+            <div className="relative flex flex-row gap-2 overflow-scroll py-2">
+                {Object.keys(colors).map((c) => {
+                    const is200Selected = value === colors[c]?.[200];
+                    const is500Selected = value === colors[c]?.[500];
+
+                    return (
+                        <div className="flex flex-col">
+                            <div
+                                className={cn(
+                                    "mb-2 h-6 w-6 cursor-pointer rounded hover:ring hover:ring-gray-300",
+                                    is200Selected && "ring-2 ring-red-500"
+                                )}
+                                style={{
+                                    backgroundColor: colors[c]?.[200],
+                                }}
+                                onClick={() => onSelect(colors[c]?.[200])}
+                            />
+                            <div
+                                className={cn(
+                                    "h-6 w-6 cursor-pointer rounded hover:ring hover:ring-gray-300",
+                                    is500Selected && "ring-2 ring-red-500"
+                                )}
+                                style={{
+                                    backgroundColor: colors[c]?.[500],
+                                }}
+                                onClick={() => onSelect(colors[c]?.[500])}
+                            />
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );

@@ -1,3 +1,5 @@
+import { faEdit, faEye, faPencil } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 
 import Button from "@src/components/Button";
@@ -29,11 +31,17 @@ const Page = () => {
             <div className="mr-80">
                 <ContentCard page={page}>
                     <div className="mx-auto flex gap-2 pt-4">
-                        <Button variant="soft" onClick={handleEditButtonClick}>
-                            Edit
+                        <Button
+                            size="sm"
+                            variant="soft"
+                            onClick={handleEditButtonClick}>
+                            <FontAwesomeIcon icon={faPencil} />
                         </Button>
-                        <Button variant="solid" onClick={handleViewButtonClick}>
-                            View
+                        <Button
+                            size="sm"
+                            variant="soft"
+                            onClick={handleViewButtonClick}>
+                            <FontAwesomeIcon icon={faEye} />
                         </Button>
                     </div>
                 </ContentCard>

@@ -26,6 +26,7 @@ const CreateProjectModal = (props: Props) => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [imageUrl, setImageUrl] = useState("");
+    const [color, setColor] = useState("");
 
     const [showImageChooser, setShowImageChooser] = useState(false);
 
@@ -44,12 +45,17 @@ const CreateProjectModal = (props: Props) => {
         setShowImageChooser(false);
     };
 
+    const handleColorSelect = (selectedColor: string) => {
+        setColor(selectedColor);
+    };
+
     const handleSubmit = async () => {
         if (!!name && !!description) {
             const response = await useApi("/project", "POST", {
                 name,
                 description,
                 imageUrl,
+                color,
             });
 
             const { id } = response.data;
@@ -108,7 +114,11 @@ const CreateProjectModal = (props: Props) => {
                             options={["Public", "Private"]}
                             label="Access"
                         />
-                        <ColorSelector label="Colour" />
+                        <ColorSelector
+                            label="Colour"
+                            value={color}
+                            onSelect={handleColorSelect}
+                        />
                     </div>
                     <div className="-mx-8 -mb-4 -mr-8 flex justify-end gap-2 border-t px-8 pt-4">
                         <Button variant="soft">More info</Button>

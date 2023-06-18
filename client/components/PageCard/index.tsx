@@ -26,7 +26,7 @@ const PageCard = (props: Props) => {
                     <a
                         href={`/projects/${parentProject.id}`}
                         className="inline-block rounded-md px-2 py-1 text-xs text-white"
-                        style={{ backgroundColor: parentProject.colour }}>
+                        style={{ backgroundColor: parentProject.color }}>
                         {parentProject.name}
                     </a>
                 )}

@@ -12,6 +12,6 @@ export interface ProjectResponse {
     createdAt: number;
     imageUrl: string;
     access: ProjectAccess;
-    colour?: string;
+    color?: string;
     pages?: PageResponse[];
 }

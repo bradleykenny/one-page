@@ -24,7 +24,7 @@ const SidebarInfo = (props: IProps) => {
     const [selectedItem, setSelectedItem] = useState(null);
     const [showProjectSelector, setShowProjectSelector] = useState(false);
 
-    const isTextDark = shouldTextBeDark(project?.colour);
+    const isTextDark = shouldTextBeDark(project?.color);
 
     // TODO: this needs to be memoised so we aren't refetching everytime
     const handleOpenProjectSelector = async () => {
@@ -36,7 +36,7 @@ const SidebarInfo = (props: IProps) => {
         const mutatedSelectorProjects = allProjects.data?.map((project) => ({
             id: project.id,
             name: project.name,
-            colour: project.colour,
+            color: project.color,
         }));
         setProjectSelectorItems(mutatedSelectorProjects);
 
@@ -70,7 +70,7 @@ const SidebarInfo = (props: IProps) => {
                         <p
                             className="group mt-1 inline-block cursor-pointer self-start rounded-lg px-3 py-1 text-sm transition-all"
                             style={{
-                                backgroundColor: project?.colour || "gray",
+                                backgroundColor: project?.color || "gray",
                                 color: isTextDark ? "black" : "white",
                             }}>
                             {project?.name || "TBD"}

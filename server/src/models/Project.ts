@@ -8,7 +8,7 @@ export interface Project extends TimedFields {
 	name: string;
     description?: string;
 	userId: string;
-	colour?: string;
+	color?: string; // migrate `colour` => `color`
 	imageUrl?: string;
 }
 
@@ -16,4 +16,5 @@ export interface AddProjectRequest extends AuthenticatedRequest {
 	name: string;
 	description: string;
 	imageUrl: string;
+	color?: string;
 }
