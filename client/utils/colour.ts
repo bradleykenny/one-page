@@ -31,7 +31,6 @@ const getTailwindColors = () => {
                 500: color?.[600],
             };
         }
-
     });
 
     return values;

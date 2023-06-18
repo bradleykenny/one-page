@@ -71,7 +71,7 @@ const CreateProjectModal = (props: Props) => {
         <Modal visible={showModal}>
             {!showImageChooser ? (
                 <div className="flex flex-col">
-                    <div className="flex flex-row items-center justify-between border-b pb-4 -mx-8 px-8">
+                    <div className="-mx-8 flex flex-row items-center justify-between border-b px-8 pb-4">
                         <h2 className="my-0">Create a new project</h2>
                         <div
                             className="top-4 flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg bg-gray-200 text-gray-500 hover:bg-indigo-200 hover:text-indigo-500 focus:bg-gray-300"
@@ -79,7 +79,7 @@ const CreateProjectModal = (props: Props) => {
                             <FontAwesomeIcon icon={faClose} />
                         </div>
                     </div>
-                    <div className="flex h-[50vh] flex-col gap-4 overflow-y-scroll py-4 -mx-8 px-8">
+                    <div className="-mx-8 flex h-[50vh] flex-col gap-4 overflow-y-scroll py-4 px-8">
                         <p className="m-0">
                             To get started, we just need a few pieces of
                             information.
@@ -110,13 +110,11 @@ const CreateProjectModal = (props: Props) => {
                         />
                         <ColorSelector label="Colour" />
                     </div>
-                    <div className="flex justify-end gap-2 border-t pt-4 -mx-8 -mb-4 -mr-8 px-8">
-                        <Button label="More info" variant="soft" />
-                        <Button
-                            label="Get started"
-                            variant="solid"
-                            onClick={handleSubmit}
-                        />
+                    <div className="-mx-8 -mb-4 -mr-8 flex justify-end gap-2 border-t px-8 pt-4">
+                        <Button variant="soft">More info</Button>
+                        <Button variant="solid" onClick={handleSubmit}>
+                            Get started
+                        </Button>
                     </div>
                 </div>
             ) : (

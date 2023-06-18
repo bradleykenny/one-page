@@ -7,6 +7,7 @@ import { Fragment, useState } from "react";
 interface Item {
     value: string;
     label: string;
+    color: string;
 }
 
 interface Props {
@@ -52,7 +53,7 @@ export default (props: Props) => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                     afterLeave={() => setQuery("")}>
-                    <Combobox.Options className="absolute mt-2 max-h-60 w-full overflow-auto rounded-lg border border-gray-300 bg-white py-1 shadow-sm  focus:outline-none sm:text-sm">
+                    <Combobox.Options className="absolute mt-2 max-h-60 w-full overflow-auto rounded-lg border border-gray-300 bg-white shadow-sm  focus:outline-none sm:text-sm">
                         {filteredItems.length === 0 && query !== "" ? (
                             <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
                                 Nothing found.
@@ -62,15 +63,19 @@ export default (props: Props) => {
                                 <Combobox.Option
                                     key={item.value}
                                     className={({ active }) =>
-                                        `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                                            active
-                                                ? "bg-orange-500 text-white"
-                                                : "text-gray-900"
+                                        `relative m-2 cursor-default select-none rounded-md py-2 pl-4 pr-6 text-gray-900 ${
+                                            active && "bg-primary-50"
                                         }`
                                     }
                                     value={item}>
                                     {({ selected, active }) => (
-                                        <>
+                                        <div className="flex items-center">
+                                            <div
+                                                className="mr-2 h-4 w-4 rounded-md"
+                                                style={{
+                                                    backgroundColor: item.color,
+                                                }}
+                                            />
                                             <span
                                                 className={`block truncate ${
                                                     selected
@@ -84,14 +89,14 @@ export default (props: Props) => {
                                                     className={`absolute inset-y-0 left-0 flex items-center pl-4 ${
                                                         active
                                                             ? "text-white"
-                                                            : "text-orange-500"
+                                                            : "text-primary-500"
                                                     }`}>
                                                     <FontAwesomeIcon
                                                         icon={faCheck}
                                                     />
                                                 </span>
                                             ) : null}
-                                        </>
+                                        </div>
                                     )}
                                 </Combobox.Option>
                             ))

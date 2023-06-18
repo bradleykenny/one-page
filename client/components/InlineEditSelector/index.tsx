@@ -25,6 +25,7 @@ const InlineEditSelector = (props: Props) => {
         <Combobox>
             <Combobox.Input
                 onChange={(event) => setQuery(event.target.value)}
+                className="bg-white border-gray-200 shadow"
             />
             <Combobox.Options className="bg-white overflow-scroll h-72 border border-rose-500">
                 {filteredItems.map((item) => (

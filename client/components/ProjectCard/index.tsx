@@ -32,29 +32,31 @@ const ProjectCard = (props: Props) => {
                         />
                     ) : (
                         <div
-                            className="flex h-full w-full items-center justify-center bg-opacity-50 text-white text-opacity-75"
+                            className="flex h-full w-full items-center justify-center bg-opacity-50 text-white text-opacity-75 transition-all ease-in-out group-hover:scale-110"
                             style={{ backgroundColor: project.colour }}>
                             <FontAwesomeIcon icon={faIcons} size={"3x"} />
                         </div>
                     )}
                 </div>
                 <div className="-mx-2">
-                    <h2>
+                    <div className="flex items-center">
                         {project.colour && (
                             <div
                                 style={{ backgroundColor: project.colour }}
                                 className="mr-2 inline-block h-4 w-4 rounded"
                             />
                         )}
-                        {project.name}
-                        {project.access === "PRIVATE" && (
-                            <FontAwesomeIcon
-                                icon={faLock}
-                                size="xs"
-                                className="ml-2"
-                            />
-                        )}
-                    </h2>
+                        <h2 className="m-0 text-lg font-medium">
+                            {project.name}
+                            {project.access === "PRIVATE" && (
+                                <FontAwesomeIcon
+                                    icon={faLock}
+                                    size="xs"
+                                    className="ml-2"
+                                />
+                            )}
+                        </h2>
+                    </div>
                     <p className="m-0 truncate text-gray-500">
                         {project.description}
                     </p>

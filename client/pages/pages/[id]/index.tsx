@@ -3,8 +3,6 @@ import { useRouter } from "next/router";
 import Button from "@src/components/Button";
 import ContentCard from "@src/components/ContentCard";
 import Layout from "@src/components/Layout";
-import Navbar from "@src/components/NavBar";
-import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import usePage from "@src/hooks/usePage";
 
@@ -31,16 +29,12 @@ const Page = () => {
             <div className="mr-80">
                 <ContentCard page={page}>
                     <div className="mx-auto flex gap-2 pt-4">
-                        <Button
-                            label="Edit"
-                            variant="soft"
-                            onClick={handleEditButtonClick}
-                        />
-                        <Button
-                            label="View"
-                            variant="solid"
-                            onClick={handleViewButtonClick}
-                        />
+                        <Button variant="soft" onClick={handleEditButtonClick}>
+                            Edit
+                        </Button>
+                        <Button variant="solid" onClick={handleViewButtonClick}>
+                            View
+                        </Button>
                     </div>
                 </ContentCard>
             </div>

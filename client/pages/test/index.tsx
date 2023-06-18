@@ -7,20 +7,17 @@ import Checkbox from "@src/components/Checkbox";
 import Combobox from "@src/components/Combobox";
 import Input from "@src/components/Input";
 import Layout from "@src/components/Layout";
-import Navbar from "@src/components/NavBar";
-import Sidebar from "@src/components/Sidebar";
-import SidebarInfo from "@src/components/SidebarInfo";
 
 const Test = () => {
     const [checked, setChecked] = useState(false);
 
     const comboboxData = [
-        { value: "1", label: "Wade Cooper" },
-        { value: "2", label: "Arlene Mccoy" },
-        { value: "3", label: "Devon Webb" },
-        { value: "4", label: "Tom Cook" },
-        { value: "5", label: "Tanya Fox" },
-        { value: "6", label: "Hellen Schmidt" },
+        { value: "1", label: "Wade Cooper", color: "#ff0000" },
+        { value: "2", label: "Arlene Mccoy", color: "lightgreen" },
+        { value: "3", label: "Devon Webb", color: "purple" },
+        { value: "4", label: "Tom Cook", color: "gold" },
+        { value: "5", label: "Tanya Fox", color: "skyblue" },
+        { value: "6", label: "Hellen Schmidt", color: "darkblue" },
     ];
     const [cbSelection, setCbSelection] = useState(undefined);
     const handleCbChange = (item: any) => {
@@ -54,13 +51,13 @@ const Test = () => {
                         onClick={() => setChecked(!checked)}
                     />
                     <div className="grid grid-cols-4 gap-x-4">
-                        <Button label="Solid" variant="solid" />
-                        <Button label="Soft" variant="soft" />
-                        <Button label="Ghost" variant="ghost" />
-                        <Button label="Plain" variant="plain" />
+                        <Button variant="solid">Solid</Button>
+                        <Button variant="soft">Soft</Button>
+                        <Button variant="ghost">Ghost</Button>
+                        <Button variant="plain">Plain</Button>
                     </div>
                     <div className="flex">
-                        <Button label="Submit" variant="solid" />
+                        <Button variant="solid">Submit</Button>
                     </div>
                     <Combobox
                         value={cbSelection}

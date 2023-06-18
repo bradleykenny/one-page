@@ -35,7 +35,7 @@ function Projects(props: Props) {
             </Head>
             <Layout>
                 <div
-                    className="group mb-4 flex cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-orange-500 py-8 text-center text-white shadow hover:shadow-md"
+                    className="group mb-4 flex cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-primary-400 to-primary-700 py-8 text-center text-white shadow hover:shadow-md"
                     onClick={handleShowModal}>
                     <h1 className="mb-0 mr-2 inline text-lg font-semibold text-white">
                         Start new project

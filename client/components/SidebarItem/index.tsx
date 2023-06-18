@@ -23,7 +23,7 @@ const SidebarItem = (props: SidebarItemProps) => {
                 className={cn(
                     "flex items-center rounded-lg border border-transparent p-2 text-base font-normal transition ease-in-out hover:cursor-pointer",
                     isSelected
-                        ? "text-indigo-500 bg-indigo-100 hover:bg-indigo-200 hover:text-indigo-700 focus:bg-indigo-100"
+                        ? "text-primary-600 bg-primary-100 hover:bg-primary-200 hover:text-primary-700 focus:bg-primary-100"
                         : "text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100"
                 )}>
                 <FontAwesomeIcon
