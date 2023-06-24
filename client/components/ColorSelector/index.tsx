@@ -24,16 +24,16 @@ const ColorSelector = (props: Props) => {
                 </label>
             )}
 
-            <div className="relative flex flex-row flex-wrap gap-2 py-2">
+            <div className="relative flex flex-row flex-wrap gap-0 rounded overflow-hidden mt-1">
                 {Object.keys(colors).map((c) => {
                     const is200Selected = value === colors[c]?.[200];
                     const is500Selected = value === colors[c]?.[500];
 
                     return (
-                        <div className="flex flex-col">
+                        <div className="flex flex-col grow">
                             <div
                                 className={cn(
-                                    "mb-2 h-6 w-6 cursor-pointer rounded ring-offset-2 hover:ring-2 hover:ring-gray-300",
+                                    "h-8 cursor-pointer hover:border-2 hover:border-black",
                                     is200Selected && "ring-2 ring-blue-300 hover:ring-blue-600"
                                 )}
                                 style={{
@@ -43,7 +43,7 @@ const ColorSelector = (props: Props) => {
                             />
                             <div
                                 className={cn(
-                                    "h-6 w-6 cursor-pointer rounded ring-offset-2 hover:ring-2 hover:ring-gray-300",
+                                    "h-8 cursor-pointer hover:border-2 hover:border-black",
                                     is500Selected && "ring-2 ring-blue-300 hover:ring-blue-600"
                                 )}
                                 style={{

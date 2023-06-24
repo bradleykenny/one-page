@@ -1,6 +1,6 @@
 const APIs = {
     pages: {
-        getAll: "",
+        getAll: "/page/all",
         getByUser: "/page/user/${userId}",
     },
     projects: {

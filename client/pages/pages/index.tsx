@@ -15,6 +15,7 @@ import Input from "@src/components/Input";
 import Layout from "@src/components/Layout";
 import { PageResponse } from "@src/models/Page";
 import { ProjectResponse } from "@src/models/Project";
+import RecentPages from "@src/components/RecentPages";
 
 interface Props {
     pages: PageResponse[];
@@ -34,6 +35,7 @@ const Pages = (props: Props) => {
                 />
             </Head>
             <Layout>
+                <RecentPages />
                 <div className="flex w-full gap-2 rounded-t-lg border-b bg-gradient-to-b from-gray-50 to-gray-100 py-2 px-4 shadow-md">
                     <p className="m-0 mr-2 self-center text-sm font-semibold text-gray-600">
                         Filters
