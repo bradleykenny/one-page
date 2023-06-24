@@ -51,13 +51,13 @@ const Test = () => {
                         onClick={() => setChecked(!checked)}
                     />
                     <div className="grid grid-cols-4 gap-x-4">
-                        <Button variant="solid">Solid</Button>
-                        <Button variant="soft">Soft</Button>
-                        <Button variant="ghost">Ghost</Button>
-                        <Button variant="plain">Plain</Button>
+                        <Button look="solid">Solid</Button>
+                        <Button look="soft">Soft</Button>
+                        <Button look="ghost">Ghost</Button>
+                        <Button look="plain">Plain</Button>
                     </div>
                     <div className="flex">
-                        <Button variant="solid">Submit</Button>
+                        <Button look="solid">Submit</Button>
                     </div>
                     <Combobox
                         value={cbSelection}

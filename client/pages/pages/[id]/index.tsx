@@ -33,15 +33,17 @@ const Page = () => {
                     <div className="mx-auto flex gap-2 pt-4">
                         <Button
                             size="sm"
-                            variant="soft"
+                            look="soft"
                             onClick={handleEditButtonClick}>
-                            <FontAwesomeIcon icon={faPencil} />
+                            <FontAwesomeIcon icon={faPencil} className="ml-1" />
+                            <p className="m-0 ml-2 mr-1">Edit</p>
                         </Button>
                         <Button
                             size="sm"
-                            variant="soft"
+                            look="soft"
                             onClick={handleViewButtonClick}>
-                            <FontAwesomeIcon icon={faEye} />
+                            <FontAwesomeIcon icon={faEye} className="ml-1" />
+                            <p className="m-0 ml-2 mr-1">View</p>
                         </Button>
                     </div>
                 </ContentCard>

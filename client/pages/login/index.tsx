@@ -82,10 +82,10 @@ const Login = () => {
                                 onChange={handlePasswordChange}
                                 autoComplete="current-password"
                             />
-                            <Button>Login</Button>
+                            <Button fullWidth>Login</Button>
                             <a
                                 href="/register"
-                                className="m-auto rounded-lg py-1 px-2 text-center text-indigo-800 hover:bg-indigo-50">
+                                className="m-auto rounded-lg py-1 px-2 text-center text-indigo-800 hover:underline">
                                 Not a user? Register here
                             </a>
                         </div>

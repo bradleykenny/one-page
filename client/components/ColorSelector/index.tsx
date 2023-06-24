@@ -24,7 +24,7 @@ const ColorSelector = (props: Props) => {
                 </label>
             )}
 
-            <div className="relative flex flex-row gap-2 overflow-scroll py-2">
+            <div className="relative flex flex-row flex-wrap gap-2 py-2">
                 {Object.keys(colors).map((c) => {
                     const is200Selected = value === colors[c]?.[200];
                     const is500Selected = value === colors[c]?.[500];
@@ -33,8 +33,8 @@ const ColorSelector = (props: Props) => {
                         <div className="flex flex-col">
                             <div
                                 className={cn(
-                                    "mb-2 h-6 w-6 cursor-pointer rounded hover:ring hover:ring-gray-300",
-                                    is200Selected && "ring-2 ring-red-500"
+                                    "mb-2 h-6 w-6 cursor-pointer rounded ring-offset-2 hover:ring-2 hover:ring-gray-300",
+                                    is200Selected && "ring-2 ring-blue-300 hover:ring-blue-600"
                                 )}
                                 style={{
                                     backgroundColor: colors[c]?.[200],
@@ -43,8 +43,8 @@ const ColorSelector = (props: Props) => {
                             />
                             <div
                                 className={cn(
-                                    "h-6 w-6 cursor-pointer rounded hover:ring hover:ring-gray-300",
-                                    is500Selected && "ring-2 ring-red-500"
+                                    "h-6 w-6 cursor-pointer rounded ring-offset-2 hover:ring-2 hover:ring-gray-300",
+                                    is500Selected && "ring-2 ring-blue-300 hover:ring-blue-600"
                                 )}
                                 style={{
                                     backgroundColor: colors[c]?.[500],

@@ -46,7 +46,7 @@ const Pages = (props: Props) => {
                             placeholder="Search..."
                             inputSize="sm"
                         />
-                        <Button variant="plain" size="sm">
+                        <Button look="plain" size="sm">
                             Search
                         </Button>
                     </div>

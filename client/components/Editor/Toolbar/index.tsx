@@ -151,7 +151,7 @@ const EditorToolbar = (props: Props) => {
                 />
             </div>
             <div className="ml-auto mr-2 flex h-full flex-row justify-end gap-2 self-center text-right">
-                {/* <Button variant="soft" label="View" /> */}
+                {/* <Button look="soft" label="View" /> */}
                 <MagicButton
                     title="Save"
                     onClick={handleSaveClick}

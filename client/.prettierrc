@@ -8,5 +8,6 @@
         "prettier-plugin-tailwindcss"
     ],
     "pluginSearchDirs": false,
-    "tailwindConfig": "./tailwind.config.js"
+    "tailwindConfig": "./tailwind.config.js",
+    "tailwindFunctions": ["tv", "tw", "cva"]
 }

@@ -12,7 +12,7 @@ const useApi = async (
 
     let headers = {};
     const session = await getSession();
-    const { token } = session['token'];
+    const { token } = session["token"];
     if (token) {
         headers = {
             Authorization: "Bearer " + token,
@@ -32,8 +32,8 @@ const useApi = async (
             default:
                 return await axios.get(fullRoute, { headers });
         }
-    } catch (e) {
-        console.error(e);
+    } catch (err) {
+        console.error(err);
     }
 };
 

@@ -23,13 +23,10 @@ const SidebarItem = (props: SidebarItemProps) => {
                 className={cn(
                     "flex items-center rounded-lg border border-transparent p-2 text-base font-normal transition ease-in-out hover:cursor-pointer",
                     isSelected
-                        ? "text-primary-600 bg-primary-100 hover:bg-primary-200 hover:text-primary-700 focus:bg-primary-100"
+                        ? "bg-primary-100 text-primary-600 hover:bg-primary-200 hover:text-primary-700 focus:bg-primary-100"
                         : "text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100"
                 )}>
-                <FontAwesomeIcon
-                    icon={icon}
-                    className="h-4 w-4 px-2"
-                />
+                <FontAwesomeIcon icon={icon} className="h-4 w-4 px-2" />
                 <span className="ml-2">{title}</span>
             </a>
         </li>

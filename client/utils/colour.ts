@@ -16,11 +16,25 @@ const shouldTextBeDark = (bgColour: string) => {
 };
 
 const getTailwindColors = () => {
-    const filteredColours = ["inherit", "current", "transparent"];
+    const filteredColours = [
+        "inherit",
+        "current",
+        "transparent",
+        "lightBlue",
+        "warmGray",
+        "trueGray",
+        "coolGray",
+        "blueGray",
+        "zinc",
+        "neutral",
+        "stone",
+    ];
 
     const twColorKeys = Object.keys(twColors).filter(
         (key) => !filteredColours.includes(key)
     );
+
+    console.log(twColorKeys);
 
     const values = {};
     twColorKeys.forEach((key) => {
@@ -33,7 +47,6 @@ const getTailwindColors = () => {
         }
     });
 
-    console.log(values);
     return values;
 };
 

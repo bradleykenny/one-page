@@ -121,8 +121,8 @@ const CreateProjectModal = (props: Props) => {
                         />
                     </div>
                     <div className="-mx-8 -mb-4 -mr-8 flex justify-end gap-2 border-t px-8 pt-4">
-                        <Button variant="soft">More info</Button>
-                        <Button variant="solid" onClick={handleSubmit}>
+                        <Button look="soft">More info</Button>
+                        <Button look="solid" onClick={handleSubmit}>
                             Get started
                         </Button>
                     </div>
