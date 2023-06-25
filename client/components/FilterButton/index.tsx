@@ -13,7 +13,7 @@ import Checkbox from "../Checkbox";
 interface Props {
     name: string;
     values?: string[];
-    onSelect: Function;
+    onSelect?: Function;
 }
 
 const FilterButton = (props: Props) => {

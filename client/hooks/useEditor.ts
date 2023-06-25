@@ -37,7 +37,7 @@ const useEditor = (content: string | JSONContent, disable?: boolean) => {
         editorProps: {
             attributes: {
                 class: cn(
-                    "prose prose-stone prose-p:my-2 focus:outline-none m-4 py-1 px-4 rounded-md max-w-full",
+                    "prose prose-stone focus:outline-none m-4 p-4 rounded-md max-w-full",
                     editorStyle,
                     viewerStyle
                 ),
