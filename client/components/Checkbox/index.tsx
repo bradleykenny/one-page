@@ -1,12 +1,13 @@
 import { MouseEvent } from "react";
 
 interface Props {
+    label: string;
     checked: boolean;
     onClick?: (event: MouseEvent<HTMLInputElement>) => void;
 }
 
 const Checkbox = (props: Props) => {
-    const { checked, onClick } = props;
+    const { checked, label, onClick } = props;
 
     return (
         <div className="flex items-center space-x-2">
@@ -19,9 +20,8 @@ const Checkbox = (props: Props) => {
             />
             <label
                 htmlFor="example1"
-                className="text-sm font-medium text-gray-700"
-            >
-                I Accept
+                className="text-sm font-medium text-gray-700">
+                {label}
             </label>
         </div>
     );

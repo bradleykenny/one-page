@@ -1,7 +1,6 @@
 import {
     faArrowDown,
-    faChevronDown,
-    faUser,
+    faUser
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import APIs from "config/APIs";
@@ -9,13 +8,16 @@ import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import { getApiData } from "utils/http";
 
+import { useState } from "react";
+
 import Button from "@src/components/Button";
 import FilterButton from "@src/components/FilterButton";
 import Input from "@src/components/Input";
 import Layout from "@src/components/Layout";
+import RecentPages from "@src/components/RecentPages";
 import { PageResponse } from "@src/models/Page";
 import { ProjectResponse } from "@src/models/Project";
-import RecentPages from "@src/components/RecentPages";
+import { lightenDarkenColor, shouldTextBeDark } from "utils/colour";
 
 interface Props {
     pages: PageResponse[];
@@ -24,6 +26,10 @@ interface Props {
 
 const Pages = (props: Props) => {
     const { pages, projects } = props;
+
+    const [data, setData] = useState(pages);
+
+
 
     return (
         <div>
@@ -40,8 +46,8 @@ const Pages = (props: Props) => {
                     <p className="m-0 mr-2 self-center text-sm font-semibold text-gray-600">
                         Filters
                     </p>
-                    <FilterButton name="User" />
-                    <FilterButton name="Project" />
+                    <FilterButton name="User" values={["One", "Two"]} onSelect={() => setData(data)}/>
+                    <FilterButton name="Project" onSelect={() => setData(data)}/>
                     <div className="ml-auto flex gap-2">
                         <Input
                             type="text"
@@ -97,7 +103,7 @@ const Pages = (props: Props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {pages.map((page) => {
+                        {data.map((page) => {
                             const parentProject = projects?.find(
                                 (project) => project.id === page.projectId
                             );
@@ -130,7 +136,10 @@ const Pages = (props: Props) => {
                                             {parentProject && (
                                                 <a
                                                     href={`/projects/${parentProject.id}`}
-                                                    className="inline-block rounded-md bg-blue-200 px-2 py-1 text-xs font-medium text-blue-600">
+                                                    className="inline-block rounded-md px-2 py-1 text-xs font-medium" style={{
+                                                        backgroundColor: parentProject.color,
+                                                        color: shouldTextBeDark(parentProject.color) ? lightenDarkenColor(parentProject.color, -100) :  'white'
+                                                    }}>
                                                     {parentProject.name}
                                                 </a>
                                             )}
@@ -152,7 +161,7 @@ const Pages = (props: Props) => {
                                 colSpan={6}>
                                 Total:{" "}
                                 <span className="font-bold">
-                                    {pages.length}
+                                    {data.length}
                                 </span>
                             </td>
                         </tr>

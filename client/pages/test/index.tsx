@@ -49,6 +49,7 @@ const Test = () => {
                     <Checkbox
                         checked={checked}
                         onClick={() => setChecked(!checked)}
+                        label="I Accept"
                     />
                     <div className="grid grid-cols-4 gap-x-4">
                         <Button look="solid">Solid</Button>
