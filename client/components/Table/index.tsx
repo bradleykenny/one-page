@@ -1,21 +1,28 @@
 import TableBody from "@src/components/Table/Body";
 import TableFilters from "@src/components/Table/Filters";
-import TableHead from "@src/components/Table/Head";
+import TableHead, { TableColumn } from "@src/components/Table/Head";
 import { TableContext } from "@src/components/Table/TableContext";
 import { ProjectResponse } from "@src/models/Project";
+import { useState } from "react";
 
 interface Props {
-    data: any;
-    projects: ProjectResponse[];
+    data: any[];
+    columns: TableColumn[];
+    onSort?: Function;
 }
 
+type SortOrder = "asc" | "desc" | "";
+
 const Table = (props: Props) => {
-    const { data, projects } = props;
+    const { data } = props;
+
+    const [sortColumn, setSortColumn] = useState("");
+    const [sortOrder, setSortOrder] = useState<SortOrder>("");
 
     return (
-        <TableContext.Provider value={{ data, projects }}>
+        <TableContext.Provider value={{ data }}>
             <div>
-                <TableFilters />
+                <TableFilters onSelect={null} />
                 <table className="w-full table-auto overflow-hidden rounded-b-lg bg-white shadow-md">
                     <TableHead />
                     <TableBody />
