@@ -1,8 +1,11 @@
 import { Request } from "express";
 
 export interface QueryOptions {
-	limit: number;
-	offset: number;
+	limit?: number;
+	offset?: number;
+	sort?: string;
+	sortDir?: string;
+	filter?: string;
 }
 
 export interface TypedRequestBody<T> extends Request {

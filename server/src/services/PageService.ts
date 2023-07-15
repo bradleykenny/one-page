@@ -8,6 +8,7 @@ import { AddPageRequest, Page, SavePageRequest } from "../models/Page";
 
 import Id from "../util/Id";
 import Time from "../util/Time";
+import { QueryOptions } from "../models/Common";
 
 const COLLECTION_NAME = Collections.pages;
 
@@ -72,9 +73,9 @@ const getProjectPages = async (
 	return pages;
 };
 
-const getAllPages = async (limit: number, offset: number) => {
+const getAllPages = async (options?: QueryOptions) => {
 	const collection = getCollection();
-	const pages = await getAll(collection, limit, offset);
+	const pages = await getAll(collection, options);
 	return pages;
 };
 

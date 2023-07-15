@@ -6,7 +6,17 @@ import Input from "@src/components/Input";
 
 import { TableContext } from "../TableContext";
 
-const TableFilters = () => {
+interface Props {
+    onSelect: (option: string) => void;
+}
+
+const dummyItems = [
+    { label: "One", value: "one", selected: true },
+    { label: "Two", value: "two", selected: false },
+    { label: "Three", value: "three", selected: true },
+];
+
+const TableFilters = (props: Props) => {
     const ctx = useContext(TableContext);
 
     return (
@@ -14,8 +24,12 @@ const TableFilters = () => {
             <p className="m-0 mr-2 self-center text-sm font-semibold text-gray-600">
                 Filters
             </p>
-            <FilterButton name="User" values={["One", "Two"]} />
-            <FilterButton name="Project" />
+            <FilterButton
+                name="User"
+                options={dummyItems}
+                onSelect={props.onSelect}
+            />
+            <FilterButton name="Project" options={dummyItems} />
             <div className="ml-auto flex gap-2">
                 <Input type="text" placeholder="Search..." inputSize="sm" />
                 <Button look="plain" size="sm">

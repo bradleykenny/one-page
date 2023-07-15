@@ -23,9 +23,10 @@ const addProject = async (request: AddProjectRequest) => {
 	const { name, description, imageUrl, user } = request;
 	const userId = user.username;
 	const timeFields = Time.initialiseTimeFields();
-	const color = request.color ?? `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+	const color =
+		request.color ??
+		`#${Math.floor(Math.random() * 16777215).toString(16)}`;
 
-	
 	const project: Project = {
 		name,
 		description,
@@ -42,7 +43,7 @@ const addProject = async (request: AddProjectRequest) => {
 
 const getAllProjects = async (limit: number, offset: number) => {
 	const coll = getCollection();
-	const projects = getAll(coll, limit, offset);
+	const projects = getAll(coll, { limit, offset });
 	return projects;
 };
 
@@ -60,5 +61,5 @@ export default {
 	addProject,
 	getAllProjects,
 	getProject,
-	getProjectsByIds
+	getProjectsByIds,
 };

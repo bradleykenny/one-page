@@ -23,10 +23,13 @@ const addPage = async (
 
 const getAllPages = async (req: Request, res: Response) => {
 	try {
-		const limit = Number.parseInt(req.query?.limit as string);
-		const offset = Number.parseInt(req.query?.offset as string);
-
-		const pages = await PageService.getAllPages(limit, offset);
+		const pages = await PageService.getAllPages({
+			limit: Number.parseInt(req.query?.limit as string),
+			offset: Number.parseInt(req.query?.offset as string),
+			sort: req.query?.sort as string,
+			sortDir: req.query?.sortDir as string,
+			filter: req.query?.filter as string,
+		});
 
 		res.status(200).json(pages);
 	} catch (error) {
@@ -40,7 +43,11 @@ const getProjectPages = async (req: Request, res: Response) => {
 		const limit = Number.parseInt(req.query?.limit as string);
 		const offset = Number.parseInt(req.query?.offset as string);
 
-		const pages = await PageService.getProjectPages(projectId, limit, offset);
+		const pages = await PageService.getProjectPages(
+			projectId,
+			limit,
+			offset
+		);
 		res.status(200).json(pages);
 	} catch (error) {
 		res.status(500).json({ error });
@@ -88,7 +95,7 @@ const linkProject = async (
 };
 
 export default {
-    addPage,
+	addPage,
 	getAllPages,
 	getProjectPages,
 	getUserPages,

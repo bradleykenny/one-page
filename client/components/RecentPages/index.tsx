@@ -6,10 +6,10 @@ import Card from "../Card";
 
 const RecentPages = () => {
     return (
-        <div className="no-scrollbar flex h-40 gap-4 overflow-scroll pb-4">
+        <div className="no-scrollbar flex h-20 gap-4 overflow-scroll pb-4">
             <div className="w-60 shrink-0">
                 <Link href={"/pages/new"}>
-                    <div className="group flex h-full w-full cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-slate-400 bg-gradient-to-br from-slate-50 to-slate-200 text-gray-800 shadow transition-all ease-in-out hover:border-0 hover:from-indigo-500 hover:to-orange-500 hover:text-white hover:shadow-lg">
+                    <div className="group flex h-full w-full cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-slate-400 bg-gradient-to-br from-slate-50 to-slate-200 text-gray-800 shadow transition-all ease-in-out hover:border-0 hover:from-indigo-300 hover:to-indigo-700 hover:text-white hover:shadow-lg">
                         <p className="text-md group m-0 font-semibold">
                             New page
                         </p>
@@ -19,56 +19,18 @@ const RecentPages = () => {
                     </div>
                 </Link>
             </div>
-            <div className="w-60 shrink-0">
-                <Card>
-                    <div className="flex items-center justify-center">
-                    <FontAwesomeIcon
-                        icon={faFolderOpen}
-                        className="h-20 w-20 text-slate-400"
-                    />
-                    </div>
-                </Card>
-            </div>
-            <div className="w-60 shrink-0">
-                <Card>
-                    <div className="flex items-center justify-center">
-                    <FontAwesomeIcon
-                        icon={faFolderOpen}
-                        className="h-20 w-20 text-slate-400"
-                    />
-                    </div>
-                </Card>
-            </div>
-            <div className="w-60 shrink-0">
-                <Card>
-                    <div className="flex items-center justify-center">
-                    <FontAwesomeIcon
-                        icon={faFolderOpen}
-                        className="h-20 w-20 text-slate-400"
-                    />
-                    </div>
-                </Card>
-            </div>
-            <div className="w-60 shrink-0">
-                <Card>
-                    <div className="flex items-center justify-center">
-                    <FontAwesomeIcon
-                        icon={faFolderOpen}
-                        className="h-20 w-20 text-slate-400"
-                    />
-                    </div>
-                </Card>
-            </div>
-            <div className="w-60 shrink-0">
-                <Card>
-                    <div className="flex items-center justify-center">
-                    <FontAwesomeIcon
-                        icon={faFolderOpen}
-                        className="h-20 w-20 text-slate-400"
-                    />
-                    </div>
-                </Card>
-            </div>
+            {[1, 2, 3, 4, 5].map(() => (
+                <div className="w-60 shrink-0">
+                    <Card>
+                        <div className="flex items-center justify-center">
+                            <FontAwesomeIcon
+                                icon={faFolderOpen}
+                                className="h-4 text-slate-400"
+                            />
+                        </div>
+                    </Card>
+                </div>
+            ))}
         </div>
     );
 };

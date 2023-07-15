@@ -1,6 +1,14 @@
 import { createContext } from 'react';
+import { TableColumn } from './Head';
 
-export const TableContext = createContext({
+interface ITableContext {
+    data: any[];
+    columns: TableColumn[];
+    onSort: Function;
+}
+
+export const TableContext = createContext<ITableContext>({
     data: null,
-    projects: null
+    columns: null,
+    onSort: null,
 });

@@ -1,6 +1,16 @@
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+export interface TableColumn {
+    label: string;
+    accessor: string;
+    sortable?: boolean;
+}
+
+interface Props {
+    columns: TableColumn[];
+}
+
 const TableHead = () => {
     return (
         <thead>

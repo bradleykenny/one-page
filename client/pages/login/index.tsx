@@ -82,7 +82,9 @@ const Login = () => {
                                 onChange={handlePasswordChange}
                                 autoComplete="current-password"
                             />
-                            <Button fullWidth>Login</Button>
+                            <Button fullWidth type="submit">
+                                Login
+                            </Button>
                             <a
                                 href="/register"
                                 className="m-auto rounded-lg py-1 px-2 text-center text-indigo-800 hover:underline">

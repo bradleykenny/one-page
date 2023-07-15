@@ -5,18 +5,20 @@ import { lightenDarkenColor, shouldTextBeDark } from "utils/colour";
 import { useContext } from "react";
 
 import { TableContext } from "../TableContext";
+import { TableColumn } from "../Head";
+
+interface Props {
+    columns: TableColumn[];
+    data: any[];
+}
 
 const TableBody = () => {
     const ctx = useContext(TableContext);
-    const { data, projects } = ctx;
+    const { data } = ctx;
     
     return (
         <tbody>
             {data.map((page) => {
-                const parentProject = projects?.find(
-                    (project) => project.id === page.projectId
-                );
-
                 return (
                     <tr
                         className={
@@ -42,23 +44,23 @@ const TableBody = () => {
                         </td>
                         <td>
                             <div className="flex items-center py-3 px-4">
-                                {parentProject && (
+                                {page.project && (
                                     <a
-                                        href={`/projects/${parentProject.id}`}
+                                        href={`/projects/${page.project.id}`}
                                         className="inline-block rounded-md px-2 py-1 text-xs font-medium"
                                         style={{
                                             backgroundColor:
-                                                parentProject.color,
+                                                page.project.color,
                                             color: shouldTextBeDark(
-                                                parentProject.color
+                                                page.project.color
                                             )
                                                 ? lightenDarkenColor(
-                                                      parentProject.color,
+                                                      page.project.color,
                                                       -100
                                                   )
                                                 : "white",
                                         }}>
-                                        {parentProject.name}
+                                        {page.project.name}
                                     </a>
                                 )}
                             </div>

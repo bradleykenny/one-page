@@ -118,7 +118,7 @@ const Register = () => {
                                     handleTextchange(e, setPassword)
                                 }
                             />
-                            <Button>Register</Button>
+                            <Button type="submit">Register</Button>
                             <a
                                 href="/login"
                                 className="m-auto rounded-lg py-1 px-2 text-center text-indigo-800 hover:bg-indigo-50">

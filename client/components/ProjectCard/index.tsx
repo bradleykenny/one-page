@@ -46,7 +46,7 @@ const ProjectCard = (props: Props) => {
                                 className="mr-2 inline-block h-4 w-4 rounded"
                             />
                         )}
-                        <h2 className="m-0 text-lg font-medium">
+                        <h2 className="m-0 text-base font-medium">
                             {project.name}
                             {project.access === "PRIVATE" && (
                                 <FontAwesomeIcon
@@ -57,7 +57,7 @@ const ProjectCard = (props: Props) => {
                             )}
                         </h2>
                     </div>
-                    <p className="m-0 truncate text-gray-500">
+                    <p className="m-0 mt-2 truncate text-sm text-gray-500">
                         {project.description}
                     </p>
                 </div>

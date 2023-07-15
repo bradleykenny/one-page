@@ -1,4 +1,5 @@
 import { Collection, Document } from "mongodb";
+import { QueryOptions } from "../models/Common";
 
 const getById = async (collection: Collection<Document>, id: string) => {
 	const data = await collection.findOne({ id });
@@ -12,13 +13,12 @@ const getByAnyId = async (collection: Collection<Document>, ids: string[]) => {
 
 const getAll = async (
 	collection: Collection<Document>,
-	limit: number,
-	offset: number
+	options?: QueryOptions
 ) => {
 	const pages = await collection
 		.find({})
-		.limit(limit || 10)
-		.skip(offset || 0)
+		.limit(options?.limit || 10)
+		.skip(options?.offset || 0)
 		.toArray();
 
 	return pages;
