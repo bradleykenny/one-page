@@ -1,6 +1,9 @@
-import { faEdit, faEye, faPencil } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Head from "next/head";
 import { useRouter } from "next/router";
+
+import { ReactElement } from "react";
 
 import Button from "@src/components/Button";
 import ContentCard from "@src/components/ContentCard";
@@ -27,7 +30,7 @@ const Page = () => {
     };
 
     return (
-        <Layout>
+        <div>
             <div className="mr-80">
                 <ContentCard page={page}>
                     <div className="mx-auto flex gap-2 pt-4">
@@ -49,7 +52,22 @@ const Page = () => {
                 </ContentCard>
             </div>
             <SidebarInfo page={page} project={project} />
-        </Layout>
+        </div>
+    );
+};
+
+Page.getLayout = function getLayout(page: ReactElement) {
+    return (
+        <>
+            <Head>
+                <title>one:page | page</title>
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
+            </Head>
+            <Layout>{page}</Layout>
+        </>
     );
 };
 

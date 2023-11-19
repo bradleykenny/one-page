@@ -1,5 +1,6 @@
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 import Card from "@src/components/Card";
 import { PageResponse } from "@src/models/Page";
@@ -17,18 +18,18 @@ const PageCard = (props: Props) => {
     return (
         <Card>
             <div className="-m-1">
-                <a
+                <Link
                     href={page?.id && `/pages/${page?.id}`}
                     className="mb-1 block cursor-pointer pb-1 text-2xl font-black text-indigo-700 transition ease-in-out hover:border-orange-200 hover:text-orange-400">
                     {page?.title}
-                </a>
+                </Link>
                 {parentProject && (
-                    <a
+                    <Link
                         href={`/projects/${parentProject.id}`}
                         className="inline-block rounded-md px-2 py-1 text-xs text-white"
                         style={{ backgroundColor: parentProject.color }}>
                         {parentProject.name}
-                    </a>
+                    </Link>
                 )}
                 <div className="mt-2 flex">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-200">

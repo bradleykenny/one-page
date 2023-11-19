@@ -57,7 +57,7 @@ const ProjectCard = (props: Props) => {
                             )}
                         </h2>
                     </div>
-                    <p className="m-0 mt-2 truncate text-sm text-gray-500">
+                    <p className="m-0 mt-2 truncate text-gray-500">
                         {project.description}
                     </p>
                 </div>

@@ -1,11 +1,12 @@
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import { lightenDarkenColor, shouldTextBeDark } from "utils/colour";
 
 import { useContext } from "react";
 
-import { TableContext } from "../TableContext";
 import { TableColumn } from "../Head";
+import { TableContext } from "../TableContext";
 
 interface Props {
     columns: TableColumn[];
@@ -15,7 +16,7 @@ interface Props {
 const TableBody = () => {
     const ctx = useContext(TableContext);
     const { data } = ctx;
-    
+
     return (
         <tbody>
             {data.map((page) => {
@@ -25,11 +26,11 @@ const TableBody = () => {
                             "m-4 border border-l-0 border-r-0 border-gray-200"
                         }>
                         <td className="py-3 px-4">
-                            <a
+                            <Link
                                 href={`/pages/${page.id}`}
                                 className="-ml-2 rounded-lg py-1 px-2 text-indigo-700 transition-all ease-in-out hover:underline">
                                 {page.title}
-                            </a>
+                            </Link>
                         </td>
                         <td>
                             <div className="inline-flex items-center rounded-lg py-1 px-2 hover:bg-gray-100">
@@ -45,12 +46,11 @@ const TableBody = () => {
                         <td>
                             <div className="flex items-center py-3 px-4">
                                 {page.project && (
-                                    <a
+                                    <Link
                                         href={`/projects/${page.project.id}`}
                                         className="inline-block rounded-md px-2 py-1 text-xs font-medium"
                                         style={{
-                                            backgroundColor:
-                                                page.project.color,
+                                            backgroundColor: page.project.color,
                                             color: shouldTextBeDark(
                                                 page.project.color
                                             )
@@ -61,7 +61,7 @@ const TableBody = () => {
                                                 : "white",
                                         }}>
                                         {page.project.name}
-                                    </a>
+                                    </Link>
                                 )}
                             </div>
                         </td>

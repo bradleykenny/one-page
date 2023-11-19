@@ -1,5 +1,6 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { cn } from "utils";
 
@@ -18,7 +19,7 @@ const SidebarItem = (props: SidebarItemProps) => {
 
     return (
         <li>
-            <a
+            <Link
                 href={url}
                 className={cn(
                     "flex items-center rounded-lg border border-transparent p-2 text-base font-normal transition ease-in-out hover:cursor-pointer",
@@ -28,7 +29,7 @@ const SidebarItem = (props: SidebarItemProps) => {
                 )}>
                 <FontAwesomeIcon icon={icon} className="h-4 w-4 px-2" />
                 <span className="ml-2">{title}</span>
-            </a>
+            </Link>
         </li>
     );
 };

@@ -13,7 +13,7 @@ const Search = (props: Props) => {
                 <title>one:page | search</title>
             </Head>
             <Layout>
-                <Input type="text" placeholder="What are you looking for?" />
+                <Input type="text" placeholder="What are you looking for?" inputSize="xl" />
             </Layout>
         </div>
     );

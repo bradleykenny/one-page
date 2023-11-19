@@ -6,7 +6,7 @@ import Card from "../Card";
 
 const RecentPages = () => {
     return (
-        <div className="no-scrollbar flex h-20 gap-4 overflow-scroll pb-4">
+        <div className="no-scrollbar flex h-20 gap-4 overflow-scroll pb-4 -mx-8 px-8">
             <div className="w-60 shrink-0">
                 <Link href={"/pages/new"}>
                     <div className="group flex h-full w-full cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-slate-400 bg-gradient-to-br from-slate-50 to-slate-200 text-gray-800 shadow transition-all ease-in-out hover:border-0 hover:from-indigo-300 hover:to-indigo-700 hover:text-white hover:shadow-lg">

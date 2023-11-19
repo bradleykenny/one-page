@@ -1,5 +1,4 @@
 import { Chewy } from "@next/font/google";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
 import { cn } from "utils";

@@ -1,10 +1,9 @@
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import jwt from "jsonwebtoken";
-import { signOut, getSession, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { useEffect, useState } from "react";
 
 import useSessionData from "@src/hooks/useSessionData";
 
@@ -15,7 +14,7 @@ interface Props {
 
 const NavProfile = (props: Props) => {
     const { isSelected } = props;
-    
+
     const { username } = useSessionData();
     const router = useRouter();
 
@@ -29,7 +28,7 @@ const NavProfile = (props: Props) => {
     };
 
     return (
-        <a
+        <Link
             className={`${sharedStyles} flex items-center text-indigo-800 hover:border-indigo-200 hover:bg-indigo-50 focus:bg-indigo-100`}
             href="#"
             onClick={handleClick}>
@@ -40,7 +39,7 @@ const NavProfile = (props: Props) => {
                 />
             </div>
             <p className="mb-0 inline-block">{username}</p>
-        </a>
+        </Link>
     );
 };
 

@@ -5,6 +5,7 @@ import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { PageResponse } from "models/Page";
+import Link from "next/link";
 
 import { useEffect } from "react";
 
@@ -39,11 +40,11 @@ const ContentCard = (props: Props) => {
 
     return (
         <Card>
-            <a
-                href={page?.id && `/pages/${page?.id}`}
+            <Link
+                href={`/pages/${page?.id}`}
                 className="mb-1 inline-block cursor-pointer pb-1 text-2xl font-black text-indigo-700 transition ease-in-out hover:border-orange-200 hover:text-orange-400">
                 {page?.title}
-            </a>
+            </Link>
             <div className="my-2 flex items-center border-b border-gray-200 pb-3 text-gray-600">
                 <div className="mr-2 flex h-5 w-5 items-center justify-center overflow-hidden rounded-full bg-indigo-300">
                     <FontAwesomeIcon

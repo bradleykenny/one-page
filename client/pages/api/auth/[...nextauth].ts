@@ -20,27 +20,33 @@ export const authOptions = {
                 },
             },
             authorize: async (credentials, req) => {
-                const { email, password } = credentials;
-                const res = await fetch(
-                    "http://localhost:5001/api/v1/auth/login",
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            email,
-                            password,
-                        }),
+                try {
+                    const { email, password } = credentials;
+                    const res = await fetch(
+                        "http://localhost:5001/api/v1/auth/login",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                email,
+                                password,
+                            }),
+                        }
+                    );
+
+                    const token = await res.json();
+                    console.log("token", token);
+                    if (res.ok && token) {
+                        return token;
                     }
-                );
 
-                const token = await res.json();
-                if (res.ok && token) {
-                    return token;
+                    return null;
+                } catch (e) {
+                    console.error(e);
+                    return null;
                 }
-
-                return null;
             },
         }),
     ],
@@ -57,4 +63,5 @@ export const authOptions = {
         signOut: "/login",
     },
 };
+
 export default NextAuth(authOptions);

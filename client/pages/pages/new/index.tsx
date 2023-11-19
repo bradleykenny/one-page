@@ -1,10 +1,11 @@
 import { JSONContent } from "@tiptap/react";
+import Head from "next/head";
 import { useRouter } from "next/router";
+
+import { ReactElement } from "react";
 
 import EditorV3 from "@src/components/Editor";
 import Layout from "@src/components/Layout";
-import Navbar from "@src/components/NavBar";
-import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import useApi from "@src/hooks/useApi";
 
@@ -23,12 +24,27 @@ const NewPage = () => {
     };
 
     return (
-        <Layout>
+        <div>
             <div className="mr-80">
                 <EditorV3 page={undefined} saveAction={saveContent} />
             </div>
             <SidebarInfo />
-        </Layout>
+        </div>
+    );
+};
+
+NewPage.getLayout = function getLayout(page: ReactElement) {
+    return (
+        <>
+            <Head>
+                <title>one:page | new page</title>
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
+            </Head>
+            <Layout>{page}</Layout>
+        </>
     );
 };
 

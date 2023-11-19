@@ -1,6 +1,6 @@
 import { cn } from "utils";
 
-type InputSize = "sm" | "md" | "lg";
+type InputSize = "sm" | "md" | "lg" | "xl";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     type: "text" | "password";
@@ -43,14 +43,11 @@ const inputStyle = (props: Props) => {
     const sizeStyles = {
         sm: "text-xs h-8 self-center",
         md: "",
-        lg: "text-md h-12 self-center",
+        lg: "text-md h-12 self-center block",
+        xl: "text-md h-18 self-center",
     };
 
-    return cn(
-        sharedStyles,
-        sizeStyles[inputSize],
-        props.className
-    );
+    return cn(sharedStyles, sizeStyles[inputSize], props.className);
 };
 
 export default Input;

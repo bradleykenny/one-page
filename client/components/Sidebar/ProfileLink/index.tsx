@@ -1,6 +1,7 @@
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 import useSessionData from "@src/hooks/useSessionData";
@@ -18,8 +19,8 @@ const ProfileLink = (props: Props) => {
     };
 
     return (
-        <a
-            className="bg-white absolute bottom-0 left-0 right-0.5 ml-auto flex cursor-pointer items-center border border-r-0 py-4 px-6 text-indigo-800 transition ease-in-out hover:bg-slate-100"
+        <Link
+            className="absolute bottom-0 left-0 right-0.5 ml-auto flex cursor-pointer items-center border border-r-0 bg-white py-4 px-6 text-indigo-800 transition ease-in-out hover:bg-slate-100"
             href="#"
             onClick={handleClick}>
             <div className="-m-2 mr-2 flex rounded-md bg-indigo-200 p-1">
@@ -29,7 +30,7 @@ const ProfileLink = (props: Props) => {
                 />
             </div>
             <p className="mb-0 inline-block">{username}</p>
-        </a>
+        </Link>
     );
 };
 
