@@ -1,4 +1,5 @@
 import { EditorContent, JSONContent } from "@tiptap/react";
+import { useCompletion } from "ai/react";
 import { PageResponse } from "models/Page";
 
 import { ChangeEvent, useEffect, useState } from "react";
@@ -23,6 +24,17 @@ const Editor = (props: Props) => {
 
     const editor = useEditor(content, false);
 
+    const {
+        completion,
+        input,
+        stop,
+        isLoading,
+        handleInputChange,
+        handleSubmit,
+    } = useCompletion({
+        api: `${process.env.NEXT_PUBLIC_API_URL}/ai/message`,
+    });
+
     useEffect(() => {
         try {
             editor?.commands.setContent(content);
@@ -31,7 +43,7 @@ const Editor = (props: Props) => {
         }
     }, [content]);
 
-    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInputTitle(e.currentTarget.value);
     };
 
@@ -58,13 +70,27 @@ const Editor = (props: Props) => {
                         <input
                             type="text"
                             value={inputTitle}
-                            onChange={handleInputChange}
+                            onChange={handleChange}
                             placeholder="Enter title here"
                             className="w-full rounded-md border-none bg-white py-3 px-4 text-4xl font-black text-indigo-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0"
                         />
                     </div>
                 </div>
                 <EditorContent editor={editor} />
+            </div>
+            <div className="w-full rounded-md border-purple-700 bg-gradient-to-br from-indigo-200 via-blue-200 to-green-200 py-3 px-4">
+                <form onSubmit={handleSubmit}>
+                    <div className="mt-1 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-400 p-0.5">
+                        <input
+                            type="text"
+                            value={input}
+                            onChange={handleInputChange}
+                            placeholder="Enter title here"
+                            className="w-full rounded-md border-none bg-white py-3 px-4 focus:outline-none focus:ring-0"
+                        />
+                    </div>
+                    <div className="w-full px-2 pt-4 pb-3">{completion}</div>
+                </form>
             </div>
         </div>
     );

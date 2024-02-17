@@ -21,7 +21,6 @@ const login = async (
   request: TypedRequestBody<LoginRequest>,
   res: Response
 ) => {
-	console.log('req', request);
   const { email, password } = request.body;
 
   if (!email || !password) {
@@ -31,14 +30,11 @@ const login = async (
   const authCollection = getCollection();
   const user = await authCollection.findOne({ email });
 
-  console.log("here", user);
-
   if (!user) {
     res.status(500).send(`No user exists for: ${email}`);
   }
 
   const passwordsMatch = await bcrypt.compare(password, user?.password);
-  console.log('pw', passwordsMatch);
 
   if (passwordsMatch) {
     const token = jwt.sign(
@@ -46,7 +42,6 @@ const login = async (
       process.env.SECRET as string
     );
 
-    console.log(token);
     res.json({ token });
   } else {
     res.status(500).send("Incorrect username/password");
@@ -72,7 +67,6 @@ const register = async (
     }
 
     const encryptedPassword = await bcrypt.hash(password, 10);
-    console.log('enc', encryptedPassword)
     const userId = uuidv4();
     const newUser = {
       ...request.body,
