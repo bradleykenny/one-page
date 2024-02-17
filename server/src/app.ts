@@ -3,6 +3,7 @@ import "dotenv/config";
 import express from "express";
 import MongoService from "./services/MongoService";
 
+import AiRouter from "./routers/ai";
 import AuthRouter from "./routers/auth";
 import PageRouter from "./routers/page";
 import ProfileRouter from "./routers/profile";
@@ -15,7 +16,8 @@ const API_PREFIX = process.env.API_PREFIX;
 const PORT = process.env.PORT || 5001;
 
 const server = express();
-server.use(cors());
+
+server.use(cors()); // TODO: need to tidy this up before deploying
 server.use(express.json());
 
 MongoService.connectToServer();
@@ -30,6 +32,7 @@ server.get(`${API_PREFIX}/ping`, (_, res) => {
 });
 
 // imported routers
+server.use(`${API_PREFIX}/ai`, AiRouter);
 server.use(`${API_PREFIX}/auth`, AuthRouter);
 server.use(`${API_PREFIX}/page`, PageRouter);
 server.use(`${API_PREFIX}/profile`, ProfileRouter);

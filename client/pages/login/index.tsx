@@ -1,4 +1,5 @@
 import { Chewy } from "@next/font/google";
+import { getServerSession } from "next-auth";
 import { getSession, signIn } from "next-auth/react";
 import { cn } from "utils";
 
@@ -6,6 +7,8 @@ import React, { useState } from "react";
 
 import Button from "@src/components/Button";
 import Input from "@src/components/Input";
+
+import { authOptions } from "../api/auth/[...nextauth]";
 
 const titleFont = Chewy({ weight: "400", subsets: ["latin"] });
 
@@ -91,7 +94,8 @@ const Login = () => {
 
 export async function getServerSideProps(context) {
     const { req } = context;
-    const session = await getSession({ req });
+    const session = await getServerSession(req, context.res, authOptions);
+    console.log("session", session);
 
     if (session) {
         return {

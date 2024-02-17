@@ -38,6 +38,7 @@ const login = async (
   }
 
   const passwordsMatch = await bcrypt.compare(password, user?.password);
+  console.log('pw', passwordsMatch);
 
   if (passwordsMatch) {
     const token = jwt.sign(
@@ -71,6 +72,7 @@ const register = async (
     }
 
     const encryptedPassword = await bcrypt.hash(password, 10);
+    console.log('enc', encryptedPassword)
     const userId = uuidv4();
     const newUser = {
       ...request.body,
