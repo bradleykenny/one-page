@@ -1,5 +1,4 @@
 import { EditorContent, JSONContent } from "@tiptap/react";
-import { useCompletion } from "ai/react";
 import { PageResponse } from "models/Page";
 
 import { ChangeEvent, useEffect, useState } from "react";
@@ -7,6 +6,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import useApi from "@src/hooks/useApi";
 import useEditor from "@src/hooks/useEditor";
 
+import AiChat from "../AiChat";
 import EditorToolbar from "./Toolbar";
 
 interface Props {
@@ -23,17 +23,6 @@ const Editor = (props: Props) => {
     const [inputTitle, setInputTitle] = useState(title);
 
     const editor = useEditor(content, false);
-
-    const {
-        completion,
-        input,
-        stop,
-        isLoading,
-        handleInputChange,
-        handleSubmit,
-    } = useCompletion({
-        api: `${process.env.NEXT_PUBLIC_API_URL}/ai/message`,
-    });
 
     useEffect(() => {
         try {
@@ -78,20 +67,7 @@ const Editor = (props: Props) => {
                 </div>
                 <EditorContent editor={editor} />
             </div>
-            <div className="w-full rounded-md border-purple-700 bg-gradient-to-br from-indigo-200 via-blue-200 to-green-200 py-3 px-4">
-                <form onSubmit={handleSubmit}>
-                    <div className="mt-1 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-400 p-0.5">
-                        <input
-                            type="text"
-                            value={input}
-                            onChange={handleInputChange}
-                            placeholder="Enter title here"
-                            className="w-full rounded-md border-none bg-white py-3 px-4 focus:outline-none focus:ring-0"
-                        />
-                    </div>
-                    <div className="w-full px-2 pt-4 pb-3">{completion}</div>
-                </form>
-            </div>
+            <AiChat />
         </div>
     );
 };

@@ -29,7 +29,7 @@ const useEditor = (content: string | JSONContent, disable?: boolean) => {
                 placeholder: "Let' get started...",
                 showOnlyWhenEditable: true,
                 emptyEditorClass:
-                'cursor-text before:content-[attr(data-placeholder)] before:absolute before:top-2 before:left-2 before:text-mauve-11 before:opacity-50 before-pointer-events-none',
+                    "cursor-text before:content-[attr(data-placeholder)] before:absolute before:top-2 before:left-2 before:text-mauve-11 before:opacity-50 before-pointer-events-none",
             }),
         ],
         content: content,

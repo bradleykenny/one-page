@@ -4,6 +4,7 @@ import { Collections } from "../models/Collections";
 import MongoService from "./MongoService";
 import OpenAI from "openai";
 import { TypedRequestBody } from "../models/Common";
+import { prompts } from "../config/prompt";
 
 const COLLECTION_NAME = Collections.ai;
 
@@ -24,13 +25,13 @@ const generateMessage = async (
       res.status(500).send("All fields must be entered.");
     }
 
+
     const completion = await openai.chat.completions.create({
-      messages: [{ role: "system", content: req.body.prompt }],
+      messages: [prompts.message, { role: "user", content: req.body.prompt }],
       model: "gpt-3.5-turbo",
       stream: true,
     });
-
-    let total = '';
+    
     for await (const chunk of completion) {
       if (chunk.choices[0].finish_reason === 'stop') {
         break;
