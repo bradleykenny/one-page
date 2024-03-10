@@ -3,10 +3,10 @@ import { PageResponse } from "models/Page";
 
 import { ChangeEvent, useEffect, useState } from "react";
 
+import AiChat from "@src/components/AiChat";
 import useApi from "@src/hooks/useApi";
 import useEditor from "@src/hooks/useEditor";
 
-import AiChat from "../AiChat";
 import EditorToolbar from "./Toolbar";
 
 interface Props {
@@ -53,7 +53,7 @@ const Editor = (props: Props) => {
             <div className="sticky top-0 z-10 -mx-4 -mt-4 border-b bg-gray-200 px-4 pt-4">
                 <EditorToolbar editor={editor} onSave={handleToolbarSave} />
             </div>
-            <div className="mt-0 mb-4 rounded-b-md bg-white pt-1 pb-1 shadow">
+            <div className="mt-0 mb-96 rounded-b-md bg-white pt-1 pb-1 shadow">
                 <div className="h-full w-full">
                     <div className="m-4 mb-0">
                         <input

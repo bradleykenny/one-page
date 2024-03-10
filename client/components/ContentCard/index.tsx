@@ -1,5 +1,4 @@
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Highlight from "@tiptap/extension-highlight";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
@@ -9,6 +8,7 @@ import Link from "next/link";
 
 import { useEffect } from "react";
 
+import Badge from "@src/components/Badge";
 import Card from "@src/components/Card";
 
 interface Props {
@@ -38,6 +38,17 @@ const ContentCard = (props: Props) => {
         }
     }, [page]);
 
+    const badges = [
+        {
+            label: page?.userId,
+            icon: faUser,
+        },
+        // {
+        //     label: page.projectId,
+        //     icon: faCube,
+        // },
+    ];
+
     return (
         <Card>
             <Link
@@ -45,14 +56,10 @@ const ContentCard = (props: Props) => {
                 className="mb-1 inline-block cursor-pointer pb-1 text-2xl font-black text-indigo-700 transition ease-in-out hover:border-orange-200 hover:text-orange-400">
                 {page?.title}
             </Link>
-            <div className="my-2 flex items-center border-b border-gray-200 pb-3 text-gray-600">
-                <div className="mr-2 flex h-5 w-5 items-center justify-center overflow-hidden rounded-full bg-indigo-300">
-                    <FontAwesomeIcon
-                        icon={faUser}
-                        className="mt-1 h-4 w-4 text-indigo-100"
-                    />
-                </div>
-                {page?.userId}
+            <div className="my-2 flex items-center gap-2">
+                {badges.map((badge) => (
+                    <Badge label={badge.label} icon={badge.icon} />
+                ))}
             </div>
             <EditorContent editor={editor} />
             {children}

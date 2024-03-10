@@ -23,16 +23,20 @@ const Home: NextPage = () => {
                     "mx-auto mt-24 h-auto py-4 text-center text-4xl font-black text-slate-500 drop-shadow-lg",
                     unbounded.className
                 )}>
-                ur:page
+                one:page
             </h1>
             <p className="mt-6 mb-16 text-center text-7xl font-black text-gray-700 drop-shadow-lg">
-                {"All "}
+                All your{" "}
                 <span className="bg-gradient-to-r from-orange-500 to-indigo-500 bg-clip-text text-transparent">
-                    your pages
+                    pages
                 </span>
                 .
                 <br />
-                All together.
+                All{" "}
+                <span className="bg-gradient-to-r from-orange-500 to-indigo-500 bg-clip-text text-transparent">
+                    together
+                </span>
+                .
             </p>
             <a
                 className="group mx-auto mb-24 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-700 px-8 py-4 text-white shadow-lg shadow-indigo-200 transition-all ease-in-out hover:to-indigo-800"
