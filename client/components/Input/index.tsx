@@ -25,10 +25,10 @@ const Input = (props: Props) => {
             <input
                 type="text"
                 id="input"
-                className={inputStyle(props)}
                 value={value}
                 onChange={onChange}
                 {...props}
+                className={inputStyle(props)}
             />
         </div>
     );

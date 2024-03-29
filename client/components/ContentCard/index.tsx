@@ -53,7 +53,7 @@ const ContentCard = (props: Props) => {
         <Card>
             <Link
                 href={`/pages/${page?.id}`}
-                className="mb-1 inline-block cursor-pointer pb-1 text-2xl font-black text-indigo-700 transition ease-in-out hover:border-orange-200 hover:text-orange-400">
+                className="mb-1 inline-block cursor-pointer text-2xl font-black text-indigo-700 transition ease-in-out hover:border-orange-200 hover:text-orange-400">
                 {page?.title}
             </Link>
             <div className="my-2 flex items-center gap-2">
