@@ -1,4 +1,8 @@
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+    faCircleUser,
+    faCube,
+    faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import Highlight from "@tiptap/extension-highlight";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
@@ -41,12 +45,12 @@ const ContentCard = (props: Props) => {
     const badges = [
         {
             label: page?.userId,
-            icon: faUser,
+            icon: faCircleUser,
         },
-        // {
-        //     label: page.projectId,
-        //     icon: faCube,
-        // },
+        {
+            label: page?.projectId,
+            icon: faCube,
+        },
     ];
 
     return (

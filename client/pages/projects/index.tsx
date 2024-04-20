@@ -26,7 +26,7 @@ function Projects(props: Props) {
     return (
         <div>
             <div
-                className="group mb-4 flex cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-primary-400 to-primary-700 py-8 text-center text-white shadow hover:shadow-md"
+                className="group sticky top-0 z-50 -mx-8 -mt-8 mb-4 flex cursor-pointer items-center justify-center bg-gradient-to-br from-primary-400/90 to-primary-700/90 py-8 text-center text-white shadow backdrop-blur-sm hover:shadow-md"
                 onClick={handleShowModal}>
                 <h1 className="mb-0 mr-2 inline text-lg font-semibold text-white">
                     Start new project

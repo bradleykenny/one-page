@@ -11,7 +11,7 @@ const Card = (props: Props) => {
     return (
         <div
             className={cn(
-                "w-full h-full duration-400 mx-auto overflow-hidden rounded-lg bg-white px-8 py-6 shadow transition ease-in-out hover:shadow-md",
+                "duration-400 mx-auto h-full w-full overflow-hidden rounded-lg border border-gray-300 bg-white px-8 py-6 shadow transition ease-in-out hover:shadow-md",
                 className
             )}>
             {children}
