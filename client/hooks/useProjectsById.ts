@@ -1,27 +1,32 @@
 import { useEffect, useState } from "react";
 
-import { PageResponse, PageResponseWithProject } from "@src/models/Page";
-
 import useApi from "./useApi";
 
-const useAllPages = () => {
-    const [result, setResult] = useState<PageResponseWithProject[]>([]);
+interface Params {
+    projectIds: string[];
+}
+
+const useProjectsById = (params: Params) => {
+    const [result, setResult] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             const response = await useApi({
-                route: `/page/all?limit=50`,
+                route: `/project/byId`,
                 requestType: "GET",
+                configs: {
+                    params: { ids: params.projectIds },
+                },
             });
-
             if (response?.data) {
                 setResult(response.data);
             }
         };
+
         fetchData();
     }, []);
 
     return { result };
 };
 
-export default useAllPages;
+export default useProjectsById;

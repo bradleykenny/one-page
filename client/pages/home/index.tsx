@@ -2,10 +2,9 @@ import Head from "next/head";
 
 import ContentCard from "@src/components/ContentCard";
 import Layout from "@src/components/Layout";
-import Navbar from "@src/components/NavBar";
-import Sidebar from "@src/components/Sidebar";
 import SidebarInfo from "@src/components/SidebarInfo";
 import useAllPages from "@src/hooks/useAllPages";
+import useProjectsById from "@src/hooks/useProjectsById";
 
 const Home = () => {
     const { result } = useAllPages();

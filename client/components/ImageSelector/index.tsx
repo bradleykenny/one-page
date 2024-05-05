@@ -1,5 +1,6 @@
 import { faImage, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { MouseEventHandler } from "react";
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 
 const ImageSelector = (props: Props) => {
     const { onClick, onDestroy, value } = props;
-    
+
     return (
         <div>
             <label

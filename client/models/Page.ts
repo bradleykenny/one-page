@@ -1,4 +1,5 @@
 import { JSONContent } from "@tiptap/react";
+
 import { ProjectResponse } from "./Project";
 
 export interface PageResponse {
@@ -12,6 +13,6 @@ export interface PageResponse {
     projectId?: string;
 }
 
-export interface PageResponseWithProjectInfo extends PageResponse {
-    project: ProjectResponse;
+export interface PageResponseWithProject extends PageResponse {
+    projects?: ProjectResponse[];
 }

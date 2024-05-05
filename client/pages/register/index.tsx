@@ -38,11 +38,15 @@ const Register = () => {
     const handleRegisterSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
 
-        const response = await useApi("/auth/register", "POST", {
-            email: username,
-            firstName,
-            lastName,
-            password,
+        const response = await useApi({
+            route: "/auth/register",
+            requestType: "POST",
+            data: {
+                email: username,
+                firstName,
+                lastName,
+                password,
+            },
         });
 
         if (response) {

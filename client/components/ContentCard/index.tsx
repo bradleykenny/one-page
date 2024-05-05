@@ -7,7 +7,7 @@ import Highlight from "@tiptap/extension-highlight";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { PageResponse } from "models/Page";
+import { PageResponse, PageResponseWithProject } from "models/Page";
 import Link from "next/link";
 
 import { useEffect } from "react";
@@ -16,7 +16,7 @@ import Badge from "@src/components/Badge";
 import Card from "@src/components/Card";
 
 interface Props {
-    page: PageResponse;
+    page: PageResponseWithProject;
     children?: JSX.Element;
 }
 
@@ -48,7 +48,7 @@ const ContentCard = (props: Props) => {
             icon: faCircleUser,
         },
         {
-            label: page?.projectId,
+            label: page?.projects?.[0]?.name,
             icon: faCube,
         },
     ];

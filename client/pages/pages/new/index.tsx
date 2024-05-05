@@ -14,10 +14,15 @@ const NewPage = () => {
 
     const saveContent = async (title: string, content: JSONContent) => {
         if (title && content) {
-            const response = await useApi("/page/", "POST", {
-                title,
-                content,
+            const response = await useApi({
+                route: "/page/",
+                requestType: "POST",
+                data: {
+                    title,
+                    content,
+                },
             });
+
             const { id } = response.data;
             router.push(`/pages/${id}/edit`);
         }

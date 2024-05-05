@@ -5,19 +5,16 @@ import { getApiData } from "utils/http";
 
 import { ReactElement, useState } from "react";
 
-import Button from "@src/components/Button";
-import FilterButton from "@src/components/FilterButton";
-import Input from "@src/components/Input";
 import Layout from "@src/components/Layout";
 import RecentPages from "@src/components/RecentPages";
 import Table from "@src/components/Table";
-import { PageResponse, PageResponseWithProjectInfo } from "@src/models/Page";
+import { PageResponse, PageResponseWithProject } from "@src/models/Page";
 import { ProjectResponse } from "@src/models/Project";
 
 import type { NextPageWithLayout } from "../_app";
 
 interface Props {
-    pages: PageResponseWithProjectInfo[];
+    pages: PageResponseWithProject[];
 }
 
 const Pages: NextPageWithLayout = (props: Props) => {

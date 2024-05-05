@@ -31,7 +31,10 @@ const SidebarInfo = (props: IProps) => {
         setShowProjectSelector(true);
         setIsLoadingProjects(true);
 
-        const allProjects = await useApi("/project/all?limit=100", "GET");
+        const allProjects = await useApi({
+            route: "/project/all?limit=100",
+            requestType: "GET",
+        });
         console.log(allProjects);
         const mutatedSelectorProjects = allProjects.data?.map((project) => ({
             id: project.id,
@@ -44,9 +47,13 @@ const SidebarInfo = (props: IProps) => {
     };
 
     const handleProjectSelectorItemSelect = async (value: string) => {
-        await useApi("/page/link-project", "POST", {
-            pageId: page.id,
-            projectId: value,
+        await useApi({
+            route: "/page/link-project",
+            requestType: "POST",
+            data: {
+                pageId: page.id,
+                projectId: value,
+            },
         });
     };
 

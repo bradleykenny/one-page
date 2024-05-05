@@ -7,7 +7,9 @@ const getById = async (collection: Collection<Document>, id: string) => {
 };
 
 const getByAnyId = async (collection: Collection<Document>, ids: string[]) => {
+	console.log({ids});
 	const data = await collection.find({ id: { $in: ids } }).toArray();
+	console.log({data})
 	return data;
 };
 
@@ -16,7 +18,16 @@ const getAll = async (
 	options?: QueryOptions
 ) => {
 	const pages = await collection
-		.find({})
+		.aggregate([
+			{
+				"$lookup": {
+					'from' : 'projects',
+					'localField' : 'projectId',
+					'foreignField' : 'id',
+					'as' : 'projects'
+				}
+			}
+		])
 		.limit(options?.limit || 10)
 		.skip(options?.offset || 0)
 		.toArray();

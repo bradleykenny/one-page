@@ -1,6 +1,8 @@
 import { PageResponse } from "models/Page";
 import { ProjectResponse } from "models/Project";
+
 import { useEffect, useState } from "react";
+
 import useApi from "./useApi";
 
 const usePage = (id: string) => {
@@ -16,17 +18,20 @@ const usePage = (id: string) => {
             }
 
             setLoading(true);
-            const pageResponse = await useApi(`/page/${id}`, "GET");
+            const pageResponse = await useApi({
+                route: `/page/${id}`,
+                requestType: "GET",
+            });
 
             if (pageResponse.data) {
                 setPage(pageResponse.data);
 
                 const { projectId } = pageResponse.data;
                 if (projectId) {
-                    const projectResponse = await useApi(
-                        `/project/${projectId}`,
-                        "GET"
-                    );
+                    const projectResponse = await useApi({
+                        route: `/project/${projectId}`,
+                        requestType: "GET",
+                    });
 
                     if (projectResponse?.data) {
                         setProject(projectResponse.data);

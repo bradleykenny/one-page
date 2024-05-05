@@ -30,11 +30,14 @@ const UnsplashSelector = (props: Props) => {
 
         setTimeout(async () => {
             const response = searchTerm
-                ? await useApi(
-                      `/unsplash/search?keyword=${searchTerm}&page=${page}`,
-                      "GET"
-                  )
-                : await useApi(`/unsplash/get?page=${page}`, "GET");
+                ? await useApi({
+                      route: `/unsplash/search?keyword=${searchTerm}&page=${page}`,
+                      requestType: "GET",
+                  })
+                : await useApi({
+                      route: `/unsplash/get?page=${page}`,
+                      requestType: "GET",
+                  });
 
             if (response?.data) {
                 const newResult = result.concat(...response.data.results);

@@ -40,10 +40,14 @@ const Editor = (props: Props) => {
         if (saveAction) {
             await saveAction(inputTitle, editor.getJSON());
         } else {
-            await useApi("/page/update", "POST", {
-                id: page?.id,
-                title: inputTitle,
-                content: editor.getJSON(),
+            await useApi({
+                route: "/page/update",
+                requestType: "POST",
+                data: {
+                    id: page?.id,
+                    title: inputTitle,
+                    content: editor.getJSON(),
+                },
             });
         }
     };
