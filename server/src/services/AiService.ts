@@ -27,7 +27,7 @@ const generateMessage = async (
 
 
     const completion = await openai.chat.completions.create({
-      messages: [prompts.message, { role: "user", content: req.body.prompt }],
+      messages: [prompts.generate_idea, { role: "user", content: req.body.prompt }],
       model: "gpt-3.5-turbo",
       stream: true,
     });
@@ -47,4 +47,35 @@ const generateMessage = async (
   }
 };
 
-export default { generateMessage };
+const generateArticle = async (
+  req: TypedRequestBody<{ prompt: string}>,
+  res: Response,
+) => {
+  try {
+    if (!req) {
+      res.status(500).send("All fields must be entered.");
+    }
+
+
+    const completion = await openai.chat.completions.create({
+      messages: [prompts.generate_article, { role: "user", content: req.body.prompt }],
+      model: "gpt-3.5-turbo",
+      stream: true,
+    });
+    
+    for await (const chunk of completion) {
+      if (chunk.choices[0].finish_reason === 'stop') {
+        break;
+      }
+  
+      res.write(chunk.choices[0].delta.content);
+    }
+    
+    res.end();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error });
+  }
+};
+
+export default { generateMessage, generateArticle };

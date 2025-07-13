@@ -14,7 +14,7 @@ const Badge = (props: Props) => {
     }
 
     return (
-        <div className="flex items-center rounded-full border border-gray-300 bg-gray-200 py-1 px-2 pl-1 text-sm text-gray-600 shadow-sm">
+        <div className="flex items-center rounded-full border border-gray-300 bg-gray-200 py-1 px-3 pl-1 text-sm text-gray-600 shadow-sm">
             {icon ? (
                 <FontAwesomeIcon
                     icon={icon}

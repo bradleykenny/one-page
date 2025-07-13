@@ -8,4 +8,6 @@ aiRouter.get("/test", async (_, res) => {
 
 aiRouter.post("/message", AiService.generateMessage);
 
+aiRouter.post("/generate/article", AiService.generateArticle);
+
 export default aiRouter;
